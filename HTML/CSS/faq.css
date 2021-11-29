@@ -103,7 +103,7 @@ html{
 .banner div{
     width: 100%;
     padding-top: 23.125%;
-    background: url('../image/faq-banner.png') no-repeat center center/cover;
+    background: url('../Image/faq-banner.png') no-repeat center center/cover;
 }
 section.container{
     margin: 0 20px;
