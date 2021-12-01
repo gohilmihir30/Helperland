@@ -6,8 +6,23 @@ $(document).ready(()=>{
     })
     $('.down').click((e)=>{
         $e=e.target     
-        $($e).toggleClass('rotate-0');
-        $($e).parent().next().slideToggle(500);
+        $($e).parent().next().addClass('clicked');
+        // $($e).parent().next().slideDown(500);
+        $('.down').each((i,element) => {
+            $element=element;
+            if($($element).parent().next().css('display') == 'block'){
+                
+                $($element).parent().next().slideUp(500)        
+                $($element).toggleClass('rotate-0');
+
+            }else if($($element).parent().next().css('display') == 'none' & $($element).parent().next().is('.clicked')){
+                
+                $($e).parent().next().slideDown(500);
+                $($element).toggleClass('rotate-0');
+
+            }
+        });
+        $($e).parent().next().removeClass('clicked');
     })
     function current_section(){
         $('#left').toggleClass('current-section');

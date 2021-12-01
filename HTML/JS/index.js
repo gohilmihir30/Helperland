@@ -3,12 +3,12 @@ $(document).ready(()=>{
         if(window.scrollY>10){
             $('.nav').css('background-color', '#646464')
             $('.active').css('background-color', '#29626D')
-            $('.logo').css({"width": "73px","height":"54px"})
+            $('.nav .logo').css({"width": "73px","height":"54px"})
             
         }else{
             $('.nav').css('background-color', 'transparent')
             $('.active').css('background-color', 'transparent')
-            $('.logo').css({'width': '175px','height':'130px'})
+            $('.nav .logo').css({'width': '175px','height':'130px'})
         }
     })
 
@@ -27,12 +27,15 @@ $(document).ready(()=>{
     $('.scroll-top').click(() => {
         $(window).scrollTop(0, 0)
     })
+
     $('#policy_btn').click(() => {
         $('.footer-policy').fadeOut('fast');
     })
+
     $('.dropdown-btn').click(() => {
-        $('.drop-list').slideToggle('slow')
+        $('.drop-list').slideToggle('medium')
     })
+
     window.addEventListener('load',()=>{
         if (window.outerWidth < 678) {
             document.querySelectorAll('.arrow').forEach(arr=>{

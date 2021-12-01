@@ -30,11 +30,9 @@ section.crousel{
     display: none;
     align-items: center;
     justify-content: center;
-    position: fixed;
     cursor: pointer;
-    right: 23px;
-    top: 25px;
     overflow: hidden;
+    margin-right: 14px;
     z-index: 2000 !important;
 }
 .hamburger span{
@@ -81,11 +79,11 @@ span:nth-child(3){
 }
 .nav .navbar ul{
     display: flex;
+    list-style: none;
     /* flex-direction: column; */
 }
 .navbar ul li {
     margin-right: 11px;
-    list-style-type: none;
 }
 .navbar ul li a{
     padding: 9px 14px;
@@ -147,7 +145,7 @@ nav .logo img {
 .container {
     margin: 178px 0 0 55px;
 } 
-.container h1{
+.container h4{
     font-size: 50px;
     margin-bottom: 25px;
     font-weight: 500;
@@ -175,8 +173,8 @@ nav .logo img {
 }
 .btn a{
     line-height: 23px;
-    color:white;
-    font-size: 18px;    
+    color: white;
+    font-size: 18px;
     text-decoration: none;
 }
 .box{
@@ -229,7 +227,7 @@ nav .logo img {
     margin-top: 50px;
     margin-bottom: 90px;
 }
-.why h1 {
+.why h4 {
     font-size: 40px;
     margin: 30px 0;
     margin-bottom: 40px;
@@ -257,7 +255,7 @@ nav .logo img {
     border-radius: 50%;
     box-shadow: 0 0 8px 3px #9b9b9b;
 }
-.cart-item h3{
+.cart-item strong{
     font-size: 30px;
     text-align: center;
 }
@@ -330,7 +328,7 @@ section.blog {
     right: 0px;
     z-index: -1;
 }
-.blog-item .left h3 {
+.blog-item .left h4 {
     font-size: 30px;
     margin-bottom: 18px;
 }
@@ -464,16 +462,16 @@ img.message-symbol {
 .newsletter{
     margin-top: 51px;
 }
-.newsletter h2{
+.newsletter h4{
     font-size: 18px;
     color: #353548;
-    margin-bottom: 16px;
     text-align: center;
 }
-.newsletter div {
+.newsletter div  form{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 53px;
 }
 .newsletter div input[type="email"]{
@@ -483,6 +481,7 @@ img.message-symbol {
     padding: 12px 22px;
     outline: none;
     font-size: 14px;
+    margin-top: 16px;
 }
 .newsletter div input[type="submit"]{
     color: white;
@@ -493,11 +492,12 @@ img.message-symbol {
     outline: none;
     border-radius: 20px;
     border: none;
+    margin-top: 16px;
 }
 
 /* .....................Customer section End................ */
 .fixed-button {
-    position: sticky;
+    position: relative;
     bottom: -6px;
     height: 0px;
     display: flex;
@@ -505,12 +505,10 @@ img.message-symbol {
     align-items: center;
     background: transparent;
 }
-.scroll-top,.message{
-    position: absolute;
-    bottom: 70px;
-    cursor: pointer;
-}
+
 .scroll-top {
+    position: fixed;
+    bottom: 71px;
     left: 76px;
     width: 48px;
     height: 48px;
@@ -524,6 +522,9 @@ img.message-symbol {
     transform: translateY(14px);
 }
 .message {
+    position: absolute;
+    bottom: 70px;
+    cursor: pointer;
     right: 70px;
     height: 63px;
     width: 63px;
@@ -620,8 +621,11 @@ img.message-symbol {
     .nav .navbar ul{
         flex-direction: column;
     }
+    .hamburger{
+        top: 12px;
+    }
     .vertical-navbar li {
-        margin-bottom: 11px;
+        margin: 15px 0px;
     }
     .vertical-navbar .drop-list {
         top:40px;
@@ -630,7 +634,7 @@ img.message-symbol {
         margin: 178px 0 0 35px;
     }
     .box{
-        margin: 157px 80px 0;
+        margin: 157px 20px 0;
     }
     .why .card-wraper {
         margin: 20px 75px;
@@ -657,7 +661,7 @@ img.message-symbol {
         margin: 0px 110px;
     }
     .scroll-top{
-        left: 50px;
+        left: 25px;
     }
     .message{
         right: 50px;
@@ -684,7 +688,7 @@ img.message-symbol {
         /* flex-direction: column; */
     }  
 }
-@media only screen and (max-width: 425px){
+@media only screen and (max-width: 575px){
     .box{
         flex-wrap: wrap;
     }
@@ -702,18 +706,23 @@ img.message-symbol {
     }
     .fixed-button .message{
         right: 15px;
+        bottom: 238px;
     }
-    .fixed-button .scroll-top{
+    .scroll-top{
         left: 15px;
     }
-    .fixed-button .scroll-top,.fixed-button .message{
-        bottom: 130px;
-    }
+
     .footer-menu{
         flex-direction: column;
     }
     .footer-menu .menu{
         margin: 13PX 0PX;
+    }
+    .footer-policy{
+        flex-direction: column;
+    }
+    .footer-menu .social{
+        margin: 0;
     }
     
     
@@ -725,13 +734,10 @@ img.message-symbol {
     .container {
         margin: 100px 0 0 21px;
     }
-    .hamburger{
-        right: 38px;
-    }
     .why{
         margin-bottom: 0;
     }
-    .why h1{
+    .why h4{
         margin: 0;
     }
     .why .card-wraper {
@@ -769,11 +775,5 @@ img.message-symbol {
     }
     .customers h1{
         margin: 12px 0;
-    }
-    .footer-policy{
-        flex-direction: column;
-    }
-    .fixed-button .scroll-top, .fixed-button .message {
-        bottom: 139px;
     }
 }
