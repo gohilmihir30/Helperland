@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    /* font-size: 17px; */
+}
+html{
+    scroll-behavior: smooth;
+}
+.hamburger {
+    width: 50px;
+    HEIGHT: 50PX;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    right: 23px;
+    top: 0px;
+    overflow: hidden;
+    z-index: 2;
+}
+.hamburger span{
+    position: absolute;
+    background: #fff;
+    width: 40px;
+    border-radius: 5px;
+    height: 4px;
+    transition: all 0.5s;
+}
+.hamburger.toggle span:nth-child(2){
+    transform: translateX(60px);
+}
+.hamburger.toggle span:nth-child(1) {
+    width: 40px;
+    transform: translateY(0px) rotate(45deg);
+}
+.hamburger.toggle span:nth-child(3) {
+    width: 40px;
+    transform: translateY(0px) rotate(315deg);
+}
+.hamburger span:nth-child(1) {
+    transform: translate(-10px, -15px);
+    width: 20px;
+    transition-delay:0.2s;
+}
+.hamburger span:nth-child(3){
+    transform: translate(-5px, 15px);
+    width: 30px;
+    transition-delay:0.4s;
+
+}
+.vertical-navbar{
+   transform: translateX(0) !important;
+}
+.vertical-navbar ul{
+    flex-direction: column;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    background-color: #646464;
+    justify-content: space-between;
+    transition: all 0.5s;
+}
+.nav .logo{
+    margin: 5px 0 4px 15px;
+}
+.nav .navbar ul{
+    display: flex;
+    /* flex-direction: column; */
+}
+.navbar ul li {
+    margin-right: 11px;
+    list-style-type: none;
+}
+.navbar ul li a{
+    padding: 9px 14px;
+    line-height: 24px;
+    transition: background 0.5s, border 0.5s;
+    text-decoration: none;
+    color: white;
+    border-radius: 39px;
+    border: 1px solid transparent;
+}
+.navbar ul li a:hover{
+    border-color: white;
+    background-color: #29626D;
+}
+
+.active {
+    border: 1px solid white !important;
+    border-radius: 39px;
+}
+.hover{
+    background-color: #29626D;
+}
+.banner{
+    background: url('../Image/Group\ 16.jpg') no-repeat center center/cover;
+    height: 370px;
+}
+.container {
+    margin: 39px 289px 57px;
+}
+.heading {
+    display: flex;
+    margin-top: 32px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.heading h1 {
+    color: #4F4F4F;
+    text-align: center;
+    font-size: 36px;
+}
+.heading p {
+    margin-bottom: 36px;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #646464;
+}
+.heading-underline {
+    position: relative;
+    width: 164px;
+    height: 25px;
+    margin-bottom: 53px;
+}
+.heading-underline img {
+    position: absolute;
+    right: 69px;
+}
+.heading-underline span {
+    position: absolute;
+    height: 1px;
+    width: 62px;
+    background-color: #CCCCCC;
+    top:49%;
+}
+.heading-underline span:nth-child(1){
+    left: 0;
+}
+.heading-underline span:nth-child(3){
+    right: 0;
+}
+.newsletter {
+    margin-top: 60px;
+}
+.newsletter h2{
+    font-size: 18px;
+    color: #353548;
+    text-align: center;
+}
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 53px;
+    flex-wrap: wrap;
+}
+.newsletter div input[type="email"]{
+    border: 1px solid #565656;
+    color:#565656 ;
+    border-radius: 20px;
+    padding: 12px 22px;
+    outline: none;
+    font-size: 14px;
+    margin-top: 16px;
+}
+.newsletter div input[type="submit"] {
+    color: white;
+    background-color: #FF7B6D;
+    margin-left: 11px;
+    font-size: 14px;
+    padding: 12px 22px;
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    margin-top: 16px;
+    cursor: pointer;
+}
+footer{
+    background: #111111;
+}
+.footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 119px;
+}
+.footer-menu .menu ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+.footer-menu .menu ul li a{
+    text-decoration: none;
+    color: #F1F1F1;
+    padding: 0px 10px;
+    font-size: 14px;
+
+}
+.footer-menu .social {
+    margin-right: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.footer-menu .social img {
+    margin: 0 6px;
+}
+.terms {
+    color: #9BA0A3;
+    margin: 0px 117px;
+    padding: 23px 0;
+    text-align: center;
+    border-top: 2px solid #424242;
+}
+.overflow-hideen{
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 1050px){
+    body{
+        overflow-x:hidden ;
+    }
+    .hamburger{
+        display: flex;
+        /* position: fixed; */
+    }
+    .navbar{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        background: #464646;
+        transition: transform 0.4s ease-in;
+        z-index: 1;
+    }
+    .nav .navbar ul{
+        flex-direction: column;
+    }
+    .vertical-navbar li {
+        margin-bottom: 11px;
+    }
+    .vertical-navbar .drop-list {
+        top:40px;
+    }
+    .footer-menu{
+        justify-content: space-evenly;
+        padding: 20px 25px;
+    }
+    .menu ul{
+        flex-direction: column;
+    }
+    .menu ul li{   
+        margin-bottom: 8px;
+    }
+    .container {
+        margin: 39px 150px 57px;
+    }
+}
+@media only screen and (max-width: 634px){
+    .footer-menu {
+        flex-direction: column;
+    } 
+    .footer-menu .menu{
+        margin: 13PX 0PX;
+    }  
+    .container {
+        margin: 39px 80px 57px;
+    }
+}
+@media only screen and (max-width: 450px){
+    
+    .container {
+        margin: 39px 30px 57px;
+    }
+    /* .footer-menu {
+        flex-direction: column;
+        padding: 20px 30px;
+    }
+    .footer-menu .menu{
+        margin: 13PX 0PX;
+    } */
+    .footer-menu .menu ul li a{
+        padding: 0px;
+    }
+    .terms {
+        margin: 0px 40px;
+    }
+    
+}
