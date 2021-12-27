@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    /* font-size: 17px; */
+}
+html{
+    /* overflow-x: hidden; */
+    scroll-behavior: smooth;
+}
+/* ..............Navbar............ */
+nav.navbar{
+    background-color: #525252;
+}
+ul.navbar-nav{
+    margin-right: 8px;
+}
+ul.navbar-nav>li>a{
+    border: 1px solid transparent;
+    display: block;
+    color: white;
+    padding: 8px 15px !important;
+    margin: 0 6px;
+    transition: background 0.5s, border 0.5s;
+}
+.nav-link:hover{
+    background-color: #1d7a8c;
+    color: white;
+    border-color: white;
+}
+div.notification{
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    padding: 0 25px 0 16px;
+}
+div.notification>span {
+    background-color: #ff1616;
+    top: -7px;
+    right: 11px;
+}
+div.user_pic>img:first-child{
+    margin: 0 7px 0 18px;
+}
+div.user_pic>img:last-child{
+    margin-right: 14px;
+    cursor: pointer;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button,.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled{
+    color: #777777 !important;
+    border-radius: 55px;
+    border: 1px solid #e1e1e1;
+    font-size: 14px;
+}
+.dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: white !important;
+    background: #1d7a8c !important;
+    border: 1px solid transparent;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button.first:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.last:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.next:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.previous:hover{
+    background: transparent !important;
+    border: 1px solid #e1e1e1;
+}
+/* ...............navbar End............... */
+
+/* ................Welcome............. */
+section.welcome-msg{
+    background-color: #f9f9f9;
+}
+section.welcome-msg h1{
+    font-size: 30px;
+    color: #4f4f4f;
+    font-weight: 400;
+    padding: 44px 0 46px 0;
+}
+section.welcome-msg h1>span{
+    font-weight: 700;
+}
+/* ............welcome End............. */
+
+/* .................vertical menu.................... */
+.vertical-menu{
+    margin-right: 31px;
+    width: 16.8%;
+    /* max-width: 262px; */
+    background: #1d7a8c;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.83;
+}
+.vertical-menu>div:not(div.hamburger_container){
+    border-bottom: 1px solid rgb(255, 255, 255,0.2);
+    padding: 18px 0px 17px 15px;
+}
+.current_section{
+    background-color: #146371;
+}
+.hamburger_container{
+    right: 0;
+}
+.hamburger {
+    width: 30px;
+    HEIGHT: 30PX;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 2;
+    background: #1d7a8c;
+    border-radius: 5px;
+}
+.hamburger span {
+    position: absolute;
+    background: #fff;
+    width: 25px;
+    border-radius: 5px;
+    height: 2px;
+    transition: all 0.5s;
+}
+.hamburger.toggle span:nth-child(2){
+    transform: translateX(30px);
+    background: transparent;
+}
+.hamburger.toggle span:nth-child(1) {
+    width: 25px;
+    transform: translateY(0px) rotate(45deg);
+}
+.hamburger.toggle span:nth-child(3) {
+    width: 25px;
+    transform: translateY(0px) rotate(315deg);
+}
+.hamburger span:nth-child(1) {
+    transform: translate(-5px, -8px);
+    width: 12px;
+    transition-delay: 0.2s;
+}
+.hamburger span:nth-child(3) {
+    transform: translate(-4px, 8px);
+    width: 17px;
+    transition-delay: 0.4s;
+}
+
+/* .................vertical menu End.................... */
+
+/* ........data table.......... */
+.data-table {
+    flex: 1;
+    min-width: 0px;
+    max-width: 861px;
+}
+
+table.dataTable.no-footer {
+    border-bottom: none;
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+table.dataTable thead {
+    background-color:#f9f9f9;
+}
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: none;
+}
+tr,td,th{
+    border:1px solid #e1e1e1 !important;
+}
+th,td{
+    color: #646464;
+    font-size: 16px;
+}
+th {
+    text-align: left !important;   
+}
+tr>td:last-child button{
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    outline: none;
+    line-height: 0.9;
+    border-radius:34px;
+    padding: 10px 16px 12px;
+    cursor: pointer;
+}
+tr td>div>img{
+    margin-right: 7px;
+}
+tr td>div:last-child{
+    margin-top: 8px;
+}
+tr td>div:first-child>img{
+    height: 19px;
+}
+tr td>div:last-child>img{
+    height: 17px;
+}
+tr td:nth-child(3)>div>img{
+    height: 22px;
+}
+/* ..........data table end.............. */
+
+/* ........footer.............. */
+footer{
+    background: #111111;
+}
+.footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 119px;
+}
+.footer-menu .menu ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.footer-menu .menu ul li a{
+    text-decoration: none;
+    color: #F1F1F1;
+    padding: 0px 10px;
+    font-size: 14px;
+
+}
+.footer-menu .social {
+    margin-right: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.footer-menu .social img {
+    margin: 0 6px;
+}
+.terms {
+    color: #9BA0A3;
+    margin: 0px 117px;
+    padding: 23px 0;
+    text-align: center;
+    border-top: 2px solid #424242;
+}
+/* ................footer end....... */
+@media only screen and (max-width: 1017px){
+    .footer-menu{
+        justify-content: space-evenly;
+        padding: 20px 25px;
+    }
+    .footer-menu .menu ul{
+        flex-direction: column;
+    }
+    .footer-menu .menu ul li{   
+        margin-bottom: 8px;
+    } 
+}
+
+@media only screen and (max-width: 425px){
+    .footer-menu {
+        flex-direction: column;
+    }
+    .footer-menu .menu {
+        margin: 15px 0px;
+    }
+    .footer-menu .terms {
+        margin: 0px 40px;
+    }
+}

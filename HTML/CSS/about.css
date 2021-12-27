@@ -261,10 +261,10 @@ footer{
         justify-content: space-evenly;
         padding: 20px 25px;
     }
-    .menu ul{
+    .footer-menu .menu ul{
         flex-direction: column;
     }
-    .menu ul li{   
+    .footer-menu .menu ul li{   
         margin-bottom: 8px;
     }
     .container {
