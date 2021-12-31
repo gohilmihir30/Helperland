@@ -7,7 +7,7 @@
     /* font-size: 17px; */
 }
 html{
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 /* ..............Navbar............ */
@@ -19,13 +19,13 @@ ul.navbar-nav{
 }
 ul.navbar-nav>li>a{
     border: 1px solid transparent;
-    display: block;
     color: white;
     padding: 8px 15px !important;
     margin: 0 6px;
     transition: background 0.5s, border 0.5s;
+    text-decoration: none;
 }
-.nav-link:hover{
+ul.navbar-nav>li>a:hover{
     background-color: #1d7a8c;
     color: white;
     border-color: white;
@@ -47,20 +47,51 @@ div.user_pic>img:last-child{
     margin-right: 14px;
     cursor: pointer;
 }
-.dataTables_wrapper .dataTables_paginate a.paginate_button,.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled{
-    color: #777777 !important;
-    border-radius: 55px;
-    border: 1px solid #e1e1e1;
-    font-size: 14px;
+.navbar .hamburger, .verticle-menu .hamburger{
+    width: 40px;
+    HEIGHT: 40PX;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin-right: 14px;
+    z-index: 2000 !important;
 }
-.dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
-    color: white !important;
-    background: #1d7a8c !important;
-    border: 1px solid transparent;
+.navbar .hamburger span, .verticle-menu .hamburger span{
+    position: absolute;
+    background: #fff;
+    width: 40px;
+    border-radius: 5px;
+    height: 4px;
+    transition: all 0.5s;
 }
-.dataTables_wrapper .dataTables_paginate a.paginate_button.first:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.last:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.next:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.previous:hover{
-    background: transparent !important;
-    border: 1px solid #e1e1e1;
+.navbar.toggle .hamburger  span:nth-child(2), .verticle-menu.toggle .hamburger span:nth-child(2){
+    transform: translateX(60px);
+    background: transparent;
+}
+.navbar.toggle .hamburger span:nth-child(1){
+    width: 30px;
+    transform: translateY(0px) rotate(45deg);
+}
+.navbar.toggle .hamburger  span:nth-child(3) {
+    width: 30px;
+    transform: translateY(0px) rotate(315deg);
+}
+.navbar .hamburger span:nth-child(1) {
+    transform: translate(-10px, -15px);
+    width: 18px;
+    transition-delay:0.2s;
+}
+.navbar .hamburger span:nth-child(3){
+    transform: translate(-8px, 15px);
+    width: 25px;
+    transition-delay:0.4s;
+}
+.userInfoItem{
+    text-decoration: none;
+    color: #4f4f4f;
+    margin: 4px 0px;
 }
 /* ...............navbar End............... */
 
@@ -79,78 +110,67 @@ section.welcome-msg h1>span{
 }
 /* ............welcome End............. */
 
-/* .................vertical menu.................... */
-.vertical-menu{
-    margin-right: 31px;
-    width: 16.8%;
-    /* max-width: 262px; */
+/* .................verticle menu.................... */
+.verticle-menu{
+    z-index: 2;
+    width: 262px;
     background: #1d7a8c;
     color: white;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.83;
+    transition: left 0.5s;
 }
-.vertical-menu>div:not(div.hamburger_container){
+.verticle-menu>div:not(div.hamburger){
     border-bottom: 1px solid rgb(255, 255, 255,0.2);
-    padding: 18px 0px 17px 15px;
+    padding: 18px 15px 17px 15px;
 }
 .current_section{
     background-color: #146371;
 }
-.hamburger_container{
-    right: 0;
-}
-.hamburger {
+.verticle-menu .hamburger {
     width: 30px;
     HEIGHT: 30PX;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 2;
+    border-radius: 5px;
     background: #1d7a8c;
-    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
-.hamburger span {
-    position: absolute;
-    background: #fff;
+.verticle-menu .hamburger span {
     width: 25px;
-    border-radius: 5px;
     height: 2px;
-    transition: all 0.5s;
 }
-.hamburger.toggle span:nth-child(2){
+.verticle-menu.toggle .hamburger span:nth-child(2){
     transform: translateX(30px);
     background: transparent;
 }
-.hamburger.toggle span:nth-child(1) {
+.verticle-menu.toggle .hamburger span:nth-child(1) {
     width: 25px;
     transform: translateY(0px) rotate(45deg);
 }
-.hamburger.toggle span:nth-child(3) {
+.verticle-menu.toggle .hamburger span:nth-child(3) {
     width: 25px;
     transform: translateY(0px) rotate(315deg);
 }
-.hamburger span:nth-child(1) {
-    transform: translate(-5px, -8px);
+.verticle-menu .hamburger span:nth-child(1) {
+    transform: translate(-6px, -8px);
     width: 12px;
     transition-delay: 0.2s;
 }
-.hamburger span:nth-child(3) {
+.verticle-menu .hamburger span:nth-child(3) {
     transform: translate(-4px, 8px);
     width: 17px;
     transition-delay: 0.4s;
 }
 
-/* .................vertical menu End.................... */
+/* .................verticle menu End.................... */
 
 /* ........data table.......... */
 .data-table {
     flex: 1;
     min-width: 0px;
     max-width: 861px;
+    margin-left: 31px;
 }
 
 table.dataTable.no-footer {
@@ -199,6 +219,21 @@ tr td>div:last-child>img{
 tr td:nth-child(3)>div>img{
     height: 22px;
 }
+.dataTables_wrapper .dataTables_paginate a.paginate_button,.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled{
+    color: #777777 !important;
+    border-radius: 55px;
+    border: 1px solid #e1e1e1;
+    font-size: 14px;
+}
+.dataTables_paginate .paginate_button.disabled:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: white !important;
+    background: #1d7a8c !important;
+    border: 1px solid transparent;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button.first:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.last:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.next:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.previous:hover{
+    background: transparent !important;
+    border: 1px solid #e1e1e1;
+}
 /* ..........data table end.............. */
 
 /* ........footer.............. */
@@ -237,10 +272,17 @@ footer{
 }
 .terms {
     color: #9BA0A3;
-    margin: 0px 117px;
-    padding: 23px 0;
+    padding: 23px;
     text-align: center;
-    border-top: 2px solid #424242;
+}
+.terms hr{
+    height: 2px;
+    width: 84.62%;
+    background: #424242;
+}
+.terms small{
+    display: inline-block;
+    margin-top: 23px;
 }
 /* ................footer end....... */
 @media only screen and (max-width: 1017px){
@@ -255,7 +297,44 @@ footer{
         margin-bottom: 8px;
     } 
 }
+@media only screen and (max-width: 767px){
+    .navbar ul.navbar-nav.responsive-navbar {
+        background: rgb(82, 82, 82);
+        left: 0px;
+        top: 69px;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        z-index: 3;
+        flex-direction: column !important;
+        /* height: 0px; */
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 1s;
+    }
+    ul.navbar-nav>li{
+        margin: 8px auto;
+    }
+    .navbar .hamburger {
+        display: flex;
+    }
+    .navbar.toggle ul.navbar-nav.responsive-navbar {
+        max-height: 400px;
+    } 
+    .verticle-menu.toggle{
+        left: 0px;
+    }
+    .verticle-menu{
+        position: absolute;
+        left: -262px;
+        height: 100%;
+    }
+    .verticle-menu .hamburger{
+        top: 0;
+        right: -44px;
+    }
 
+}
 @media only screen and (max-width: 425px){
     .footer-menu {
         flex-direction: column;
