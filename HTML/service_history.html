@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./Image/favicon.png" type="Image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="./CSS/service_history.css">
+    <title>Service History</title>
+</head>
+
+<body>
+    <nav class="navbar position-relative">
+        <div><a class="navbar-brand" href="./index.html"><img src="./Image/logo-small.png" alt="" srcset=""></a></div>
+        <div class="d-flex ">
+            <ul class="navbar-nav flex-row responsive-navbar">
+                <li class="nav-item"><a class="rounded-pill active" href="">Book now</a></li>
+                <li class="nav-item"><a class="rounded-pill" href="">Prices & Services</a></li>
+                <li class="nav-item"><a class="rounded-pill" href="">Warrenty</a></li>
+                <li class="nav-item"><a class="rounded-pill" href="">Blog</a></li>
+                <li class="nav-item"><a class="rounded-pill" href="">Contact</a></li>
+            </ul>
+
+            <div class="notification position-relative">
+                <img src="./Image/Icon Notification.png" alt="">
+                <span class="badge rounded-circle position-absolute">2</span>
+            </div>
+            <div class="user_pic" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom"
+                data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                data-bs-html="true" title="<div class='userInfoText'>Welcome,<br />Gurang Patel</div>">
+                <img src="./Image/user_logo.png" alt="">
+                <img src="./Image/down.png" alt="">
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <section class="text-center welcome-msg">
+        <h1>Welcome,<span> Gurang!</span></h1>
+    </section>
+    <section class="container-fluid d-flex justify-content-center position-relative my-4">
+        <div class="verticle-menu">
+            <div><span>Dashbord</span></div>
+            <div class="current_section"><span>Service History</span></div>
+            <div><span>Service Schedule</span></div>
+            <div><span>Favourite Prns</span></div>
+            <div><span>Invoice</span></div>
+            <div><span>Notifications</span></div>
+            <div class="hamburger position-absolute d-md-none d-flex">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="data-table">
+            <table id="example">
+                <thead>
+                    <tr>
+                        <th class="text-nowrap">Service Detail</th>
+                        <th>Service Provider</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Rate SP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="complete">Completed</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="text-nowrap">
+                                <img src="./Image/calen 1.png" alt=""> <strong>31/12/2021</strong>
+                            </div>
+                            <span>12:00 - 18:00</span>
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                        src="./Image/avtar.png" alt=""></div>
+                                <div class="text-nowrap">
+                                    <p>Lyum Watson</p>
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starFilled.png" alt="">
+                                    <img src="./Image/starUnfilled.png" alt=""> 
+                                    <span>4</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            &#8364;<span>63</span>
+                        </td>
+                        <td><span class="cancelled">Cancelled</span></td>
+                        <td><button class="rounded-pill text-nowrap">Rate SP</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-menu">
+            <div class="logo"><img src="./Image/white_logo_transparent_background copy 4.png" alt=""></div>
+            <div class="menu">
+                <ul class="p-0">
+                    <li><a href="./index.html">HOME</a></li>
+                    <li><a href="./about.html">ABOUT US</a></li>
+                    <li><a href="#">TESTIMONIAL</a></li>
+                    <li><a href="./faq.html">FAQS</a></li>
+                    <li><a href="#">INSURANCE POLICY</a></li>
+                    <li><a href="#">IMPRESSUM</a></li>
+                </ul>
+            </div>
+            <div class="social">
+                <img src="./Image/Forma 1_3.png" alt="">
+                <img src="./Image/Forma 1_5.png" alt="">
+            </div>
+        </div>
+        <div class="terms">
+            <hr class="m-0">
+            <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+    <script src="./JS/service_history.js"></script>
+</body>
+
+</html>
