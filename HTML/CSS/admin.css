@@ -87,7 +87,7 @@ div.right{
     padding:0 20px;
     background: #f2f4f5;
     width: 100%;
-    min-height: 701px;
+    height: calc(100vh - 56px);
 }
 /* .............heading div................ */
 .right .heading{
@@ -153,11 +153,14 @@ input[type="date"]{
     line-height: 46px;
     /* background:url('../Image/calender.svg') no-repeat center left 0.75rem; */
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(100%);
     display: none;
-}
-input[type='date']::-webkit-datetime-edit-fields-wrapper { width: 80%; }
+    position: absolute;
+    left: 0px;
+} */
+/* input[type='date']::-webkit-datetime-edit-fields-wrapper { width: 100%; } */
 /* input[type='date']::-webkit-datetime-edit { padding: 1em; }
 input[type='date']::-webkit-datetime-edit-text { color: red;}
 input[type='date']::-webkit-datetime-edit-month-field { color: blue; }

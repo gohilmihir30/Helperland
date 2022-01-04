@@ -6,28 +6,50 @@
     font-family: 'Roboto', sans-serif;
 }
 html{
-    overflow-x: hidden;
     scroll-behavior: smooth;
+    color: #646464;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 /* ..............Navbar............ */
 nav.navbar{
     background-color: #525252;
+    z-index: 2;
+    position: fixed !important;
+    top: 0;
+    left: 0 !important;
+    width: 100%;
+}
+.main-nav{
+    transition: all 0.5s ease;
+}
+.main-nav .username{
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 18px;
+}
+.main-nav .username b{
+    display: block;
+    font-weight: 700;
 }
 ul.navbar-nav{
     margin-right: 8px;
 }
 ul.navbar-nav>li>a{
     border: 1px solid transparent;
-    color: white;
-    padding: 8px 15px !important;
+    color: #fff;
+    padding: 8px !important;
     margin: 0 6px;
+    border-radius: 100px;
     transition: background 0.5s, border 0.5s;
     text-decoration: none;
     display: inline-block;
 }
 ul.navbar-nav>li>a:hover{
     background-color: #29626d;
-    color: white;
     border-color: white;
 }
 div.notification{
@@ -47,7 +69,10 @@ div.user_pic>img:last-child{
     margin-right: 14px;
     cursor: pointer;
 }
-.navbar .hamburger, .verticle-menu .hamburger{
+.active{
+    color: #1d7a8c!important;
+}
+.navbar .hamburger{
     width: 40px;
     HEIGHT: 40PX;
     display: none;
@@ -56,9 +81,10 @@ div.user_pic>img:last-child{
     cursor: pointer;
     overflow: hidden;
     margin-right: 14px;
-    z-index: 2000 !important;
+    z-index: 3 !important;
+    margin-left: 20px;
 }
-.navbar .hamburger span, .verticle-menu .hamburger span{
+.navbar .hamburger span{
     position: absolute;
     background: #fff;
     width: 40px;
@@ -66,7 +92,7 @@ div.user_pic>img:last-child{
     height: 4px;
     transition: all 0.5s;
 }
-.navbar.toggle .hamburger  span:nth-child(2), .verticle-menu.toggle .hamburger span:nth-child(2){
+.navbar.toggle .hamburger  span:nth-child(2){
     transform: translateX(60px);
     background: transparent;
 }
@@ -93,11 +119,23 @@ div.user_pic>img:last-child{
     color: #4f4f4f;
     margin: 4px 0px;
 }
+.backblack {
+    background: black;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+}
 /* ...............navbar End............... */
 
 /* ................Welcome............. */
 section.welcome-msg{
     background-color: #f9f9f9;
+    padding-top: 70px;
 }
 section.welcome-msg h1{
     font-size: 30px;
@@ -112,7 +150,6 @@ section.welcome-msg h1>span{
 
 /* .................verticle menu.................... */
 .verticle-menu{
-    z-index: 2;
     width: 262px;
     background: #1d7a8c;
     color: white;
@@ -121,48 +158,13 @@ section.welcome-msg h1>span{
     line-height: 1.83;
     transition: left 0.5s;
 }
-.verticle-menu>div:not(div.hamburger){
+.verticle-menu>div{
     border-bottom: 1px solid rgb(255, 255, 255,0.2);
     padding: 18px 15px 17px 15px;
 }
 .current_section{
     background-color: #146371;
 }
-.verticle-menu .hamburger {
-    width: 30px;
-    HEIGHT: 30PX;
-    border-radius: 5px;
-    background: #1d7a8c;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-}
-.verticle-menu .hamburger span {
-    width: 25px;
-    height: 2px;
-}
-.verticle-menu.toggle .hamburger span:nth-child(2){
-    transform: translateX(30px);
-    background: transparent;
-}
-.verticle-menu.toggle .hamburger span:nth-child(1) {
-    width: 25px;
-    transform: translateY(0px) rotate(45deg);
-}
-.verticle-menu.toggle .hamburger span:nth-child(3) {
-    width: 25px;
-    transform: translateY(0px) rotate(315deg);
-}
-.verticle-menu .hamburger span:nth-child(1) {
-    transform: translate(-6px, -8px);
-    width: 12px;
-    transition-delay: 0.2s;
-}
-.verticle-menu .hamburger span:nth-child(3) {
-    transform: translate(-4px, 8px);
-    width: 17px;
-    transition-delay: 0.4s;
-}
-
 /* .................verticle menu End.................... */
 
 /* ........data table.......... */
@@ -177,6 +179,7 @@ table.dataTable.no-footer {
     border-bottom: none;
     width: 100% !important;
     border-collapse: collapse !important;
+    z-index: 1;
 }
 table.dataTable thead {
     background-color:#f9f9f9;
@@ -297,8 +300,67 @@ footer{
         margin-bottom: 8px;
     } 
 }
-@media only screen and (max-width: 767px){
-    .navbar ul.navbar-nav.responsive-navbar {
+@media only screen and (max-width: 991px){
+    .main-nav{
+        z-index: 9;
+        position: absolute;
+        top: 0;
+        right: -250px !important;
+        /* display: none !important; */
+        height: 100vh;
+        background: #fff;
+        width: 250px;
+        right: 0;
+        box-shadow: -1px 0 3px rgba(0,0,0,.12),-1px 0 2px rgba(0,0,0,.24);
+    }
+    .main-nav.open{
+        right: 0 !important;
+    }
+    .main-nav ul{
+        list-style: none;
+        padding: 8px 0;
+        margin: 0 !important;
+        border-top: 1px solid #e1e1e1;
+    }
+    .main-nav ul li{
+        width: 100%;
+    }
+    .main-nav ul li a:hover{
+        background: #f6f6f6!important;
+        border-radius: 0 !important;
+    }
+    .main-nav ul li a{
+        display: inline-block;
+        text-decoration: none;
+        color: #646464;
+        line-height: 20px;
+        padding: 8px 20px;
+        width: 100%;
+        transition: all 0.5s ease;
+    }
+    .main-nav .social-media {
+        border-top: 1px solid #e1e1e1;
+        padding: 8px 20px;
+    }
+    .main-nav .social-media a:hover{
+        border-radius: 50%;
+        background: #f6f6f6 !important;
+        color: #646464 !important;
+    }
+    .main-nav .social-media a{
+        padding: 15px;
+        display: inline-block;
+        transition: all 0.5s ease;
+        border-radius: 0px;
+    }
+    .main-nav .social-media img{
+        display: inline-block;
+    }
+    .backblack.open{
+        display: block;
+        opacity: 0.5;
+    }
+    /* .navbar ul.navbar-nav.responsive-navbar {
         background: rgb(82, 82, 82);
         left: 0px;
         top: 69px;
@@ -307,31 +369,16 @@ footer{
         text-align: center;
         z-index: 3;
         flex-direction: column !important;
-        /* height: 0px; */
+        height: 0px;
         max-height: 0px;
         overflow: hidden;
         transition: max-height 1s;
-    }
-    ul.navbar-nav>li{
+    } */
+    /* ul.navbar-nav>li{
         margin: 8px auto;
-    }
+    } */
     .navbar .hamburger {
         display: flex;
-    }
-    .navbar.toggle ul.navbar-nav.responsive-navbar {
-        max-height: 400px;
-    } 
-    .verticle-menu.toggle{
-        left: 0px;
-    }
-    .verticle-menu{
-        position: absolute;
-        left: -262px;
-        height: 100%;
-    }
-    .verticle-menu .hamburger{
-        top: 0;
-        right: -44px;
     }
 
 }
