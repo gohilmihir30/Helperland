@@ -87,6 +87,7 @@ div.right{
     padding:0 20px;
     background: #f2f4f5;
     width: 100%;
+    min-height: 701px;
 }
 /* .............heading div................ */
 .right .heading{
@@ -197,6 +198,7 @@ table.dataTable.no-footer {
     border-bottom: none;
     width: 100% !important;
     border-collapse: collapse !important;
+    /* min-height: 386px; */
 }
 table.dataTable thead {
     background-color:#f9f9f9;
