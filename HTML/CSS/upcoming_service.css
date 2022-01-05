@@ -6,13 +6,13 @@
     font-family: 'Roboto', sans-serif;
 }
 html{
+    /* overflow-x: hidden; */
     scroll-behavior: smooth;
     color: #646464;
 }
 body{
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
 }
 /* ..............Navbar............ */
 nav.navbar{
@@ -51,6 +51,7 @@ ul.navbar-nav>li>a{
 ul.navbar-nav>li>a:hover{
     background-color: #29626d;
     border-color: white;
+    
 }
 div.notification{
     border-right: 1px solid #e1e1e1;
@@ -151,12 +152,15 @@ section.welcome-msg h1>span{
 /* .................verticle menu.................... */
 .verticle-menu{
     width: 262px;
-    background: #1d7a8c;
     color: white;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.83;
     transition: left 0.5s;
+    min-height: calc(100vh - 70px - 3rem); 
+    background: #1d7a8c;
+    position: sticky;
+    top: 94px;
 }
 .verticle-menu>div{
     border-bottom: 1px solid rgb(255, 255, 255,0.2);
@@ -301,12 +305,14 @@ footer{
     } 
 }
 @media only screen and (max-width: 991px){
+    table.dataTable.no-footer {
+        margin-left: -14px;
+    }
     .main-nav{
         z-index: 9;
         position: absolute;
         top: 0;
         right: -250px !important;
-        /* display: none !important; */
         height: 100vh;
         background: #fff;
         width: 250px;
@@ -360,25 +366,8 @@ footer{
         display: block;
         opacity: 0.5;
     }
-    /* .navbar ul.navbar-nav.responsive-navbar {
-        background: rgb(82, 82, 82);
-        left: 0px;
-        top: 69px;
-        position: absolute;
+    tr.child td.child ul{
         width: 100%;
-        text-align: center;
-        z-index: 3;
-        flex-direction: column !important;
-        height: 0px;
-        max-height: 0px;
-        overflow: hidden;
-        transition: max-height 1s;
-    } */
-    /* ul.navbar-nav>li{
-        margin: 8px auto;
-    } */
-    .navbar .hamburger {
-        display: flex;
     }
 
 }

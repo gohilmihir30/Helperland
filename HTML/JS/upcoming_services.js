@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('#example').DataTable({
-        "dom": 'rtip',
+        "dom": 'rtipl',
         "ordering": false,
         'pagingType': "full_numbers",
         'responsive': true,
@@ -37,5 +37,5 @@ $(document).ready(function () {
         $('.navbar').removeClass('toggle')
         $('body').css("overflow","visible")
     }))
-    document.querySelector('.verticle-menu').style.height=`${document.querySelector('.container-fluid').innerHeight}px`
+    // document.querySelector('.verticle-menu').style.height=`${document.querySelector('.container-fluid').innerHeight}px`
 });

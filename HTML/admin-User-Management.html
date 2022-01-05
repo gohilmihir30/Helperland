@@ -9,18 +9,27 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="./CSS/admin.css">
     <title>User Management</title>
 </head>
 
 <body>
     <nav class="navbar">
-        <h1><a class="navbar-brand" href="#">helperland</a></h1>
+        <div class="d-flex align-items-center">
+            <div class="hamburger d-lg-none d-flex">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1"><a class="navbar-brand" href="#">helperland</a></h1>
+        </div>
         <div class="user d-flex align-items-center">
             <img src="./Image/user.png" alt="">
             <p>James Smith</p>
             <img src="./Image/logout.png" alt="">
         </div>
+        <div class="backblack"></div>
     </nav>
     <section class="d-flex">
         <aside class="left">
@@ -71,8 +80,8 @@
                 <button><img src="./Image/add.png" alt=""> Add New user</button>
             </div>
             <div class="filter">
-                <form class="row gy-2 gx-3 align-items-center justify-content-between flex-nowrap">
-                    <div class="col-3">
+                <form class="row gy-2 gx-3 align-items-center">
+                    <div class="col-2">
                         <label class="visually-hidden" for="autoSizingSelect">User name</label>
                         <select class="form-select" id="" placeholder="User name">
                             <option selected>User name</option>
@@ -81,7 +90,7 @@
                             <option value="3">Three</option>
                         </select>
                     </div>
-                    <div class="col-3">
+                    <div class="col-2">
                         <label class="visually-hidden" for="autoSizingSelect">User role</label>
                         <select class="form-select" id="" placeholder="User roel">
                             <option selected>User role</option>
@@ -90,16 +99,26 @@
                             <option value="3">Three</option>
                         </select>
                     </div>
-                    <div class="col-3">
+                    <div class="col-2" style="min-width: 200px;">
                         <label class="visually-hidden" for="autoSizingInputGroup">Mobile</label>
                         <div class="input-group">
                             <div class="input-group-text">+49</div>
                             <input type="tel" class="form-control" id="" placeholder="Phone Number">
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-auto" style="width: 135px;">
                         <label class="visually-hidden" for="autoSizingInput">Zipcode</label>
                         <input type="text" class="form-control" id="" placeholder="Zipcode">
+                    </div>
+                    <div class="col-auto position-relative">
+                        <label class="visually-hidden" for="autoSizingInput">From Date</label>
+                        <input type="text" class="form-control date" id="" placeholder="From Date">
+                        <img class="position-absolute" src="./Image/calender.svg" alt="">
+                    </div>
+                    <div class="col-auto position-relative">
+                        <label class="visually-hidden" for="autoSizingInput">To Date</label>
+                        <input type="text" class="form-control date" id="" placeholder="To Date">
+                        <img class="position-absolute" src="./Image/calender.svg" alt="">
                     </div>
                     <div class="col-auto">
                         <button type="submit" class="btn">Search</button>
@@ -158,6 +177,57 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td>Lyum watson</td>
+                            <td>Call center</td>
+                            <td>Inquery Manager</td>
+                            <td>123456</td>
+                            <td>Berlin</td>
+                            <td>10 Km</td>
+                            <td><button class="active">Active</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lyum watson</td>
+                            <td>Call center</td>
+                            <td>Inquery Manager</td>
+                            <td>123456</td>
+                            <td>Berlin</td>
+                            <td>10 Km</td>
+                            <td><button class="active">Active</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lyum watson</td>
+                            <td>Call center</td>
+                            <td>Inquery Manager</td>
+                            <td>123456</td>
+                            <td>Berlin</td>
+                            <td>10 Km</td>
+                            <td><button class="inactive">Inactive</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -170,7 +240,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="./JS/admin-user-management.js"></script>
 </body>
 

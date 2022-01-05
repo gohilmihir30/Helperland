@@ -16,7 +16,8 @@
 
 <body>
     <nav class="navbar fixed-top">
-        <div><a class="navbar-brand p-2" href="./index.html"><img src="./Image/logo-small.png" alt="" srcset=""></a></div>
+        <div><a class="navbar-brand p-2" href="./index.html"><img src="./Image/logo-small.png" alt="" srcset=""></a>
+        </div>
         <div class="d-flex">
             <div class="main-nav d-flex flex-column">
                 <div class="username d-block d-lg-none">
@@ -25,7 +26,7 @@
                 </div>
                 <ul class="d-flex flex-column d-lg-none">
                     <li><a href="" class="active"> Dashbord </a></li>
-                    <li><a href=""> Service History </a></li>
+                    <li><a href="./service_history.html"> Service History </a></li>
                     <li><a href=""> Service Schedule </a></li>
                     <li><a href=""> Favourite Pros </a></li>
                     <li><a href=""> Invoice</a></li>
@@ -33,11 +34,11 @@
                     <li><a href=""> Logout</a></li>
                 </ul>
                 <ul class="navbar-nav flex-column flex-lg-row responsive-navbar">
-                    <li class="nav-item"><a  href="">Book Now</a></li>
-                    <li class="nav-item"><a  href="">Prices & Services</a></li>
-                    <li class="nav-item"><a  href="">Warrenty</a></li>
-                    <li class="nav-item"><a  href="">Blog</a></li>
-                    <li class="nav-item"><a  href="">Contact</a></li>
+                    <li class="nav-item"><a href="" title="Book now">Book Now</a></li>
+                    <li class="nav-item"><a href="./prices.html" title="Prices & Services">Prices & Services</a></li>
+                    <li class="nav-item"><a href="" title="Warrenty">Warrenty</a></li>
+                    <li class="nav-item"><a href="" title="Blog">Blog</a></li>
+                    <li class="nav-item"><a href="./contact.html" title="Contact">Contact</a></li>
                 </ul>
                 <div class="social-media d-block d-lg-none text-center">
                     <a href=""><img src="./Image/facebook-mobile-menu.png" alt=""></a>
@@ -56,7 +57,7 @@
                     <img src="./Image/user_logo.png" alt="">
                     <img src="./Image/down.png" alt="">
                 </div>
-                <div class="hamburger">
+                <div class="hamburger d-flex d-lg-none">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -68,17 +69,18 @@
     <section class="text-center welcome-msg">
         <h1>Welcome,<span> Sandip!</span></h1>
     </section>
-    <section class="container-fluid d-flex justify-content-center position-relative my-4">
+    <section class="container-fluid d-flex align-items-start justify-content-center position-relative my-4">
         <div class="verticle-menu d-none d-lg-block">
-            <div><span>Dashbord</span></div>
-            <div><span>New Service Request</span></div>
-            <div class="current_section"><span>Upcoming Services</span></div>
-            <div><span>Service Schedule</span></div>
-            <div><span>Service History</span></div>
-            <div><span>My Ratings</span></div>
-            <div><span>Block Customer</span></div>
+            <!-- <div> -->
+                <div><span>Dashbord</span></div>
+                <div><span>New Service Request</span></div>
+                <div class="current_section"><span>Upcoming Services</span></div>
+                <div><span>Service Schedule</span></div>
+                <div><span>Service History</span></div>
+                <div><span>My Ratings</span></div>
+                <div><span>Block Customer</span></div>
+            <!-- </div> -->
         </div>
-
         <div class="data-table">
             <table id="example">
                 <thead>
@@ -91,6 +93,294 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
+                    <tr>
+                        <td>3414</td>
+                        <td>
+                            <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                <strong>09/08/2021</strong>
+                            </div>
+                            <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png" alt=""><span>12:00
+                                    - 18:00</span> </div>
+                        </td>
+                        <td>
+                            <span>David Bough</span>
+                            <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                <span>Musterstrabe 5,12345 Bonn</span>
+                            </div>
+                        </td>
+                        <td>14 Km</td>
+                        <td><button>Cancel</button></td>
+                    </tr>
                     <tr>
                         <td>3414</td>
                         <td>

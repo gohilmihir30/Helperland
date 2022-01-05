@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./Image/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="./CSS/admin.css">
+    <title>Service Request</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="d-flex align-items-center">
+            <div class="hamburger d-lg-none d-flex">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h1"><a class="navbar-brand" href="#">helperland</a></h1>
+        </div>
+        <div class="user d-flex align-items-center">
+            <img src="./Image/user.png" alt="">
+            <p>James Smith</p>
+            <img src="./Image/logout.png" alt="">
+        </div>
+        <div class="backblack"></div>
+    </nav>
+    <section class="d-flex">
+        <aside class="left">
+            <ul>
+                <li>Service Management</li>
+                <li>Role Management</li>
+                <li class="position-relative">
+                    <button class="btn trigger text-start w-100">Coupon Code Management
+                    </button>
+                    <img src="./Image/Forma 1_1_3.png" class="position-absolute" alt="">
+                    <div class="collapse">
+                        <p>Coupon Codes</p>
+                        <p>Usage History</p>
+                    </div>
+                </li>
+                <li>Escalation Management</li>
+                <li>Service Requests</li>
+                <li>Service Providers</li>
+                <li class="active">User Management</li>
+                <li class="position-relative">
+                    <button class="btn trigger text-start w-100">Finance Module
+                    </button>
+                    <img src="./Image/Forma 1_1_3.png" class="position-absolute" alt="">
+                    <div class="collapse">
+                        <p>All Transactions</p>
+                        <p>Generate Payment</p>
+                        <p>Customer Invoice</p>
+                    </div>
+                </li>
+                <li>Zip Code Management</li>
+                <li>Rating Management</li>
+                <li>Inquiry Management</li>
+                <li>Newsletter Management</li>
+                <li class="position-relative">
+                    <button class="btn trigger text-start w-100" id="coupon">Content Management
+                    </button>
+                    <img src="./Image/Forma 1_1_3.png" class="position-absolute" alt="">
+                    <div class="collapse">
+                        <p>Blog</p>
+                        <p>FAQs</p>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+        <div class="right">
+            <div class="heading d-flex align-items-center justify-content-between">
+                <h2>Service Request</h2>
+            </div>
+            <div class="filter">
+                <form class="row gy-2 gx-3 align-items-center">
+                    <div class="col-auto" style="width: 110px;">
+                        <label class="visually-hidden" for="autoSizingInput">Service ID</label>
+                        <input type="text" class="form-control" id="" placeholder="Service ID">
+                    </div>
+                    <div class="col-auto" style="width: 127px;">
+                        <label class="visually-hidden" for="autoSizingSelect">Customer</label>
+                        <select class="form-select" id="" placeholder="Customer">
+                            <option selected>User name</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-auto" style="width: 152px;">
+                        <label class="visually-hidden" for="autoSizingSelect">Service Provider</label>
+                        <select class="form-select" id="" placeholder="Service Provider">
+                            <option selected>User role</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-auto" style="width: 120px;">
+                        <label class="visually-hidden" for="autoSizingSelect">Status</label>
+                        <select class="form-select" id="" placeholder="Status">
+                            <option selected>User role</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div class="col-auto position-relative">
+                        <label class="visually-hidden" for="autoSizingInput">From Date</label>
+                        <input type="text" class="form-control date" id="" placeholder="From Date">
+                        <img class="position-absolute" src="./Image/calender.svg" alt="">
+                    </div>
+                    <div class="col-auto position-relative">
+                        <label class="visually-hidden" for="autoSizingInput">To Date</label>
+                        <input type="text" class="form-control date" id="" placeholder="To Date">
+                        <img class="position-absolute" src="./Image/calender.svg" alt="">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn">Search</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="reset" class="btn">Clear</button>
+                    </div>
+                </form>
+            </div>
+            <div class="data-table">
+                <table id="request">
+                    <thead>
+                        <tr>
+                            <th>Service ID</th>
+                            <th>Service date</th>
+                            <th>Customer details</th>
+                            <th>Service provider</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>364258</td>
+                            <td class="service_date">
+                                <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                    <strong>09/08/2021</strong>
+                                </div>
+                                <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png"
+                                        alt=""><span>12:00
+                                        - 18:00</span> </div>
+                            </td>
+                            <td class="cust-detail">
+                                <span>David Bough</span>
+                                <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                    <span>Musterstrabe 5,12345 Bonn</span>
+                                </div>
+                            </td>
+                            <td class="service-pro">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                            src="./Image/avtar.png" alt=""></div>
+                                    <div class="text-nowrap">
+                                        <p>Lyum Watson</p>
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starUnfilled.png" alt="">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"><button class="active">Complete</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>364258</td>
+                            <td class="service_date">
+                                <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                    <strong>09/08/2021</strong>
+                                </div>
+                                <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png"
+                                        alt=""><span>12:00
+                                        - 18:00</span> </div>
+                            </td>
+                            <td class="cust-detail">
+                                <span>David Bough</span>
+                                <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                    <span>Musterstrabe 5,12345 Bonn</span>
+                                </div>
+                            </td>
+                            <td class="service-pro">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                            src="./Image/avtar.png" alt=""></div>
+                                    <div class="text-nowrap">
+                                        <p>Lyum Watson</p>
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starUnfilled.png" alt="">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"><button class="new">New</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>364258</td>
+                            <td class="service_date">
+                                <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                    <strong>09/08/2021</strong>
+                                </div>
+                                <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png"
+                                        alt=""><span>12:00
+                                        - 18:00</span> </div>
+                            </td>
+                            <td class="cust-detail">
+                                <span>David Bough</span>
+                                <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                    <span>Musterstrabe 5,12345 Bonn</span>
+                                </div>
+                            </td>
+                            <td class="service-pro">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                            src="./Image/avtar.png" alt=""></div>
+                                    <div class="text-nowrap">
+                                        <p>Lyum Watson</p>
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starUnfilled.png" alt="">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"><button class="inactive">Incomplete</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>364258</td>
+                            <td class="service_date">
+                                <div class="d-flex align-items-center"> <img src="./Image/calculator.png" alt="">
+                                    <strong>09/08/2021</strong>
+                                </div>
+                                <div class="d-flex align-items-center"> <img src="./Image/Layer 712.png"
+                                        alt=""><span>12:00
+                                        - 18:00</span> </div>
+                            </td>
+                            <td class="cust-detail">
+                                <span>David Bough</span>
+                                <div class="d-flex align-item-center"><img src="./Image/Layer 719.png" alt="">
+                                    <span>Musterstrabe 5,12345 Bonn</span>
+                                </div>
+                            </td>
+                            <td class="service-pro">
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle"><img
+                                            src="./Image/avtar.png" alt=""></div>
+                                    <div class="text-nowrap">
+                                        <p>Lyum Watson</p>
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starFilled.png" alt="">
+                                        <img src="./Image/starUnfilled.png" alt="">
+                                        <span>4</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center"><button class="pendding">Pendding</button></td>
+                            <td class='text-center'>
+                                <div class="popover-menu rounded-circle mx-auto">
+                                    <img src="./Image/menu.png" alt="" data-bs-container="body" data-bs-toggle="popover"
+                                        data-bs-placement="bottom"
+                                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                                        data-bs-html="true">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <footer>
+                ©2018 Helperland. All rights reserved.
+            </footer>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="./JS/admin-service-request.js"></script>
+</body>
+
+</html>
