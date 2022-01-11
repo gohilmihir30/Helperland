@@ -7,48 +7,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helperland</title>
     <link rel="shortcut icon" href="./Image/favicon.png" type="Image/x-icon">
+    <link rel="shortcut icon" href="./Image/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 
 <body>
-    <header>
-        <nav class="nav">
-            <div class="logo">
+    <!-- ...................Modal......................... -->
+    <div class="modal fade" id="loginModalToggle" aria-hidden="true" aria-labelledby="loginModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalToggleLabel">Login to your account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="loginInputEmail1" placeholder="Email"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="loginInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember Me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary rounded-pill" disabled>Login</button>
+                    </form>
+                    <div class="mt-4">
+                        <p class="m-0 text-center"><a title="Forget Password" data-bs-target="#forgetPassModalToggle2"
+                                data-bs-toggle="modal">Forget Password?</a></p>
+                        <p class="m-0 text-center">Don't have account?<a title="Create an account">Create an account</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="forgetPassModalToggle2" aria-hidden="true" aria-labelledby="forgetPassModalToggleLabel2"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgetPassModalToggleLabel2">Forget Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="forgetPassEmail1" placeholder="Email"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <button type="submit" class="btn btn-primary rounded-pill" disabled>Send</button>
+                    </form>
+                    <div class="mt-4">
+                        <p class="m-0 text-center"><a title="Login Page" data-bs-target="#loginModalToggle"
+                                data-bs-toggle="modal">Login Page</a></p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="position-fixed top-0 w-100 bg-transparent">
+        <nav class="navbar">
+            <div class="logo" title="Logo">
                 <a href="./index.html"><img src="./Image/white_logo_transparent_background.png" alt="Logo"
                         srcset=""></a>
+            </div>
+            <div class="nav">
+                <ul class="d-flex">
+                    <li><a href="./book-service.html" class="active" title="Book now">Book now</a></li>
+                    <li><a href="./prices.html" title="Price & History">Price & Services</a></li>
+                    <li><a href="#" title="Warrenty">Warrenty</a></li>
+                    <li><a href="#" title="Blog">Blog</a></li>
+                    <li><a href="./contact.html" title="Contact">Contact</a></li>
+                    <li><a href="" class="active" title="Login" data-bs-target="#loginModalToggle"
+                            data-bs-toggle="modal">Login</a></li>
+                    <li><a href="./become_a_pro.html" title="Become a Helper" class="active">Become a Helper</a></li>
+                </ul>
+                <div class="d-none">
+                    <div class="notification position-relative">
+                        <img src="./Image/Icon Notification.png" alt="">
+                        <span class="badge rounded-circle position-absolute">2</span>
+                    </div>
+                    <div class="user_pic d-none d-lg-inline-block" data-bs-container="body" data-bs-toggle="popover"
+                        data-bs-placement="bottom"
+                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                        data-bs-html="true" data-bs-offset="-70,20"
+                        title="<div class='userInfoText'>Welcome,<b>Gurang Patel</b></div>">
+                        <img src="./Image/user_logo.png" alt="">
+                        <img src="./Image/down.png" alt="">
+                    </div>
+                </div>
             </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="navbar">
-                <ul>
-                    <li><a href="#" class="active">Book now</a></li>
-                    <li><a href="./prices.html">Price & Services</a></li>
-                    <li><a href="#">Warrenty</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
-                    <li><a href="#" class="active">Login</a></li>
-                    <li><a href="./become_a_pro.html" class="active">Become a Helper</a></li>
-                    <li class="dropdown-btn">
-                        <img src="./Image/flag.jpg" alt="">
-                        <span>
-                            <img src="./Image/keyboard-right-arrow-button@2x.png" alt="" srcset=""
-                                style="height: 10px;">
-                        </span>
-                        <div class="drop-list">
-                            <p><img src="./Image/flag.jpg" alt=""> USA</p>
-                            <p><img src="./Image/flag.jpg" alt=""> India</p>
-                            <p><img src="./Image/flag.jpg" alt=""> Japan</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <div class="backblack"></div>
         </nav>
     </header>
-    <section class='crousel'>
-        <div class="container">
+    <section class='container-fluid banner'>
+        <div class="banner-main-contain">
             <h4>Lorem, ipsum dolor.</h4>
             <ul>
                 <li>Lorem ipsum dolor sit, amet consectetur adipisicing.</li>
@@ -56,10 +124,10 @@
                 <li>Lorem ipsum dolor sit, amet consectetur adipisicing.</li>
             </ul>
         </div>
-        <div class="btn">
+        <div class="btn d-block text-center">
             <a href="#" target="_blank" rel="noopener noreferrer">Let's Book a Cleaner</a>
         </div>
-        <div class="box">
+        <div class="box d-flex align-items-center justify-content-center">
             <div class="inner-box">
                 <img src="./Image/Forma 1 copy.png" alt="">
                 <p>Enter your postcode</p>
@@ -86,148 +154,156 @@
                 <p>Enjoy amazing service</p>
             </div>
         </div>
-        <div class="scroll-down">
+        <div class="scroll-down rounded-circle">
             <a href="#why_section"><img src="./Image/Shape 1@2x.png" alt=""></a>
         </div>
     </section>
-    <section>
-        <div class="why" id='why_section'>
+    <section class="container-fluid">
+        <div class="why d-flex justify-content-center align-items-center flex-column" id='why_section'>
             <h4>Why Helperland</h4>
-            <div class="card-wraper">
-                <div class="cart-item">
+            <div class="card-wraper row justify-content-center text-center">
+                <div class="cart-item col-lg-4 col-sm-6">
                     <img src="./Image/Group 21.png" alt="">
-                    <p><strong>Experince & vetted Professionals</strong></p>
+                    <h3 style="height: 72px;">Experince & vetted Professionals</h3>
                     <p>dominate the industry in scale and scope with an adaptable, extensive network that consistently
                         delivers exceptional results.</p>
                 </div>
-                <div class="cart-item">
+                <div class="cart-item col-lg-4 col-sm-6 text-center">
                     <img src="./Image/Group 23.png" alt="">
-                    <p><strong>Online Payment</strong></p>
+                    <h3 style="height: 72px;">Online Payment</h3>
                     <p>payment is processed securely online. Customers pay safely online and manage the booking.</p>
                 </div>
-                <div class="cart-item">
+                <div class="cart-item col-lg-4 col-sm-6 text-center">
                     <img src="./Image/Group 24.png" alt="">
-                    <p><strong>Dedicated Customer Service</strong></p>
+                    <h3 style="height: 72px;">Dedicated Customer Service</h3>
                     <p>to our customers and are guided in all we do by their needs. the team is always happy tp support
                         you and offers all the information.</p>
                 </div>
             </div>
         </div>
     </section>
-    <section class="blog">
-        <div class="blog-bg-left"><img src="./Image/blog-left-bg.png" alt=""></div>
-        <div class="blog-bg-right"><img src="./Image/blog-right-bg.png" alt=""></div>
-        <div class="blog-item">
-            <div class="left">
-                <h4>Lorem ipsum dolor sit amet consectetur adipisicing. </h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nisi perspiciatis, quae animi eveniet
-                    laborum facere voluptatum repellendus.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias sapiente optio exercitationem dolorem
-                    numquam, dolores quos explicabo. Doloremque, eos, quibusdam eligendi et cupiditate incidunt
-                    laboriosam quidem, hic quis asperiores iusto!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-            </div>
-            <div class="right">
-                <div>
-                    <img src="./Image/Group 25.png" alt="">
-                    <img src="./Image/Group 26.png" alt="">
-                    <img src="./Image/Group 27.png" alt="">
+    <section class="container-fluid blog position-relative ">
+        <div class="d-flex align-items-center justify-content-center flex-column">
+            <div class="blog-item row flex-nowrap align-items-center">
+                <div class="left col-lg-7 col-12 m-sm-0">
+                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing. </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nisi perspiciatis, quae animi
+                        eveniet
+                        laborum facere voluptatum repellendus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias sapiente optio exercitationem
+                        dolorem
+                        numquam, dolores quos explicabo. Doloremque, eos, quibusdam eligendi et cupiditate incidunt
+                        laboriosam quidem, hic quis asperiores iusto!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
                 </div>
-            </div>
-        </div>
-        <div class="blog-item flex-direction">
-            <h1>Our Blog</h1>
-            <div class="blog-card-wrap">
-                <div class="blog-card">
-                    <img src="./Image/Group 28.png" alt="">
-                    <div class="cart-list-item">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-                        <small>January 28, 2019</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis quidem?
-                        </p>
-                        <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                <div class="right col-lg-5 col-12">
+                    <div>
+                        <img src="./Image/blog-decription-image.png" alt="">
                     </div>
                 </div>
-                <div class="blog-card">
-                    <img src="./Image/Group 29.png" alt="">
-                    <div class="cart-list-item">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-                        <small>January 28, 2019</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis quidem?
-                        </p>
-                        <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+            </div>
+            <div class="blog-item">
+                <h2 class="text-center">Our Blog</h2>
+                <div class="blog-card-wrap row align-items-center justify-content-center">
+                    <div class="blog-card col-lg-4 col-sm-12 ">
+                        <img src="./Image/Group 28.png" alt="">
+                        <div class="cart-list-item">
+                            <h4>Lorem ipsum dolor sit amet.</h4>
+                            <small>January 28, 2019</small>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis
+                                quidem?
+                            </p>
+                            <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-card">
-                    <img src="./Image/Group 30.png" alt="">
-                    <div class="cart-list-item">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-                        <small>January 28, 2019</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis quidem?
-                        </p>
-                        <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                    <div class="blog-card col-lg-4 col-sm-12 ">
+                        <img src="./Image/Group 29.png" alt="">
+                        <div class="cart-list-item">
+                            <h4>Lorem ipsum dolor sit amet.</h4>
+                            <small>January 28, 2019</small>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis
+                                quidem?
+                            </p>
+                            <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="blog-card col-lg-4 col-sm-12 ">
+                        <img src="./Image/Group 30.png" alt="">
+                        <div class="cart-list-item">
+                            <h4>Lorem ipsum dolor sit amet.</h4>
+                            <small>January 28, 2019</small>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis
+                                quidem?
+                            </p>
+                            <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="customers">
-        <h1>What Our Customers Say</h1>
-        <div class="cust-card-wraper">
-            <div class="cust-card-item">
-                <img src="./Image/message.png" alt="" class="message-symbol">
-                <div class="grid-container">
-                    <div class="item1"><img src="./Image/Group 31.png" alt=""></div>
-                    <div class="item2">
-                        <h3>Lary Watson</h3><small>Manchester</small>
+    <section class="container-fluid customers">
+        <div class="d-flex align-items-center flex-column">
+            <h2 class="text-center">What Our Customers Say</h2>
+            <div class="cust-card-wraper justify-content-center row align-items-center">
+                <div class="cust-card-item position-relative">
+                    <img src="./Image/message.png" alt="" class="message-symbol">
+                    <div class="grid-container">
+                        <div class="item1"><img src="./Image/Group 31.png" alt=""></div>
+                        <div class="item2">
+                            <h3>Lary Watson</h3><small>Manchester</small>
+                        </div>
                     </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit
+                        ea
+                        ipsam modi at!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
+                    <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit ea
-                    ipsam modi at!</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
-                <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
-            </div>
-            <div class="cust-card-item">
-                <img src="./Image/message.png" alt="" class="message-symbol">
-                <div class="grid-container">
-                    <div class="item1"><img src="./Image/Group 32.png" alt=""></div>
-                    <div class="item2">
-                        <h3>John Smit</h3><small>Manchester</small>
+                <div class="cust-card-item position-relative">
+                    <img src="./Image/message.png" alt="" class="message-symbol">
+                    <div class="grid-container">
+                        <div class="item1"><img src="./Image/Group 32.png" alt=""></div>
+                        <div class="item2">
+                            <h3>John Smit</h3><small>Manchester</small>
+                        </div>
                     </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit
+                        ea
+                        ipsam modi at!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
+                    <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit ea
-                    ipsam modi at!</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
-                <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
-            </div>
-            <div class="cust-card-item">
-                <img src="./Image/message.png" alt="" class="message-symbol">
-                <div class="grid-container">
-                    <div class="item1"><img src="./Image/Group 33.png" alt=""></div>
-                    <div class="item2">
-                        <h3>lars Johnson</h3><small>Manchester</small>
+                <div class="cust-card-item position-relative">
+                    <img src="./Image/message.png" alt="" class="message-symbol">
+                    <div class="grid-container">
+                        <div class="item1"><img src="./Image/Group 33.png" alt=""></div>
+                        <div class="item2">
+                            <h3>lars Johnson</h3><small>Manchester</small>
+                        </div>
                     </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit
+                        ea
+                        ipsam modi at!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
+                    <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit ea
-                    ipsam modi at!</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
-                <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
             </div>
-        </div>
-        <div class="newsletter">
-            <h4>GET OUR NEWSLETTER</h4>
-            <div>
-                <form action="#">
-                    <input type="email" name="email" placeholder="YOUR EMAIL">
-                    <input type="submit" value="Submit" id="submit">
-                </form>
+            <div class="newsletter">
+                <h4>GET OUR NEWSLETTER</h4>
+                <div>
+                    <form action="#" class="d-flex justify-content-center align-items-center flex-wrap">
+                        <input type="email" name="email" placeholder="YOUR EMAIL">
+                        <input type="submit" value="Submit" id="submit">
+                    </form>
+                </div>
             </div>
         </div>
     </section>
     <div class="scroll-top">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="10">
             <Image width="20" height="10"
-            xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAQAAACWu2SvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflCxILOC+3huDXAAAAa0lEQVQI103NoQoCYQDD8VkMggYRLYLFt7rmI10ziMVkEs6m2ZcwWQQRsdh/huM73dL+jC0qjYn8eaSxijNu5h2euuISA0c8LUUs3HEybFt7fMyMvXEQKQMbvDywa8nvsgbrknvSaZt+qhK+nGpkpn2sFJAAAAAASUVORK5CYII=" />
+                xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAQAAACWu2SvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflCxILOC+3huDXAAAAa0lEQVQI103NoQoCYQDD8VkMggYRLYLFt7rmI10ziMVkEs6m2ZcwWQQRsdh/huM73dL+jC0qjYn8eaSxijNu5h2euuISA0c8LUUs3HEybFt7fMyMvXEQKQMbvDywa8nvsgbrknvSaZt+qhK+nGpkpn2sFJAAAAAASUVORK5CYII=" />
         </svg>
     </div>
     <div class="fixed-button">
@@ -236,25 +312,25 @@
         </div>
     </div>
     <footer>
-        <div class="footer-menu">
+        <div class="footer-menu d-flex justify-content-evenly align-items-center flex-wrap">
             <div class="logo"><img src="./Image/white_logo_transparent_background copy 4.png" alt=""></div>
             <div class="menu">
-                <ul>
-                    <li><a href="./index.html">HOME</a></li>
-                    <li><a href="./about.html">ABOUT US</a></li>
-                    <li><a href="#">TESTIMONIAL</a></li>
-                    <li><a href="./faq.html">FAQS</a></li>
-                    <li><a href="#">INSURANCE POLICY</a></li>
-                    <li><a href="#">IMPRESSUM</a></li>
+                <ul class="d-flex align-items-center justify-content-center flex-wrap m-0">
+                    <li><a href="./index.html" title="Home">HOME</a></li>
+                    <li><a href="./about.html" title="About US">ABOUT US</a></li>
+                    <li><a href="#" title="Testimonal">TESTIMONIAL</a></li>
+                    <li><a href="./faq.html" title="FAQs">FAQS</a></li>
+                    <li><a href="#" title="Insurance Policy">INSURANCE POLICY</a></li>
+                    <li><a href="#" title="Impressum">IMPRESSUM</a></li>
                 </ul>
             </div>
-            <div class="social">
-                <img src="./Image/Forma 1_3.png" alt="">
-                <img src="./Image/Forma 1_5.png" alt="">
+            <div class="social d-flex align-items-center justify-content-center">
+                <div><img src="./Image/facebook-mobile-menu.png" class="" title="Facebook" alt=""></div>
+                <div><img src="./Image/instagram-mobile-menu.png" class="" title="Instagram" alt=""></div>
             </div>
         </div>
     </footer>
-    <div class="footer-policy">
+    <div class="footer-policy justify-content-center align-items-center position-sticky">
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum blanditiis officiis, doloremque unde harum
             nobis porro non!<a href="#">Privacy Policy</a></p>
         <button id="policy_btn">OK!</button>
@@ -262,6 +338,9 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="./JS/index.js"></script>
 </body>
 

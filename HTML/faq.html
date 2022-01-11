@@ -1,54 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./Image/favicon.png" type="image/x-icon">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./CSS/faq.css">
     <title>FAQS</title>
 </head>
+
 <body>
-    <header>
-        <nav class="nav">
-            <div class="logo">
-                <a href="./index.html"><img src="./Image/logo-small.png" alt=""></a>
+    <header class="sticky-top w-100 bg-transparent">
+        <nav class="navbar">
+            <div class="logo" title="Logo">
+                <a href="./index.html"><img src="./Image/logo-small.png" alt="Logo" srcset=""></a>
+            </div>
+            <div class="nav">
+                <ul class="d-flex">
+                    <li><a href="./book-service.html" class="active hover" title="Book now">Book now</a></li>
+                    <li><a href="./prices.html" title="Price & History">Price & Services</a></li>
+                    <li><a href="#" title="Warrenty">Warrenty</a></li>
+                    <li><a href="#" title="Blog">Blog</a></li>
+                    <li><a href="./contact.html" title="Contact">Contact</a></li>
+                    <li><a href="./index.html?modalRequest=true" class="active hover" title="Login">Login</a></li>
+                    <li><a href="./become_a_pro.html" title="Become a Helper" class="active hover">Become a Helper</a>
+                    </li>
+                </ul>
+                <div class="d-none">
+                    <div class="notification position-relative">
+                        <img src="./Image/Icon Notification.png" alt="">
+                        <span class="badge rounded-circle position-absolute">2</span>
+                    </div>
+                    <div class="user_pic d-none d-lg-inline-block" data-bs-container="body" data-bs-toggle="popover"
+                        data-bs-placement="bottom"
+                        data-bs-content="<a href='#' class='userInfoItem d-block'>My Dashboard</a><a href='#' class='userInfoItem d-block'>My Settings</a><a href='#' class='userInfoItem d-block'>Logout</a>"
+                        data-bs-html="true" data-bs-offset="-70,20"
+                        title="<div class='userInfoText'>Welcome,<b>Gurang Patel</b></div>">
+                        <img src="./Image/user_logo.png" alt="">
+                        <img src="./Image/down.png" alt="">
+                    </div>
+                </div>
             </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="navbar">
-                <ul>
-                    <li><a href="#" class="active hover">Book now</a></li>
-                    <li><a href="./prices.html" class="active">Price & Services</a></li>
-                    <li><a href="#">Warrenty</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
-                    <li ><a href="#" class="active hover">Login</a></li>
-                    <li ><a href="#" class="active hover">Become a Helper</a></li>
-                </ul>
-            </div>
+            <div class="backblack"></div>
         </nav>
-        <div class="banner">
-            <div></div>
-        </div>
     </header>
-    <section class="container">
-        <div class="heading">
+    <div class="banner">
+        <img src="./Image/faq-banner.png" alt="">
+    </div>
+    <section class="container-fluid">
+        <div class="heading d-flex align-items-center justify-content-center flex-column">
             <h1>FAQs</h1>
-            <div class="heading-underline">
-                <span></span>
-                <img src="./Image/forma-1-copy-5.png" alt="">
-                <span></span>
+            <div class="heading-underline position-relative">
+                <span class="position-absolute start-0"></span>
+                <img src="./Image/forma-1-copy-5.png" class="position-absolute" alt="">
+                <span class="position-absolute end-0"></span>
             </div>
             <p>Whether you are Customer or Service provider, </p>
             <p>We have tried our best to solve all your queries and questions.</p>
         </div>
         <div>
-            <div class="select">
+            <div class="select d-flex justify-content-center align-items-center flex-wrap">
                 <button id="left" class="current-section">FOR CUSTOMER</button>
                 <button id="right">FOR SERVICE PROVIDER</button>
             </div>
@@ -56,153 +75,333 @@
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" id="item-1" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" id="item-2" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
-                
+
             </div>
             <div class="box service-box">
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" id="item-1" alt="">
-                        <strong>Mihir ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Mihir ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" id="item-2" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
                 <div class="box-item">
                     <div>
                         <img src="./Image/down-arrow.png" class="down" alt="">
-                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
+                        <strong>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem eligendi laborum earum
+                            expedita dicta, dignissimos repellat tenetur quis maxime.</strong>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet? Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum, aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere dignissimos tenetur non.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima accusamus officia officiis
+                        ratione, a, repellat magni consequuntur beatae est fugiat temporibus rerum cumque tempore
+                        adipisci voluptatem recusandae aperiam ea et atque illum delectus assumenda at voluptatum amet?
+                        Cum ea obcaecati officia ipsum. Nulla laborum reprehenderit maxime fugit sit odit id rerum,
+                        aliquid, saepe quaerat consequatur soluta ut veniam quidem repellendus ipsum illo sunt alias
+                        officia. Necessitatibus excepturi laboriosam inventore, illo aliquid numquam maiores fugit
+                        ducimus magni natus voluptates perferendis, suscipit ullam cupiditate qui dignissimos, possimus
+                        maxime atque sit sint harum amet repellendus veniam. Nostrum veritatis repellat facere
+                        dignissimos tenetur non.</p>
                 </div>
-                
+
             </div>
         </div>
         <div class="newsletter">
             <h4>GET OUR NEWSLETTER</h4>
             <div>
-                <form action="#">
+                <form action="#" class="d-flex justify-content-center align-items-center flex-wrap">
                     <input type="email" name="email" placeholder="YOUR EMAIL">
                     <input type="submit" value="Submit" id="submit">
                 </form>
@@ -210,29 +409,33 @@
         </div>
     </section>
     <footer>
-        <div class="footer-menu">
+        <div class="footer-menu d-flex flex-wrap justify-content-evenly align-items-center">
             <div class="logo"><img src="./Image/white_logo_transparent_background copy 4.png" alt=""></div>
             <div class="menu">
-                <ul>
-                    <li><a href="./index.html">HOME</a></li>
-                    <li><a href="./about.html">ABOUT US</a></li>
-                    <li><a href="#">TESTIMONIAL</a></li>
-                    <li><a href="./faq.html">FAQS</a></li>
-                    <li><a href="#">INSURANCE POLICY</a></li>
-                    <li><a href="#">IMPRESSUM</a></li>
+                <ul class="d-flex align-items-center justify-content-center flex-wrap m-0">
+                    <li><a href="./index.html" title="Home">HOME</a></li>
+                    <li><a href="./about.html" title="About US">ABOUT US</a></li>
+                    <li><a href="#" title="Testimonal">TESTIMONIAL</a></li>
+                    <li><a href="./faq.html" title="FAQs">FAQS</a></li>
+                    <li><a href="#" title="Insurance Policy">INSURANCE POLICY</a></li>
+                    <li><a href="#" title="Impressum">IMPRESSUM</a></li>
                 </ul>
             </div>
-            <div class="social">
-                <img src="./Image/Forma 1_3.png" alt="">
-                <img src="./Image/Forma 1_5.png" alt="">
+            <div class="social d-flex align-items-center justify-content-center">
+                <div><img src="./Image/facebook-mobile-menu.png" class="" title="Facebook" alt=""></div>
+                <div><img src="./Image/instagram-mobile-menu.png" class="" title="Instagram" alt=""></div>
             </div>
         </div>
+        <hr>
         <div class="terms">
             <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="./JS/faq.js"></script>
 </body>
+
 </html>

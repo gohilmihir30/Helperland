@@ -1,18 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    /* font-size: 17px; */
+    font-weight: 400;
 }
-html{
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+
+/* .............Navbar............... */
+header{
+    z-index: 3;
 }
-.overflow-hidden{
-    height: 100vh;
-    overflow: hidden;
+.navbar {
+    background-color: #646464;
+    transition: all 0.5s;
+    padding: 0;
+}
+.navbar .logo{
+    margin: 5px 0 4px 15px;
+}
+.navbar .nav ul{
+    margin-bottom: 0;
+    transition: all 0.5s ease;
+}
+.nav ul li {
+    margin-right: 11px;
+    list-style-type: none;
+}
+.nav ul li a{
+    display: block;
+    padding: 0px 14px;
+    line-height: 40px;
+    transition: background 0.5s, border 0.5s;
+    text-decoration: none;
+    color: white;
+    border-radius: 40px;
+    border: 1px solid transparent;
+}
+.nav ul li a:hover{
+    color: #005f71;
+    background-color: #fff !important;
+}
+.active {
+    border: 1px solid white !important;
+    border-radius: 39px;
+}
+.hover{
+    background-color: #29626D;
 }
 .hamburger {
     width: 50px;
@@ -55,82 +89,94 @@ html{
     transform: translate(-5px, 15px);
     width: 30px;
     transition-delay:0.4s;
-
 }
-.vertical-navbar{
-   transform: translateX(0) !important;
+div.notification{
+    margin-top: 4px;
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    padding: 0 25px 0 16px;
 }
-.vertical-navbar ul{
-    flex-direction: column;
+div.notification>span {
+    background-color: #ff1616;
+    top: -7px;
+    right: 11px;
 }
-.nav {
-    display: flex;
-    align-items: center;
-    background-color: #646464;
-    justify-content: space-between;
-    transition: all 0.5s;
+div.user_pic{
+    margin-top: 4px;
+    cursor: pointer;
 }
-.nav .logo{
-    margin: 5px 0 4px 15px;
+div.user_pic>img:first-child{
+    margin: 0px 7px 0 18px;
 }
-.nav .navbar ul{
-    display: flex;
-    /* flex-direction: column; */
+div.user_pic>img:last-child{
+    margin-right: 14px;
 }
-.navbar ul li {
-    margin-right: 11px;
-    list-style-type: none;
+/* .........Popover............ */
+.popover{
+    min-width: 200px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 0;
+    z-index: 2;
 }
-.navbar ul li a{
-    padding: 9px 14px;
-    line-height: 24px;
-    transition: background 0.5s, border 0.5s;
+.popover-header{
+    background: #fff;
+}
+.userInfoText{
+    font-size: 14px;
+}
+.userInfoText b{
+    display: block;
+    font-weight: 700;
+}
+.popover-body{
+    padding: 0;
+    margin: 5px 0;
+}
+.userInfoItem{
     text-decoration: none;
-    color: white;
-    border-radius: 39px;
-    border: 1px solid transparent;
-}
-.navbar ul li a:hover{
-    border-color: white;
-    background-color: #29626D;
-}
-
-.active {
-    border: 1px solid white !important;
-    border-radius: 39px;
-}
-.hover{
-    background-color: #29626D;
-}
-.banner div{
-    background: url('../Image/Group\ 16_2.png') no-repeat center center/cover;
-    width: 100%;
-    padding-top: 23.125%;
-}
-.heading {
-    display: flex;
-    margin-top: 32px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.heading h1 {
-    color: #4F4F4F;
-    font-size: 36px;
-}
-.heading p {
-    margin-bottom: 0;
     font-size: 16px;
+    line-height: 20px;
+    color: #646464;
+    display: block;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+.userInfoItem:hover{
+    background: #f6f6f6!important;
     color: #646464;
 }
+.backblack {
+    background: black;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+}
+/* .......................Navbar End.................... */
+.banner img{
+    width: 100%;
+}
+/* .................Contact section............... */
+.contact .heading{
+    margin-top: 39px;
+}
+.heading h3 {
+    color: #4F4F4F;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
 .heading-underline {
-    position: relative;
     width: 164px;
     height: 25px;
-    margin-bottom: 34px;
+    margin-bottom: 53px;
 }
 .heading-underline img {
-    position: absolute;
     right: 69px;
 }
 .heading-underline span {
@@ -140,33 +186,12 @@ html{
     background-color: #CCCCCC;
     top:49%;
 }
-.heading-underline span:nth-child(1){
-    left: 0;
-}
-.heading-underline span:nth-child(3){
-    right: 0;
-}
-.container{
-    margin: 0 20px 70px;
-}
-.way-to-contact {
-    display: flex;
+.contact {
     max-width: 757px;
-    margin: 64px auto 76px;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    margin-top: 50px;
 }
 .item {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
-    justify-content: center;
-    align-items: center;
     max-width: 197px;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
 }
 .item img {
     margin-bottom: 23px;
@@ -175,34 +200,44 @@ html{
     font-size: 16px;
     line-height: 29px;
     color: #4f4f4f;
+    margin: 0;
 }
 hr {
     border: 1px solid #e1e1e1;
     width: 73%;
-    margin: 0 auto
+    margin:auto;
+    margin-top: 73px;
+
 }
-section.get-in-touch {
-    margin: 0 20px;
-    margin-top: 64px;
+/* .................Contact End........................... */
+/* .......................Contact form................. */
+section.contact-form {
+    margin-top: 80px;
 }
-.get-in-touch h2 {
-    margin: 10px 0px 30px 0;
+.contact-form h2 {
     font-size: 28px;
-    text-align: center;
     color: #4f4f4f;
+    font-weight: 700;
+    line-height: 24px;
 }
-.get-in-touch form {
+.contact-form form {
     max-width: 614px;
-    margin: 0 auto;
+    margin: 30px auto 0;
 }
-.get-in-touch form > div {
-    display: flex;
-    width: 100%;
+.contact-form form>div.row{
+    margin: 0;
+    margin-bottom: 15px;
 }
-.get-in-touch form input::placeholder, .get-in-touch form select::placeholder, .get-in-touch form textarea::placeholder{
+.contact-form form .row .col{
+    margin: 0;
+}
+.input-group span{
+    height: 60px;
+}
+.contact-form form input::placeholder, .contact-form form select::placeholder, .contact-form form textarea::placeholder{
     color: #a0a0a0;
 }
-.get-in-touch form > select{
+.contact-form form > select{
 
     background-image: url('../Image/down-arrow.svg');
     background-repeat: no-repeat;
@@ -210,48 +245,19 @@ section.get-in-touch {
     background-size: 16px 12px;
     appearance: none;
 }
-.get-in-touch form input, .get-in-touch form select, .get-in-touch form textarea {
+.contact-form form input, .contact-form form select, .contact-form form textarea {
     font-size: 16px;
     color: #a0a0a0;
     border: 1px solid #c8c8c8;
     border-radius: 4px;
     padding: 17px 16px;
-    margin: 0 7px 7px 0;
-    outline: none;
+    margin: 0;
     cursor: pointer;
 }
-.get-in-touch form select, .get-in-touch form textarea{
-    width:100%;    
-}
-.get-in-touch form > div input{
-    width: 49%;
-}
-.get-in-touch form textarea{
+.contact-form form textarea{
     height: 146px;
 }
-.contry_code {
-    width: 49%;
-    display: flex;
-    margin-right: 7px;
-    margin-bottom: 7px;
-}
-div .contry_code select {
-    appearance: none;
-    width: 50px;
-    padding: 17px 8px;
-    margin: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    background-color: #e9ecef;
-}
-div .contry_code input {
-    margin: 0;
-    min-width: calc(100% - 50px) !important;
-    border-left: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-.get-in-touch form input[type="submit"] {
+.contact-form form input[type="submit"] {
     background: #1D7A8C;
     margin: 0 auto;
     display: block;
@@ -262,28 +268,30 @@ div .contry_code input {
     padding: 10px 50px 12px !important;
     border-radius: 23px !important;
     margin-bottom: 80px !important;
+    transition: all 0.5s ease-out;
 }
+.contact-form form input[type="submit"]:hover{
+    background: #13525f;
+}
+/* ............Contact form end....................... */
+/* ...................Map section..................... */
 .map{
-    margin: 0 10px;
+    margin: 0 -12px;
 }
 .map img{
     width: 100%;
     height: auto;
 }
 .newsletter {
-    margin-top: 60px;
+    margin-top: 47px;
 }
-.newsletter h2{
+.newsletter h4{
     font-size: 18px;
     color: #353548;
     text-align: center;
 }
 .newsletter form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 53px;
-    flex-wrap: wrap;
 }
 .newsletter div input[type="email"]{
     border: 1px solid #565656;
@@ -306,83 +314,119 @@ div .contry_code input {
     margin-top: 16px;
     cursor: pointer;
 }
+/* ..............Map section end............. */
+/* ...............footer................... */
 footer{
     background: #111111;
 }
 .footer-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 119px;
+    padding: 20px 0;
 }
 .footer-menu .menu ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
     list-style-type: none;
+    padding: 0;
+    margin-bottom: 0;
 }
 .footer-menu .menu ul li a{
     text-decoration: none;
     color: #F1F1F1;
     padding: 0px 10px;
     font-size: 14px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.footer-menu .menu ul li a:hover{
+    color: #005f71;
+}
 
-}
-.footer-menu .social {
-    margin-right: 20px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
 .footer-menu .social img {
-    margin: 0 6px;
+    margin-top:3px;
+    filter: invert(1);
+}
+.footer-menu .social div {
+    text-align: center;
+    position: relative;
+    margin: 0 16px;
+}
+.footer-menu .social div::before {
+    content: '';
+    height: 0px;
+    width: 0px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1d798b;
+    left: 50%;
+    top: 50%;
+    
+    transition: all 0.5s ease;
+}
+.footer-menu .social div:hover::before{
+    height: 40px;
+    width: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+footer hr{
+    height: 2px !important;
+    background: #424242;
+    width: 84.6%;
+    margin: 0 auto;
+    z-index:-1;
 }
 .terms {
     color: #9BA0A3;
     margin: 0px 117px;
     padding: 23px 0;
     text-align: center;
-    border-top: 2px solid #424242;
 }
+/* ..............footer end................ */
 @media only screen and (max-width: 983px){
     body{
         overflow-x:hidden ;
     }
+    .nav ul{
+        right: -250px;
+        flex-direction: column;
+        background: #fff;
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        padding: 20px 0;
+        position: fixed;
+        z-index: 10;
+    }
+    .nav ul li a {
+        display: block;
+        border: none;
+        width: 100%;
+        padding: 10px 20px;
+        line-height: 24px;
+        color: #646464;
+        font-size: 16px;
+        border-radius: 0;
+    }
+    .nav ul li a.active{
+        background: transparent;
+    }
+    .nav ul li a:hover{
+        background: #f6f6f6 !important;
+        color: #646464;
+    }
+    .nav ul li a.active:hover{
+        color: #005f71 !important;
+    }
+    .nav.open ul{
+        right: 0;
+    }
+    .backblack.open{
+        display: block;
+        opacity: 0.5;
+    }
     .hamburger{
         display: flex;
-        /* position: fixed; */
-    }
-    .navbar{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        right: 0;
-        transform: translateX(100%);
-        background: #464646;
-        transition: transform 0.4s ease-in;
-        z-index: 1;
-    }
-    .nav .navbar ul{
-        flex-direction: column;
-    }
-    .vertical-navbar li {
-        margin-bottom: 11px;
-    }
-    .vertical-navbar .drop-list {
-        top:40px;
-    }
-    button#right, button#left {
-        font-size: 18px;
     }
     .footer-menu{
         justify-content: space-evenly;
-        padding: 20px 25px;
     }
     .menu ul{
         flex-direction: column;
@@ -392,14 +436,18 @@ footer{
     } 
 }
 @media only screen and (max-width: 575px){
-    .way-to-contact{
+    .contact{
         flex-direction: column;
     }
-    .get-in-touch form > div {
+    .contact div.item{
+        margin-bottom: 48px;
+    }
+    hr{margin-top: 25px;}
+    .contact-form form > div {
         width: 100%;
         flex-wrap: wrap;
     }
-    .get-in-touch form > div input {
+    .contact-form form > div input {
         width: 100%;
     }
     .contry_code {

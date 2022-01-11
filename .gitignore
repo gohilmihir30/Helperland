@@ -1,8 +1,6 @@
 Databases
 Helperland
 utility.css
-datTable.css
-datatable.min.js
-index.html
-index.js
-style.css
+book-service.css
+book-service.html
+book-service.js

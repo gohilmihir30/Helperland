@@ -1,16 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    /* font-size: 17px; */
+    font-weight: 400;
 }
-html{
-    scroll-behavior: smooth;
+
+/* .............Navbar............... */
+.navbar {
+    background-color: #646464;
+    transition: all 0.5s;
+    padding: 0;
+    z-index: 2;
 }
-.overflow-hidden{
-    overflow: hidden;
+.navbar .logo{
+    margin: 5px 0 4px 15px;
+}
+.navbar .nav ul{
+    margin-bottom: 0;
+    transition: all 0.5s ease;
+}
+.nav ul li {
+    margin-right: 11px;
+    list-style-type: none;
+}
+.nav ul li a{
+    display: block;
+    padding: 0px 14px;
+    line-height: 40px;
+    transition: background 0.5s, border 0.5s;
+    text-decoration: none;
+    color: white;
+    border-radius: 40px;
+    border: 1px solid transparent;
+}
+.nav ul li a:hover{
+    color: #005f71;
+    background-color: #fff !important;
+}
+.active {
+    border: 1px solid white !important;
+    border-radius: 39px;
+    background-color: #29626D;
 }
 .hamburger {
     width: 50px;
@@ -23,7 +55,7 @@ html{
     right: 23px;
     top: 0px;
     overflow: hidden;
-    z-index: 2;
+    z-index: 3;
 }
 .hamburger span{
     position: absolute;
@@ -54,65 +86,80 @@ html{
     width: 30px;
     transition-delay:0.4s;
 }
-.vertical-navbar{
-   transform: translateX(0) !important;
+div.notification{
+    margin-top: 4px;
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    padding: 0 25px 0 16px;
 }
-.vertical-navbar ul{
-    flex-direction: column;
+div.notification>span {
+    background-color: #ff1616;
+    top: -7px;
+    right: 11px;
 }
-.nav {
-    display: flex;
-    align-items: center;
-    background-color: #646464;
-    justify-content: space-between;
-    transition: all 0.5s;
+div.user_pic{
+    margin-top: 4px;
+    cursor: pointer;
 }
-.nav .logo{
-    margin: 5px 0 4px 15px;
+div.user_pic>img:first-child{
+    margin: 0px 7px 0 18px;
 }
-.nav .navbar ul{
-    display: flex;
-    /* flex-direction: column; */
+div.user_pic>img:last-child{
+    margin-right: 14px;
 }
-.navbar ul li {
-    margin-right: 11px;
-    list-style-type: none;
+/* .........Popover............ */
+.popover{
+    min-width: 200px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 0;
+    z-index: 2;
 }
-.navbar ul li a{
-    padding: 9px 14px;
-    line-height: 24px;
-    transition: background 0.5s, border 0.5s;
+.popover-header{
+    background: #fff;
+}
+.userInfoText{
+    font-size: 14px;
+}
+.userInfoText b{
+    display: block;
+    font-weight: 700;
+}
+.popover-body{
+    padding: 0;
+    margin: 5px 0;
+}
+.userInfoItem{
     text-decoration: none;
-    color: white;
-    border-radius: 39px;
-    border: 1px solid transparent;
+    font-size: 16px;
+    line-height: 20px;
+    color: #646464;
+    display: block;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
 }
-.navbar ul li a:hover{
-    border-color: white;
-    background-color: #29626D;
+.userInfoItem:hover{
+    background: #f6f6f6!important;
+    color: #646464;
 }
-
-.active {
-    border: 1px solid white !important;
-    border-radius: 39px;
-}
-.hover{
-    background-color: #29626D;
-}
-.banner div{
+.backblack {
+    background: black;
+    position: fixed;
     width: 100%;
-    padding-top: 23.125%;
-    background: url('../Image/faq-banner.png') no-repeat center center/cover;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
 }
-section.container{
-    margin: 0 20px;
+/* ..............Navbar End.................... */
+.banner img{
+    width: 100%;
 }
+/* ...............FAQs............... */
 .heading {
-    display: flex;
     margin-top: 32px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 .heading h1 {
     color: #4F4F4F;
@@ -124,33 +171,23 @@ section.container{
     color: #646464;
 }
 .heading-underline {
-    position: relative;
     width: 164px;
     height: 25px;
     margin-bottom: 34px;
 }
+.heading-underline>*{
+    z-index: -1;
+}
 .heading-underline img {
-    position: absolute;
     right: 69px;
 }
 .heading-underline span {
-    position: absolute;
     height: 1px;
     width: 62px;
     background-color: #CCCCCC;
     top:49%;
 }
-.heading-underline span:nth-child(1){
-    left: 0;
-}
-.heading-underline span:nth-child(3){
-    right: 0;
-}
 div.select {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
     margin: 36px auto 48px;
     max-width: 946px;
 }
@@ -221,11 +258,7 @@ button#right,button#left{
     text-align: center;
 }
 .newsletter form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 53px;
-    flex-wrap: wrap;
 }
 .newsletter div input[type="email"]{
     border: 1px solid #565656;
@@ -248,22 +281,17 @@ button#right,button#left{
     margin-top: 16px;
     cursor: pointer;
 }
+/* .......................FAQs End......................... */
+/* ................Footer................... */
 footer{
     background: #111111;
 }
 .footer-menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 119px;
+    padding: 20px 0px;
 }
 .footer-menu .menu ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
     list-style-type: none;
+    padding: 0;
 }
 .footer-menu .menu ul li a{
     text-decoration: none;
@@ -271,64 +299,104 @@ footer{
     padding: 0px 10px;
     font-size: 14px;
     cursor: pointer;
+    transition: all 0.5s ease;
+}
+.footer-menu .menu ul li a:hover{
+    color: #005f71;
+}
 
-}
-.footer-menu .social {
-    margin-right: 20px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
 .footer-menu .social img {
-    margin: 0 6px;
+    margin-top:3px;
+    filter: invert(1);
+}
+.footer-menu .social div {
+    text-align: center;
+    position: relative;
+    margin: 0 16px;
+}
+.footer-menu .social div::before {
+    content: '';
+    height: 0px;
+    width: 0px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1d798b;
+    left: 50%;
+    top: 50%;
+    transition: all 0.5s ease;
+}
+.footer-menu .social div:hover::before{
+    height: 40px;
+    width: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+footer hr{
+    height: 2px !important;
+    background: #424242;
+    width: 84.6%;
+    margin: 0 auto;
+    z-index:-1;
 }
 .terms {
     color: #9BA0A3;
     margin: 0px 117px;
     padding: 23px 0;
     text-align: center;
-    border-top: 2px solid #424242;
 }
-
+/* ..........Footer Ends.............. */
 
 @media only screen and (max-width: 1024px){
     body{
         overflow-x:hidden ;
     }
+    .nav ul{
+        right: -250px;
+        flex-direction: column;
+        background: #fff;
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        padding: 20px 0;
+        position: fixed;
+        z-index: 10;
+    }
+    .nav ul li a {
+        display: block;
+        border: none;
+        width: 100%;
+        padding: 10px 20px;
+        line-height: 24px;
+        color: #646464;
+        font-size: 16px;
+        border-radius: 0;
+    }
+    .nav ul li a.active{
+        background: transparent;
+    }
+    .nav ul li a:hover{
+        background: #f6f6f6 !important;
+        color: #646464;
+    }
+    .nav ul li a.active:hover{
+        color: #005f71 !important;
+    }
+    .nav.open ul{
+        right: 0;
+    }
+    .backblack.open{
+        display: block;
+        opacity: 0.5;
+    }
     .hamburger{
         display: flex;
-        /* position: fixed; */
-    }
-    .navbar{
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        top: 0;
-        right: 0;
-        transform: translateX(100%);
-        background: #464646;
-        transition: transform 0.4s ease-in;
-        z-index: 1;
-    }
-    .nav .navbar ul{
-        flex-direction: column;
-    }
-    .vertical-navbar li {
-        margin-bottom: 28px;
-    }
-
-    .vertical-navbar .drop-list {
-        top:40px;
     }
     button#right, button#left {
         font-size: 18px;
     }
     .footer-menu{
         justify-content: space-evenly;
-        padding: 20px 25px;
+        padding: 20px 0px;
     }
     .menu ul{
         flex-direction: column;

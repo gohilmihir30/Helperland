@@ -1,13 +1,31 @@
 $(document).ready(()=>{
-    $('.hamburger').click(()=>{
-        $('.hamburger').toggleClass('toggle');
-        $('.navbar').toggleClass('vertical-navbar');
-        $('body').toggleClass('overflow-hidden');
+    $('.navbar .hamburger').click(()=>{
+        $('.nav').toggleClass('open')
+        $('body').css("overflow","hidden")
+        $('.backblack').toggleClass('open')
+        $('.hamburger').toggleClass('toggle')
+    });
+    $('.backblack').click(()=>{
+        $('.nav').toggleClass('open');
+        $('.backblack').toggleClass('open');
+        $('.hamburger').toggleClass('toggle')
+        $('body').css("overflow","auto")
     })
+    document.querySelector('.backblack').addEventListener('wheel',(()=>{
+        $('.nav').removeClass('open');
+        $('.backblack').removeClass('open');
+        $('.hamburger').removeClass('toggle')
+        $('body').css("overflow","auto")
+    }))
+
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl, { sanitize: false })
+    })
+
     $('.down').click((e)=>{
         $e=e.target     
         $($e).parent().next().addClass('clicked');
-        // $($e).parent().next().slideDown(500);
         $('.down').each((i,element) => {
             $element=element;
             if($($element).parent().next().css('display') == 'block'){
