@@ -166,10 +166,35 @@ div.user_pic>img:last-child{
 }
 /* ..............Navbar End............... */
 
+/* ................Crousel section.................. */
 section.crousel{
     background: url('..//Image/Group\ 18.png') no-repeat center center/cover;
     padding-bottom: 27px;
     padding-top: 140px;
+}
+section.crousel .crousel-text{
+    color: #fff;
+    max-width: 300px;
+    top: 25%;
+    left: 30px;
+}
+section.crousel .crousel-text h2{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2em;
+    padding: 0 0 20px;
+}
+section.crousel .crousel-text ul{
+    padding-left: 5px !important;
+}
+section.crousel .crousel-text li{
+    list-style: none;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 0 5px 25px;
+    line-height: 20px;
+    background: url('../Image/ic-list.svg') no-repeat left 5px;
+    background-size: 13px 10px;
 }
 section.crousel div.register{
     margin-top: 38px;
@@ -190,18 +215,24 @@ section.crousel div.register{
 .form-control{
     font-size: 16px;
     font-weight: 400;
-    color: #a0a0a0;
     padding: 16px 0 18px 16px;
     line-height: 1.5;
     border-color: #c8c8c8;
     margin-bottom: 15px;
     height: 46px;
 }
+.form-control::placeholder{
+    color: #a0a0a0;
+}
 .input-group-text{
     height: 46px;
 }
-.form-check-label span{
-    color:#1fb6ff;
+.form-check-label a{
+    color:#1fb6ff !important;
+    cursor: pointer;
+}
+.form-check-label a:hover{
+    color: #10afff  !important;
 }
 .form-check-input:focus {
     border-color: #1d798c;
@@ -230,7 +261,7 @@ button[type = 'submit']{
 button[type = 'submit']>img{
     margin-left: 8px;
 }
-section.crousel>div:nth-child(2){
+section.crousel>div.down{
     margin-top: 44px;
     margin-bottom: 3px;
     cursor: pointer;
@@ -341,20 +372,24 @@ section.works>div{
 .newsletter div input[type="email"]{
     border: 1px solid #565656;
     color:#565656 ;
-    border-radius: 20px;
     padding: 12px 22px;
     outline: none;
     font-size: 14px;
     margin-top: 16px;
+    height: 40px;
+    background: transparent;
+}
+.newsletter div input[type="email"]::placeholder{
+    color: #565656;
 }
 .newsletter div input[type="submit"] {
     color: white;
     background-color: #FF7B6D;
     margin-left: 11px;
     font-size: 14px;
-    padding: 12px 22px;
+    line-height: 40px;
+    padding: 0px 22px;
     outline: none;
-    border-radius: 20px;
     border: none;
     margin-top: 16px;
     cursor: pointer;
@@ -400,8 +435,7 @@ footer{
     background: #1d798b;
     left: 50%;
     top: 50%;
-    
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 .footer-menu .social div:hover::before{
     height: 40px;
@@ -466,6 +500,14 @@ footer hr{
     }
     .hamburger{
         display: flex;
+    }
+    section.crousel .crousel-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    section.crousel .crousel-text{
+        position: static !important;
+
     }
     .footer-menu{
         justify-content: space-evenly;

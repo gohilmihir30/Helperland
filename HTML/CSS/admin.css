@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
+@font-face {
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: bold;
+	src: local("Switzera ADF Bold"), url("SwitzeraADF-Bold.woff") format("woff");
+}
+@font-face {
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Switzera ADF"), url("SwitzeraADF-Regular.woff") format("woff");
+}
 *{
     margin: 0;
     padding: 0;
@@ -22,6 +34,10 @@ nav.navbar{
     color: white;
     margin: 0;
     padding: 0;
+}
+a.navbar-brand{
+    font-family: 'Switzera ADF';
+    font-weight: normal;
 }
 .navbar .hamburger {
     width: 40px;
@@ -325,16 +341,15 @@ button.new{
     background: #F2BB37;
 }
 .popover{
-    left: -39px !important;
     width: 146px;
-}
-.popover .popover-arrow{
-    left: 39px !important;
 }
 div.popover-menu{
     width: 36px;
     height: 36px;
     transition: all 0.5s;
+}
+div.popover-menu:hover{
+    background: #f4f4f4;
 }
 div.popover-menu>img{
     cursor: pointer;
@@ -347,9 +362,6 @@ div.popover-menu>img{
     color: #646464;
     text-decoration: none;
     margin-bottom: 9px;
-}
-.popover-menu-bg{
-    background: #f4f4f4;
 }
 .dataTables_wrapper .dataTables_paginate a.paginate_button,.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled{
     color: #646464 !important;

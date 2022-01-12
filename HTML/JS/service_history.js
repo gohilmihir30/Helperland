@@ -53,66 +53,61 @@ for (i = 0; i <= 55; i++) {
                 </div>
             </td>
             <td class='text-center'>
-                &#8364;<span>${Math.floor(Math.random(500)) *i}</span>
+                &#8364;<span>${Math.floor(Math.random(500)) * i}</span>
             </td>
                 <td class='text-center'><span class="cancelled">Cancelled</span></td>
                 <td class='text-center'><button class="rounded-pill text-nowrap">Rate SP</button></td>
-            </tr>`  
-     }
+            </tr>`
+    }
 }
-$(document).ready(function () {
-    var table = $('#example').DataTable({
-        "dom": 'Bt<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
-        'pagingType': "full_numbers",
-        'columnDefs': [{ 'orderable': false, 'targets': 4 }],
-        'buttons': [{
-            extend: 'excel',
-            text: 'Export'
-        }],
-        "language": {
-            "paginate": {
-                "first": '<img src="./Image/Group 36.png" alt="">',
-                "last": '<img src="./Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
-                "previous": '<img src="./Image/keyboard-right-arrow-button copy.png" alt="">',
-                "next": '<img src="./Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">'
-            },
-            'info': "Total Record: _MAX_",
-            'lengthMenu': "Show_MENU_Entries",
-            "emptyTable": "No service History Found"
-        }
-    });
 
-    $('.navbar .hamburger').click(() => {
-        $('.main-nav').toggleClass('open')
-        $('html').css("overflow", "hidden")
-        $('.backblack').toggleClass('open')
-        $('.navbar').toggleClass('toggle')
-        $('.navbar').css('position', 'fixed')
-    });
-    $('.backblack').click(() => {
-        $('.main-nav').toggleClass('open');
-        $('.backblack').toggleClass('open');
-        $('.navbar').toggleClass('toggle')
-        $('.navbar').css('position', 'sticky')
-        $('html').css("overflow", "visible")
-    })
-    document.querySelector('.backblack').addEventListener('wheel', (() => {
-        $('.main-nav').removeClass('open');
-        $('.backblack').removeClass('open');
-        $('.navbar').removeClass('toggle')
-        $('html').css("overflow", "visible")
-        $('.navbar').css('position', 'sticky')
-    }))
-
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl, { sanitize: false })
-    })
-    document.querySelector('#sortData').addEventListener('click', () => {
-        document.querySelectorAll('.form-check-input').forEach(element => {
-            element.addEventListener('click', () => {
-                table.order([element.getAttribute('data-dt-col'), element.getAttribute('data-dt-sort')]).draw()
-            });
-        })
-    })
+var table = $('#example').DataTable({
+    "dom": 'Bt<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+    'pagingType': "full_numbers",
+    'columnDefs': [{ 'orderable': false, 'targets': 4 }],
+    'buttons': [{
+        extend: 'excel',
+        text: 'Export'
+    }],
+    "language": {
+        "paginate": {
+            "first": '<img src="./Image/Group 36.png" alt="">',
+            "last": '<img src="./Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+            "previous": '<img src="./Image/keyboard-right-arrow-button copy.png" alt="">',
+            "next": '<img src="./Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">'
+        },
+        'info': "Total Record: _MAX_",
+        'lengthMenu': "Show_MENU_Entries",
+        "emptyTable": "No service History Found"
+    }
 });
+function sort(col, order) {
+    table.order([col, order]).draw()
+}
+
+$('.navbar .hamburger').click(() => {
+    $('.main-nav').toggleClass('open')
+    $('html').css("overflow", "hidden")
+    $('.backblack').toggleClass('open')
+    $('.navbar').toggleClass('toggle')
+    $('.navbar').css('position', 'fixed')
+});
+$('.backblack').click(() => {
+    $('.main-nav').toggleClass('open');
+    $('.backblack').toggleClass('open');
+    $('.navbar').toggleClass('toggle')
+    $('.navbar').css('position', 'sticky')
+    $('html').css("overflow", "visible")
+})
+document.querySelector('.backblack').addEventListener('wheel', (() => {
+    $('.main-nav').removeClass('open');
+    $('.backblack').removeClass('open');
+    $('.navbar').removeClass('toggle')
+    $('html').css("overflow", "visible")
+    $('.navbar').css('position', 'sticky')
+}))
+
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl, { sanitize: false })
+})

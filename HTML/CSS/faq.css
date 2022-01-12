@@ -215,7 +215,8 @@ button#right,button#left{
     border: 2px solid #1D7A8C !important;
     color: white !important;
 }
-.box {
+.box{
+    min-height: 300px;
     max-width: 946px;
     margin: 0 auto;
 }
@@ -225,10 +226,18 @@ button#right,button#left{
     margin-bottom: 24px;
     justify-content: flex-start;
 }
+.box-item div img {
+    cursor: pointer;
+    transition: transform .4s ease-in-out;
+    transform: rotate(-90deg);
+    height: 22px;
+    width: 22px;
+}
 .box-item div strong {
     color: #646464;
     font-size: 16px;
     margin-left: 16px;
+    line-height: 22px;
 }
 .box-item p {
     margin-bottom: 25px;
@@ -238,11 +247,7 @@ button#right,button#left{
     display: none;
     text-align: justify;
 }
-.box-item div img{
-    cursor: pointer;
-    transition: transform .4s ease-in-out;
-    transform: rotate(-90deg);
-}
+
 .box.service-box{
     display: none;
 }
@@ -263,20 +268,24 @@ button#right,button#left{
 .newsletter div input[type="email"]{
     border: 1px solid #565656;
     color:#565656 ;
-    border-radius: 20px;
     padding: 12px 22px;
     outline: none;
     font-size: 14px;
     margin-top: 16px;
+    height: 40px;
+    background: transparent;
+}
+.newsletter div input[type="email"]::placeholder{
+    color: #565656;
 }
 .newsletter div input[type="submit"] {
     color: white;
     background-color: #FF7B6D;
     margin-left: 11px;
     font-size: 14px;
-    padding: 12px 22px;
+    line-height: 40px;
+    padding: 0px 22px;
     outline: none;
-    border-radius: 20px;
     border: none;
     margin-top: 16px;
     cursor: pointer;
@@ -323,7 +332,7 @@ footer{
     background: #1d798b;
     left: 50%;
     top: 50%;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 .footer-menu .social div:hover::before{
     height: 40px;

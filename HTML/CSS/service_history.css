@@ -178,7 +178,6 @@ section.welcome-msg h1>span{
 /* .................verticle menu.................... */
 .verticle-menu{
     width: 262px;
-    color: white;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.83;
@@ -188,9 +187,20 @@ section.welcome-msg h1>span{
     position: sticky;
     top: 94px;
 }
-.verticle-menu>div{
+.verticle-menu>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.verticle-menu>ul>li{
     border-bottom: 1px solid rgb(255, 255, 255,0.2);
     padding: 18px 15px 17px 15px;
+}
+.verticle-menu>ul>li a{
+    color: white;
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
 }
 .current_section{
     background-color: #146371;
@@ -205,22 +215,28 @@ section.welcome-msg h1>span{
     margin-left: 31px;
 }
 .data-table .heading{
-    margin-bottom: -32px;
-    margin-left: -14px;
-    padding-left: 7px;
+   z-index: 1;
 }
 .data-table .heading h3{
     font-size: 22px;
     color: #646464;
     font-weight: 700;
+    line-height: 46px;
+    margin: 0 !important;
 }
 .data-table .heading .sort{
- right: 15px;   
+    cursor: pointer;
+    margin-left: 15px;
 }
+.popover.sortOption{
+    display: none;
+} 
 .sortOption .popover-body .form-check {
     margin: 8px 10px;
 }
 .sortOption .popover-body .form-check label{
+    color: #646464;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 .sortOption .popover-body .form-check input[type='radio']{
@@ -230,7 +246,7 @@ section.welcome-msg h1>span{
     box-shadow: none;
 }
 .form-check input[type='radio']:hover + label{
-    color: #5ccaff;
+    color: #1b1b1b;
 }
 .sortOption .popover-body .form-check input[type='radio']:checked{
     border-color: #1d7a8c;
@@ -252,9 +268,9 @@ div.dt-buttons button{
     font-size: 14px;
     color: #fff;
     background: #146371;
-    border-radius: 34px;
-    padding: 7px 15px 9px;
-    height: 34px;
+    border-radius: 100px;
+    padding: 0px 15px;
+    line-height: 34px;
     transition: all 0.5s ease;
 }
 div.dt-buttons button:hover {
@@ -340,7 +356,7 @@ table.dataTable thead .sorting_desc {
     margin-top: 9px;
 }
 .dataTables_wrapper .dataTables_info{
-    padding-top: .85em;
+    padding-top: 15px;
     margin-left: 10px;
 }
 .dataTables_wrapper .dataTables_length select{
@@ -398,7 +414,7 @@ footer{
     background: #1d798b;
     left: 50%;
     top: 50%;
-    transition: all 0.5s ease;
+    transition: all 0.25s ease;
 }
 .footer-menu .social div:hover::before{
     height: 40px;
@@ -502,11 +518,10 @@ footer hr{
     }
 }
 @media only screen and (max-width: 767px){
-    .data-table .heading {
-        margin-bottom: 16px;
+    .popover.sortOption{
+        display:block !important;
     }
     div.dt-buttons{
-        text-align: center;
         margin-bottom: 12px;
     }
     table.dataTable thead{

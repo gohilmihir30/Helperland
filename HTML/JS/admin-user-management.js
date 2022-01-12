@@ -20,7 +20,6 @@ $(document).ready(function () {
     $('div.popover-menu>img').click((e)=>{
         $element=e.target;
         var status= $($element).parent().parent().prev().find("button").text();
-        $($element).parent().toggleClass('popover-menu-bg');
         if(status=='Active'){
             $('.popover-body').html("<a href='#' class='userInfoItem d-block'>Edit</a><a href='#' class='userInfoItem d-block'>Deactivate</a><a href='#' class='userInfoItem d-block'>Service History</a>")
         }else{

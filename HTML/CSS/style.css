@@ -272,17 +272,22 @@ section.banner{
 .banner-main-contain {
     margin: 178px 0 0 55px;
 } 
-.banner-main-contain h4{
+.banner-main-contain h1{
     font-size: 50px;
     margin-bottom: 25px;
     font-weight: 500;
     line-height: 64px;
 }
+.banner-main-contain p{
+    font-size: 16px;
+    font-weight: 400;
+}
 .banner-main-contain ul{
     list-style-image: url(..//Image/Forma\ 1\ copy\ 10.png);
-    margin-left: 19px;
 }
 .banner-main-contain ul li {
+    font-size: 16px;
+    font-weight: 400;
     line-height: 22px;
     margin-bottom: 8px;
 }
@@ -292,12 +297,12 @@ section.banner{
     margin-top: 16px;
 }
 .btn a{
-    background: #006072;
+    background: #006072ab;
     display: inline-block;
     border: 2px solid white;
-    border-radius: 54px;
+    /* border-radius: 54px; */
     width: 255px;
-    height: 54px;
+    /* height: 54px; */
     padding: 0px 32px;
     line-height: 54px;
     color: white;
@@ -347,7 +352,7 @@ section.banner{
     margin-top: 50px;
     margin-bottom: 90px;
 }
-.why h4 {
+.why h2{
     font-size: 40px;
     margin: 30px 0;
     margin-bottom: 40px;
@@ -497,11 +502,10 @@ section.customers {
     border-radius: 4px;
     margin-bottom: 33px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 30px #e3ebf0;
 }
 .cust-card-item:hover{
-    box-shadow: 0px 0px 5px 3px rgb(0 0 0 / 20%), 0px 0px 10px 3px rgb(0 0 0 / 10%), 0px 0px 15px 3px rgb(0 0 0 / 20%);
-    transform: scale(1.05);
-    border: none;
+    box-shadow: 0 0 50px #b3c0c7;
 }
 img.message-symbol {
     position: absolute;
@@ -555,20 +559,24 @@ img.message-symbol {
 .newsletter div input[type="email"]{
     border: 1px solid #565656;
     color:#565656 ;
-    border-radius: 20px;
     padding: 12px 22px;
     outline: none;
     font-size: 14px;
     margin-top: 16px;
+    height: 40px;
+    background: transparent;
+}
+.newsletter div input[type="email"]::placeholder{
+    color: #565656;
 }
 .newsletter div input[type="submit"]{
     color: white;
     background-color: #FF7B6D;
     margin-left: 11px;
     font-size: 14px;
-    padding: 12px 22px;
+    line-height: 40px;
+    padding: 0px 22px;
     outline: none;
-    border-radius: 20px;
     border: none;
     margin-top: 16px;
 }
@@ -651,8 +659,7 @@ img.message-symbol {
     background: #1d798b;
     left: 50%;
     top: 50%;
-    
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 .footer-menu .social div:hover::before{
     height: 40px;

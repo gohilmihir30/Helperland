@@ -185,7 +185,7 @@ div>p {
     width: 164px;
     margin: auto;
     height: 25px;
-    margin-bottom: 53px;
+    margin-bottom: 40px;
 }
 .heading-underline img {
     right: 69px;
@@ -198,7 +198,7 @@ div>p {
     top:49%;
 }
 .newsletter {
-    margin-top: 47px;
+    margin-top: 100px;
 }
 .newsletter h4{
     font-size: 18px;
@@ -211,20 +211,24 @@ div>p {
 .newsletter div input[type="email"]{
     border: 1px solid #565656;
     color:#565656 ;
-    border-radius: 20px;
     padding: 12px 22px;
     outline: none;
     font-size: 14px;
     margin-top: 16px;
+    height: 40px;
+    background: transparent;
+}
+.newsletter div input[type="email"]::placeholder{
+    color: #565656;
 }
 .newsletter div input[type="submit"] {
     color: white;
     background-color: #FF7B6D;
     margin-left: 11px;
     font-size: 14px;
-    padding: 12px 22px;
+    line-height: 40px;
+    padding: 0px 22px;
     outline: none;
-    border-radius: 20px;
     border: none;
     margin-top: 16px;
     cursor: pointer;
@@ -269,8 +273,7 @@ footer{
     background: #1d798b;
     left: 50%;
     top: 50%;
-    
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
 }
 .footer-menu .social div:hover::before{
     height: 40px;
