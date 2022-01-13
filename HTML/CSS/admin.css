@@ -125,6 +125,16 @@ li{
 .left ul li:nth-child(3),.left ul li:nth-child(8),.left ul li:nth-child(13){
     background: #f9f9f9;
 }
+.left li a{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #646464;
+}
+.left li a:hover{
+    color: #646464;
+    cursor: pointer;
+}
 .rotate-0{
     transform: rotate(0deg) !important;
 }
@@ -147,7 +157,7 @@ li div.collapse{
     display: none;
     font-size: 15px;
 }
-li .collapse p:not(li .collapse p:last-child){
+li .collapse a:not(li .collapse p:last-child){
     padding-bottom: 15px;
 }
 .active{

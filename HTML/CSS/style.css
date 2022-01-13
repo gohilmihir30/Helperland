@@ -4,7 +4,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    /* font-size: 17px; */
+}
+h1,h2,h3,h4,h5,h6{
+    color: #4F4F4F;
 }
 html{
     scroll-behavior: smooth;
@@ -264,7 +266,6 @@ button.btn[disabled]{
 /* ..........Banner .................. */
 section.banner{
     background: url('..//Image/Group\ 35@3x.png') no-repeat center center/cover;
-    /* height: 757px; */
     color: white;
     padding-bottom: 27px;
     padding-top: 140px;
@@ -274,6 +275,7 @@ section.banner{
 } 
 .banner-main-contain h1{
     font-size: 50px;
+    color: white;
     margin-bottom: 25px;
     font-weight: 500;
     line-height: 64px;
@@ -300,9 +302,7 @@ section.banner{
     background: #006072ab;
     display: inline-block;
     border: 2px solid white;
-    /* border-radius: 54px; */
     width: 255px;
-    /* height: 54px; */
     padding: 0px 32px;
     line-height: 54px;
     color: white;
@@ -311,7 +311,6 @@ section.banner{
 }
 .box{
     margin: 157px 235px 0 240px;
-
 }
 .box .inner-box{
     padding: 0 10px;
