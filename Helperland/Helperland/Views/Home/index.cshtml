@@ -1,0 +1,273 @@
+<!-- ...................Modal......................... -->
+<div class="modal fade" id="loginModalToggle" aria-hidden="true" aria-labelledby="loginModalToggleLabel"
+     tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalToggleLabel">Login to your account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="loginInputEmail1" placeholder="Email"
+                               aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="loginInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember Me</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill" disabled>Login</button>
+                </form>
+                <div class="mt-4">
+                    <p class="m-0 text-center">
+                        <a title="Forget Password" data-bs-target="#forgetPassModalToggle2"
+                           data-bs-toggle="modal">Forget Password?</a>
+                    </p>
+                    <p class="m-0 text-center">
+                        Don't have account?<a asp-action="userRegistration" asp-controller="UserRegistration" title="Create an account">Create an account</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="forgetPassModalToggle2" aria-hidden="true" aria-labelledby="forgetPassModalToggleLabel2"
+     tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forgetPassModalToggleLabel2">Forget Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="forgetPassEmail1" placeholder="Email"
+                               aria-describedby="emailHelp">
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill" disabled>Send</button>
+                </form>
+                <div class="mt-4">
+                    <p class="m-0 text-center">
+                        <a title="Login Page" data-bs-target="#loginModalToggle"
+                           data-bs-toggle="modal">Login Page</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ....................Modal end........................ -->
+
+<section class='container-fluid banner'>
+    <div class="banner-main-contain">
+        <h1>Do not feel like housework?</h1>
+        <p>Great! Book now for Helperland and enjoy the benefits</p>
+        <ul>
+            <li>Certified & insured helper</li>
+            <li>Easy booking procedure</li>
+            <li>Friendly customer service</li>
+            <li>Secure online payment method</li>
+        </ul>
+    </div>
+    <div class="btn d-block text-center">
+        <a href="#" target="_blank" class="rounded-pill" rel="noopener noreferrer">Let's Book a Cleaner</a>
+    </div>
+    <div class="box d-flex align-items-center justify-content-center">
+        <div class="inner-box">
+            <img src="./Image/Forma 1 copy.png" alt="">
+            <p>Enter your postcode</p>
+        </div>
+        <div class="inner-box arrow">
+            <img src="./Image/step-arrow1.png" alt="">
+        </div>
+        <div class="inner-box">
+            <img src="./Image/Group 22.png" alt="">
+            <p>Select your plan</p>
+        </div>
+        <div class="inner-box arrow">
+            <img src="./Image/step-arrow1 copy.png" alt="">
+        </div>
+        <div class="inner-box">
+            <img src="./Image/Forma 1_2.png" alt="">
+            <p>Pay securely online</p>
+        </div>
+        <div class="inner-box arrow">
+            <img src="./Image/step-arrow1.png" alt="">
+        </div>
+        <div class="inner-box">
+            <img src="./Image/Forma 1.png" alt="">
+            <p>Enjoy amazing service</p>
+        </div>
+    </div>
+    <div class="scroll-down rounded-circle">
+        <a href="#why_section"><img src="./Image/Shape 1@2x.png" alt=""></a>
+    </div>
+</section>
+<section class="container-fluid">
+    <div class="why d-flex justify-content-center align-items-center flex-column" id='why_section'>
+        <h2 class="text-center">Convince yourself!</h2>
+        <div class="card-wraper row justify-content-center text-center">
+            <div class="cart-item col-lg-4 col-sm-6">
+                <img src="./Image/Group 21.png" alt="">
+                <h3 style="height: 72px;">Friendly & Certified Helpers</h3>
+                <p>We want you to be completely satisfied with our service and feel comfortable at home. In order to guarantee this, our helpers go through a test procedure. Only when the cleaners meet our high standards, they may call themselves Helper.</p>
+            </div>
+            <div class="cart-item col-lg-4 col-sm-6 text-center">
+                <img src="./Image/Group 23.png" alt="">
+                <h3 style="height: 72px;">Transparent and secure payment</h3>
+                <p>We have transparent prices, you do not have to scratch money or money on the sideboard Leave it: Pay your helper easily and securely via the online payment method. You will also receive an invoice for each completed cleaning.</p>
+            </div>
+            <div class="cart-item col-lg-4 col-sm-6 text-center">
+                <img src="./Image/Group 24.png" alt="">
+                <h3 style="height: 72px;">We're here for you</h3>
+                <p>You have a question or need assistance with the booking process? Our customer service is happy to help and advise you. How you can reach us you will find out when you look under "Contact". We look forward to hearing from you or reading.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container-fluid blog position-relative ">
+    <div class="d-flex align-items-center justify-content-center flex-column">
+        <div class="blog-item row flex-nowrap align-items-center">
+            <div class="left col-lg-7 col-12 m-sm-0">
+                <h4>We do not know what makes you happy, but ... </h4>
+                <p>If it's not dusting off, our friendly helpers will free you from this burden - do not worry anymore about spending valuable time doing housework, but savour life, you're well worth your time with beautiful experiences. Free yourself and enjoy the gained time: Go celebrate, relax, play with your children, meet friends or dare to jump on the bungee. Other leisure ideas and exclusive events can be found in our blog - guaranteed free from dust and cleaning tips!</p>
+            </div>
+            <div class="right col-lg-5 col-12">
+                <div>
+                    <img src="./Image/blog-decription-image.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="blog-item">
+            <h2 class="text-center">Our Blog</h2>
+            <div class="blog-card-wrap row align-items-center justify-content-center">
+                <div class="blog-card col-lg-4 col-sm-12 ">
+                    <img src="./Image/Group 28.png" alt="">
+                    <div class="cart-list-item">
+                        <h4>Lorem ipsum dolor sit amet.</h4>
+                        <small>January 28, 2019</small>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis
+                            quidem?
+                        </p>
+                        <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="blog-card col-lg-4 col-sm-12 ">
+                    <img src="./Image/Group 29.png" alt="">
+                    <div class="cart-list-item">
+                        <h4>Lorem ipsum dolor sit amet.</h4>
+                        <small>January 28, 2019</small>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis
+                            quidem?
+                        </p>
+                        <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="blog-card col-lg-4 col-sm-12 ">
+                    <img src="./Image/Group 30.png" alt="">
+                    <div class="cart-list-item">
+                        <h4>Lorem ipsum dolor sit amet.</h4>
+                        <small>January 28, 2019</small>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum a amet reiciendis
+                            quidem?
+                        </p>
+                        <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container-fluid customers">
+    <div class="d-flex align-items-center flex-column">
+        <h2 class="text-center">What Our Customers Say</h2>
+        <div class="cust-card-wraper justify-content-center row align-items-center">
+            <div class="cust-card-item position-relative">
+                <img src="./Image/message.png" alt="" class="message-symbol">
+                <div class="grid-container">
+                    <div class="item1"><img src="./Image/Group 31.png" alt=""></div>
+                    <div class="item2">
+                        <h3>Lary Watson</h3><small>Manchester</small>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit
+                    ea
+                    ipsam modi at!
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
+                <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+            </div>
+            <div class="cust-card-item position-relative">
+                <img src="./Image/message.png" alt="" class="message-symbol">
+                <div class="grid-container">
+                    <div class="item1"><img src="./Image/Group 32.png" alt=""></div>
+                    <div class="item2">
+                        <h3>John Smit</h3><small>Manchester</small>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit
+                    ea
+                    ipsam modi at!
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
+                <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+            </div>
+            <div class="cust-card-item position-relative">
+                <img src="./Image/message.png" alt="" class="message-symbol">
+                <div class="grid-container">
+                    <div class="item1"><img src="./Image/Group 33.png" alt=""></div>
+                    <div class="item2">
+                        <h3>lars Johnson</h3><small>Manchester</small>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quos culpa minus laboriosam, sit
+                    ea
+                    ipsam modi at!
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, molestiae?</p>
+                <a href="#">Read the Post<img src="./Image/Shape 2.png" alt=""></a>
+            </div>
+        </div>
+        <div class="newsletter">
+            <h4>GET OUR NEWSLETTER</h4>
+            <div>
+                <form action="#" class="d-flex justify-content-center align-items-center flex-wrap">
+                    <input type="email" name="email" placeholder="YOUR EMAIL" class="rounded-pill">
+                    <input type="submit" value="Submit" id="submit" class="rounded-pill">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="scroll-top">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="10">
+        <Image width="20" height="10"
+               xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAQAAACWu2SvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflCxILOC+3huDXAAAAa0lEQVQI103NoQoCYQDD8VkMggYRLYLFt7rmI10ziMVkEs6m2ZcwWQQRsdh/huM73dL+jC0qjYn8eaSxijNu5h2euuISA0c8LUUs3HEybFt7fMyMvXEQKQMbvDywa8nvsgbrknvSaZt+qhK+nGpkpn2sFJAAAAAASUVORK5CYII=" />
+    </svg>
+</div>
+<div class="fixed-button">
+    <div class="message">
+        <img src="./Image/Layer 598.png" alt="">
+    </div>
+</div>
+@section policy{
+    <div class="footer-policy justify-content-center align-items-center position-sticky">
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum blanditiis officiis, doloremque unde harum
+            nobis porro non!<a href="#">Privacy Policy</a>
+        </p>
+        <button id="policy_btn">OK!</button>
+    </div>
+}

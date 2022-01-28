@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
+@font-face {
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: bold;
+	src: local("Switzera ADF Bold"), url("SwitzeraADF-Bold.woff") format("woff");
+}
+@font-face {
+	font-family: "Switzera ADF";
+	font-style: normal;
+	font-weight: normal;
+	src: local("Switzera ADF"), url("SwitzeraADF-Regular.woff") format("woff");
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    height: 100vh;
+}
+p{
+    margin: 0px;
+}
+
+/* ............Navbar.................. */
+nav.navbar{
+    background: #1fb6ff;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+a.navbar-brand{
+    font-family: 'Switzera ADF';
+    font-weight: normal;
+}
+.navbar .hamburger {
+    width: 40px;
+    HEIGHT: 40PX;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin-right: 6px;
+    z-index: 3 !important;
+    margin-left: 13px;
+}
+.navbar .hamburger span{
+    position: absolute;
+    background: #fff;
+    width: 40px;
+    border-radius: 5px;
+    height: 4px;
+    transition: all 0.5s;
+}
+.navbar.toggle .hamburger  span:nth-child(2){
+    transform: translateX(60px);
+    background: transparent;
+}
+.navbar.toggle .hamburger span:nth-child(1){
+    width: 30px;
+    transform: translateY(0px) rotate(45deg);
+}
+.navbar.toggle .hamburger  span:nth-child(3) {
+    width: 30px;
+    transform: translateY(0px) rotate(315deg);
+}
+.navbar .hamburger span:nth-child(1) {
+    transform: translate(-10px, -15px);
+    width: 18px;
+    transition-delay:0.2s;
+}
+.navbar .hamburger span:nth-child(3){
+    transform: translate(-8px, 15px);
+    width: 28px;
+    transition-delay:0.4s;
+}
+.navbar-brand {
+    color: white;
+    font-size: 37.5px;
+    margin: 13px 0px 8px 15px;
+}
+.navbar div.user{
+    margin-right: 18px;
+}
+.navbar div.user>p{
+    margin: 0 18px 0 7px;
+}
+.navbar div.user>img:last-child{
+    width: 26px;
+    height: 29px;
+}
+.backblack {
+    background: black;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+}
+/* .............navbar end............ */
+/* ........vertical-menu............. */
+ul{
+    width: 273px;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease;
+}
+li{
+    list-style-type: none;
+    border: 1px solid #e5e5e5;
+    padding: 17px 15px;
+    color: #646464;
+    line-height: 15px;
+}
+.left ul li:nth-child(3),.left ul li:nth-child(8),.left ul li:nth-child(13){
+    background: #f9f9f9;
+}
+.left li a{
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #646464;
+}
+.left li a:hover{
+    color: #646464;
+    cursor: pointer;
+}
+.rotate-0{
+    transform: rotate(0deg) !important;
+}
+.left ul li img{
+    right: 5px;
+    top: 20px;
+    transition: 0.5s;
+    transform: rotate(-90deg);
+}
+.left ul li button{
+    color: #646464 !important;
+    padding:0;
+    line-height: 15px;
+}
+.left ul li .btn:focus{
+    box-shadow: none;
+}
+li div.collapse{
+    margin: 23px 0 0 15px;
+    display: none;
+    font-size: 15px;
+}
+li .collapse a:not(li .collapse p:last-child){
+    padding-bottom: 15px;
+}
+.active{
+    color: #64c7ff;
+}
+/* ........vertical-menu end............. */
+/* .........right div............. */
+div.right{
+    padding:0 20px;
+    background: #f2f4f5;
+    width: 100%;
+    overflow-x: hidden;
+}
+/* .............heading div................ */
+.right .heading{
+    margin-top: 24px;
+    margin-bottom: 10px;
+    width: 100%;
+    overflow-x: hidden;
+}
+.right .heading h2{
+    font-size: 22px;
+    color: #646464;
+    font-weight: 700;
+}
+.right .heading button>img{
+    margin: 9px 7px 11px 0px;
+}
+.right .heading button{
+    background: #1fb6ff;
+    color: white;
+    border: none;
+    padding: 0px 9px 0px 11px;
+    outline: none;
+    border-radius: 4px;
+    line-height: 36px;
+}
+/* .............heading div end............ */
+/* ..........fliters............. */
+
+.filter form {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 10px 21px 20px 15px;
+    margin: 0;
+}
+.filter form>div {
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.filter form>div.col-2{
+    min-width: 200px;
+}
+.form-select{
+    background: url("../Image/Forma\ 1\ copy\ 5.svg") no-repeat center right 0.75rem;
+    border-color: #dedddd;
+    font-size: 16px;
+    padding: 0 11px;
+    line-height: 46px;
+    color: #A0A0A0;
+    object-fit: cover;
+}
+
+.form-control:focus,.form-select:focus,.filter form button[type="reset"]:hover,.filter form button[type="reset"]:focus,.filter form button[type="reset"]:active{
+    box-shadow: none;
+    border-color: #1fb6ff;
+    outline: 0!important;
+}
+input[type="tel"]::placeholder,input[type="text"]::placeholder{
+    color: #a0a0a0;
+}
+input[type="text"].date{
+    width: 130px;
+    padding-left: 35px;
+}
+input[type="text"].date ~ img{
+    top: 14px;
+    left: 10px;
+}
+.input-group-text{
+    color: #a0a0a0;
+}
+input.form-control {
+    color: #A0A0A0;
+    padding: 0 11px;
+    line-height: 46px;
+}
+.filter form button{
+    width: 84px;
+    padding: 0;
+    border-radius: 4px;
+}
+.filter form button[type="submit"]{
+    background: #1fb6ff;
+    color: #fff;
+    line-height: 46px;
+}
+.filter form button[type="reset"]{
+    line-height: 46px;
+    background: #fff;
+    color: #646464;
+    border: 1px solid #dedddd;
+}
+/* ............filters end............ */
+/* .............data table............ */
+.data-table{
+    margin-top: 20px;
+}
+.data-table div#user_wrapper,.data-table div#request_wrapper{
+    background: #fff;
+    padding-bottom: 15px;
+    overflow-x: auto;
+}
+table.dataTable.no-footer {
+    border-bottom: none;
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+table.dataTable thead {
+    background-color:#f9f9f9;
+}
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: none;
+}
+tr{
+    border:1px solid #e1e1e1 !important;
+}
+th,td{
+    color: #646464;
+    font-size: 16px;
+    /* padding: 8px 18px !important; */
+}
+th {
+    text-align: left !important;   
+}
+table.dataTable thead .sorting {
+    background-image: url("../Image/sort.png");
+}
+table.dataTable thead .sorting_asc {
+    background-image: url("../Image/asc.png") !important;
+}
+table.dataTable thead .sorting_desc {
+    background-image: url("../Image/dec.png") !important;
+}
+tr td.service_date>div:first-child>img {
+    height: 19px;
+}
+tr td.service_date>div>img,tr td.cust-detail>div>img {
+    margin-right: 7px;
+}
+tr td.service_date>div:last-child>img {
+    height: 17px;
+}
+tr td.service_date>div:last-child {
+    margin-top: 5px;
+}
+tr td.cust-detail>div:last-child {
+    margin-top: 4px;
+}
+tr td.cust-detail>div>img {
+    height: 22px;
+}
+tr td.service-pro>div>div:first-child {
+    height: 44px;
+    width: 44px;
+    border: 1px solid #aaaaaa;
+}
+tr td.service-pro>div>div:last-child {
+    margin-left: 12px;
+}
+td button {
+    color: white !important;
+    border: none;
+    line-height: 24px;
+    padding: 0 11px;
+}
+button.active {
+    background: #67b644;
+}
+button.inactive {
+    background: #ff6b6b;
+}
+button.pendding{
+    background: #1FB6FF;
+}
+button.new{
+    background: #F2BB37;
+}
+.popover{
+    width: 146px;
+}
+div.popover-menu{
+    width: 36px;
+    height: 36px;
+    transition: all 0.5s;
+}
+div.popover-menu:hover{
+    background: #f4f4f4;
+}
+div.popover-menu>img{
+    cursor: pointer;
+    padding: 9px 11px;
+}
+.popover-body {
+    padding: 15px 14px 7px;
+}
+.popover-body a.userInfoItem.d-block {
+    color: #646464;
+    text-decoration: none;
+    margin-bottom: 9px;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button,.dataTables_wrapper .dataTables_paginate a.paginate_button.disabled{
+    color: #646464 !important;
+    border: 1px solid #d6d6d6;
+    font-size: 14px;
+}
+.table-bottom{
+    margin-top: 9px;
+}
+.dataTables_wrapper .dataTables_info{
+    padding-top: .85em;
+    margin-left: 10px;
+}
+.dataTables_wrapper .dataTables_length select{
+    margin: 10px;
+    border-color: #d6d6d6;
+    color: #646464;
+    font-size: 14px;
+}
+.dataTables_wrapper .dataTables_paginate{
+    margin-top: 16px;
+    margin-right: 15px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    margin-left: 0px;
+    border-radius: 0px;
+    transition: 0.5s;
+    color: #646464;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button:hover,.dataTables_wrapper .dataTables_paginate .paginate_button.current,.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: white !important;
+    background: #565656 !important;
+    border: 1px solid transparent;
+}
+.dataTables_wrapper .dataTables_paginate a.paginate_button.first:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.last:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.next:hover,.dataTables_wrapper .dataTables_paginate a.paginate_button.previous:hover{
+    background: transparent !important;
+    border: 1px solid #e1e1e1;
+}
+.dataTables_wrapper .dataTables_length {
+    margin: 15px 0  0 15px;
+    font-size: 16px;
+    color: #646464 !important;
+}
+
+/* .............data table end............ */
+
+/* .........right div end............. */
+/* ...........footer............. */
+footer{
+    font-size: 14px;
+    color: #a2a6a8;
+    margin: 24px 0px 22px 0;
+    line-height: 0.8;
+}
+/* ..........footer end............ */
+
+@media only screen and (max-width: 991px){
+    .left ul {
+        z-index: 9;
+        position: absolute;
+        top: 0;
+        left: -260px;
+        height: 100vh;
+        background: #fff;
+        width: 250px;
+        box-shadow: 0px 0 3px 6px rgb(0 0 0 / 15%), -1px 0 2px rgb(0 0 0 / 24%);
+        overflow: auto;
+    }
+    .left ul.open{
+        left: 0px;
+    }
+    .left ul li{
+        border: none;
+    }
+    .backblack.open{
+        display: block;
+        opacity: 0.5;
+    }
+}

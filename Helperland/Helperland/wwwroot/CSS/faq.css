@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+/* .............Navbar............... */
+.navbar {
+    background-color: #646464;
+    transition: all 0.5s;
+    padding: 0;
+    z-index: 2;
+}
+.navbar .logo{
+    margin: 5px 0 4px 15px;
+}
+.navbar .nav ul{
+    margin-bottom: 0;
+    transition: all 0.5s ease;
+}
+.nav ul li {
+    margin-right: 11px;
+    list-style-type: none;
+}
+.nav ul li a{
+    display: block;
+    padding: 0px 14px;
+    line-height: 40px;
+    transition: background 0.5s, border 0.5s;
+    text-decoration: none;
+    color: white;
+    border-radius: 40px;
+    border: 1px solid transparent;
+}
+.nav ul li a:hover{
+    color: #005f71;
+    background-color: #fff !important;
+}
+.active {
+    border: 1px solid white !important;
+    border-radius: 39px;
+    background-color: #29626D;
+}
+.hamburger {
+    width: 50px;
+    HEIGHT: 50PX;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    right: 23px;
+    top: 0px;
+    overflow: hidden;
+    z-index: 3;
+}
+.hamburger span{
+    position: absolute;
+    background: #fff;
+    width: 40px;
+    border-radius: 5px;
+    height: 4px;
+    transition: all 0.5s;
+}
+.hamburger.toggle span:nth-child(2){
+    transform: translateX(60px);
+}
+.hamburger.toggle span:nth-child(1) {
+    width: 40px;
+    transform: translateY(0px) rotate(45deg);
+}
+.hamburger.toggle span:nth-child(3) {
+    width: 40px;
+    transform: translateY(0px) rotate(315deg);
+}
+.hamburger span:nth-child(1) {
+    transform: translate(-10px, -15px);
+    width: 20px;
+    transition-delay:0.2s;
+}
+.hamburger span:nth-child(3){
+    transform: translate(-5px, 15px);
+    width: 30px;
+    transition-delay:0.4s;
+}
+div.notification{
+    margin-top: 4px;
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    padding: 0 25px 0 16px;
+}
+div.notification>span {
+    background-color: #ff1616;
+    top: -7px;
+    right: 11px;
+}
+div.user_pic{
+    margin-top: 4px;
+    cursor: pointer;
+}
+div.user_pic>img:first-child{
+    margin: 0px 7px 0 18px;
+}
+div.user_pic>img:last-child{
+    margin-right: 14px;
+}
+/* .........Popover............ */
+.popover{
+    min-width: 200px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 0;
+    z-index: 2;
+}
+.popover-header{
+    background: #fff;
+}
+.userInfoText{
+    font-size: 14px;
+}
+.userInfoText b{
+    display: block;
+    font-weight: 700;
+}
+.popover-body{
+    padding: 0;
+    margin: 5px 0;
+}
+.userInfoItem{
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    color: #646464;
+    display: block;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+.userInfoItem:hover{
+    background: #f6f6f6!important;
+    color: #646464;
+}
+.backblack {
+    background: black;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+}
+/* ..............Navbar End.................... */
+.banner img{
+    width: 100%;
+}
+/* ...............FAQs............... */
+.heading {
+    margin-top: 32px;
+}
+.heading h1 {
+    color: #4F4F4F;
+    font-size: 36px;
+}
+.heading p {
+    margin: 0 20px;
+    font-size: 16px;
+    color: #646464;
+}
+.heading-underline {
+    width: 164px;
+    height: 25px;
+    margin-bottom: 34px;
+}
+.heading-underline>*{
+    z-index: -1;
+}
+.heading-underline img {
+    right: 69px;
+}
+.heading-underline span {
+    height: 1px;
+    width: 62px;
+    background-color: #CCCCCC;
+    top:49%;
+}
+div.select {
+    margin: 36px auto 48px;
+    max-width: 946px;
+}
+button#right,button#left{
+    flex-grow: 1;
+    text-align: center;
+    font-size: 24px;
+    outline: none;
+    border: none;
+    background-color: #F6F6F6;
+    color: #646464;
+    cursor: pointer;
+    transition: background  0.5s ease, border 0.5s ease;
+    border: 3px solid transparent;
+    border-bottom: 3px solid #1D7A8C;
+}
+#right {
+    padding: 24px 15px;
+}
+#left {
+    padding: 24px 58px;
+}
+.current-section {
+    background-color: #1D7A8C !important;
+    border: 2px solid #1D7A8C !important;
+    color: white !important;
+}
+.box{
+    min-height: 300px;
+    max-width: 946px;
+    margin: 0 auto;
+}
+.box-item div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    justify-content: flex-start;
+}
+.box-item div img {
+    cursor: pointer;
+    transition: transform .4s ease-in-out;
+    transform: rotate(-90deg);
+    height: 22px;
+    width: 22px;
+}
+.box-item div strong {
+    color: #646464;
+    font-size: 16px;
+    margin-left: 16px;
+    line-height: 22px;
+}
+.box-item p {
+    margin-bottom: 25px;
+    color: #646464;
+    font-size: 15px;
+    margin-left: 36px;
+    display: none;
+    text-align: justify;
+}
+
+.box.service-box{
+    display: none;
+}
+.rotate-0{
+    transform: rotate(0deg) !important;
+}
+.newsletter {
+    margin-top: 60px;
+}
+.newsletter h4{
+    font-size: 18px;
+    color: #353548;
+    text-align: center;
+}
+.newsletter form {
+    margin-bottom: 53px;
+}
+.newsletter div input[type="email"]{
+    border: 1px solid #565656;
+    color:#565656 ;
+    padding: 12px 22px;
+    outline: none;
+    font-size: 14px;
+    margin-top: 16px;
+    height: 40px;
+    background: transparent;
+}
+.newsletter div input[type="email"]::placeholder{
+    color: #565656;
+}
+.newsletter div input[type="submit"] {
+    color: white;
+    background-color: #FF7B6D;
+    margin-left: 11px;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0px 22px;
+    outline: none;
+    border: none;
+    margin-top: 16px;
+    cursor: pointer;
+}
+/* .......................FAQs End......................... */
+/* ................Footer................... */
+footer{
+    background: #111111;
+}
+.footer-menu {
+    padding: 20px 0px;
+}
+.footer-menu .menu ul{
+    list-style-type: none;
+    padding: 0;
+}
+.footer-menu .menu ul li a{
+    text-decoration: none;
+    color: #F1F1F1;
+    padding: 0px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.footer-menu .menu ul li a:hover{
+    color: #005f71;
+}
+
+.footer-menu .social img {
+    margin-top:3px;
+    filter: invert(1);
+}
+.footer-menu .social div {
+    text-align: center;
+    position: relative;
+    margin: 0 16px;
+}
+.footer-menu .social div::before {
+    content: '';
+    height: 0px;
+    width: 0px;
+    border-radius: 50%;
+    position: absolute;
+    background: #1d798b;
+    left: 50%;
+    top: 50%;
+    transition: all 0.25s ease;
+}
+.footer-menu .social div:hover::before{
+    height: 40px;
+    width: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+}
+footer hr{
+    height: 2px !important;
+    background: #424242;
+    width: 84.6%;
+    margin: 0 auto;
+    z-index:-1;
+}
+.terms {
+    color: #9BA0A3;
+    margin: 0px 117px;
+    padding: 23px 0;
+    text-align: center;
+}
+/* ..........Footer Ends.............. */
+
+@media only screen and (max-width: 1024px){
+    body{
+        overflow-x:hidden ;
+    }
+    .nav ul{
+        right: -250px;
+        flex-direction: column;
+        background: #fff;
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        padding: 20px 0;
+        position: fixed;
+        z-index: 10;
+    }
+    .nav ul li a {
+        display: block;
+        border: none;
+        width: 100%;
+        padding: 10px 20px;
+        line-height: 24px;
+        color: #646464;
+        font-size: 16px;
+        border-radius: 0;
+    }
+    .nav ul li a.active{
+        background: transparent;
+    }
+    .nav ul li a:hover{
+        background: #f6f6f6 !important;
+        color: #646464;
+    }
+    .nav ul li a.active:hover{
+        color: #005f71 !important;
+    }
+    .nav.open ul{
+        right: 0;
+    }
+    .backblack.open{
+        display: block;
+        opacity: 0.5;
+    }
+    .hamburger{
+        display: flex;
+    }
+    button#right, button#left {
+        font-size: 18px;
+    }
+    .footer-menu{
+        justify-content: space-evenly;
+        padding: 20px 0px;
+    }
+    .menu ul{
+        flex-direction: column;
+    }
+    .menu ul li{   
+        margin-bottom: 8px;
+    }
+    
+}
+@media only screen and (max-width: 425px){
+    #left {
+        padding: 24px 15px;
+    }
+    .footer-menu {
+        flex-direction: column;
+    }
+    .footer-menu .menu {
+        margin: 15px 0px;
+    }
+    .terms {
+        margin: 0px 40px;
+    }
+}
