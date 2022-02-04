@@ -71,15 +71,11 @@ namespace Helperland.Models.Data
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.LastName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
                 entity.Property(e => e.Message).IsRequired();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PhoneNumber)
                     .IsRequired()

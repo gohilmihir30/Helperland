@@ -1622,6 +1622,15 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
+      "System.Web.Helpers.Crypto/3.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/System.Web.Helpers.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/net40/System.Web.Helpers.Crypto.dll": {}
+        }
+      },
       "System.Windows.Extensions/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -6017,6 +6026,19 @@
         "version.txt"
       ]
     },
+    "System.Web.Helpers.Crypto/3.2.3": {
+      "sha512": "Kpf+faYrakOcPGMkhyA+jG1D7cyOqIwS9B35cfh8Fc5jf2lVMhxRQpDWhwNGmgZw+PBAQ1TfZMGBRojD1Glp5Q==",
+      "type": "package",
+      "path": "system.web.helpers.crypto/3.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/System.Web.Helpers.Crypto.dll",
+        "lib/net40/System.Web.Helpers.Crypto.pdb",
+        "system.web.helpers.crypto.3.2.3.nupkg.sha512",
+        "system.web.helpers.crypto.nuspec"
+      ]
+    },
     "System.Windows.Extensions/4.7.0": {
       "sha512": "CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "type": "package",
@@ -6294,8 +6316,10 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.22",
+      "Microsoft.EntityFrameworkCore >= 5.0.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.13",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.13"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.13",
+      "System.Web.Helpers.Crypto >= 3.2.3"
     ]
   },
   "packageFolders": {
@@ -6341,6 +6365,10 @@
             "target": "Package",
             "version": "[3.1.22, )"
           },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.13, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[5.0.13, )"
@@ -6350,6 +6378,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.13, )"
+          },
+          "System.Web.Helpers.Crypto": {
+            "target": "Package",
+            "version": "[3.2.3, )"
           }
         },
         "imports": [
@@ -6373,5 +6405,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Web.Helpers.Crypto 3.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Web.Helpers.Crypto",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

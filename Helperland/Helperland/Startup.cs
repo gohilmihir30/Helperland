@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Web;
 
 namespace Helperland
 {
@@ -25,6 +27,32 @@ namespace Helperland
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+                AddCookie(options =>
+                {
+                    options.LoginPath = "/";
+                    options.LogoutPath = "/logout";
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                    
+                    options.Events = new CookieAuthenticationEvents()
+                    {
+                        OnRedirectToLogin = ctx =>
+                        {
+                            var redirectPath = ctx.RedirectUri;
+                            
+                            if (redirectPath.Contains("?ReturnUrl"))
+                            {
+                                //remove the ReturnURL
+                                var url = redirectPath.Substring(0, redirectPath.LastIndexOf("?ReturnUrl"));
+
+                                ctx.Response.Redirect(url + "?modalRequest=true");
+                            }
+                            return Task.CompletedTask;
+                        },
+                    };
+                });
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
@@ -46,7 +74,7 @@ namespace Helperland
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

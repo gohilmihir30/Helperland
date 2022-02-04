@@ -1,4 +1,8 @@
-﻿<section class='crousel container-fluid d-flex justify-content-center align-items-center flex-column'>
+﻿@model Helperland.Models.ViewModels.RegistrationModel
+@{
+    ViewBag.title = "Become a Pro";
+}
+<section class='crousel container-fluid d-flex justify-content-center align-items-center flex-column'>
     <div class="crousel-container d-flex justify-content-center position-relative w-100">
         <div class="crousel-text position-absolute mt-4 mt-md-0">
             <h2>Do not feel like housework?</h2>
@@ -11,17 +15,22 @@
         </div>
         <div class="register">
             <h2>Register Now!</h2>
-            <form action="">
-                <input type="text" class="form-control" name="" placeholder="First Name">
-                <input type="text" class="form-control" name="" placeholder="Last Name">
-                <input type="email" class="form-control" name="" placeholder="Email Address">
+            <form method="post" asp-controller="SPSignup" asp-action="SPSignup">
+                <input type="text" class="form-control" asp-for="FirstName" placeholder="First Given Name">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <input type="text" class="form-control" asp-for="LastName" placeholder="Surname">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+                <input type="email" class="form-control" asp-for="Email" placeholder="E-mail Address">
+                <span asp-validation-for="Email" class="text-danger"></span>
                 <div class="input-group flex-nowrap">
-                    <span class="input-group-text" contenteditable="true">+91</span>
-                    <input type="tel" class="form-control" placeholder="Phone Number" aria-label="Username"
-                           aria-describedby="addon-wrapping">
+                    <span class="input-group-text">+91</span>
+                    <input type="tel" class="form-control" asp-for="Mobile" maxlength="10" placeholder="Phone Number">
                 </div>
-                <input type="password" class="form-control" name="" placeholder="Password">
-                <input type="password" class="form-control" name="" placeholder="Confirm Password">
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+                <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+                <span asp-validation-for="Password" class="text-danger text-wrap"></span>
+                <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Repeat Password">
+                <span asp-validation-for="ConfirmPassword" class="text-danger text-wrap"></span>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="news">
                     <label class="form-check-label" for="news">
@@ -104,3 +113,19 @@
         </div>
     </div>
 </section>
+@section css{
+    <link rel="stylesheet" href="/CSS/become_a_pro.css">
+}
+@section JavaScript{
+    <script src="/JS/become_a_pro.js"></script>
+}
+@section terms{
+    <hr>
+    <div class="terms">
+        <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
+    </div>
+}
+@section validation{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

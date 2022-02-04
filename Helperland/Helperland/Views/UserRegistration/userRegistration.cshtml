@@ -1,4 +1,7 @@
-﻿@model Helperland.Models.Data.User
+﻿@model Helperland.Models.ViewModels.RegistrationModel
+@{
+    ViewBag.title = "Create an Account | Helperland";
+}
 <section class="container-fluid ">
     <div class="heading d-flex align-items-center flex-column">
         <h3 class="text-center">Create an Account</h3>
@@ -27,7 +30,7 @@
             <div class="col-md-6">
                 <div class="input-group">
                     <div class="input-group-text">+91</div>
-                    <input type="tel" asp-for="Mobile" class="form-control" placeholder="Mobile Number">
+                    <input type="tel" asp-for="Mobile" class="form-control" maxlength="10" placeholder="Mobile Number">
                 </div>
                 <span asp-validation-for="Mobile" class="text-danger"></span>
             </div>
@@ -38,7 +41,8 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <input type="password" class="form-control" placeholder="Confirm Password">
+                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password">
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
         </div>
         <div class="form-check mb-3">
@@ -72,7 +76,19 @@
         </div>
     </form>
 </section>
-@section validation{ 
-    <script src="~/jquery-validate/jquery.validate.js"></script>
-    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+@section css{
+    <link rel="stylesheet" href="/CSS/userRegistration.css">
+}
+@section JavaScript{
+    <script src="/JS/userRegistration.js"></script>
+}
+@section validation{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+@section terms{
+    <hr>
+    <div class="terms">
+        <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
+    </div>
 }

@@ -238,14 +238,20 @@ input::placeholder{
     cursor: pointer;
     margin-top: 0
 }
+.btn.btn-primary:focus{
+    box-shadow:none;
+}
 button.btn[disabled]{
     pointer-events: all;
     cursor: not-allowed !important;
 }
-
-.btn.btn-primary:hover:not(button.btn[disabled]){
-    background: #146371!important;
-    outline: 0!important;
+.text-danger {
+    font-size: 14px;
+    color: #a94442 !important;
+}
+.btn.btn-primary:hover:not(button.btn[disabled]) {
+    background: #146371 !important;
+    outline: 0 !important;
 }
 .modal-body>div a{
     color: #646464;
@@ -716,6 +722,13 @@ img.message-symbol {
     }
     .nav ul li{
         margin: 0;
+    }
+    .nav ul li.loggedin {
+        display: inline-block !important;
+    }
+
+    div.loggedin {
+        display: none !important;
     }
     .nav ul li a {
         display: block;

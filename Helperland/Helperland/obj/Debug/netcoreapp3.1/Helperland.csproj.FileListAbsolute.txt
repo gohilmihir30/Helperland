@@ -384,3 +384,5 @@ E:\Study\Tatva Soft\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Raz
 E:\Study\Tatva Soft\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Static\faq.cshtml.g.cs
 E:\Study\Tatva Soft\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Static\prices.cshtml.g.cs
 E:\Study\Tatva Soft\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\UserRegistration\userRegistration.cshtml.g.cs
+E:\Study\Tatva Soft\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\System.Web.Helpers.Crypto.dll
+E:\Study\Tatva Soft\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Home\resetPass.cshtml.g.cs

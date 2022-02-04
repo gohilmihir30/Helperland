@@ -5,6 +5,7 @@ $("#login").attr("data-bs-target" , "#loginModalToggle")
 $("#login").attr("data-bs-toggle" , "modal");
 
 $(document).ready(() => {
+	$(".alert").delay(5000).fadeOut();
 	// Nav Bar
 	$(window).scroll((e) => {
 		if (window.scrollY > 10) {

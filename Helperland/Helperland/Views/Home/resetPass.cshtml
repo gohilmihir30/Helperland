@@ -1,0 +1,47 @@
+﻿@model Helperland.Models.ViewModels.resetPassModel
+@{
+    ViewBag.title = "Reset Password | Helperland";
+}
+<section class="container-fluid ">
+    <div class="heading d-flex align-items-center flex-column">
+        <h3 class="text-center">Reset Password</h3>
+        <div class="heading-underline position-relative">
+            <span class="start-0"></span>
+            <img class="position-absolute" src="./Image/forma-1-copy-5.png" alt="">
+            <span class="end-0"></span>
+        </div>
+    </div>
+    <form method="post">
+        @if(TempData["isvalid"] != null && !(bool)TempData["isvalid"]) {
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Invalid link!</strong> Please check request link in mail.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        <label class="form-label fw-bold" asp-for="NewPassword">New Password</label>
+        <input type="password" class="form-control" asp-for="NewPassword" placeholder="Password">
+        <span asp-validation-for="NewPassword" class="text-danger text-wrap"></span>
+        <label class="form-label mt-4 fw-bold" asp-for="ConfirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" asp-for="ConfirmPassword" placeholder="Repeat Password">
+        <span asp-validation-for="ConfirmPassword" class="text-danger text-wrap"></span>
+        <button type="submit" class="btn rounded-pill mt-4">Save</button>
+    </form>
+</section>
+@section css{
+    <link rel="stylesheet" href="/CSS/userRegistration.css">
+}
+@section JavaScript{
+    <script src="/JS/userRegistration.js"></script>
+}
+
+@section validation{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+@section terms{
+    <hr>
+    <div class="terms">
+        <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
+    </div>
+}

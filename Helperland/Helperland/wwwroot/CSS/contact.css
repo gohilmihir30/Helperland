@@ -251,7 +251,6 @@ section.contact-form {
 .contact-form form input, .contact-form form select, .contact-form form textarea {
     font-size: 16px;
     color: #646464;
-    /*border: 1px solid #c8c8c8;*/
     border-radius: 4px;
     padding: 12px 15px;
     line-height: 20px;
@@ -290,6 +289,7 @@ section.contact-form {
     white-space: nowrap;
     border-radius:100px;
     -webkit-user-select: none;
+    cursor:pointer;
 }
 input.form-control-file:hover:before {
     color: #1d7a8c !important;
@@ -318,7 +318,7 @@ input.form-control-file:hover:before {
 }
 .text-danger {
     font-size: 14px;
-    color: #a94442;
+    color: #a94442 !important;
 }
 /* ............Contact form end....................... */
 /* ...................Map section..................... */
@@ -460,6 +460,13 @@ footer hr{
     }
     .nav ul li a.active:hover{
         color: #005f71 !important;
+    }
+    .nav ul li.loggedin {
+        display: inline-block !important;
+    }
+
+    div.loggedin {
+        display: none !important;
     }
     .nav.open ul{
         right: 0;

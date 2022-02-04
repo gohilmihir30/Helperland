@@ -1,4 +1,5 @@
 $(document).ready(() => {
+	$(".alert").delay(8000).fadeOut();
 	// Nav Bar
 	$(".navbar .hamburger").click(() => {
 		$(".nav").toggleClass("open");
@@ -18,6 +19,7 @@ $(document).ready(() => {
 		$(".hamburger").removeClass("toggle");
 		$("body").css("overflow", "auto");
 	});
+
 
 	// PopOvers
 	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));

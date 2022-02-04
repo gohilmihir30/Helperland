@@ -330,7 +330,13 @@ footer hr{
     .nav ul li a.active:hover{
         color: #005f71 !important;
     }
-    .nav.open ul{
+    .nav ul li.loggedin{
+        display: inline-block !important;
+    }
+    div.loggedin{
+        display:none !important;
+    }
+    .nav.open ul {
         right: 0;
     }
     .backblack.open{

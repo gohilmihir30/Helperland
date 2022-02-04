@@ -1,3 +1,7 @@
+@model Helperland.Models.ViewModels.LoginModel
+@{ 
+    ViewBag.title = "Helperland";
+}
 <!-- ...................Modal......................... -->
 <div class="modal fade" id="loginModalToggle" aria-hidden="true" aria-labelledby="loginModalToggleLabel"
      tabindex="-1">
@@ -8,19 +12,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                @if (TempData["isValidCredentials"]!= null && !(bool)TempData["isValidCredentials"])
+                {
+                    <span class="alert alert-danger d-block alert-dismissible fade show"  role="alert">
+                        Username or Password is invalid
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </span>
+                }
+                <form method="post" asp-controller="Home" asp-action="Index">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="loginInputEmail1" placeholder="Email"
-                               aria-describedby="emailHelp">
+                        <input type="email" class="form-control" asp-for="Username" id="loginInputEmail1" placeholder="Email">
+                        <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" id="loginInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" asp-for="Password" id="loginInputPassword1" placeholder="Password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <input type="checkbox" asp-for="RememberMe" class="form-check-input" id="rememberMe">
                         <label class="form-check-label" for="rememberMe">Remember Me</label>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill" disabled>Login</button>
+                    <button type="submit" class="btn btn-primary rounded-pill">Login</button>
                 </form>
                 <div class="mt-4">
                     <p class="m-0 text-center">
@@ -45,12 +57,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" asp-controller="Home" asp-action="forgetpass">
                     <div class="mb-3">
-                        <input type="email" class="form-control" id="forgetPassEmail1" placeholder="Email"
-                               aria-describedby="emailHelp">
+                        <input type="email" class="form-control" asp-for="Email" id="forgetPassEmail1" placeholder="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill" disabled>Send</button>
+                    <button type="submit" class="btn btn-primary rounded-pill">Send</button>
                 </form>
                 <div class="mt-4">
                     <p class="m-0 text-center">
@@ -262,12 +274,21 @@
         <img src="./Image/Layer 598.png" alt="">
     </div>
 </div>
+@section css{ 
+    <link rel="stylesheet" href="/CSS/style.css">
+}
+@section JavaScript{ 
+<script src="/JS/index.js"></script>
+}
 @section policy{
     <div class="footer-policy justify-content-center align-items-center position-sticky">
-        <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum blanditiis officiis, doloremque unde harum
-            nobis porro non!<a href="#">Privacy Policy</a>
+        <p class="text-center p-2">
+            We use cookies to ensure that we give you the best experience on our website. If you continue to access the website, we'll assume that you are happy to receive all cookies on the Helperland website.<a href="#">Privacy Policy</a>
         </p>
-        <button id="policy_btn">OK!</button>
+        <button id="policy_btn" class="me-2">OK!</button>
     </div>
+}
+@section validation{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 }

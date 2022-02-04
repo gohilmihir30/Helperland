@@ -200,6 +200,7 @@ section.crousel div.register{
     margin-top: 38px;
     background-color: white;
     border-radius: 4px;
+    max-width:430px;
 }
 .register h2{
     color: #4f4f4f;
@@ -218,14 +219,19 @@ section.crousel div.register{
     padding: 16px 0 18px 16px;
     line-height: 1.5;
     border-color: #c8c8c8;
-    margin-bottom: 15px;
+    margin-top: 15px;
     height: 46px;
 }
 .form-control::placeholder{
     color: #a0a0a0;
 }
+input.form-control:focus {
+    border-color: #1d798b !important;
+    box-shadow: 0 0 10px rgba(0,0,0,.2) !important;
+}
 .input-group-text{
     height: 46px;
+    margin-top:15px;
 }
 .form-check-label a{
     color:#1fb6ff !important;
@@ -242,7 +248,11 @@ section.crousel div.register{
     background-color: #1d798c;
     border-color: #1d798c;
 }
-.robot{
+.text-danger {
+    font-size: 14px;
+    color: #a94442 !important;
+}
+.robot {
     margin: 15px 0 20px 0;
 }
 button[type = 'submit']{
@@ -296,7 +306,6 @@ section.works h2{
 }
 section.works>div{
     margin-bottom: 20px;
-    /* width: 50%; */
 }
 .box{
     margin-bottom: 20px;
@@ -490,6 +499,13 @@ footer hr{
     }
     .nav ul li a.active:hover{
         color: #005f71 !important;
+    }
+    .nav ul li.loggedin {
+        display: inline-block !important;
+    }
+
+    div.loggedin {
+        display: none !important;
     }
     .nav.open ul{
         right: 0;
