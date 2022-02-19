@@ -548,6 +548,12 @@ footer hr{
     #left {
         padding: 24px 15px;
     }
+    section.crousel div.register{
+        width:100%
+    }
+    .register form {
+        padding: 0 20px;
+    }
     .footer-menu {
         flex-direction: column;
     }

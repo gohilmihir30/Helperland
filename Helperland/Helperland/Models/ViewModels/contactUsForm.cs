@@ -18,6 +18,7 @@ namespace Helperland.Models.ViewModels
         [EmailAddress(ErrorMessage = "Please enter valid Email Address")]
         public string Email { get; set; }
         public string Subject { get; set; }
+        [Required (ErrorMessage ="Please Enter a Phone Number")]
         [RegularExpression("[0-9]{10}",ErrorMessage ="Enter valid Phone Number")]
         public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "Please enter a Message")]

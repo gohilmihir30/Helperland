@@ -1,0 +1,33 @@
+﻿@model Helperland.Models.ViewModels.ServiceRequestModel;
+@{
+    Layout = null;
+    int i = 1;
+}
+@if (ViewBag.address != null)
+{
+
+    foreach (var add in ViewBag.address)
+    {
+        if(!add.IsDeleted)
+        {
+<label for="address-@i" class="form-control-label d-flex align-items-center mb-3 p-3">
+
+    @if (add.IsDefault)
+    {
+        <input type="radio" class="form-check-input" asp-for="AddressId" id="address-@i"
+               value="@add.AddressId" checked>
+    }
+    else
+    {
+        <input type="radio" class="form-check-input" asp-for="AddressId" id="address-@i"
+               value="@add.AddressId">
+    }
+    <div class="ms-3">
+        <p class="m-0 p-0"><b>Address: </b> @add.AddressLine1, @add.City @add.PostalCode</p>
+        <p class="m-0 p-0"><b>Phone Number: </b>@add.Mobile</p>
+    </div>
+</label>
+            i++;
+        }
+    }
+}

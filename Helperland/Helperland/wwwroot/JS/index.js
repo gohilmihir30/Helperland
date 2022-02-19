@@ -65,13 +65,22 @@ $(document).ready(() => {
 	var myModal = new bootstrap.Modal(document.getElementById("loginModalToggle"));
 	const urlParams = new URLSearchParams(window.location.search);
 	if (urlParams.get("modalRequest") === "true") {
-		myModal.show();
+		myModal.show();	
 		if (window.history.pushState) {
 			const newURL = new URL(window.location.href);
 			newURL.search = "";
 			window.history.pushState({ path: newURL.href }, "", newURL.href);
 		}
 	}
+
+	$("#login").click(() => {
+		if (window.innerWidth < 1120) {
+			$(".nav").removeClass("open");
+			$(".backblack").removeClass("open");
+			$(".hamburger").removeClass("toggle");
+			$("html").css("overflow", "visible");
+        }
+    })
 
 	// Change display properties of arrows
 	if (screen.availWidth < 767) {

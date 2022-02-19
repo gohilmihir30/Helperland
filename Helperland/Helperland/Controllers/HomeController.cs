@@ -43,7 +43,7 @@ namespace Helperland.Controllers
         {
             var isExist = _helperlandContext.Users.Where(x => x.Email.Equals(loginModel.Username)).FirstOrDefault();
 
-            ModelState.AddModelError("athentication", "Authentication Failed !!");
+            //ModelState.AddModelError("athentication", "Authentication Failed !!");
 
             if (isExist == null)
             {
@@ -99,7 +99,6 @@ namespace Helperland.Controllers
             return RedirectToAction("index");
         }
 
-
         [Route("/resetpass")]
         [HttpGet]
         public IActionResult resetPass(string id)
@@ -119,7 +118,7 @@ namespace Helperland.Controllers
             }
             catch
             {
-                return BadRequest(error:"Invalid Link");
+                return BadRequest(error: "Invalid Link");
             }
         }
 
@@ -131,8 +130,8 @@ namespace Helperland.Controllers
             if (decryptId != null)
             {
                 int userId = Convert.ToInt32(decryptId.Split("_")[1]);
-                var user= _helperlandContext.Users.Where(e => e.UserId==userId).FirstOrDefault();
-                user.Password =Crypto.HashPassword(resetPassModel.NewPassword);
+                var user = _helperlandContext.Users.Where(e => e.UserId == userId).FirstOrDefault();
+                user.Password = Crypto.HashPassword(resetPassModel.NewPassword);
                 _helperlandContext.Users.Attach(user);
                 _helperlandContext.SaveChanges();
                 return RedirectToAction("index");

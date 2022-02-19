@@ -9,10 +9,10 @@ using System.Web.Helpers;
 
 namespace Helperland.Controllers
 {
-    public class SPSignupController : Controller
+    public class ServiceProviderController : Controller
     {
         public readonly HelperlandContext _helperlandContext = null;
-        public SPSignupController(HelperlandContext helperlandContext)
+        public ServiceProviderController(HelperlandContext helperlandContext)
         {
             _helperlandContext = helperlandContext;
         }

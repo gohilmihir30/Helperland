@@ -28,15 +28,17 @@ $(document).ready(() => {
 	// Accordion
 	$(".down").click((e) => {
 		$e = e.target;
+		$e = $($e).parent().children("img");
+		console.log($e);
 		$($e).parent().next().addClass("clicked");
 		$(".down").each((i, element) => {
 			$element = element;
-			if ($($element).parent().next().css("display") == "block") {
-				$($element).parent().next().slideUp(500);
-				$($element).toggleClass("rotate-0");
-			} else if (($($element).parent().next().css("display") == "none") & $($element).parent().next().is(".clicked")) {
+			if ($($element).next().css("display") == "block") {
+				$($element).next().slideUp(500);
+				$($element).children("img").toggleClass("rotate-0");
+			} else if (($($element).next().css("display") == "none") & $($element).next().is(".clicked")) {
 				$($e).parent().next().slideDown(500);
-				$($element).toggleClass("rotate-0");
+				$($element).children("img").toggleClass("rotate-0");
 			}
 		});
 		$($e).parent().next().removeClass("clicked");

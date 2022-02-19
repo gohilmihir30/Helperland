@@ -1,0 +1,437 @@
+﻿@{
+    ViewBag.title = "Book Now | Helperland";
+}
+@model Helperland.Models.ViewModels.ServiceRequestModel;
+<div id="loaderContainer">
+    <div class="loader rounded-circle"></div>
+</div>
+<div class="banner">
+    <img src="/Image/book-service-banner.jpg" alt="" />
+</div>
+<div class="heading d-flex align-items-center justify-content-center flex-column">
+    <h1 class="text-center">Set up your cleaning service</h1>
+    <div class="heading-underline position-relative">
+        <span class="position-absolute start-0"></span>
+        <img src="/Image/forma-1-copy-5.png" class="position-absolute" alt="" />
+        <span class="position-absolute end-0"></span>
+    </div>
+</div>
+<section class="container-lg">
+    <div class="setup-service row g-0 mb-4">
+        <div class="left pe-md-4 col-12 col-md-8">
+            <ul class="nav nav-tabs mb-4 w-100 position-relative" id="myTab" role="tablist">
+                <li class="nav-item col-3" role="presentation">
+                    <button class="nav-link active text border-0 rounded-0 flex-xl-row" id="Setup-tab"
+                        data-bs-toggle="tab" data-bs-target="#Setup" type="button" role="tab" aria-controls="Setup"
+                        aria-selected="true">
+                        <img src="/Image/setup-service.png" class="bg-img">
+                        <span class="d-none d-md-block ms-0 ms-xl-2"> Setup Service </span>
+                    </button>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <button class="nav-link text border-0 rounded-0 flex-xl-row" id="Schedule-tab" data-bs-toggle="tab"
+                        data-bs-target="#Schedule" type="button" role="tab" aria-controls="Schedule"
+                        aria-selected="false">
+                        <img src="/Image/schedule-plan.png" class="bg-img">
+                        <span class="d-none d-md-block ms-0 ms-xl-2"> Schedule & Plan </span>
+                    </button>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <button class="nav-link text border-0 rounded-0 flex-xl-row" id="Details-tab" data-bs-toggle="tab"
+                        data-bs-target="#Details" type="button" role="tab" aria-controls="Details"
+                        aria-selected="false">
+                        <img src="/Image/user-details.png" class="bg-img">
+                        <span class="d-none d-md-block ms-0 ms-xl-2"> Your Details </span>
+                    </button>
+                </li>
+                <li class="nav-item col-3" role="presentation">
+                    <button class="nav-link text border-0 rounded-0 flex-xl-row" id="Payment-tab" data-bs-toggle="tab"
+                        data-bs-target="#Payment" type="button" role="tab" aria-controls="Payment"
+                        aria-selected="false">
+                        <img src="/Image/payment.png" class="bg-img">
+                        <span class="d-none d-md-block ms-0 ms-xl-2"> Make Payment </span>
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane p-2 active" id="Setup" role="tabpanel" aria-labelledby="Setup-tab">
+                    <h3>Enter Your Postal Code</h3>
+                    <form id="checkavilability" data-ajax="true" data-ajax-method="post"
+                        data-ajax-url="/check-availability" data-ajax-loading="#loaderContainer"
+                        data-ajax-success="checkAvilabilitySuccess" data-ajax-failure="checkAvilabilityError">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <div class="col-sm-7 col-md-5">
+                                <input type="text" asp-for="Postalcode" class="form-control"
+                                    placeholder="Postal Code" />
+                                <span asp-validation-for="Postalcode" class="text-danger mt-2 d-block"></span>
+                                <span id="checkError" class="text-danger"></span>
+                            </div>
+                            <button type="submit"
+                                class="btn check-availability mt-2 mt-sm-0 d-inline rounded-pill ms-sm-3">Check
+                                Availability</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane p-2" id="Schedule" role="tabpanel" aria-labelledby="Schedule-tab">
+                    <form id="servicerequest" data-ajax="true" data-ajax-method="post" data-ajax-url="/book-service"
+                        data-ajax-loading="#loaderContainer" data-ajax-success="serviceRequestSuccess"
+                        data-ajax-failure="serviceRequestError">
+                        <input type="hidden" asp-for="Postalcode">
+                        <input type="hidden" asp-for="AddressId">
+                        <input type="hidden" asp-for="TotalCost">
+                        <input type="hidden" asp-for="ExtraHours">
+                        <input type="hidden" asp-for="ServiceHourlyRate" value="18">
+                        <div class="d-flex flex-wrap date-time">
+                            <div class="col-12 col-lg-6 row">
+                                <h3>When do you need the cleaner?</h3>
+                                <div class="col-6 col-md-5 p-0 pe-1">
+                                    <input type="text" class="form-control w-100" asp-for="ServiceStartDate"
+                                        placeholder="DD/MM/YYYY" readonly>
+                                </div>
+                                <div class="col-6 col-md-3 p-0">
+                                    <Select class="form-control w-100" asp-for="ServiceStartTime">
+                                        <option value="8">8:00</option>
+                                        <option value="8.5">8:30</option>
+                                        <option value="9">9:00</option>
+                                        <option value="9.5">9:30</option>
+                                        <option value="10">10:00</option>
+                                        <option value="10.5">10:30</option>
+                                        <option value="11">11:00</option>
+                                        <option value="11.5">11:30</option>
+                                        <option value="12">12:00</option>
+                                        <option value="12.5">12:30</option>
+                                        <option value="13">13:00</option>
+                                        <option value="13.5">13:30</option>
+                                        <option value="14">14:00</option>
+                                        <option value="14.5">14:30</option>
+                                        <option value="15">15:00</option>
+                                        <option value="15.5">15:30</option>
+                                        <option value="16">16:00</option>
+                                        <option value="16.5">16:30</option>
+                                        <option value="17">17:00</option>
+                                        <option value="17.5">17:30</option>
+                                        <option value="18">18:00</option>
+                                    </Select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 mt-3 mt-lg-0">
+                                <h3 class="text-nowrap">How long do you need your cleaner to stay?</h3>
+                                <div class="col-6 col-md-3">
+                                    <Select class="form-control w-100" asp-for="ServiceHours">
+                                        <option value="3">3.0 Hrs</option>
+                                        <option value="3.5">3.5 Hrs</option>
+                                        <option value="4">4.0 Hrs</option>
+                                        <option value="4.5">4.5 Hrs</option>
+                                        <option value="5">5.0 Hrs</option>
+                                        <option value="5.5">5.5 Hrs</option>
+                                        <option value="6">6.0 Hrs</option>
+                                        <option value="6.5">6.5 Hrs</option>
+                                        <option value="7">7.0 Hrs</option>
+                                        <option value="7.5">7.5 Hrs</option>
+                                        <option value="8">8.0 Hrs</option>
+                                        <option value="8.5">8.5 Hrs</option>
+                                        <option value="9">9.0 Hrs</option>
+                                        <option value="9.5">9.5 Hrs</option>
+                                        <option value="10">10.0 Hrs</option>
+                                        <option value="10.5">10.5 Hrs</option>
+                                        <option value="11">11.0 Hrs</option>
+                                        <option value="11.5">11.5 Hrs</option>
+                                        <option value="12">12.0 Hrs</option>
+                                    </Select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="extra-service">
+                            <h3>Extra Services</h3>
+                            <div class="d-flex mt-4 flex-wrap justify-content-center  justify-content-xl-between">
+                                <label for="Cabinet" class="position-relative d-flex align-items-center flex-column ">
+                                    <input type="checkbox" asp-for="Cabinet" class="position-absolute top-0 start-0">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="37" height="48">
+                                            <path fill-rule="evenodd" fill="#646464"
+                                                d="M34.744 0H2.254C1.11 0 0 1.16 0 2.264v45.735h36.999V2.264C36.999 1.16 35.987 0 34.744 0zm-9.078 21.995a2.8 2.8 0 0 1-2.791 2.804h-8.751a2.8 2.8 0 0 1-2.791-2.804v-1.196a.797.797 0 1 1 1.592 0v1.196c0 .664.538 1.204 1.199 1.204h8.751c.661 0 1.855-.54 1.855-1.204v-1.196c0-.443-.301-.8.14-.8.44 0 .796.357.796.8v1.196z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-center">Inside Cabinets</p>
+                                </label>
+                                <label for="Fridge" class="position-relative d-flex align-items-center flex-column ">
+                                    <input type="checkbox" asp-for="Fridge" class="position-absolute top-0 start-0">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="56">
+                                            <path fill-rule="evenodd" fill="#646464"
+                                                d="M25.406 52.934v3.065h-5.302v-3.065H7.883v3.065H2.581v-3.065H0V20.313h27.999v32.621h-2.593zM5.749 25.7c0-1.293-.54-1.784-1.159-1.784-.666 0-1.16.537-1.16 1.784v6.748c0 .664.54 1.156 1.16 1.156.665 0 1.159.056 1.159-1.156V25.7zM0 18.2V0h27.999v18.2H0zm3.43-4.201c0 .663.54 1.155 1.16 1.155.665 0 1.158-.538 1.158-1.155V6.621c0-.663-.539-1.155-1.158-1.155-.666 0-1.16.934-1.16 1.155v7.378z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-center">Inside Fridge</p>
+                                </label>
+                                <label for="Oven" class="position-relative d-flex align-items-center flex-column ">
+                                    <input type="checkbox" asp-for="Oven" class="position-absolute top-0 start-0">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="52" height="33">
+                                            <path fill-rule="evenodd" fill="#646464"
+                                                d="M50.119.981H1.879A1.881 1.881 0 0 0 0 2.863v28.246c0 1.037.842 1.881 1.879 1.881h48.24c1.039 0 1.88-.844 1.88-1.881V2.863a1.88 1.88 0 0 0-1.88-1.882zM41.814 8.68h2.936v3.22h-2.936V8.68zm0 3.045h2.936v2.941h-2.936v-2.941zm0 3.654h2.936v2.941h-2.936v-2.941zM38.6 8.68h2.399v3.22H38.6V8.68zm0 3.045h2.399v2.941H38.6v-2.941zm-3.829 17.5H31.52c.83-.292.876-.974.876-1.77h-6.111c3.125-1.913 5.172-5.054 5.172-8.611H7.21c0 3.557 2.46 6.7 4.981 8.611H6.82c0 .796-.377 1.478.134 1.77H3.758V4.746h31.013v24.479zM38.6 15.379h2.399v2.941H38.6v-2.941zm4.604 12.878c-1.774 0-3.212-1.44-3.212-2.837 0-2.155 1.438-3.595 3.212-3.595 1.772 0 3.209 1.44 3.209 3.595 0 1.397-1.437 2.837-3.209 2.837zm5.297-9.937h-2.936v-2.941h2.936v2.941zm0-3.654h-2.936v-2.941h2.936v2.941zm0-2.766h-2.936V8.68h2.936v3.22z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-center">Inside Oven</p>
+                                </label>
+                                <label for="Laundry" class="position-relative d-flex align-items-center flex-column ">
+                                    <input type="checkbox" asp-for="Laundry" class="position-absolute top-0 start-0">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="39" height="46">
+                                            <path fill-rule="evenodd" fill="#646464"
+                                                d="M0 45.999V8.987h38.999v37.012H0zm19.499-30.76c-6.798 0-12.329 5.497-12.329 12.254s5.531 12.255 12.329 12.255c6.798 0 12.329-5.498 12.329-12.255 0-6.757-5.53-12.254-12.329-12.254zm0 22.233c-5.535 0-10.039-4.477-10.039-9.979 0-5.502 4.504-9.978 10.039-9.978 5.851 0 10.04 4.476 10.04 9.978s-4.189 9.979-10.04 9.979zm7.985-9.979c0-4.383-3.575-7.936-7.985-7.936-3.609 0-7.984 3.553-7.984 7.936l.002.09c.379.326.796.637 2.283.637.115 0 .537-.368.944-.724.405-.354.788-.689 1.57-.689 1.636 0 1.164.335 1.569.689.408.356.829.724 1.664.724s1.256-.368 1.663-.724c.406-.354.789-.689 1.57-.689.782 0 1.165.335 1.57.689.408.356.829.724 1.79.724.576 0 .985-.26 1.34-.554.001-.058.004-.115.004-.173zm8.961-20.764c0 .624-.508 1.13-1.136 1.13a1.133 1.133 0 0 1-1.136-1.13c0-.623.509-1.129 1.136-1.129.628 0 1.136.506 1.136 1.129zm-3.645 0c0 .624-.509 1.13-1.137 1.13-.303 0-1.136-.506-1.136-1.13 0-.623.833-1.129 1.136-1.129.628 0 1.137.506 1.137 1.129zm-3.646 0c0 .624-.509 1.13-.974 1.13-.79 0-1.298-.506-1.298-1.13 0-.623.508-1.129 1.298-1.129.465 0 .974.506.974 1.129zm-20.683 0c0 .624-.508 1.13-1.136 1.13a1.133 1.133 0 0 1-1.136-1.13c0-.623.509-1.129 1.136-1.129.628 0 1.136.506 1.136 1.129zm-3.645 0c0 .624-.509 1.13-1.136 1.13-.07 0-1.137-.506-1.137-1.13C2.553 6.106 3.62 5.6 3.69 5.6c.627 0 1.136.506 1.136 1.129zM0 0h38.999v3.982H0V0z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-center">Laundry wash & dry</p>
+                                </label>
+                                <label for="Windows" class="position-relative d-flex align-items-center flex-column ">
+                                    <input type="checkbox" asp-for="Windows" class="position-absolute top-0 start-0">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47">
+                                            <path fill-rule="evenodd" fill="#646464"
+                                                d="M45.699 46.999H1.3a1.3 1.3 0 0 1-1.3-1.3v-44.4A1.3 1.3 0 0 1 1.3 0h44.399c.719 0 1.3.581 1.3 1.299v44.4a1.3 1.3 0 0 1-1.3 1.3zM42.996 4.1H4.3v38.896h38.696V4.1zM21.68 21.68H7.642V7.641H21.68V21.68zm0 17.676H7.642V25.319H21.68v14.037zM39.358 21.68H25.319V7.641h14.039V21.68zm0 17.676H25.319V25.319h14.039v14.037z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-center">Interior windows</p>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="commentsDiv mb-3">
+                            <h3>Comments</h3>
+                            <textarea asp-for="Comments" class="form-control" rows="3" maxlength="300"
+                                placeholder="Comments"></textarea>
+                            <div class="mt-3">
+                                <input type="checkbox" class="form-check-input" asp-for="HasPets">
+                                <label for="have-pet" class="form-check-label">I have pet at home</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class=" text-end mb-4">
+                            <button type="button" class="btn continue-btn rounded-pill"
+                                id="trigger-details">Continue</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane p-2" id="Details" role="tabpanel" aria-labelledby="Details-tab">
+                    <div class="address-container w-100">
+                        <h3>Enter your contact details, so we can serve you in better way!</h3>
+                        <div class="address d-flex flex-column"></div>
+                    </div>
+                    <div class="ps-2">
+                        <button class="btn add rounded-pill bg-white">+ Add new Address</button>
+                        <div class="add-new-address p-2">
+                            <form id="addAddressForm" class="row g-3 p-2" data-ajax="true" data-ajax-method="post"
+                                data-ajax-url="/addaddress?userid=1" data-ajax-loading="#loaderContainer"
+                                data-ajax-success="addAddressSuccess" data-ajax-failure="addAddressError">
+
+                                <div class="col-md-6">
+                                    <label for="street" class="form-label">Street Name</label>
+                                    <input type="text" class="form-control" asp-for="AddressLine1"
+                                        placeholder="Street Name">
+                                    <span class="text-danger mt-2 d-block" asp-validation-for="AddressLine1"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="house" class="form-label">House Number</label>
+                                    <input type="text" class="form-control" asp-for="AddressLine2"
+                                        placeholder="House Number">
+                                    <span class="text-danger mt-2 d-block" asp-validation-for="AddressLine2"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="postal-code" class="form-label">Postal Code</label>
+                                    <input type="text" class="form-control" asp-for="Postalcode" value="12345" readonly>
+                                    <span class="text-danger mt-2 d-block" asp-validation-for="Postalcode"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="city" class="form-label">City</label>
+                                    <select class="form-select" asp-for="City" aria-label="Default select example">
+                                        <option selected>Tambach-Dietharz</option>
+                                    </select>
+                                    <span class="text-danger mt-2 d-block" asp-validation-for="City"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-text">+91</div>
+                                        <input type="text" class="form-control" asp-for="Mobile"
+                                            placeholder="Phone Number" value="9988665544">
+                                    </div>
+                                    <span class="text-danger mt-2 d-block" asp-validation-for="Mobile"></span>
+                                </div>
+                                <div class="col-md-12 mt-2 p-2">
+                                    <button class="btn rounded-pill save-address px-4" type="submit">Save</button>
+                                    <button class="btn rounded-pill px-4 ms-2 address-close"
+                                        type="button">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="fav-sp mt-3 p-2">
+                        <h3>Your Favourite Service Provider</h3>
+                        <hr class="m-0">
+                        <p class="mt-2">You can choose your Favourite service provider form below list</p>
+                        <div>
+                            <div class="sp-container text-center">
+                                <div
+                                    class="sp-avtar rounded-circle d-flex justify-content-center align-items-center mb-2">
+                                    <img src="/Image/avtar.png" alt="">
+                                </div>
+                                <h5>Sndip Patel</h5>
+                                <button class="btn">Select</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-end mb-3">
+                        <button class="btn continue-btn rounded-pill" id="trigger-payment">Continue</button>
+                    </div>
+                </div>
+                <div class="tab-pane p-2 " id="Payment" role="tabpanel" aria-labelledby="Payment-tab">
+                    <h3>Pay securely with Helperland payment getway! </h3>
+                    <div class="mt-3 d-flex">
+                        <input type="checkbox" class="form-check-input col-3 me-2" name="have-pet" id="paymet-conf">
+                        <label for="paymet-conf" class="form-check-label col-9">I accepted terms and conditions, the
+                            cancellation policy and privacy policy. I confirmed that Helperland starts the
+                            execute the contract before the expiry of withdrawal period and i lose my rights of
+                            withdrawal as a consumer with full perfomance of the contact.</label>
+                    </div>
+                    <div class="text-end mb-3">
+                        <button class="btn continue-btn rounded-pill" id="confirm-booking">Complete Booking</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="right col-12 col-md-4 p-0 sticky-top mx-auto mx-md-0 mt-3 mt-md-0 mb-3 mw-auto">
+            <div class="payment-summary mb-4">
+                <div class="payment-heading">Payment Summary</div>
+                <div class="content">
+                    <p class="m-0"><span id="payment-service-date"></span> <span id="payment-service-time">
+                        </span></p>
+                    <p class="m-0">Duration</p>
+                    <div class="d-flex">
+                        <div class="col-8">Basic</div>
+                        <div class="col-4 text-end" id="payment-service-duration">0 Hrs</div>
+                    </div>
+                    <div class="" id="payment-extra">
+                        <div class="col-12"><b> Extra</b></div>
+                    </div>
+                    <div class="" id="payment-service-cabinet">
+                        <div class="col-8">Inside Cabinets</div>
+                        <div class="col-4 text-end">30 Min.</div>
+                    </div>
+                    <div class="" id="payment-service-fridge">
+                        <div class="col-8">Inside Fridge</div>
+                        <div class="col-4 text-end">30 Min.</div>
+                    </div>
+                    <div class="" id="payment-service-oven">
+                        <div class="col-8">Inside Oven</div>
+                        <div class="col-4 text-end">30 Min.</div>
+                    </div>
+                    <div class="" id="payment-service-laundry">
+                        <div class="col-8">Laundry wash & Dry</div>
+                        <div class="col-4 text-end">30 Min.</div>
+                    </div>
+                    <div class="" id="payment-service-window">
+                        <div class="col-8">Interior Windows</div>
+                        <div class="col-4 text-end">30 Min.</div>
+                    </div>
+
+                    <hr class="m-0">
+                    <div class="d-flex mt-1">
+                        <div class="col-8 fw-bold">Total Service Time</div>
+                        <div class="col-4 text-end fw-bold"><span id="payment-service-totalTime">0</span> Hrs </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="d-flex">
+                        <div class="col-8">Per Cleaning</div>
+                        <div class="col-4 text-end"><span id="per-cleaning">00.00</span> &#8364;</div>
+                    </div>
+                </div>
+                <div class="content total-payment">
+                    <div class="d-flex">
+                        <div class="col-4">Total Payment</div>
+                        <div class="col-8 text-end fs-1"><span id="totalPayment">00.00</span> &#8364;</div>
+                    </div>
+                </div>
+
+                <div class="payment-footer">
+                    <img src="/Image/smiley.png" class="me-2" alt="">
+                    <span>See what is always included</span>
+                </div>
+            </div>
+            <div class="payment-faq">
+                <h3 class="text-center">Questions?</h3>
+                <div class="box mb-3">
+                    <div class="box-item">
+                        <div class="down">
+                            <img src="/Image/right-arrow-dark.png" id="item-1" alt="">
+                            <span>What's included in a cleaning?</span>
+                        </div>
+                        <p>Bedroom, Living Room & Common Areas, Bathrooms, Kitchen, Extras</p>
+                    </div>
+                    <div class="box-item">
+                        <div class="down">
+                            <img src="/Image/right-arrow-dark.png" id="item-2" alt="">
+                            <span>Which Helperland professional will come to my place?</span>
+                        </div>
+                        <p>
+                            Helperland has a vast network of experienced, top-rated cleaners. Based on the time and date
+                            of
+                            your request, we work to assign the best professional available. Like working with a
+                            specific
+                            pro? Add them to your Pro Team from the mobile app and they'll be requested first for all
+                            future
+                            bookings. You will receive an email with details about your professional prior to your
+                            appointment.
+                        </p>
+                    </div>
+                    <div class="box-item">
+                        <div class="down">
+                            <img src="/Image/right-arrow-dark.png" alt="">
+                            <span>Can I skip or reschedule bookings?</span>
+                        </div>
+                        <p>
+                            You can reschedule any booking for free at least 24 hours in advance of the scheduled start
+                            time.
+                            If you need to skip a booking within the minimum commitment, we’ll credit the value of the
+                            booking to your account. You can use this credit on future cleanings and other Helperland
+                            services.
+                        </p>
+                    </div>
+                </div>
+                <a asp-controller="static" asp-action="faq" title="FAQs">For more Help</a>
+            </div>
+        </div>
+    </div>
+</section>
+@section css{
+<link rel="stylesheet" href="/CSS/book-service.css" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+}
+@section terms{
+<hr />
+<div class="terms">
+    <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
+</div>
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/book-service.js"></script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
