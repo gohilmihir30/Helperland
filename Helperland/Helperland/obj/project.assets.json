@@ -6328,11 +6328,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
+      "projectUniqueName": "E:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
       "projectName": "Helperland",
-      "projectPath": "E:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
+      "projectPath": "E:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
       "packagesPath": "C:\\Users\\gohil\\.nuget\\packages\\",
-      "outputPath": "E:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\obj\\",
+      "outputPath": "E:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gohil\\AppData\\Roaming\\NuGet\\NuGet.Config",

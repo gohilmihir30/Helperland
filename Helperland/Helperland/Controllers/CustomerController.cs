@@ -8,9 +8,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System.Globalization;
+using Helperland.Services.Email;
 
 namespace Helperland.Controllers
 {
+    [Authorize(Roles = "Customer")]
     public class CustomerController : Controller
     {
         public HelperlandContext _helperlandContext = null;
@@ -21,6 +26,7 @@ namespace Helperland.Controllers
         }
 
         [Route("/userRegistration")]
+        [AllowAnonymous]
         [HttpGet]
         public ActionResult userRegistration()
         {
@@ -28,6 +34,7 @@ namespace Helperland.Controllers
         }
 
         [Route("/userRegistration")]
+        [AllowAnonymous]
         [HttpPost]
         public ActionResult UserRegistration(RegistrationModel registrationModel)
         {
@@ -62,6 +69,7 @@ namespace Helperland.Controllers
         [Route("/book-service")]
         public IActionResult BookService()
         {
+            var userId = User.FindFirstValue(ClaimTypes.Role);
             return View();
         }
         
@@ -69,118 +77,146 @@ namespace Helperland.Controllers
         [HttpPost]
         public int BookService(ServiceRequestModel serviceRequestModel)
         {
-            int _random = new Random().Next(1000,9999);
-            var isExist= _helperlandContext.ServiceRequests.Where(x => x.ServiceId == _random).FirstOrDefault();
-            while (isExist != null)
+            var serviceRequest = new ServiceRequest();
+            try
             {
-                _random= new Random().Next(1000, 9999);
-                isExist = _helperlandContext.ServiceRequests.Where(x => x.ServiceId == _random).FirstOrDefault();
-            }
+                int _random = new Random().Next(1000, 9999);
+                var isExist = _helperlandContext.ServiceRequests.Where(x => x.ServiceId == _random).FirstOrDefault();
+                while (isExist != null)
+                {
+                    _random = new Random().Next(1000, 9999);
+                    isExist = _helperlandContext.ServiceRequests.Where(x => x.ServiceId == _random).FirstOrDefault();
+                }
+                var arr = serviceRequestModel.ServiceStartDate.Split('/');
 
-            var serviceRequest = new ServiceRequest()
-            {
-                UserId=1,
-                ServiceId = _random,
-                ServiceStartDate=Convert.ToDateTime(serviceRequestModel.ServiceStartDate),
-                ZipCode=serviceRequestModel.Postalcode,
-                ServiceHourlyRate=serviceRequestModel.ServiceHourlyRate,
-                ServiceHours=serviceRequestModel.ServiceHours,
-                ExtraHours=serviceRequestModel.ExtraHours,
-                TotalCost=serviceRequestModel.TotalCost,
-                Comments=serviceRequestModel.Comments,
-                HasPets=serviceRequestModel.HasPets,
-                Status=1,
-                CreatedDate=DateTime.Now,
-                ModifiedDate=DateTime.Now
-            };
+                var hours = Math.Floor(serviceRequestModel.ServiceStartTime);
+                var min = Math.Ceiling((serviceRequestModel.ServiceStartTime - hours) * 60);
+                var date = new DateTime(Int32.Parse(arr[2]), Int32.Parse(arr[1]), Int32.Parse(arr[0]), (int)hours, (int)min, 0);
 
-            _helperlandContext.ServiceRequests.Add(serviceRequest);
-            _helperlandContext.SaveChanges();
 
-            if (serviceRequestModel.Cabinet)
-            {
-            var serviceRequestExtra = new ServiceRequestExtra()
-            {
-                ServiceRequestId = serviceRequest.ServiceRequestId,
-                ServiceExtraId = 1
-            };
-                _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
-            }if (serviceRequestModel.Fridge)
-            {
-                var serviceRequestExtra = new ServiceRequestExtra()
+                serviceRequest = new ServiceRequest()
+                {
+                    UserId = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier)),
+                    ServiceId = _random,
+                    ServiceStartDate =date,
+                    ZipCode = serviceRequestModel.Postalcode,
+                    ServiceHourlyRate = serviceRequestModel.ServiceHourlyRate,
+                    ServiceHours = serviceRequestModel.ServiceHours,
+                    ExtraHours = serviceRequestModel.ExtraHours,
+                    TotalCost = serviceRequestModel.TotalCost,
+                    Comments = serviceRequestModel.Comments,
+                    HasPets = serviceRequestModel.HasPets,
+                    Status = 1,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now
+                };
+
+                _helperlandContext.ServiceRequests.Add(serviceRequest);
+                _helperlandContext.SaveChanges();
+
+                if (serviceRequestModel.Cabinet)
+                {
+                    var serviceRequestExtra = new ServiceRequestExtra()
+                    {
+                        ServiceRequestId = serviceRequest.ServiceRequestId,
+                        ServiceExtraId = 1
+                    };
+                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                }
+                if (serviceRequestModel.Fridge)
+                {
+                    var serviceRequestExtra = new ServiceRequestExtra()
+                    {
+                        ServiceRequestId = serviceRequest.ServiceRequestId,
+                        ServiceExtraId = 2
+                    };
+                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                }
+                if (serviceRequestModel.Oven)
+                {
+                    var serviceRequestExtra = new ServiceRequestExtra()
+                    {
+                        ServiceRequestId = serviceRequest.ServiceRequestId,
+                        ServiceExtraId = 3
+                    };
+                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                }
+                if (serviceRequestModel.Laundry)
+                {
+                    var serviceRequestExtra = new ServiceRequestExtra()
+                    {
+                        ServiceRequestId = serviceRequest.ServiceRequestId,
+                        ServiceExtraId = 4
+                    };
+                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                }
+                if (serviceRequestModel.Windows)
+                {
+                    var serviceRequestExtra = new ServiceRequestExtra()
+                    {
+                        ServiceRequestId = serviceRequest.ServiceRequestId,
+                        ServiceExtraId = 5
+                    };
+                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                }
+
+                UserAddress userAddress = _helperlandContext.UserAddresses.Where(x => x.AddressId == serviceRequestModel.AddressId[0]).FirstOrDefault();
+                var serviceRequestAddress = new ServiceRequestAddress()
                 {
                     ServiceRequestId = serviceRequest.ServiceRequestId,
-                    ServiceExtraId = 2
+                    AddressLine1 = userAddress.AddressLine1,
+                    AddressLine2 = userAddress.AddressLine2,
+                    City = userAddress.City,
+                    State = userAddress.State,
+                    PostalCode = userAddress.PostalCode,
+                    Mobile = userAddress.Mobile,
+                    Email = userAddress.Email
                 };
-                _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
-            }if (serviceRequestModel.Oven)
-            {
-                var serviceRequestExtra = new ServiceRequestExtra()
-                {
-                    ServiceRequestId = serviceRequest.ServiceRequestId,
-                    ServiceExtraId = 3
-                };
-                _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
-            }if (serviceRequestModel.Laundry)
-            {
-                var serviceRequestExtra = new ServiceRequestExtra()
-                {
-                    ServiceRequestId = serviceRequest.ServiceRequestId,
-                    ServiceExtraId = 4
-                };
-                _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
-            }if (serviceRequestModel.Windows)
-            {
-                var serviceRequestExtra = new ServiceRequestExtra()
-                {
-                    ServiceRequestId = serviceRequest.ServiceRequestId,
-                    ServiceExtraId = 5
-                };
-                _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
-            }
-
-            UserAddress userAddress= _helperlandContext.UserAddresses.Where(x => x.AddressId == serviceRequestModel.AddressId).FirstOrDefault();
-            var serviceRequestAddress = new ServiceRequestAddress()
-            {
-                ServiceRequestId = serviceRequest.ServiceRequestId,
-                AddressLine1= userAddress.AddressLine1,
-                AddressLine2= userAddress.AddressLine2,
-                City= userAddress.City,
-                State= userAddress.State,
-                PostalCode= userAddress.PostalCode,
-                Mobile= userAddress.Mobile,
-                Email=userAddress.Email
-            };
-            _helperlandContext.ServiceRequestAddresses.Add(serviceRequestAddress);
-
-            _helperlandContext.ServiceRequests.Attach(serviceRequest);
-            _helperlandContext.SaveChanges();
-            
-            return serviceRequest.ServiceId;
+                _helperlandContext.ServiceRequestAddresses.Add(serviceRequestAddress);
+                _helperlandContext.ServiceRequests.Attach(serviceRequest);
+                var result= _helperlandContext.SaveChanges();
+                
+                return serviceRequest.ServiceId;
         }
+            catch
+            {
+                _helperlandContext.ServiceRequests.Remove(_helperlandContext.ServiceRequests.Where(x=>x.ServiceRequestId== serviceRequest.ServiceRequestId).FirstOrDefault());
+                _helperlandContext.SaveChanges();
+                return 0;
+            }
+}
 
 
         [Route("/check-availability")]
         [HttpPost]
-        public Boolean CheckAvailability(string postalCode)
+        public JsonResult CheckAvailability(string postalCode)
         {
-            var isExists = _helperlandContext.Users.Where(x => x.ZipCode.Equals(postalCode)).ToList();
-            if(isExists.Count > 0)
+            if (postalCode != null)
             {
-                return true;
+                var isAvailable = _helperlandContext.Users.Where(u => u.UserTypeId == 2 && u.ZipCode == postalCode).FirstOrDefault();
+                if (isAvailable != null)
+                {
+                    var city = (
+                        from z in _helperlandContext.Zipcodes
+                        join c in _helperlandContext.Cities
+                        on z.CityId equals c.Id
+                        where z.ZipcodeValue == postalCode
+                        select c.CityName
+                    ).FirstOrDefault();
+                    return Json(new { CityName = city });
+                }
             }
-            else
-            {
-                return false;
-            }
+            return Json(false);
         }
 
         [Route("/viewaddress")]
         [HttpGet]
-        public IActionResult GetAddress(string userid)
+        public IActionResult GetAddress(string postlcode)
         {
             System.Threading.Thread.Sleep(500);
-            var address= _helperlandContext.UserAddresses.Where(x => x.UserId == Int32.Parse(userid)).ToList();
+            var id = User.Claims.Where(c => c.Type == ClaimTypes.NameIdentifier)
+                .Select(c => c.Value).SingleOrDefault();
+            var address= _helperlandContext.UserAddresses.Where(x => x.UserId ==Int32.Parse(id) && x.PostalCode.Equals(postlcode)).ToList();
             ViewBag.address = address;
             return View();
         }
@@ -202,7 +238,7 @@ namespace Helperland.Controllers
                     IsDefault=false,
                     IsDeleted=false,
                     Mobile=serviceRequestModel.Mobile,
-                    Email=null,
+                    Email=User.Claims.Where(c=>c.Type=="username").Select(c=>c.Value).SingleOrDefault(),
                 };
                 _helperlandContext.UserAddresses.Add(userAddress);
                

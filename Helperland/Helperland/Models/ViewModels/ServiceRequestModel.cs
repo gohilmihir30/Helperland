@@ -13,9 +13,14 @@ namespace Helperland.Models.ViewModels
         [MinLength(5, ErrorMessage = "Minimum length 5.")]
         public String Postalcode { get; set; }
 
+        [Required]
         public int UserId { get; set; }
+        [Required(ErrorMessage = "Plese Enter Date Field")]
+        [RegularExpression("([0-9]){2}/([0-9]){2}/([0-9]){4}", ErrorMessage = "Enter valid Date")]
         public string ServiceStartDate { get; set; }
-        public int ServiceStartTime { get; set; }
+        [Required(ErrorMessage = "Plese Enter Time Field")]
+        public double ServiceStartTime { get; set; }
+        [Required(ErrorMessage = "Plese Enter Hours Field")]
         public double ServiceHours { get; set; }
         public double? ExtraHours { get; set; }
         public decimal? ServiceHourlyRate { get; set; }
@@ -27,12 +32,13 @@ namespace Helperland.Models.ViewModels
         public bool Oven { get; set; }
         public bool Laundry { get; set; }
         public bool Windows { get; set; }
-        public int AddressId { get; set; }
-        [Required(ErrorMessage ="Plase enter Street name")]
+        [Required]
+        public List<int> AddressId { get; set; }
+        [Required(ErrorMessage = "Plase enter Street name")]
         public string AddressLine1 { get; set; }
-        [Required(ErrorMessage ="Please enter House number")]
+        [Required(ErrorMessage = "Please enter House number")]
         public string AddressLine2 { get; set; }
-        [Required(ErrorMessage ="Please enter Mobile number")]
+        [Required(ErrorMessage = "Please enter Mobile number")]
         [RegularExpression("[0-9]{10}", ErrorMessage = "Enter valid Phone Number")]
         public string Mobile { get; set; }
         [Required]

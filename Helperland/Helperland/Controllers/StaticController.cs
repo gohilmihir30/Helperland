@@ -25,6 +25,7 @@ namespace Helperland.Controllers
             _iwebhostenvironment = webHostEnvironment;
             _email = new Email();
         }
+
         [Route("/faq")]
         public IActionResult Faq()
         {

@@ -43,8 +43,6 @@ namespace Helperland.Controllers
         {
             var isExist = _helperlandContext.Users.Where(x => x.Email.Equals(loginModel.Username)).FirstOrDefault();
 
-            //ModelState.AddModelError("athentication", "Authentication Failed !!");
-
             if (isExist == null)
             {
                 TempData["isValidCredentials"] = false;
@@ -62,7 +60,19 @@ namespace Helperland.Controllers
                 {
                     var claims = new List<Claim>();
                     claims.Add(new Claim("username", isExist.Email));
+                    if (isExist.UserTypeId == 1)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, "Customer"));
+                    }else if (isExist.UserTypeId == 2 )
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role,"ServiceProvider"));
+                    }
+                    else if (isExist.UserTypeId == 3)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role,"Admin"));
+                    }
                     claims.Add(new Claim(ClaimTypes.NameIdentifier, isExist.UserId.ToString()));
+                    claims.Add(new Claim(ClaimTypes.MobilePhone, isExist.Mobile));
                     claims.Add(new Claim(ClaimTypes.Name, isExist.FirstName + " " + isExist.LastName));
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);

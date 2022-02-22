@@ -1,5 +1,5 @@
 {
-  "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
+  "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Helperland.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14402,73 +14402,73 @@
   "RootNamespace": "Helperland",
   "Documents": [
     {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Customer\\userRegistration.cshtml",
-      "TargetPath": "Views\\Customer\\userRegistration.cshtml",
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Static\\contact.cshtml",
+      "TargetPath": "Views\\Static\\contact.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Home\\index.cshtml",
-      "TargetPath": "Views\\Home\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Static\\faq.cshtml",
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Static\\faq.cshtml",
       "TargetPath": "Views\\Static\\faq.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Customer\\GetAddress.cshtml",
-      "TargetPath": "Views\\Customer\\GetAddress.cshtml",
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Home\\index.cshtml",
+      "TargetPath": "Views\\Home\\index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\ServiceProvider\\spSignup.cshtml",
-      "TargetPath": "Views\\ServiceProvider\\spSignup.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Static\\prices.cshtml",
-      "TargetPath": "Views\\Static\\prices.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Customer\\BookService.cshtml",
-      "TargetPath": "Views\\Customer\\BookService.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Home\\resetPass.cshtml",
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Home\\resetPass.cshtml",
       "TargetPath": "Views\\Home\\resetPass.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Static\\about.cshtml",
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\userRegistration.cshtml",
+      "TargetPath": "Views\\Customer\\userRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Static\\about.cshtml",
       "TargetPath": "Views\\Static\\about.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "e:\\Study\\Tatva Soft\\Helperland\\Helperland\\Helperland\\Views\\Static\\contact.cshtml",
-      "TargetPath": "Views\\Static\\contact.cshtml",
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\BookService.cshtml",
+      "TargetPath": "Views\\Customer\\BookService.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\GetAddress.cshtml",
+      "TargetPath": "Views\\Customer\\GetAddress.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Static\\prices.cshtml",
+      "TargetPath": "Views\\Static\\prices.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\ServiceProvider\\spSignup.cshtml",
+      "TargetPath": "Views\\ServiceProvider\\spSignup.cshtml",
       "FileKind": "mvc"
     }
   ],
