@@ -1,0 +1,270 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Dashboard";
+}
+@model FetchServiceDetails
+@* Modals *@ @* Service Detail modal *@
+<div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"></div>
+    </div>
+</div>
+@* Reschedule Modal *@
+<div class="modal fade" id="reschedule" aria-hidden="true" aria-labelledby="rescheduleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rescheduleLabel">Rechedule Service Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="rescheduleForm" data-ajax="true" data-ajax-method="Post" data-ajax-url="/reschedule"
+                data-ajax-loading="loaderContainer" data-ajax-success="rescheduleSuccess"
+                data-ajax-failure="rescheduleFailure">
+                <div class="modal-body">
+                    <input type="hidden" id="rescheduleServiceId" name="rescheduleServiceId" />
+                    <label for="" class="form-label">Select New Date and Time</label>
+                    <div class="row w-100">
+                        <div class="col-6 px-2">
+                            <input type="text" name="newServiceDate" id="newServiceDate" class="form-control w-100"
+                                placeholder="DD/MM/YYYY" readonly />
+                        </div>
+                        <div class="col-6 p-0">
+                            <select id="serviceTime" name="serviceTime" class="form-select w-100">
+                                <option value="8">08:00</option>
+                                <option value="8.5">08:30</option>
+                                <option value="9">09:00</option>
+                                <option value="9.5">09:30</option>
+                                <option value="10">10:00</option>
+                                <option value="10.5">10:30</option>
+                                <option value="11">11:00</option>
+                                <option value="11.5">11:30</option>
+                                <option value="12">12:00</option>
+                                <option value="12.5">12:30</option>
+                                <option value="13">13:00</option>
+                                <option value="13.5">13:30</option>
+                                <option value="14">14:00</option>
+                                <option value="14.5">14:30</option>
+                                <option value="15">15:00</option>
+                                <option value="15.5">15:30</option>
+                                <option value="16">16:00</option>
+                                <option value="16.5">16:30</option>
+                                <option value="17">17:00</option>
+                                <option value="17.5">17:30</option>
+                                <option value="18">18:00</option>
+                            </select>
+                        </div>
+                        <span id="rescheduleError" class="text-danger mt-2"></span>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="submit" class="btn btn-primary border-0 reschedule rounded-pill w-100">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@* Cancle service request Modal *@
+<div class="modal fade" id="cancleRequest" aria-hidden="true" aria-labelledby="cancleRequestLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancleRequestLabel">Cancel Service Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="cancleRequestForm" data-ajax="true" data-ajax-method="Post" data-ajax-url="/canclerequest"
+                data-ajax-loading="loaderContainer" data-ajax-success="cancleRequestSuccess"
+                data-ajax-failure="cancleRequestFailure">
+                <input type="hidden" name="cancelServiceId" id="cancelServiceId">
+                <div class="modal-body">
+                    <label for="" class="form-label">Why you wnat to cancel the service request?</label>
+                    <textarea class="form-control" name="cancleReason" id="cancleReason" rows="5"
+                        maxlength="500"></textarea>
+                    <span id="cancleRequestError" class="text-danger mt-2"></span>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button class="btn btn-primary border-0 reschedule rounded-pill w-100">Cancel Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="heading mb-2 mb-sm-0">
+    <h3 class="d-inline-block">Current Service Requests</h3>
+    <div class="sort d-inline-block d-md-none">
+        <img src="/Image/filter.png" alt="" id="sortData" data-bs-toggle="popover" data-bs-container="body"
+            data-bs-placement="bottom" data-bs-trigger="focus" tabindex="0" data-bs-html="true"
+            data-bs-custom-class="sortOption" data-bs-offset="-80,17" data-bs-content='<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="serviceAsc" onclick=sort(1,"asc")>
+		<label class="form-check-label" for="serviceAsc">
+			Service Date: Oldest
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="serviceDesc" onclick=sort(1,"desc")>
+		<label class="form-check-label" for="serviceDesc">
+			Service Date: Latest
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="servisProviderAsc" onclick=sort(2,"asc")>
+		<label class="form-check-label" for="servisProviderAsc">
+			Service Provider: A to Z
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="servisProviderDesc" onclick=sort(2,"desc")>
+		<label class="form-check-label" for="servisProviderDesc">
+			Service Provider: Z to A
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="paymentAsc"
+			   onclick=sort(3,"asc")>
+		<label class="form-check-label" for="paymentAsc">
+			Payment: Low to High
+		</label>
+	</div>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" name="exampleRadios" id="paymentDesc"
+			   onclick=sort(3,"desc")>
+		<label class="form-check-label" for="paymentDesc">
+			Payment: High to Low
+		</label>
+	</div>' />
+    </div>
+</div>
+
+<div class="data-table position-relative">
+    <table id="example">
+        <thead>
+            <tr>
+                <th class="text-nowrap">Service Id</th>
+                <th>Service Date</th>
+                <th>Service Provider</th>
+                <th class="text-center">Payment</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var data in Model.Details)
+                {
+                    <tr>
+                        <td>
+                            <a class="showdetail" data-serviceid="@data.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal">@data.ServiceId</a>
+                        </td>
+                        <td class="datetime">
+                            <div class="showdetail" data-serviceid="@data.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal">
+                                <div class="d-flex align-items-center mb-1">
+                                    <img class="me-2" src="/Image/calculator.png" alt="" />
+                                    <strong>@data.ServiceStartTime.ToString("dd/MM/yyyy")</strong>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="me-2" src="/Image/Layer 712.png" alt="" />
+                                    <span class="text-nowrap">@data.ServiceStartTime.ToString("HH:mm") -
+                                        @data.ServiceStartTime.AddHours(data.ServiceHours).ToString("HH:mm")
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="serviceprovider">
+                            @if (data.FirstName != null)
+                            {
+                                <div class="d-flex">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle">
+                                        <img src="@data.Profile" alt="" />
+                                    </div>
+                                    <div class="text-nowrap">
+                                        <p>@data.FirstName @data.LastName</p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="position-relative rating d-inline">
+                                                <span class="unfilled position-absolute top-0 end-0"
+                                        style="--rating:@Math.Round(data.AverageRating,2)"></span>
+                                                <span class="filled position-relative top-0 start-0"></span>
+                                            </div>
+                                            <span class="ms-1">@Math.Round(data.AverageRating,2)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td class="payment text-center"><span>@data.TotalCost</span> &#8364;</td>
+                        <td class="action text-center">
+                            @{
+                                var starttime = (double)@data.ServiceStartTime.Hour + (double)@data.ServiceStartTime.Minute / 60;
+                            }
+                            <button class="btn btn-primary rounded-pill mt-1 reschedule"
+                        data-date='@data.ServiceStartTime.ToString("dd/MM/yyyy")' data-id="@data.ServiceId"
+                        data-time="@starttime" data-bs-target="#reschedule" data-bs-toggle="modal">
+                                Reschedule
+                            </button>
+                            <button class="btn btn-primary rounded-pill mt-1 cancle" data-id="@data.ServiceId"
+                        data-bs-target="#cancleRequest" data-bs-toggle="modal">
+                                Cancel
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/dashboard.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+<script src="/JS/dashboard.js"></script>
+<script>
+    var table = $("#example").DataTable({
+        dom: 'Bt<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+        pagingType: "full_numbers",
+        columnDefs: [
+            { orderable: false, targets: 2 },
+            { orderable: false, targets: 4 },
+        ],
+        buttons: [
+            {
+                text: "Add New Service Request",
+                action: function (e, dt, button, config) {
+                    window.location = "/book-service";
+                },
+            },
+        ],
+        language: {
+            paginate: {
+                first: '<img src="/Image/Group 36.png" alt="">',
+                last: '<img src="/Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+                previous: '<img src="/Image/keyboard-right-arrow-button copy.png" alt="">',
+                next: '<img src="/Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">',
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+            emptyTable: "No service History Found",
+        },
+    });
+</script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

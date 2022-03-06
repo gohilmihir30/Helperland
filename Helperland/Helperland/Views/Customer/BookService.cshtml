@@ -7,11 +7,11 @@
     .Select(c => c.Value).SingleOrDefault();
     var mobile = User.Claims.Where(c => c.Type == ClaimTypes.MobilePhone)
     .Select(c => c.Value).SingleOrDefault();
+
+
 }
 @model Helperland.Models.ViewModels.ServiceRequestModel;
-<div id="loaderContainer">
-    <div class="loader rounded-circle"></div>
-</div>
+
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -77,7 +77,7 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane p-2 active" id="Setup" role="tabpanel" aria-labelledby="Setup-tab">
+                <div class="tab-pane p-2  active" id="Setup" role="tabpanel" aria-labelledby="Setup-tab">
                     <h3>Enter Your Postal Code</h3>
                     <form id="checkavilability" data-ajax="true" data-ajax-method="post"
                         data-ajax-url="/check-availability" data-ajax-loading="#loaderContainer"
@@ -248,7 +248,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="tab-pane p-2" id="Details" role="tabpanel" aria-labelledby="Details-tab">
+                <div class="tab-pane p-2 " id="Details" role="tabpanel" aria-labelledby="Details-tab">
                     <div class="address-container w-100">
                         <h3>Enter your contact details, so we can serve you in better way!</h3>
                         <div class="address d-flex flex-column"></div>
@@ -279,7 +279,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="city" class="form-label">City</label>
-                                    <input type="text" class="form-control" asp-for="City" readonly disabled>
+                                    <input type="text" class="form-control" asp-for="City">
                                     <span class="text-danger mt-2 d-block" asp-validation-for="City"></span>
                                 </div>
                                 <div class="col-md-6">
@@ -304,8 +304,24 @@
                         <h3>Your Favourite Service Provider</h3>
                         <hr class="m-0">
                         <p class="mt-2">You can choose your Favourite service provider form below list</p>
-                        <div>
-                            <div class="sp-container text-center">
+                        <div class="d-flex" id="favSP">
+                            <div class="sp-container text-center mx-3">
+                                <div
+                                    class="sp-avtar rounded-circle d-flex justify-content-center align-items-center mb-2">
+                                    <img src="/Image/avtar.png" alt="">
+                                </div>
+                                <h5>Sndip Patel</h5>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="sp-container text-center mx-3">
+                                <div
+                                    class="sp-avtar rounded-circle d-flex justify-content-center align-items-center mb-2">
+                                    <img src="/Image/avtar.png" alt="">
+                                </div>
+                                <h5>Sndip Patel</h5>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="sp-container text-center mx-3">
                                 <div
                                     class="sp-avtar rounded-circle d-flex justify-content-center align-items-center mb-2">
                                     <img src="/Image/avtar.png" alt="">
@@ -445,8 +461,8 @@
     </div>
 </section>
 @section css{
-<link rel="stylesheet" href="/CSS/book-service.css" />
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/book-service.css" />
 }
 @section terms{
 <hr />

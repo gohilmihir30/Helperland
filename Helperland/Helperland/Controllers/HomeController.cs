@@ -16,6 +16,7 @@ using System.Web.Helpers;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.DataProtection;
 using Helperland.Services.Email;
+using System.Diagnostics;
 
 namespace Helperland.Controllers
 {
@@ -71,15 +72,23 @@ namespace Helperland.Controllers
                     {
                         claims.Add(new Claim(ClaimTypes.Role,"Admin"));
                     }
+                    var role =claims.Where(c => c.Type == ClaimTypes.Role).Select(c=>c.Value).SingleOrDefault();
                     claims.Add(new Claim(ClaimTypes.NameIdentifier, isExist.UserId.ToString()));
                     claims.Add(new Claim(ClaimTypes.MobilePhone, isExist.Mobile));
                     claims.Add(new Claim(ClaimTypes.Name, isExist.FirstName + " " + isExist.LastName));
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                    await HttpContext.SignInAsync(claimsPrincipal);
+                    await HttpContext.SignInAsync(claimsPrincipal, new AuthenticationProperties
+                    {
+                        IsPersistent = loginModel.RememberMe
+                    }) ;
+                    if (role == "Customer")
+                    {
+                        return RedirectToAction("Dashboard", "Customer");
+                    }
+                    return RedirectToAction("index");
                 }
             }
-            return RedirectToAction("index");
         }
 
 
@@ -100,7 +109,7 @@ namespace Helperland.Controllers
             string encyptedId = _protector.Protect(loginModel.Email + "_" + id.UserId + "_" + DateTime.UtcNow);
             var email = new EmailModel()
             {
-                To = loginModel.Email,
+                To = new List<string> { loginModel.Email },
                 Subject = "Password reset of your account in helperland",
                 isHTML = true,
                 Body = "Hi!! You request to reset your password, please click below link to reset your password.<p><a href='http://localhost:47474/resetpass?id=" + encyptedId + "'>http://localhost:47474/resetpass?id=" + encyptedId + "</a></p>",

@@ -1,0 +1,108 @@
+/* Service Detail Modal */
+#serviceDetail .modal-header {
+	font-size: 20px;
+}
+#serviceDetail .modal-body > div {
+	color: #4f4f4f;
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+#serviceDetail .modal-body > div > h5 {
+	font-size: 22px;
+	line-height: 26px;
+}
+#serviceDetail .modal-body div span.netamount {
+	width: calc(100% - 131px);
+	display: inline-block;
+	text-align: center;
+	font-size: 26px;
+	line-height: 26px;
+	color: #1d7a8c;
+	font-weight: 700;
+}
+
+/* Reschedule Modal and Cancle Modal */
+#reschedule .modal-dialog,
+#cancleRequest .modal-dialog {
+	max-width: 400px;
+}
+
+/* Rechedule modal */
+form#rescheduleForm .modal-body input#newServiceDate {
+	cursor: pointer;
+	background: url("/Image/calendar.png") no-repeat center left 0.75rem;
+	padding-left: 40px !important;
+	width: 157px;
+	margin-right: 10px;
+}
+
+/* Data Table */
+td p {
+	margin-bottom: 0;
+}
+td.showdetail:hover {
+	opacity: 0.8;
+}
+a {
+	text-decoration: none;
+	color: #646464;
+	display: inline-block;
+	cursor: pointer;
+}
+a:hover {
+	color: inherit;
+}
+tr td.datetime .showdetail {
+	cursor: pointer;
+}
+tr td .showdetail:hover {
+	opacity: 0.8;
+}
+.serviceprovider > div > div:first-child {
+	height: 44px;
+	width: 44px;
+	border: 1px solid #aaaaaa;
+}
+.serviceprovider > div > div:last-child {
+	margin-left: 12px;
+}
+tr td.payment > span {
+	font-size: 24px;
+	font-weight: 700;
+}
+tr td.payment {
+	font-size: 20px;
+	color: #1d7a8c;
+}
+tr > td.action button.btn {
+	color: #fff;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	line-height: 34px;
+	height: 34px;
+	padding: 0 16px;
+	cursor: pointer;
+}
+button.btn.reschedule {
+	background: #1d7a8c;
+}
+button.btn.reschedule:hover {
+	box-shadow: none;
+	background: #146371;
+}
+button.btn.reschedule:focus {
+	box-shadow: none;
+}
+button.btn.cancle {
+	background: #ff6b6b;
+}
+button.btn.cancle:hover {
+	box-shadow: none;
+	background: #cc5656;
+}
+
+button.btn.cancle:focus {
+	box-shadow: none;
+}

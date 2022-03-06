@@ -273,15 +273,18 @@ $(document).ready(() => {
 		} else {
 			servicerequestform.children("#Postalcode").val($("#checkavilability #Postalcode").val());
 			serviceDate.datepicker("setDate", new Date());
-			paymentServiceDate.html(serviceDate[0].value);
-			var hour = Math.ceil(new Date().getHours() + new Date().getMinutes() / 60);
-			if (hour > 18) {
-				serviceDate.datepicker("setDate", new Date().setDate(new Date().getDate() + 1));
+			var hour = new Date().getHours();
+			var min = hour + new Date().getMinutes() / 60;
+			if (min > 18) {
+				serviceDate.datepicker("setDate", +1);
 				serviceTime.val(8);
+			} else {
+				serviceTime.val(min - hour < 0.5 ? hour + 0.5 : hour + 1);
+				console.log(min - hour < 0.5 ? hour + 0.5 : hour + 1);
 			}
-			serviceTime.val(hour);
 			var time = serviceTime[0].value.toString();
 			time = "0" + time + ":00";
+			paymentServiceDate.html(serviceDate[0].value);
 			paymentServiceTime.html(time);
 			paymentServiceDuration.html("<span>" + serviceDuration[0].value + "</span> Hrs");
 			paymentTotalTime.html(parseFloat(serviceDuration[0].value));

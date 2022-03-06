@@ -66,7 +66,7 @@ namespace Helperland.Controllers
                     }
                     var email = new EmailModel()
                     {
-                        To = "admin@gmail.com",
+                        To = new List<string> { "admin@gmail.com" },
                         Subject = "Regarding " + contact.Subject,
                         isHTML = true,
                         Body = "Hi!! <br>My name is <b>" + contact.FirstName + " " + contact.LastName + ".</b> My Email is <b>" + contact.Email + "</b><br> <p>" + contact.Message + "</p><p> Please contact me on this mail as soon as possible.</p>",

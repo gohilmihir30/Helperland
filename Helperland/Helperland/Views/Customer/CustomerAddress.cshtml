@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+    List<UserAddress> addressModels = ViewBag.address;
+}
+<table class="w-100">
+    <thead>
+        <tr class="row gx-2 d-none d-sm-flex">
+            <th class="col-sm-9">Address</th>
+            <th class="col-sm-3 text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var add in addressModels)
+        {
+            <tr class="row gx-2 mb-3 mb-sm-0">
+                <td class="col-sm-9">
+                    <p class="m-0"><b>Address:</b> @add.AddressLine1 @add.AddressLine2, @add.PostalCode @add.City</p>
+                    <p class="m-0 mt-1"><b> Phone number:</b> @add.Mobile</p>
+                </td>
+                <td class="col-sm-3 text-center mt-3 mt-sm-0">
+                    <a data-bs-toggle="modal" data-bs-target="#addressModal" data-target="edit"
+                    data-add1="@add.AddressLine1" data-add2="@add.AddressLine2" data-city="@add.City"
+                    data-post="@add.PostalCode" data-mobile="@add.Mobile" data-addid="@add.AddressId"><img
+                        src="/Image/edit-icon.png" alt="" class="me-2"></a>
+                    <a data-addid="@add.AddressId" data-bs-toggle="modal" data-bs-target="#deleteAddressModal"><img
+                        src="/Image/delete-icon.png" alt=""></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

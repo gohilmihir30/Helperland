@@ -25,7 +25,7 @@ for (i = 0; i <= 55; i++) {
                 </div>
             </td>
             <td class='text-center'>
-                &#8364;<span>${Math.floor(Math.random() * i * 150)}</span>
+                90 &#8364;
             </td>
                 <td class='text-center'><span class="complete">Completed</span></td>
                 <td class='text-center'><button class="rounded-pill text-nowrap">Rate SP</button></td>

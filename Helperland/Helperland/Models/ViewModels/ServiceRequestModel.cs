@@ -33,7 +33,7 @@ namespace Helperland.Models.ViewModels
         public bool Laundry { get; set; }
         public bool Windows { get; set; }
         [Required]
-        public List<int> AddressId { get; set; }
+        public int AddressId { get; set; }
         [Required(ErrorMessage = "Plase enter Street name")]
         public string AddressLine1 { get; set; }
         [Required(ErrorMessage = "Please enter House number")]

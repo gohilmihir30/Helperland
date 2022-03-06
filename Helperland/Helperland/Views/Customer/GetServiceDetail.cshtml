@@ -1,0 +1,107 @@
+﻿@{
+    Layout = null;
+}
+@model ServiceDetailsModel;
+
+@if (Model != null)
+{
+    <div class="modal-header">
+        <h5 class="modal-title" id="serviceDetailLabel">Service Detail</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div>
+            <h5 class="m-0">@Model.ServiceStartTime.ToString("dd/MM/yyyy") @Model.ServiceStartTime.ToString("HH:mm") -
+                @Model.ServiceStartTime.AddHours(@Model.ServiceHours).ToString("HH:mm")</h5>
+            <div>
+                <b>Duration: </b>
+                <span>@Model.ServiceHours Hrs</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <b>Service Id: </b>
+                <span>@Model.ServiceId</span>
+            </div>
+            <div>
+                <b>Extra: </b>
+                @foreach (var e in Model.extra)
+                {
+                    <span> @e, </span>
+                }
+            </div>
+            <div>
+                <b>Net Amount:</b>
+                <span class="netamount">@Model.TotalCost &#8364;</span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <b>Service Address: </b>
+                <span>@Model.AddressLine1 , @Model.AddressLine2</span>
+            </div>
+            <div>
+                <b>Billing Address: </b>
+                <span>Same as Cleaing address</span>
+            </div>
+            <div>
+                <b>Phone: </b>
+                <span>+91 @Model.Mobile</span>
+            </div>
+            <div>
+                <b>Email: </b>
+                <span>@Model.Email</span>
+            </div>
+        </div>
+        @if (@Model.FirstNamme != null)
+        {
+
+            <div>
+                <b>Service Provider:</b>
+                <div class="serviceprovider">
+                    <div class="d-flex align-items-center mt-2">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle">
+                            <img src="@Model.Profile" alt="">
+                        </div>
+                        <div class="text-nowrap">
+                            <p class="m-0">@Model.FirstNamme @Model.LastName</p>
+                            <div class="d-flex align-items-center">
+                                <div class="position-relative rating">
+                                    <span class="unfilled position-absolute top-0 end-0"
+                                style="--rating:@Model.AverageRating"></span>
+                                    <span class="filled position-relative top-0 start-0"></span>
+                                </div>
+                                <span class="ms-1">@Math.Round(Model.AverageRating,2)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-1 ms-2">
+                        <span>@Model.TotalCleaning</span> Cleanings
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="mb-0">
+            <div>
+                <b>Comment:</b>
+                <div>@Model.Comments</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer  justify-content-start">
+        @if (!ViewBag.isHistory)
+        {
+            var starttime = (double)Model.ServiceStartTime.Hour + (double)Model.ServiceStartTime.Minute / 60;
+
+            <button class="btn btn-primary reschedule border-0 rounded-pill" data-id="@Model.ServiceId" data-time="@starttime"
+        data-date='@Model.ServiceStartTime.ToString("dd/MM/yyyy")' data-bs-target="#reschedule" data-bs-toggle="modal">
+                <img src="/Image/reschedule-icon-small.png" class="mb-1">
+                Reschedule
+            </button>
+            <button class="btn btn-primary cancle border-0 rounded-pill" data-id="@Model.ServiceId"
+        data-bs-target="#cancleRequest" data-bs-toggle="modal">
+                <img src="/Image/close-icon-small.png" class="mb-1">Cancel
+            </button>
+        }
+    </div>
+}

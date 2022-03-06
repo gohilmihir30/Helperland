@@ -15,7 +15,7 @@ namespace Helperland.Models.ViewModels
         public string LastName { get; set; }
         [Required(ErrorMessage ="Please enter an Email Address.")]
         [EmailAddress(ErrorMessage ="Please enter a valid Email")]
-        [Remote(action: "IsEmailInUse", controller: "UserRegistration")]
+        [Remote(action: "IsEmailInUse", controller: "Customer")]
         public string Email { get; set; }
         [Required(ErrorMessage ="Please enter a Password")]
         [RegularExpression("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{6,14}$",

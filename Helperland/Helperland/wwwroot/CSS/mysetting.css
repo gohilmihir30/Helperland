@@ -1,0 +1,78 @@
+.nav-link {
+	background: white;
+	color: #646464;
+	font-weight: 700;
+	border-bottom: 4px solid #e1e1e1 !important;
+	border-radius: 0 !important;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 15px 0;
+}
+.nav-link span {
+	font-weight: inherit;
+}
+.nav-pills .nav-link.active {
+	background: white;
+	color: #1d7a8c;
+	border-bottom-color: #1d7a8c !important;
+}
+.nav-link:hover {
+	color: #1d7a8c;
+}
+.nav-link span.bg-img img {
+	width: 24px;
+	height: 26px;
+	object-fit: none;
+	object-position: 0 0;
+}
+.nav-link.active span.bg-img img {
+	object-position: 0 -26px;
+}
+.form-label {
+	font-weight: 700;
+	font-size: 16px;
+	color: #646464;
+}
+.form-select {
+	background: url("/Image/keyboard-down-arrow-button.png") no-repeat center right 0.3rem;
+}
+.form-control:focus,
+.form-select:focus {
+	box-shadow: none;
+	border-color: #1d7a8c;
+}
+form button.btn {
+	padding: 0 25px;
+	font-size: 18px;
+	height: 44px;
+	transition: 0.5 all ease;
+}
+.input-validation-error,
+.input-validation-error:focus {
+	border-color: rgb(220, 53, 69) !important;
+}
+.input-validation-error::placeholder {
+	color: rgb(220, 53, 69) !important;
+}
+
+.address-container {
+	border: 2px solid #e1e1e1;
+	color: #646464;
+	font-size: 16px;
+}
+.address-container .row {
+	--bs-gutter-x: 0rem;
+	padding: 10px 15px;
+	padding-left: 30px;
+	border-bottom: 1px solid #e1e1e1;
+}
+.address-container thead {
+	background: #f3f3f3;
+	border-bottom: 2px solid #e1e1e1;
+}
+.address-container .row td a {
+	cursor: pointer;
+}
+.address-container + .add {
+	height: 40px;
+}

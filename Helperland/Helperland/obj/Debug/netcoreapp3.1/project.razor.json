@@ -14422,13 +14422,43 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\ServiceHistory.cshtml",
+      "TargetPath": "Views\\Customer\\ServiceHistory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\GetServiceDetail.cshtml",
+      "TargetPath": "Views\\Customer\\GetServiceDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\_LayoutAfterLogin.cshtml",
+      "TargetPath": "Views\\Shared\\_LayoutAfterLogin.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\userRegistration.cshtml",
       "TargetPath": "Views\\Customer\\userRegistration.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\GetFavoriteSP.cshtml",
+      "TargetPath": "Views\\Customer\\GetFavoriteSP.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\MySetting.cshtml",
+      "TargetPath": "Views\\Customer\\MySetting.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\CustomerAddress.cshtml",
+      "TargetPath": "Views\\Customer\\CustomerAddress.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14469,6 +14499,11 @@
     {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\ServiceProvider\\spSignup.cshtml",
       "TargetPath": "Views\\ServiceProvider\\spSignup.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\Dashboard.cshtml",
+      "TargetPath": "Views\\Customer\\Dashboard.cshtml",
       "FileKind": "mvc"
     }
   ],

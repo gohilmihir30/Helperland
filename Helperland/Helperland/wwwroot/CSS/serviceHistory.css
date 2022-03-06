@@ -1,0 +1,122 @@
+/* Service Detail Modal */
+#serviceDetail .modal-header {
+	font-size: 20px;
+}
+#serviceDetail .modal-body > div {
+	color: #4f4f4f;
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+#serviceDetail .modal-body > div > h5 {
+	font-size: 22px;
+	line-height: 26px;
+}
+#serviceDetail .modal-body div span.netamount {
+	width: calc(100% - 131px);
+	display: inline-block;
+	text-align: center;
+	font-size: 26px;
+	line-height: 26px;
+	color: #1d7a8c;
+	font-weight: 700;
+}
+
+/* Rating Modal */
+#serviceRating .modal-content {
+	max-width: 400px;
+	margin: auto;
+}
+#serviceRating .serviceprovider > div > div:first-child {
+	height: 50px;
+	width: 50px;
+}
+#serviceRating .modal-body {
+	font-size: 16px;
+	color: #4f4f4f;
+}
+#serviceRating .modal-body h5 {
+	border-bottom: 1px solid #e1e1e1;
+}
+#serviceRating .modal-body div > textarea {
+	width: 100%;
+	resize: none;
+	padding: 10px;
+	outline: none;
+	color: #646464;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+}
+#serviceRating .modal-body div > textarea:focus {
+	border-color: #1d7a8c;
+}
+#serviceRating .modal-body button.btn {
+	background: #1d7a8c;
+	color: white;
+}
+#serviceRating .modal-body button.btn:hover {
+	background-color: #146371;
+}
+#serviceRating .modal-body button.btn:focus {
+	box-shadow: none;
+}
+/* Data Table */
+td p {
+	margin-bottom: 0;
+}
+tr td .showdetail {
+	cursor: pointer;
+}
+tr td .showdetail:hover {
+	opacity: 0.8;
+}
+.serviceprovider {
+	font-size: 16px;
+}
+.serviceprovider > div > div:first-child {
+	height: 44px;
+	width: 44px;
+	border: 1px solid #aaaaaa;
+}
+.serviceprovider > div > div:last-child {
+	margin-left: 8px;
+}
+tr td.payment > span {
+	font-size: 24px;
+	font-weight: 700;
+}
+tr td.payment {
+	font-size: 20px;
+	color: #1d7a8c;
+}
+.complete {
+	font-size: 13px;
+	padding: 5px 10px 4px 9px;
+	color: #fff;
+	background: #67b644;
+}
+.cancelled {
+	font-size: 13px;
+	padding: 5px 10px 4px 9px;
+	color: #fff;
+	background: #ff6b6b;
+}
+tr > td.action button.btn {
+	color: #fff;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	line-height: 34px;
+	height: 34px;
+	padding: 0 16px;
+	cursor: pointer;
+	background: #1d7a8c;
+}
+tr > td.action button.btn:focus {
+	box-shadow: none;
+}
+tr > td.action button.btn.disable {
+	pointer-events: none;
+	cursor: not-allowed !important;
+	opacity: 0.6;
+}

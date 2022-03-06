@@ -19,7 +19,10 @@ namespace Helperland.Services.Email
                 {
                     From = new MailAddress("tpass3506@gmail.com")
                 };
-                mm.To.Add(email.To);
+                foreach(string To in email.To)
+                {
+                    mm.To.Add(new MailAddress(To));
+                }
                 mm.Subject = email.Subject;
                 mm.Body = email.Body;
                 mm.IsBodyHtml = email.isHTML;

@@ -1,0 +1,265 @@
+﻿@{
+    @using System.Security.Claims;
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Service History";
+}
+@model FetchServiceDetails
+@* Modals *@
+@* Service Detail modal *@
+<div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+
+@* Rating Modal *@
+<div class="modal fade" id="serviceRating" aria-hidden="true" aria-labelledby="serviceRatingLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form id="ratingForm" data-ajax="true" data-ajax-method="Post" data-ajax-url="/servicerating"
+                data-ajax-loading="loaderContainer" data-ajax-success="serviceRatingSuccess"
+                data-ajax-failure="serviceRatingFailure">
+                <input type="hidden" asp-for="ServiceId">
+                <input type="hidden" asp-for="ServiceProviderId">
+                <input type="hidden" asp-for="AverageRating">
+                <input type="hidden" asp-for="OnTimeArrival">
+                <input type="hidden" asp-for="Friendly">
+                <input type="hidden" asp-for="QualityOfService">
+                <div class="modal-header">
+                    <div class="serviceprovider">
+                        <div class="d-flex align-items-center mt-2">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle">
+                                <img src="" class="spprofile" alt="">
+                            </div>
+                            <div class="text-nowrap">
+                                <p class="m-0 spname">@Model.FirstName @Model.LastName</p>
+                                <div class="d-flex align-items-center">
+                                    <div class="position-relative rating">
+                                        <span class="unfilled position-absolute top-0 end-0" style="--rating:"></span>
+                                        <span class="filled position-relative top-0 start-0"></span>
+                                    </div>
+                                    <span class="ms-1 avgrating"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title pb-2" id="serviceDetailLabel">Rate your service provider</h5>
+                    <div class="row mt-3">
+                        <div class="col-5">On time arrival</div>
+                        <div class="col-7 ontimearrival individualrating">
+                            <img class="ratingstar" data-value=1 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=2 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=3 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=4 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=5 src="/Image/starUnfilled.png" alt="star">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-5">Friendly</div>
+                        <div class="col-7 friendly individualrating">
+                            <img class="ratingstar" data-value=1 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=2 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=3 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=4 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=5 src="/Image/starUnfilled.png" alt="star">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-5">Quality of service</div>
+                        <div class="col-7 qos individualrating">
+                            <img class="ratingstar" data-value=1 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=2 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=3 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=4 src="/Image/starUnfilled.png" alt="star">
+                            <img class="ratingstar" data-value=5 src="/Image/starUnfilled.png" alt="star">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <p class="mb-1">Feedback on service provider</p>
+                        <textarea id="feedback" rows="3" asp-for="Comment"></textarea>
+                    </div>
+                    <button class="rounded-pill btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="heading mb-2 mb-sm-0">
+    <h3 class="d-inline-block">Service History</h3>
+    <div class="sort d-inline-block d-md-none">
+        <img src="/Image/filter.png" alt="" id="sortData" data-bs-toggle="popover" data-bs-container="body"
+            data-bs-placement="bottom" data-bs-trigger="focus" tabindex="0" data-bs-html="true"
+            data-bs-custom-class="sortOption" data-bs-offset="-80,17" data-bs-content='<div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="serviceAsc" onclick=sort(0,"asc")>
+            <label class="form-check-label" for="serviceAsc">
+                Service Date: Oldest
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="serviceDesc" onclick=sort(0,"desc")>
+            <label class="form-check-label" for="serviceDesc">
+                Service Date: Latest
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="servisProviderAsc" onclick=sort(1,"asc")>
+            <label class="form-check-label" for="servisProviderAsc">
+                Service Provider: A to Z
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="servisProviderDesc" onclick=sort(1,"desc")>
+            <label class="form-check-label" for="servisProviderDesc">
+                Service Provider: Z to A
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="paymentAsc"
+                   onclick=sort(2,"asc")>
+            <label class="form-check-label" for="paymentAsc">
+                Payment: Low to High
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="paymentDesc"
+                   onclick=sort(2,"desc")>
+            <label class="form-check-label" for="paymentDesc">
+                Payment: High to Low
+            </label>
+        </div>' />
+    </div>
+</div>
+
+<div class="data-table position-relative">
+    <table id="example">
+        <thead>
+            <tr>
+                <th>Service Details</th>
+                <th>Service Provider</th>
+                <th class="text-center">Payment</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var detail in Model.Details)
+                {
+                    <tr>
+                        <td>
+                            <div class="showdetail" data-serviceid="@detail.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal">
+                                <div class="text-nowrap">
+                                    <img src="./Image/calen 1.png" alt="">
+                                    <strong>@detail.ServiceStartTime.ToString("dd/MM/yyyy")</strong>
+                                </div>
+                                <span>
+                                    @detail.ServiceStartTime.ToString("HH:mm") -
+                                    @detail.ServiceStartTime.AddHours(detail.ServiceHours).ToString("HH:mm")
+                                </span>
+                            </div>
+                        </td>
+                        <td class="serviceprovider">
+                            @if (detail.FirstName != null)
+                            {
+                                <div class="d-flex align-items-center mt-2">
+                                    <div class="d-flex align-items-center justify-content-center rounded-circle">
+                                        <img src="@detail.Profile" alt="">
+                                    </div>
+                                    <div class="text-nowrap ">
+                                        <p class="p-0">@detail.FirstName @detail.LastName</p>
+                                        <div class="d-flex align-items-center">
+                                            <div class="position-relative rating d-inline">
+                                                <span class="unfilled position-absolute top-0 end-0"
+                                        style="--rating:@Math.Round(detail.AverageRating,2)"></span>
+                                                <span class="filled position-relative top-0 start-0"></span>
+                                            </div>
+                                            <span class="ms-1">@Math.Round(detail.AverageRating,2)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td class='payment text-center'>
+                            <span>@detail.TotalCost</span> &#8364;
+                        </td>
+                        @if (detail.Status == 3)
+                        {
+                            <td class='text-center'><span class="complete">Completed</span></td>
+                        }
+                        else if (detail.Status == 4)
+                        {
+                            <td class='text-center'><span class="cancelled">Cancelled</span></td>
+                        }
+                        @if (detail.Status == 4)
+                        {
+                            <td class='action text-center'><button data-spid="@detail.ServiceProviderId" data-serviceid="@detail.ServiceId"
+                        class="rounded-pill text-nowrap btn disable">Rate SP</button></td>
+                        }
+                        else
+                        {
+                            <td class='action text-center'><button data-spid="@detail.ServiceProviderId" data-serviceid="@detail.ServiceId"
+                        class="rounded-pill text-nowrap btn" data-bs-target="#serviceRating" data-bs-toggle="modal">Rate
+                                    SP</button></td>
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/serviceHistory.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+<script src="/JS/serviceHistory.js"></script>
+<script>
+    var table = $("#example").DataTable({
+        dom: 'Bt<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+        pagingType: "full_numbers",
+        columnDefs: [{ orderable: false, targets: 4 }],
+        buttons: [
+            {
+                extend: "excel",
+                text: "Export",
+            },
+        ],
+        language: {
+            paginate: {
+                first: '<img src="./Image/Group 36.png" alt="">',
+                last: '<img src="./Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+                previous: '<img src="./Image/keyboard-right-arrow-button copy.png" alt="">',
+                next: '<img src="./Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">',
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+            emptyTable: "No service History Found",
+        },
+    });
+</script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
