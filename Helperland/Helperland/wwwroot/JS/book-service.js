@@ -166,6 +166,18 @@ $(document).ready(() => {
 				.load(`/viewaddress?postlcode=${$("#Postalcode").val()}`, () => {
 					$(".address label input")[0].checked = true;
 				});
+			$("#favSP")
+				.html("Loading Favorite SP List....")
+				.load("/getfavoritesp", () => {
+					$(".fav-sp-btn").click(($event) => {
+						$("#FavoriteSP").val($($event.target).next("input").val());
+						var nexttab = new bootstrap.Tab($('#myTab button[data-bs-target="#Payment"]'));
+						$("#Details-tab").addClass("complete");
+						$("#Details-tab").addClass("pe-auto");
+						servicerequestform.children("#AddressId").val($('input.form-check-input[name="AddressId"]:checked').val());
+						nexttab.show();
+					});
+				});
 			tab.show();
 		}
 	});
@@ -267,9 +279,11 @@ $(document).ready(() => {
 
 	checkAvilabilitySuccess = (res) => {
 		if (!res) {
+			$("span#checkError").html("");
+			$("span#checkError").fadeIn();
 			$("span#checkError")[0].innerText =
 				"We are not providing service in this area. We’ll notify you if any helper would start working near your area.";
-			$("span#checkError").delay(3000).fadeOut();
+			$("span#checkError").delay(5000).fadeOut();
 		} else {
 			servicerequestform.children("#Postalcode").val($("#checkavilability #Postalcode").val());
 			serviceDate.datepicker("setDate", new Date());
@@ -280,7 +294,6 @@ $(document).ready(() => {
 				serviceTime.val(8);
 			} else {
 				serviceTime.val(min - hour < 0.5 ? hour + 0.5 : hour + 1);
-				console.log(min - hour < 0.5 ? hour + 0.5 : hour + 1);
 			}
 			var time = serviceTime[0].value.toString();
 			time = "0" + time + ":00";

@@ -16,8 +16,13 @@
 	color: #1d7a8c;
 	border-bottom-color: #1d7a8c !important;
 }
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
 	color: #1d7a8c;
+}
+.nav-link:focus-visible,
+.nav-link > span:focus-visible {
+	outline: none;
 }
 .nav-link span.bg-img img {
 	width: 24px;
@@ -54,7 +59,23 @@ form button.btn {
 .input-validation-error::placeholder {
 	color: rgb(220, 53, 69) !important;
 }
+.gender input[type="radio"]:checked {
+	background-color: #1d7a8c;
+	border-color: #1d7a8c;
+}
+.avtar .form-check {
+	padding-left: 0;
+}
+.avtar input[type="radio"] + label.form-check-label {
+	border-radius: 50%;
+	border: 3px solid transparent;
+	transition: 0.5s all ease;
+}
+.avtar input[type="radio"]:checked + label.form-check-label {
+	border-color: #1d7a8c;
+}
 
+/* Address Section */
 .address-container {
 	border: 2px solid #e1e1e1;
 	color: #646464;

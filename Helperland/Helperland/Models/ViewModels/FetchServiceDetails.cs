@@ -9,6 +9,7 @@ namespace Helperland.Models.ViewModels
     {
         public IEnumerable<FetchServiceDetails> Details { get; set; }
         public int ServiceId { get; set; }
+        public int UserId { get; set; }
         public DateTime ServiceStartTime { get; set; }
         public double ServiceHours { get; set; }
         public decimal TotalCost { get; set; }
@@ -20,6 +21,11 @@ namespace Helperland.Models.ViewModels
         public decimal AverageRating { get; set; }
         public decimal OnTimeArrival { get; set; }
         public decimal Friendly { get; set; }
+        public Guid? RecordVersion { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
         public decimal QualityOfService { get; set; }
         public int? Status { get; set; }
 

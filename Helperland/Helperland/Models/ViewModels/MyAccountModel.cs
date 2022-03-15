@@ -20,12 +20,19 @@ namespace Helperland.Models.ViewModels
         public string Mobile { get; set;}
         [Required(ErrorMessage = "Select Preferred language")]
         public int? LanguageId { get; set;}
+        [Required (ErrorMessage ="Select your Nation")]
+        public int? NatinalityId { get; set; }
+        [Required(ErrorMessage ="Select Gender")]
+        public int? Gender { get; set; }
+        [Required (ErrorMessage ="Select your Avatar")]
+        public string Avatar { get; set; }
+        public bool IsActive { get; set; }
         [Required]
-        public int Day { get; set;}
+        public int? Day { get; set;}
         [Required]
-        public int Month { get; set;}
+        public int? Month { get; set;}
         [Required]
-        public int Year { get; set;}
+        public int? Year { get; set;}
         public AddressModel address { get; set; }
         [Required (ErrorMessage ="Enter Old Password")]
         [RegularExpression("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{6,14}$",

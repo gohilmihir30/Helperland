@@ -1,3 +1,19 @@
-﻿@{ 
+﻿@{
     Layout = null;
 }
+@model FavoriteAndBlockeModel
+@if (Model != null)
+{
+    foreach (var fav in Model.blocked)
+    {
+        <div class="sp-container text-center mx-3 px-2">
+            <div class="sp-avtar rounded-circle d-flex justify-content-center align-items-center mx-auto mb-2">
+                <img src="@fav.Profile" alt="">
+            </div>
+            <h5 class="text-nowrap">@fav.FirstName @fav.LastName</h5>
+            <button class="btn fav-sp-btn">Select</button>
+            <input type="hidden" class="" value="@fav.TargetUserId" />
+        </div>
+    }
+}
+

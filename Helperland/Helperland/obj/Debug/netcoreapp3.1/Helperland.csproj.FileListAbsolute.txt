@@ -822,8 +822,16 @@ E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\bin\Debug\netcorea
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Dashboard.cshtml.g.cs
-E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\GetFavoriteSP.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\GetServiceDetail.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\ServiceHistory.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\MySetting.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\CustomerAddress.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\Dashboard.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\GetServicesDetails.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\UpcomingService.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\ServiceHistory.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\MyRating.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\BlockCustomer.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\MySetting.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\FavoriteProvider.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\GetFavoriteSP.cshtml.g.cs

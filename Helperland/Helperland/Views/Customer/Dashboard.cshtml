@@ -18,7 +18,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="rescheduleForm" data-ajax="true" data-ajax-method="Post" data-ajax-url="/reschedule"
-                data-ajax-loading="loaderContainer" data-ajax-success="rescheduleSuccess"
+                data-ajax-loading="#loaderContainer" data-ajax-success="rescheduleSuccess"
                 data-ajax-failure="rescheduleFailure">
                 <div class="modal-body">
                     <input type="hidden" id="rescheduleServiceId" name="rescheduleServiceId" />
@@ -73,7 +73,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form id="cancleRequestForm" data-ajax="true" data-ajax-method="Post" data-ajax-url="/canclerequest"
-                data-ajax-loading="loaderContainer" data-ajax-success="cancleRequestSuccess"
+                data-ajax-loading="#loaderContainer" data-ajax-success="cancleRequestSuccess"
                 data-ajax-failure="cancleRequestFailure">
                 <input type="hidden" name="cancelServiceId" id="cancelServiceId">
                 <div class="modal-body">
@@ -177,7 +177,7 @@
                             {
                                 <div class="d-flex">
                                     <div class="d-flex align-items-center justify-content-center rounded-circle">
-                                        <img src="@data.Profile" alt="" />
+                                        <img class="img-fluid" src="@data.Profile" alt="" />
                                     </div>
                                     <div class="text-nowrap">
                                         <p>@data.FirstName @data.LastName</p>
@@ -250,7 +250,7 @@
             },
             info: "Total Record: _MAX_",
             lengthMenu: "Show_MENU_Entries",
-            emptyTable: "No service History Found",
+            emptyTable: "No service request Found",
         },
     });
 </script>

@@ -30,6 +30,7 @@ $(document).ready(() => {
 	});
 
 	$("#addressModal").on("show.bs.modal", ($event) => {
+		$("#addressForm").trigger("reset");
 		var target = $($event.relatedTarget).attr("data-target");
 		$("#addressForm").trigger("reset");
 		if (target == "add") {
@@ -54,6 +55,7 @@ $(document).ready(() => {
 	$("#address_PostalCode").blur(($event) => {
 		var postalcode = $event.target.value;
 		$.post("/findCity?postalcode=" + postalcode, (response) => {
+			console.log(response);
 			if (response) {
 				$("#address_City").val(response.city);
 			} else {
@@ -64,21 +66,21 @@ $(document).ready(() => {
 
 	myDetailSuccess = (xhr) => {
 		if (xhr) {
-			$("#mydetail .alert").addClass("alert-success");
-			$("#mydetail .alert .content").html("Your Data Updated Successfully");
-			$("#mydetail .alert").fadeIn();
-			$("#mydetail .alert").delay(5000).fadeOut();
+			$("#details .alert").addClass("alert-success");
+			$("#details .alert .content").html("Your Data Updated Successfully");
+			$("#details .alert").fadeIn();
+			$("#details .alert").delay(8000).fadeOut();
 		} else {
-			$("#mydetail .alert").addClass("alert-danger");
-			$("#mydetail .alert .content").html(xhr.statusText);
-			$("#mydetail .alert").fadeIn();
-			$("#mydetail .alert").delay(5000).fadeOut();
+			$("#details .alert").addClass("alert-danger");
+			$("#details .alert .content").html(xhr.statusText);
+			$("#details .alert").fadeIn();
+			$("#details .alert").delay(8000).fadeOut();
 		}
 	};
 	myDetailError = (xhr) => {
-		$("#mydetail .alert").addClass("alert-danger");
-		$("#mydetail .alert .content").html(xhr.statusText);
-		$("#mydetail .alert").delay(5000).fadeOut();
+		$("#details .alert").addClass("alert-danger");
+		$("#details .alert .content").html(xhr.statusText);
+		$("#details .alert").delay(5000).fadeOut();
 	};
 
 	changePasswordSuccess = (xhr) => {
@@ -96,6 +98,7 @@ $(document).ready(() => {
 		}
 	};
 	changePasswordError = (xhr) => {
+		console.log(xhr);
 		$("#changePassword .alert").addClass("alert-danger");
 		$("#changePassword .alert .content").html(xhr.statusText);
 		$("#changePassword .alert").fadeIn();

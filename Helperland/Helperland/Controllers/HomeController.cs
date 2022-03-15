@@ -85,6 +85,9 @@ namespace Helperland.Controllers
                     if (role == "Customer")
                     {
                         return RedirectToAction("Dashboard", "Customer");
+                    }else if(role == "ServiceProvider")
+                    {
+                        return RedirectToAction("Dashboard", "ServiceProvider");
                     }
                     return RedirectToAction("index");
                 }
@@ -159,6 +162,102 @@ namespace Helperland.Controllers
             {
                 TempData["isvalid"] = false;
                 return RedirectToAction("resetPass");
+            }
+        }
+
+        [Authorize(Roles = "Customer,ServiceProvider")]
+        [Route("/findCity")]
+        [HttpPost]
+        public JsonResult CityName(string postalcode)
+        {
+            if (postalcode != null)
+            {
+                var city = (
+                            from z in _helperlandContext.Zipcodes
+                            join c in _helperlandContext.Cities
+                            on z.CityId equals c.Id
+                            where z.ZipcodeValue == postalcode
+                            select c.CityName
+                        ).FirstOrDefault();
+                if (city != null)
+                {
+                    return Json(new { City = city });
+                }
+                else
+                {
+                    return Json(false);
+                }
+            }
+            return Json(false);
+        }
+
+        [Authorize(Roles = "Customer,ServiceProvider")]
+        [Route("/changepassword")]
+        [HttpPost]
+        public JsonResult ChangePassword(MyAccountModel myAccountModel)
+        {
+            try
+            {
+                var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                var user = _helperlandContext.Users.Where(u => u.UserId == userid).FirstOrDefault();
+                if (user != null)
+                {
+                    var isVerified = Crypto.VerifyHashedPassword(user.Password, myAccountModel.OldPassword);
+                    if (!isVerified)
+                    {
+                        return Json(new { Result = false, Error = "Old Password is Incorrect!" });
+                    }
+                    user.Password = Crypto.HashPassword(myAccountModel.NewPassword);
+                    user.ModifiedDate = DateTime.Now;
+                    user.ModifiedBy = userid;
+                    _helperlandContext.Users.Attach(user);
+                    _helperlandContext.SaveChanges();
+                    return Json(new { Result = true });
+                }
+                return Json(new { Result = false, Error = "Internal Server Error" });
+            }
+            catch
+            {
+                return Json(new { Result = false, Error = "Internal Server Error" });
+            }
+        }
+
+        [Authorize(Roles = "Customer,ServiceProvider")]
+        [Route("/blockcustomer")]
+        [HttpPost]
+        public JsonResult BlockCustomer(int customerid,bool favorite)
+        {
+            try
+            {
+                var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+                var blocked = _helperlandContext.FavoriteAndBlockeds.Where(c => c.UserId == userid && c.TargetUserId == customerid).FirstOrDefault();
+                if (blocked != null)
+                {
+                    if((blocked.IsBlocked && favorite) || (blocked.IsFavorite && !favorite))
+                    {
+                        string Error = (favorite) ? "You can't add to favorite list, you already blocked this SP" : "You can't blocked this SP, already in favorite list";
+                        return Json(new { result = false, Error = Error });
+                    }
+                    _helperlandContext.FavoriteAndBlockeds.Remove(blocked);
+                }
+                else
+                {
+                    var favoriteAndBlockednew = new FavoriteAndBlocked()
+                    {
+                        UserId = userid,
+                        TargetUserId = customerid,
+                        IsFavorite = favorite,
+                        IsBlocked = !favorite
+                    };
+                    _helperlandContext.FavoriteAndBlockeds.Add(favoriteAndBlockednew);
+                }
+                _helperlandContext.SaveChanges();
+                return Json(new { result = true });
+            }
+            catch
+            {
+                return Json(new { result = false, Error = "Internal Server Error" });
             }
         }
     }

@@ -1,0 +1,19 @@
+.profilepic {
+	width: 100px;
+	padding: 13px;
+	border: 2px solid #e1e1e1;
+	height: 100px;
+}
+.profilepic img {
+	width: 50px;
+}
+.customername {
+	font-weight: 700;
+}
+button.btn.block {
+	background: #ff6b6b;
+}
+button.btn.block:hover,
+button.btn.block:focus {
+	background: #c45353;
+}

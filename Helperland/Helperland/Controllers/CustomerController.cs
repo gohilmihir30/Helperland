@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Globalization;
 using Helperland.Services.Email;
-using Microsoft.EntityFrameworkCore;
 
 namespace Helperland.Controllers
 {
@@ -106,11 +105,17 @@ namespace Helperland.Controllers
                     TotalCost = serviceRequestModel.TotalCost,
                     Comments = serviceRequestModel.Comments,
                     HasPets = serviceRequestModel.HasPets,
-                    Status = 1,
+                    Status=1,
                     RecordVersion = Guid.NewGuid(),
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now
                 };
+                if (serviceRequestModel.FavoriteSP != null)
+                {
+                    serviceRequest.Status = 2;
+                    serviceRequest.ServiceProviderId = serviceRequestModel.FavoriteSP;
+                    serviceRequest.SpacceptedDate = DateTime.Now;
+                }
 
                 _helperlandContext.ServiceRequests.Add(serviceRequest);
                 _helperlandContext.SaveChanges();
@@ -177,21 +182,38 @@ namespace Helperland.Controllers
                 _helperlandContext.ServiceRequests.Attach(serviceRequest);
                 var result = _helperlandContext.SaveChanges();
 
-                var spEmail = _helperlandContext.Users.Where(u => u.ZipCode == serviceRequest.ZipCode && u.UserTypeId == 2).Select(u => u.Email).ToList();
+                var email = new EmailModel();
+                email.Subject = "New Service Request arise in your area";
+                email.isHTML = true;
+                if (serviceRequest.ServiceProviderId == null) {
+                    var spEmail = _helperlandContext.Users.Where(u => u.ZipCode == serviceRequest.ZipCode && u.UserTypeId == 2).Select(u => u.Email).ToList();
 
-                var email = new EmailModel()
+                    email.To = spEmail;
+                    email.Body = "A new Service request arise in your area with service id " + serviceRequest.ServiceId + " Please check your account if you are intrested ";
+                }
+                else
                 {
-                    To = spEmail,
-                    Subject = "New Service Request arise in your area",
-                    isHTML = true,
-                    Body = "A new Service request arise in your area with service id " + serviceRequest.ServiceId + " Please check your account if you are intrested ",
-                };
-                bool ismail = _email.sendMail(email);
+                    var spEmail = _helperlandContext.Users.Where(u => u.UserId == serviceRequest.ServiceProviderId).Select(u => u.Email).FirstOrDefault();
 
+                    email.To = new List<string> { spEmail };
+                    email.Body = "A service request "+serviceRequest.ServiceId+" has been directly assigned to you";
+                }
+                bool ismail = _email.sendMail(email);
                 return serviceRequest.ServiceId;
             }
             catch
             {
+                var extra = _helperlandContext.ServiceRequestExtras.Where(s => s.ServiceRequestId == serviceRequest.ServiceRequestId).ToList();
+                foreach(var e in extra)
+                {
+                    _helperlandContext.ServiceRequestExtras.Remove(e);
+                }
+                var add = _helperlandContext.ServiceRequestAddresses.Where(s => s.ServiceRequestId == serviceRequest.ServiceRequestId).ToList();
+                foreach(var a in add)
+                {
+                    _helperlandContext.Remove(a);
+                }
+                _helperlandContext.SaveChanges();
                 _helperlandContext.ServiceRequests.Remove(_helperlandContext.ServiceRequests.Where(x => x.ServiceRequestId == serviceRequest.ServiceRequestId).FirstOrDefault());
                 _helperlandContext.SaveChanges();
                 return 0;
@@ -263,13 +285,26 @@ namespace Helperland.Controllers
             }
         }
 
-        [Route("/getfavorite")]
+        [Route("/getfavoritesp")]
         [HttpGet]
-        public IActionResult GetFavoriteSP(string userid)
+        public IActionResult GetFavoriteSP()
         {
-            var favsp = _helperlandContext.FavoriteAndBlockeds.Where(f => f.UserId == Int32.Parse(userid) && f.IsFavorite).Select(f => f.TargetUserId).ToList();
+            var userid =Int32.Parse( User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-            return View();
+            var favsp = (from fav in _helperlandContext.FavoriteAndBlockeds 
+                         join user in _helperlandContext.Users on fav.TargetUserId equals user.UserId
+                         where fav.UserId==userid && fav.IsFavorite==true
+                         select new FavoriteAndBlockeModel{
+                            FirstName=user.FirstName,
+                            LastName=user.LastName,
+                            Profile=user.UserProfilePicture,
+                            TargetUserId=fav.TargetUserId
+                         }).ToList();
+
+            
+            return View(new FavoriteAndBlockeModel() { 
+                blocked= favsp
+            });
         }
 
         [AcceptVerbs("Get", "Post")]
@@ -385,7 +420,7 @@ namespace Helperland.Controllers
             var servicerequest = _helperlandContext.ServiceRequests.Where(s => s.ServiceId == Int32.Parse(rescheduleServiceId)).FirstOrDefault();
             if (servicerequest != null)
             {
-                var updatedEnd = updatedTime.AddHours(servicerequest.ServiceHours).AddMinutes(30);
+                var updatedEnd = updatedTime.AddHours(servicerequest.ServiceHours).AddHours(1);
                 if (updatedTime.CompareTo(servicerequest.ServiceStartDate) == 0)
                 {
                     return Json(new { Result = false, error = "Please select different date as you selected already schedueled date" });
@@ -396,11 +431,11 @@ namespace Helperland.Controllers
                     foreach (var service in services)
                     {
                         var serviceStart = service.ServiceStartDate;
-                        var serviceEnd = service.ServiceStartDate.AddHours(service.ServiceHours).AddMinutes(30);
-                        if ((updatedEnd.CompareTo(serviceStart) > 0 && updatedEnd.CompareTo(serviceEnd) <= 0) || (updatedTime.CompareTo(serviceStart) >= 0 && updatedTime.CompareTo(serviceEnd) < 0) || ((updatedTime.CompareTo(serviceStart) >= 0 && updatedEnd.CompareTo(serviceEnd) < 0)))
+                        var serviceEnd = service.ServiceStartDate.AddHours(service.ServiceHours).AddHours(1);
+                        if ((updatedEnd.CompareTo(serviceStart) > 0 && updatedEnd.CompareTo(serviceEnd) <= 0) || (updatedTime.CompareTo(serviceStart) >= 0 && updatedTime.CompareTo(serviceEnd) < 0) || ((serviceStart.CompareTo(updatedTime) >= 0 && serviceEnd.CompareTo(updatedEnd) < 0)))
                         {
                             return Json(new { Result = false, error = "Another service request has been assigned to the service provider on " + serviceStart.ToString("dd/MM/yyyy") +
-                            " from " + serviceStart.ToString("HH/mm") + " to " + serviceEnd.ToString("HH/mm") + ". Either choose another date or pick up a different time slot." });
+                            " from " + serviceStart.ToString("HH/mm") + " to " + serviceEnd.AddHours(-1).ToString("HH/mm") + ". Either choose another date or pick up a different time slot." });
                         }
                     }
                 }
@@ -409,6 +444,20 @@ namespace Helperland.Controllers
                 servicerequest.ModifiedBy = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 _helperlandContext.ServiceRequests.Attach(servicerequest);
                 _helperlandContext.SaveChanges();
+
+                if (servicerequest.ServiceProviderId != null)
+                {
+                    var spEmail = _helperlandContext.Users.Where(u => u.UserId == servicerequest.ServiceProviderId).Select(u => u.Email).FirstOrDefault();
+                    var email = new EmailModel()
+                    {
+                        To = new List<string> { spEmail },
+                        Subject = "Regarding Rechedule of service request",
+                        isHTML = true,
+                        Body = "Service Request "+servicerequest.ServiceId+" has been rescheduled by customer. New date and time are "+servicerequest.ServiceStartDate,
+                    };
+                    bool ismail = _email.sendMail(email);
+                }
+
                 return Json(new { Result = true });
             }
             else
@@ -430,6 +479,19 @@ namespace Helperland.Controllers
                 servicerequest.Comments = cancleReason;
                 _helperlandContext.ServiceRequests.Attach(servicerequest);
                 _helperlandContext.SaveChanges();
+
+                if(servicerequest.ServiceProviderId != null)
+                {
+                    var spEmail = _helperlandContext.Users.Where(u => u.UserId == servicerequest.ServiceProviderId).Select(u => u.Email).FirstOrDefault();
+                    var email = new EmailModel()
+                    {
+                        To = new List<string> { spEmail },
+                        Subject = "Regarding Service Request cancellation",
+                        isHTML = true,
+                        Body = "Service Request "+servicerequest.ServiceId +" has been cancelled by customer",
+                    };
+                    bool ismail = _email.sendMail(email);
+                }
                 return Json(new { result = true });
             }
             else
@@ -574,7 +636,7 @@ namespace Helperland.Controllers
                 user.LanguageId = myAccountModel.LanguageId;
                 user.ModifiedDate = DateTime.Now;
                 user.ModifiedBy = user.UserId;
-                user.DateOfBirth = new DateTime(myAccountModel.Year, myAccountModel.Month, myAccountModel.Day, 0, 0, 0, 0); ;
+                user.DateOfBirth = new DateTime((int)myAccountModel.Year, (int)myAccountModel.Month, (int)myAccountModel.Day, 0, 0, 0, 0); ;
                 _helperlandContext.Users.Attach(user);
                 _helperlandContext.SaveChanges();
             
@@ -645,59 +707,52 @@ namespace Helperland.Controllers
             return Json(new { result=true});
         }
 
-        [Route("/findCity")]
-        [HttpPost]
-        public JsonResult CityName(string postalcode)
-        {
-            if (postalcode != null)
-            {
-                var city = (
-                            from z in _helperlandContext.Zipcodes
-                            join c in _helperlandContext.Cities
-                            on z.CityId equals c.Id
-                            where z.ZipcodeValue == postalcode
-                            select c.CityName
-                        ).FirstOrDefault();
-                if (city != null)
-                {
-                    return Json(new { City = city });
-                }
-                else
-                {
-                    return Json(false);
-                }
-            }
-                return Json(false);
-        }
 
-        [Route("/changepassword")]
-        [HttpPost]
-        public JsonResult ChangePassword(MyAccountModel myAccountModel)
+        [Route("/favoriteProvider")]
+        public IActionResult FavoriteProvider()
         {
-            try
+            var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (userid != 0)
             {
-                var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                var user = _helperlandContext.Users.Where(u => u.UserId == userid).FirstOrDefault();
-                if (user != null)
+                var sp = (from service in _helperlandContext.ServiceRequests
+                          join
+                            user in _helperlandContext.Users on service.ServiceProviderId equals user.UserId
+                          join
+                            rating in _helperlandContext.Ratings on service.ServiceProviderId equals rating.RatingTo into rating_join
+                          from rating in rating_join.DefaultIfEmpty()
+                          join fab in _helperlandContext.FavoriteAndBlockeds on new { UserId = service.UserId.ToString(), TragetId = service.ServiceProviderId.ToString() } equals new { UserId = fab.UserId.ToString(), TragetId = fab.TargetUserId.ToString() } into fab_join
+                          from fab in fab_join.DefaultIfEmpty()
+                          where service.UserId == userid && service.Status == 3
+                          group new { user, service, rating } by new { service.ServiceProviderId, user.FirstName, user.LastName, user.UserProfilePicture, fab.UserId, fab.TargetUserId, fab.IsBlocked, fab.IsFavorite } into serviceprovider
+                          select new FavoriteAndBlockeModel
+                          {
+                              UserId = serviceprovider.Key.UserId,
+                              TargetUserId = serviceprovider.Key.TargetUserId,
+                              isBlocked = serviceprovider.Key.IsBlocked,
+                              isFavorite = serviceprovider.Key.IsFavorite,
+                              FirstName = serviceprovider.Key.FirstName,
+                              LastName = serviceprovider.Key.LastName,
+                              SPId = serviceprovider.Key.ServiceProviderId,
+                              Profile = serviceprovider.Key.UserProfilePicture,
+                              Rating = serviceprovider.Where(a => a.rating.RatingTo == serviceprovider.Key.ServiceProviderId).Average(a => a.rating.Ratings)
+                          }).ToList();
+
+                foreach(var service in sp.ToList())
                 {
-                    var isVerified = Crypto.VerifyHashedPassword(user.Password,myAccountModel.OldPassword);
-                    if (!isVerified)
+                    var blockcust = _helperlandContext.FavoriteAndBlockeds.Where(f => f.UserId == service.SPId && f.TargetUserId == userid && f.IsBlocked == true).FirstOrDefault();
+                    service.CleaningCount = _helperlandContext.ServiceRequests.Where(s => s.ServiceProviderId == service.SPId && s.Status==3).Select(s => s.ServiceRequestId).Distinct().Count();
+                    if(blockcust !=null)
                     {
-                        return Json(new { Result = false ,Error="Old Password is Incorrect!"});
+                        sp.Remove(service);
                     }
-                    user.Password = Crypto.HashPassword(myAccountModel.NewPassword);
-                    user.ModifiedDate = DateTime.Now;
-                    user.ModifiedBy = userid;
-                    _helperlandContext.Users.Attach(user);
-                    _helperlandContext.SaveChanges();
-                    return Json(new { Result = true });
                 }
-                return Json(new { Result = false ,Error="Internal Server Error"});
+                var favsp = new FavoriteAndBlockeModel()
+                {
+                    blocked = sp
+                };
+                return View(favsp);
             }
-            catch
-            {
-                return Json(new { Result = false ,Error= "Internal Server Error" });
-            }
+            return Redirect("/?modalRequest=true");
         }
     }
 }

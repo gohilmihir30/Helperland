@@ -13,6 +13,8 @@ namespace Helperland.Models.ViewModels
         public decimal TotalCost { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
         public int? ServiceProviderId { get; set; }
@@ -22,6 +24,7 @@ namespace Helperland.Models.ViewModels
         public int TotalCleaning { get; set; }
         public decimal AverageRating { get; set; }
         public string Comments { get; set; }
+        public Guid? RecordVersion { get; set; }
         public List<string> extra { get; set; } = new List<string>();
     }
 }

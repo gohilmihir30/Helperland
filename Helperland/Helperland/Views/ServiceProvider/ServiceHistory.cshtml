@@ -1,0 +1,183 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Service History";
+}
+@model FetchServiceDetails
+@* Modal *@
+@* Service Detail Modal *@
+<div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+<div class="alert" style="display: none;" role="alert"></div>
+<div class="heading mb-2 mb-sm-0">
+    <div class="sort d-inline-block d-md-none">
+        <img src="/Image/filter.png" alt="" id="sortData" data-bs-toggle="popover" data-bs-container="body"
+            data-bs-placement="bottom" data-bs-trigger="focus" tabindex="0" data-bs-html="true"
+            data-bs-custom-class="sortOption" data-bs-offset="-80,17" data-bs-content='<div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="serviceAsc" onclick=sort(1,"asc")>
+            <label class="form-check-label" for="serviceAsc">
+                Service Date: Oldest
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="serviceDesc" onclick=sort(1,"desc")>
+            <label class="form-check-label" for="serviceDesc">
+                Service Date: Latest
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="servisProviderAsc" onclick=sort(2,"asc")>
+            <label class="form-check-label" for="servisProviderAsc">
+                Service Provider: A to Z
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="servisProviderDesc" onclick=sort(2,"desc")>
+            <label class="form-check-label" for="servisProviderDesc">
+                Service Provider: Z to A
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="paymentAsc"
+                   onclick=sort(3,"asc")>
+            <label class="form-check-label" for="paymentAsc">
+                Payment: Low to High
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="paymentDesc"
+                   onclick=sort(3,"desc")>
+            <label class="form-check-label" for="paymentDesc">
+                Payment: High to Low
+            </label>
+        </div>' />
+    </div>
+</div>
+<div class="data-table position-relative">
+    <table id="example">
+        <thead>
+            <tr>
+                <th class="text-nowrap">Service Id</th>
+                <th>Service Date</th>
+                <th>Customer Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var data in Model.Details)
+                {
+                    var st = data.ServiceStartTime.ToString("HH:mm");
+                    var et = data.ServiceStartTime.AddHours(data.ServiceHours).ToString("HH:mm");
+                    <tr>
+                        <td>
+                            <a class="showdetail" data-serviceid="@data.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal" data-postalcode="@data.PostalCode">@data.ServiceId</a>
+                        </td>
+                        <td class="datetime">
+                            <div class="showdetail" data-postalcode="@data.PostalCode" data-serviceid="@data.ServiceId"
+                        data-bs-target="#serviceDetail" data-bs-toggle="modal">
+                                <div class="d-flex align-items-center mb-1">
+                                    <img class="me-2" src="/Image/calculator.png" alt="" />
+                                    <strong>@data.ServiceStartTime.ToString("dd/MM/yyyy")</strong>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="me-2" src="/Image/Layer 712.png" alt="" />
+                                    <span class="text-nowrap">@st - @et</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="customer">
+                            <span>@data.FirstName @data.LastName</span>
+                            <div class="d-flex align-item-center mt-1">
+                                <img src="/Image/Layer 719.png" alt="">
+                                <span>@data.Address1 @data.Address2 </span>
+                            </div>
+                            <span> @data.PostalCode @data.City</span>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/SP-upcoming.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+<script>
+    var table = $("#example").DataTable({
+        dom: 'Bt<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+        pagingType: "full_numbers",
+        columnDefs: [
+            { type: "serviceDate", targets: 1 },
+            { orderable: false, targets: 2 }
+        ],
+        buttons: [
+            {
+                extend: "excel",
+                text: "Export",
+            },
+        ],
+        language: {
+            paginate: {
+                first: '<img src="/Image/Group 36.png" alt="">',
+                last: '<img src="/Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+                previous: '<img src="/Image/keyboard-right-arrow-button copy.png" alt="">',
+                next: '<img src="/Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">',
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+            emptyTable: "No service request Found",
+        },
+    });
+
+
+    $(".verticle-menu ul li")[3].classList.add("current_section");
+    $("#serviceDetail").on("show.bs.modal", ($event) => {
+        var postalcode = $($event.relatedTarget).attr("data-PostalCode");
+        $("#serviceDetail .modal-content")
+            .html("Loading Service Details")
+            .load(`/sp/getServiceDetail?page=0&serviceid=` + $($event.relatedTarget).attr("data-serviceid"), () => {
+                $.ajax({
+                    url:
+                        `https://api.mapbox.com/geocoding/v5/mapbox.places/` +
+                        postalcode +
+                        `.json?country=de&limit=1&types=postcode&access_token=pk.eyJ1IjoiY2hpbnRhbjgxNjkiLCJhIjoiY2tvZWNiaTdhMDljeDJwbGoxdTV6eW9ocyJ9.ZTVOwDvOJqnfEKpBWgUvbg`,
+                    success: (result) => {
+                        var coordinates = result.features[0].geometry.coordinates;
+                        $(".modal-body>div:last-child").html(
+                            `<iframe src="http://maps.google.com/maps?q=` +
+                            coordinates[1] +
+                            `,` +
+                            coordinates[0] +
+                            `&z=16&output=embed" height="100%" width="100%" style="border:0px;"></iframe>`
+                        );
+                    },
+                });
+            });
+    });
+</script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

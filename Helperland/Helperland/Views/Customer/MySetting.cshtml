@@ -118,27 +118,27 @@
                 <div class="col-md-4">
                     <label for="FirstName" class="form-label">First Name</label>
                     <input type="text" asp-for="FirstName" class="form-control" placeholder="First Name">
-                    <span asp-validation-for="FirstName"></span>
+                    <span class="d-block text-danger mt-2" asp-validation-for="FirstName"></span>
                 </div>
                 <div class="col-md-4">
                     <label for="LastName" class="form-label">Last Name</label>
                     <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
-                    <span asp-validation-for="LastName"></span>
+                    <span class="d-block text-danger mt-2" asp-validation-for="LastName"></span>
                 </div>
                 <div class="col-md-4">
                     <label for="Email" class="form-label">Email</label>
                     <input type="email" class="form-control" asp-for="Email" readonly>
-                    <span asp-validation-for="Email"></span>
+                    <span class="d-block text-danger mt-2" asp-validation-for="Email"></span>
                 </div>
                 <div class="col-md-4">
                     <label for="Mobile" class="form-label">Mobile Number</label>
-                    <div class="input-group mb-3">
+                    <div class="input-group">
                         <span class="input-group-text" id="basic-addon1">+91</span>
-                        <input type="text" class="form-control" asp-for="Mobile" placeholder="Username"
-                            aria-label="Username" aria-describedby="basic-addon1" maxlength="10
+                        <input type="text" class="form-control" asp-for="Mobile" placeholder="Mobile"
+                            aria-label="Mobile" aria-describedby="basic-addon1" maxlength="10
                             ">
                     </div>
-                    <span asp-validation-for="Mobile"></span>
+                    <span class="d-block text-danger mt-2" asp-validation-for="Mobile"></span>
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Date of Birth</label>
@@ -212,8 +212,8 @@
                 Address</button>
         </div>
         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-            <form id="changePassword" class="row g-3 flex-column mt-4 ms-2" data-ajax="true" data-ajax-method="post"
-                data-ajax-url="/changepassword" data-ajax-loading="#loaderContainer"
+            <form id="changePassword" class="row g-3 flex-column mt-4 ms-2" data-ajax="true"
+                data-ajax-url="/changepassword" data-ajax-method="post" data-ajax-loading="#loaderContainer"
                 data-ajax-success="changePasswordSuccess" data-ajax-failure="changePasswordError">
                 <div class="alert alert-dismissible fade show" style="display: none;" role="alert">
                     <span class="content"></span>

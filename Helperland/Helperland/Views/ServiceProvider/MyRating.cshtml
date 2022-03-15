@@ -1,0 +1,118 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Service History";
+}
+@model SPRatingModel
+<div class="data-table position-relative">
+    <div class="heading mb-2 text-end me-2">
+        <span class="d-inline-block">Sorting </span>
+        <div class="sort d-inline-block">
+            <img src="/Image/filter.png" alt="" id="sortData" data-bs-toggle="popover" data-bs-container="body"
+                data-bs-placement="bottom" data-bs-trigger="focus" tabindex="0" data-bs-html="true"
+                data-bs-custom-class="sortOption" data-bs-offset="-80,17" data-bs-content='<div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="serviceAsc" onclick=sort(1,"asc")>
+            <label class="form-check-label" for="serviceAsc">
+                Service Date: Oldest
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="serviceDesc" onclick=sort(1,"desc")>
+            <label class="form-check-label" for="serviceDesc">
+                Service Date: Latest
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="servisIdAsc" onclick=sort(0,"asc")>
+            <label class="form-check-label" for="servisIdAsc">
+                Service Id: Low to High
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="servisIdDesc" onclick=sort(0,"desc")>
+            <label class="form-check-label" for="servisIdDesc">
+                Service Id: High to low
+            </label>
+        </div>' />
+        </div>
+    </div>
+
+    <table id="example">
+        <thead class="d-none">
+            <tr>
+                <th>Service Id</th>
+                <th>Service Date</th>
+                <th>Rating</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rating in Model.spRatingModel)
+            {
+                <tr class="row mb-3 w-100 mx-0 px-3 py-2">
+                    <td class="d-block col-12 col-md-2 p-0 py-2 py-md-0">
+                        <span> @rating.ServiceId</span><br>
+                        <b> @rating.FirstName @rating.LastName </b>
+                    </td>
+                    <td class="d-block col-12 col-md-8 p-0 py-2 py-md-0">
+                        <div class="d-flex align-items-center mb-1">
+                            <img class="me-2" src="/Image/calculator.png" alt="" />
+                            <strong>@rating.ServiceStartDate.ToString("dd/MM/yyyy")</strong>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img class="me-2" src="/Image/Layer 712.png" alt="" />
+                            <span class="text-nowrap">@rating.ServiceStartDate.ToString("HH:mm") -
+                                @rating.ServiceStartDate.AddHours(rating.ServiceHours).ToString("HH:mm")
+                            </span>
+                        </div>
+                    </td>
+                    <td class="d-block col-12 col-md-2 p-0 py-2 py-md-0">
+                        <p class="m-0">Ratings</p>
+                        <div class="position-relative rating d-inline-block">
+                            <span class="unfilled position-absolute top-0 end-0"
+                            style="--rating:@Math.Round(rating.Rating,2)"></span>
+                            <span class="filled position-relative top-0 start-0"></span>
+                        </div>
+                    </td>
+                    <td class="d-block col-12 p-0">
+                        <hr class="d-none d-md-block">
+                        <b class="d-block">Customer Comment</b>
+                        <span>@rating.Comments</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/myrating.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+<script>
+    $(".verticle-menu ul li")[4].classList.add("current_section");
+    var table = $("#example").DataTable({
+        dom: 't<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+        pagingType: "full_numbers",
+        columnDefs: [
+            { orderable: false, targets: 2 }
+        ],
+        language: {
+            paginate: {
+                first: '<img src="/Image/Group 36.png" alt="">',
+                last: '<img src="/Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+                previous: '<img src="/Image/keyboard-right-arrow-button copy.png" alt="">',
+                next: '<img src="/Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">',
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+            emptyTable: "No service request Found",
+        },
+    });
+
+
+</script>
+}

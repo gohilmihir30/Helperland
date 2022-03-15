@@ -1,0 +1,170 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Upcoming Services";
+}
+@model FetchServiceDetails
+@* Modal *@
+@* Service Detail Modal *@
+<div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+
+<div class="data-table position-relative">
+    <div class="alert" style="display: none;" role="alert"></div>
+    <div class="heading mb-2 mb-sm-0">
+        <h3 class="d-inline-block">Upcoming Service Requests</h3>
+        <div class="sort d-inline-block d-md-none">
+            <img src="/Image/filter.png" alt="" id="sortData" data-bs-toggle="popover" data-bs-container="body"
+                data-bs-placement="bottom" data-bs-trigger="focus" tabindex="0" data-bs-html="true"
+                data-bs-custom-class="sortOption" data-bs-offset="-80,17" data-bs-content='<div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="serviceAsc" onclick=sort(1,"asc")>
+                <label class="form-check-label" for="serviceAsc">
+                    Service Date: Oldest
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="serviceDesc" onclick=sort(1,"desc")>
+                <label class="form-check-label" for="serviceDesc">
+                    Service Date: Latest
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="servisIdAsc" onclick=sort(0,"asc")>
+                <label class="form-check-label" for="servisIdAsc">
+                    Service Id: Low to High
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="servisIdDesc" onclick=sort(0,"desc")>
+                <label class="form-check-label" for="servisIdDesc">
+                    Service Id: High to Low
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="paymentAsc"
+                       onclick=sort(3,"asc")>
+                <label class="form-check-label" for="paymentAsc">
+                    Payment: Low to High
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="paymentDesc"
+                       onclick=sort(3,"desc")>
+                <label class="form-check-label" for="paymentDesc">
+                    Payment: High to Low
+                </label>
+            </div>' />
+        </div>
+    </div>
+    <table id="example">
+        <thead>
+            <tr>
+                <th class="text-nowrap">Service Id</th>
+                <th>Service Date</th>
+                <th class="text-nowrap">Customer Details</th>
+                <th class="text-center">Payment</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var data in Model.Details)
+                {
+                    var serviceEndtime = data.ServiceStartTime.AddHours(data.ServiceHours);
+                    var st = data.ServiceStartTime.ToString("HH:mm");
+                    var et = data.ServiceStartTime.AddHours(data.ServiceHours).ToString("HH:mm");
+
+                    <tr>
+                        <td>
+                            <a class="showdetail" data-serviceid="@data.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal" data-postalcode="@data.PostalCode">@data.ServiceId</a>
+                        </td>
+                        <td class="datetime">
+                            <div class="showdetail" data-postalcode="@data.PostalCode" data-serviceid="@data.ServiceId"
+                        data-bs-target="#serviceDetail" data-bs-toggle="modal">
+                                <div class="d-flex align-items-center mb-1">
+                                    <img class="me-2" src="/Image/calculator.png" alt="" />
+                                    <strong>@data.ServiceStartTime.ToString("dd/MM/yyyy")</strong>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img class="me-2" src="/Image/Layer 712.png" alt="" />
+                                    <span class="text-nowrap">@st - @et</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="customer">
+                            <span>@data.FirstName @data.LastName</span>
+                            <div class="d-flex align-item-center mt-1">
+                                <img src="/Image/Layer 719.png" alt="">
+                                <span>@data.Address1 @data.Address2 </span>
+                            </div>
+                            <span class="text-nowrap"> @data.PostalCode @data.City</span>
+                        </td>
+                        <td class="payment text-center"><span>@data.TotalCost</span> &#8364;</td>
+                        <td class="action text-center">
+                            @if (serviceEndtime.CompareTo(DateTime.Now) < 0)
+                            {
+                                <button class="btn rounded-pill complete mt-1" data-id="@data.ServiceId">Complete</button>
+                            }
+                            @if (data.ServiceStartTime.CompareTo(DateTime.Now) > 0)
+                             {
+                                <button class="btn rounded-pill cancle mt-1" data-id="@data.ServiceId">Cancel</button>
+                             }
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/SP-upcoming.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+<script src="/JS/sp-upcoming.js"></script>
+<script>
+    var table = $("#example").DataTable({
+        dom: 't<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+        pagingType: "full_numbers",
+        columnDefs: [
+            { type: "serviceDate", targets: 1 },
+            { orderable: false, targets: 2 },
+            { orderable: false, targets: 4 }
+        ],
+        language: {
+            paginate: {
+                first: '<img src="/Image/Group 36.png" alt="">',
+                last: '<img src="/Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+                previous: '<img src="/Image/keyboard-right-arrow-button copy.png" alt="">',
+                next: '<img src="/Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">',
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+            emptyTable: "No service request Found",
+        },
+    });
+</script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

@@ -1,0 +1,486 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "My Account";
+}
+@model MyAccountModel;
+
+<div class="myaccount-container ms-0 ms-lg-4 px-4 px-lg-4 col-12 col-lg-8">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item col-4" role="presentation">
+            <button class="nav-link w-100 active" id="details-tab" data-bs-toggle="pill" data-bs-target="#details"
+                type="button" role="tab" aria-controls="details" aria-selected="true"> <span
+                    class="d-none d-md-inline-block">My
+                    Details</span><span class="d-md-none bg-img"><img src="/Image/my-account-details.png"
+                        alt="Details"></span>
+            </button>
+        </li>
+        <li class="nav-item col-4" role="presentation">
+            <button class="nav-link w-100" id="password-tab" data-bs-toggle="pill" data-bs-target="#password"
+                type="button" role="tab" aria-controls="password" aria-selected="false"><span
+                    class="d-none d-md-inline-block">Change
+                    Password</span><span class="d-md-none bg-img"><img src="/image/my-account-password.png"
+                        alt="Password"></span></button>
+        </li>
+        <li class="nav-item col-4" role="presentation">
+            <button class="nav-link pe-none w-100" id="extra-tab" data-bs-toggle="pill" type="button" role="tab"
+                aria-selected="false"><span class="d-none d-md-inline-block"></button>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+            <div class="alert alert-dismissible fade show" style="display: none;" role="alert">
+                <span class="content"></span>
+            </div>
+            <div class="col-12 mb-3">
+                <h5 class="d-inline-block">Account Status:
+                    @if (@Model.IsActive)
+                    {
+                        <span class="text-success fw-bolder"> Active</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger fw-bolder"> InActive</span>
+                    }
+                </h5>
+                <div class="float-end d-inline-block">
+                    <img src="@Model.Avatar" alt="">
+                </div>
+            </div>
+            <div class="mb-3" style="width: 90%;">
+                <h5 class="pb-2 border-bottom border-2">Basic Details</h5>
+            </div>
+            <form id="mydetail" class="row g-3 w-100" data-ajax="true" data-ajax-method="post"
+                data-ajax-url="/sp/mysetting" data-ajax-loading="#loaderContainer" data-ajax-success="myDetailSuccess"
+                data-ajax-failure="myDetailError">
+                <div class="col-md-6 col-lg-4">
+                    <label for="FirstName" class="form-label">First Name</label>
+                    <input type="text" asp-for="FirstName" class="form-control" placeholder="First Name">
+                    <span asp-validation-for="FirstName" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class=" col-md-6 col-lg-4">
+                    <label for="LastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" asp-for="LastName" placeholder="Last Name">
+                    <span asp-validation-for="LastName" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <label for="Email" class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="Email" readonly>
+                    <span asp-validation-for="Email" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <label for="Mobile" class="form-label">Mobile Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+91</span>
+                        <input type="text" class="form-control" asp-for="Mobile" placeholder="Mobile"
+                            aria-label="Username" aria-describedby="basic-addon1" maxlength="10
+                            ">
+                    </div>
+                    <span asp-validation-for="Mobile" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <label class="form-label">Date of Birth</label>
+                    <div class="row gx-2">
+                        <div class="col-3">
+                            <select class="form-select" asp-for="Day">
+                                <option value="">Date</option>
+                                @for (int i = 1; i < 32; i++)
+                                {
+                                    <option value="@i">@i.ToString("D2")</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-5">
+                            <select class="form-select" asp-for="Month">
+                                <option value="">Month</option>
+                                @{
+                                    string[] month = { "January", "February", "March", "April", "May", "June", "July",
+                                                        "August","September","October","November","December" };
+
+                                    @for (int i = 0; i < month.Length; i++)
+                                    {
+                                        var m = i + 1;
+                                        <option value="@m">@month[i]</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select class="form-select" asp-for="Year">
+                                <option value="">Year</option>
+                                @{
+                                    var number = DateTime.Now.Year - 18;
+
+                                    @for (int i = number; i >= 1913; i--)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <span class="mt-2 d-inline-block text-danger" id="dateerror"></span>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <label class="form-label d-block" for="language">Nationality</label>
+                    <div class="col-12">
+                        <select class="form-select" asp-for="NatinalityId">
+                            <option value="">Nationality</option>
+                            <option value="176625">German</option>
+                            <option value="176626">Afghan</option>
+                            <option value="176627">Egyptian</option>
+                            <option value="176628">Albanian</option>
+                            <option value="176629">Algerian</option>
+                            <option value="176630">American</option>
+                            <option value="176631">andorranisch</option>
+                            <option value="176632">angolan</option>
+                            <option value="176633">Antiguan</option>
+                            <option value="176634">äquatorialguineisch</option>
+                            <option value="176635">Argentinean</option>
+                            <option value="176636">Armenian</option>
+                            <option value="176637">Azerbaijani</option>
+                            <option value="176638">Ethiopian</option>
+                            <option value="176639">Australian</option>
+                            <option value="176640">bahamaisch</option>
+                            <option value="176641">bahrainisch</option>
+                            <option value="176642">bangladesh</option>
+                            <option value="176643">Belgian</option>
+                            <option value="176644">belizean</option>
+                            <option value="176645">Beninese</option>
+                            <option value="176646">Dzongkha</option>
+                            <option value="176647">Bolivian</option>
+                            <option value="176648">Bosnian herzegowinisch</option>
+                            <option value="176649">botsuanisch</option>
+                            <option value="176650">Brazilian</option>
+                            <option value="176651">British</option>
+                            <option value="176652">bruneiisch</option>
+                            <option value="176653">Bulgarian</option>
+                            <option value="176654">burkinisch</option>
+                            <option value="176655">burundisch</option>
+                            <option value="176656">cabo-verdisch</option>
+                            <option value="176657">Chilean</option>
+                            <option value="176658">Chinese</option>
+                            <option value="176659">Costa Rican</option>
+                            <option value="176660">Danish</option>
+                            <option value="176661">the north Mariana Islands</option>
+                            <option value="176662">the Ver. Arab. Emirates</option>
+                            <option value="176664">dominicanisch</option>
+                            <option value="176665">Dominican</option>
+                            <option value="176666">dschibutisch</option>
+                            <option value="176667">Ecuadorian</option>
+                            <option value="176668">Eritrean</option>
+                            <option value="176669">Estonian</option>
+                            <option value="176670">Fijian</option>
+                            <option value="176671">Finnish</option>
+                            <option value="176672">French</option>
+                            <option value="176673">gabonese</option>
+                            <option value="176674">gambian</option>
+                            <option value="176675">Georgian</option>
+                            <option value="176676">Ghanaian</option>
+                            <option value="176677">grenadian</option>
+                            <option value="176678">Greek</option>
+                            <option value="176679">Guatemalan</option>
+                            <option value="176680">Guinea-bissauisch</option>
+                            <option value="176681">guineisch</option>
+                            <option value="176682">guyanese</option>
+                            <option value="176683">Haitian</option>
+                            <option value="176684">Honduran</option>
+                            <option value="176685">Indian</option>
+                            <option value="176686">Indonesian</option>
+                            <option value="176687">Iraqi</option>
+                            <option value="176688">Iranian</option>
+                            <option value="176689">Irish</option>
+                            <option value="176690">Icelandic</option>
+                            <option value="176691">Israeli</option>
+                            <option value="176692">Italian</option>
+                            <option value="176693">Ivorian</option>
+                            <option value="176694">Jamaican</option>
+                            <option value="176695">Japanese</option>
+                            <option value="176696">Yemeni</option>
+                            <option value="176697">Jordanian</option>
+                            <option value="176698">Cambodian</option>
+                            <option value="176699">cameroonian</option>
+                            <option value="176700">Canadian</option>
+                            <option value="176701">Kazakh</option>
+                            <option value="176702">Qatari</option>
+                            <option value="176703">Kenyan</option>
+                            <option value="176704">Kyrgyz</option>
+                            <option value="176705">Kiribati</option>
+                            <option value="176706">Colombian</option>
+                            <option value="176707">comorian</option>
+                            <option value="176708">Congolese</option>
+                            <option value="176709">Korean</option>
+                            <option value="176710">Croatian</option>
+                            <option value="176711">Cuban</option>
+                            <option value="176712">kuwaitisch</option>
+                            <option value="176713">Laotian</option>
+                            <option value="176714">lesothisch</option>
+                            <option value="176715">Latvian</option>
+                            <option value="176716">Lebanese</option>
+                            <option value="176717">Liberian</option>
+                            <option value="176718">libyan</option>
+                            <option value="176719">liechtensteinisch</option>
+                            <option value="176720">Lithuanian</option>
+                            <option value="176721">lucianisch</option>
+                            <option value="176722">Luxembourgish</option>
+                            <option value="176723">Madagascan</option>
+                            <option value="176724">Macedonian / Macedonian</option>
+                            <option value="176725">malawian</option>
+                            <option value="176726">Malaysian</option>
+                            <option value="176727">maldivian</option>
+                            <option value="176728">malisch</option>
+                            <option value="176729">Maltese</option>
+                            <option value="176730">Moroccan</option>
+                            <option value="176731">Marshallese</option>
+                            <option value="176732">mauritanian</option>
+                            <option value="176733">Mauritian</option>
+                            <option value="176734">Mexican</option>
+                            <option value="176735">micronesian</option>
+                            <option value="176736">Moldavian</option>
+                            <option value="176737">Monegasque</option>
+                            <option value="176738">Mongolian</option>
+                            <option value="176739">montenegrin</option>
+                            <option value="176740">Mozambican</option>
+                            <option value="176741">Myanmarian</option>
+                            <option value="176742">Namibian</option>
+                            <option value="176743">Nauruan</option>
+                            <option value="176744">Nepalese</option>
+                            <option value="176745">New Zealand</option>
+                            <option value="176746">Nicaraguan</option>
+                            <option value="176747">Dutch</option>
+                            <option value="176748">Nigerian</option>
+                            <option value="176749">nigrisch</option>
+                            <option value="176750">Norwegian</option>
+                            <option value="176751">Omani</option>
+                            <option value="176752">Austrian</option>
+                            <option value="176754">Pakistani</option>
+                            <option value="176755">Palauan</option>
+                            <option value="176756">Panamanian</option>
+                            <option value="176757">Papua-neuguineisch</option>
+                            <option value="176758">Paraguayan</option>
+                            <option value="176759">Peruvian</option>
+                            <option value="176760">Filipino</option>
+                            <option value="176761">Polish</option>
+                            <option value="176762">Portuguese</option>
+                            <option value="176763">Rwandan</option>
+                            <option value="176764">Romanian</option>
+                            <option value="176765">Russian</option>
+                            <option value="176766">salomonisch</option>
+                            <option value="176767">Salvadorian</option>
+                            <option value="176768">Zambian</option>
+                            <option value="176769">Samoan</option>
+                            <option value="176770">sanmarinesisch</option>
+                            <option value="176771">santomeisch</option>
+                            <option value="176772">Saudi-arabian</option>
+                            <option value="176773">Swedish</option>
+                            <option value="176774">Swiss</option>
+                            <option value="176775">Senegalese</option>
+                            <option value="176776">Serbian</option>
+                            <option value="176777">seychellisch</option>
+                            <option value="176778">sierraleonisch</option>
+                            <option value="176779">Zimbabwean</option>
+                            <option value="176780">Singaporean</option>
+                            <option value="176781">Slovak</option>
+                            <option value="176782">Slovenian</option>
+                            <option value="176783">somali</option>
+                            <option value="176784">Spanish</option>
+                            <option value="176785">Sri Lankan</option>
+                            <option value="176786">South African</option>
+                            <option value="176787">Sudanese</option>
+                            <option value="176788">südsudanesisch</option>
+                            <option value="176789">surinamese</option>
+                            <option value="176790">swasiländisch</option>
+                            <option value="176791">Syrian</option>
+                            <option value="176792">Tajik</option>
+                            <option value="176793">Taiwanese</option>
+                            <option value="176794">Tanzanian</option>
+                            <option value="176795">Thai</option>
+                            <option value="176796">togolese</option>
+                            <option value="176797">tongan</option>
+                            <option value="176798">Chadian</option>
+                            <option value="176799">Czech</option>
+                            <option value="176800">Tunisian</option>
+                            <option value="176801">Turkish</option>
+                            <option value="176802">Turkmen</option>
+                            <option value="176803">Tuvaluan</option>
+                            <option value="176804">Ugandan</option>
+                            <option value="176805">Ukrainian</option>
+                            <option value="176806">Hungarian</option>
+                            <option value="176807">Uruguayan</option>
+                            <option value="176808">Uzbek</option>
+                            <option value="176809">vanuatuisch</option>
+                            <option value="176810">Venezuelan</option>
+                            <option value="176811">Vietnamese</option>
+                            <option value="176812">vince table</option>
+                            <option value="176813">from Niue</option>
+                            <option value="176814">from St. Kitts and Nevis</option>
+                            <option value="176815">from Timor-Leste</option>
+                            <option value="176816">from Trinidad and Tobago</option>
+                            <option value="176817">belarusian</option>
+                            <option value="176818">zentralafrikanisch</option>
+                            <option value="176819">zyprisch</option>
+                        </select>
+                        <span asp-validation-for="NatinalityId" class="d-block mt-1 text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 gender">
+                    <label class="form-label d-block">Gender</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Gender" id="male" value="1">
+                        <label class="form-check-label" for="male">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Gender" id="Female" value="2">
+                        <label class="form-check-label" for="Female">
+                            Female
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" asp-for="Gender" id="nottosay" value="3">
+                        <label class="form-check-label" for="nottosay">
+                            Rather not to say
+                        </label>
+                    </div>
+                    <span asp-validation-for="Gender" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="mb-3 avtar">
+                    <label class="form-label d-block">Select Avatar</label>
+                    <div class="d-flex flex-wrap justify-content-center justify-content-sm-start">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input d-none" type="radio" asp-for="Avatar" id="hat"
+                                value="/Image/avatar-hat.png" checked>
+                            <label class="form-check-label" for="hat">
+                                <img src="/Image/avatar-hat.png" alt="">
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input d-none" type="radio" asp-for="Avatar" id="car"
+                                value="/Image/avatar-car.png">
+                            <label class="form-check-label" for="car">
+                                <img src="/Image/avatar-car.png" alt="">
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input d-none" type="radio" asp-for="Avatar" id="avatar-female"
+                                value="/Image/avatar-female.png">
+                            <label class="form-check-label" for="avatar-female">
+                                <img src="/Image/avatar-female.png" alt="">
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input d-none" type="radio" asp-for="Avatar" id="iron"
+                                value="/Image/avatar-iron.png">
+                            <label class="form-check-label" for="iron">
+                                <img src="/Image/avatar-iron.png" alt="">
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input d-none" type="radio" asp-for="Avatar" id="avatar-male"
+                                value="/Image/avatar-male.png">
+                            <label class="form-check-label" for="avatar-male">
+                                <img src="/Image/avatar-male.png" alt="">
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input d-none" type="radio" asp-for="Avatar" id="ship"
+                                value="/Image/avatar-ship.png">
+                            <label class="form-check-label" for="ship">
+                                <img src="/Image/avatar-ship.png" alt="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Avatar" class="d-block mt-1 text-danger"></span>
+                <div class="col-12 my-2">
+                    <h5 class="pb-2 border-bottom border-2">My Address</h5>
+                </div>
+                <div class="col-md-4">
+                    <label for="streetname" class="form-label">Street Name</label>
+                    <input type="text" id="streetname" asp-for="address.AddressLine1" class="form-control"
+                        placeholder="Street Name">
+                    <span asp-validation-for="address.AddressLine1" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="housenumber" class="form-label">House Number</label>
+                    <input type="text" id="housenumber" asp-for="address.AddressLine2" class="form-control"
+                        placeholder="House Number">
+                    <span asp-validation-for="address.AddressLine2" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="address_PostalCode" class="form-label">Postal Code</label>
+                    <input type="text" asp-for="address.PostalCode" class="form-control" placeholder="Postal Code">
+                    <span asp-validation-for="address.PostalCode" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="address_City" class="form-label">City</label>
+                    <input type="text" asp-for="address.City" class="form-control" placeholder="City" readonly>
+                    <span asp-validation-for="address.City" class="d-block mt-1 text-danger"></span>
+                </div>
+                <div class="col-md-12">
+                    <button class="rounded-pill btn" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+            <form id="changePassword" class="row g-3 flex-column mt-4 ms-2" data-ajax="true" data-ajax-method="post"
+                data-ajax-url="/changepassword" data-ajax-loading="#loaderContainer"
+                data-ajax-success="changePasswordSuccess" data-ajax-failure="changePasswordError">
+                <div class="alert alert-dismissible fade show" style="display: none;" role="alert">
+                    <span class="content"></span>
+                </div>
+                <div class="col-md-5">
+                    <label for="FirstName" class="form-label">Old Password</label>
+                    <input type="password" asp-for="OldPassword" class="form-control" placeholder="Old Password">
+                    <span class="text-danger mt-2 d-block" asp-validation-for="OldPassword"></span>
+                </div>
+                <div class="col-md-5">
+                    <label for="FirstName" class="form-label">New Password</label>
+                    <input type="password" asp-for="NewPassword" class="form-control" placeholder="New Password">
+                    <span class="text-danger mt-2 d-block" asp-validation-for="NewPassword"></span>
+                </div>
+                <div class="col-md-5">
+                    <label for="FirstName" class="form-label">Confirm Password</label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control"
+                        placeholder="Confirm Password">
+                    <span class="text-danger mt-2 d-block" asp-validation-for="ConfirmPassword"></span>
+                </div>
+                <div class="col-md-12">
+                    <button class="rounded-pill btn" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section css{
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/mysetting.css" />
+}
+@section JavaScript{
+<script src="/JS/_commonlogdedin.js"></script>
+<script>
+    $.post("/findCity?postalcode=" + @Model.address.PostalCode, (response) => {
+        console.log(response);
+        if (response) {
+            $("#address_City").val(response.city);
+        } else {
+            $("#address_City").val("");
+        }
+    });
+</script>
+<script src="/JS/mysetting.js"></script>
+
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}

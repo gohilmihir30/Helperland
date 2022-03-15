@@ -1,0 +1,57 @@
+#serviceDetail .modal-header {
+	font-size: 20px;
+}
+#serviceDetail .modal-dialog {
+	max-width: 900px;
+}
+#serviceDetail .modal-content {
+	min-height: 500px;
+}
+#serviceDetail .modal-body > div:last-child {
+	/* max-width: 360px; */
+}
+#serviceDetail .modal-body > div > div {
+	color: #4f4f4f;
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+#serviceDetail .modal-body > div > h5 {
+	font-size: 22px;
+	line-height: 26px;
+}
+#serviceDetail .modal-body div span.netamount {
+	width: calc(100% - 131px);
+	display: inline-block;
+	text-align: center;
+	font-size: 26px;
+	line-height: 26px;
+	color: #1d7a8c;
+	font-weight: 700;
+}
+.verticle-menu {
+	max-width: 262px;
+	min-width: 214px;
+	width: 20%;
+}
+.modal-body .btn.accept {
+	background: #67b644;
+}
+
+td.datetime .showdetail {
+	cursor: pointer;
+}
+td.customer div img {
+	margin-right: 8px;
+}
+td.customer > span {
+	margin-left: 30px;
+}
+tr td.payment > span {
+	font-size: 24px;
+	font-weight: 700;
+}
+tr td.payment {
+	font-size: 20px;
+	color: #1d7a8c;
+}

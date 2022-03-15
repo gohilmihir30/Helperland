@@ -44,12 +44,7 @@ td p {
 td.showdetail:hover {
 	opacity: 0.8;
 }
-a {
-	text-decoration: none;
-	color: #646464;
-	display: inline-block;
-	cursor: pointer;
-}
+
 a:hover {
 	color: inherit;
 }

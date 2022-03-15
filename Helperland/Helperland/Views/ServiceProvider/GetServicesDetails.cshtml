@@ -1,0 +1,78 @@
+@{
+    Layout = null;
+}
+@model ServiceDetailsModel;
+
+@if (Model != null)
+{
+    <div class="modal-header">
+        <h5 class="modal-title" id="serviceDetailLabel">Service Detail</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body d-flex flex-wrap">
+        <div class="col-12 col-md-6 my-md-auto">
+            <div>
+                <h5 class="m-0">
+                    @Model.ServiceStartTime.ToString("dd/MM/yyyy") @Model.ServiceStartTime.ToString("HH:mm") -
+                    @Model.ServiceStartTime.AddHours(@Model.ServiceHours).ToString("HH:mm")
+                </h5>
+                <div>
+                    <b>Duration: </b>
+                    <span>@Model.ServiceHours Hrs</span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <b>Service Id: </b>
+                    <span>@Model.ServiceId</span>
+                </div>
+                <div>
+                    <b>Extra: </b>
+                    @foreach (var e in Model.extra)
+                    {
+                        <span> @e, </span>
+                    }
+                </div>
+                <div>
+                    <b>Net Amount:</b>
+                    <span class="netamount">@Model.TotalCost &#8364;</span>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <b>Customer Name:</b>
+                    <span>@Model.FirstNamme @Model.LastName</span>
+                </div>
+                <div>
+                    <b>Service Address: </b>
+                    <span>@Model.AddressLine1 @Model.AddressLine2, @Model.PostalCode @Model.City</span>
+                </div>
+            </div>
+            <div class="mb-0">
+                <div>
+                    <b>Comment:</b>
+                    <div>@Model.Comments</div>
+                </div>
+            </div>
+            @if (ViewBag.page == 1)
+            {
+                <button class="btn mt-3 rounded-pill accept" data-id="@Model.ServiceId" data-record="@Model.RecordVersion" onclick="acceptservice(event)">
+                    <img src="/Image/Forma 1 copy 10.png" alt="">
+                    Accept
+                </button>
+            }
+            else if (ViewBag.page == 2)
+            {
+                var serviceEndtime = Model.ServiceStartTime.AddHours(Model.ServiceHours);
+                @if (serviceEndtime.CompareTo(DateTime.Now) < 0)
+                {
+                    <button class="btn mt-3 rounded-pill complete" onclick="completerequest(event)" data-id="@Model.ServiceId">Complete</button>
+                }
+                <button class="btn mt-3 rounded-pill cancle" data-id="@Model.ServiceId" onclick="cancelrequest(event)">Cancel</button>
+            }
+        </div>
+        <div class="col-12 col-md-6 px-3 mt-3 mt-md-0">
+
+        </div>
+    </div>
+}

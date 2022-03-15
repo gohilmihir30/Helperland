@@ -15,6 +15,7 @@ namespace Helperland.Models.ViewModels
 
         [Required]
         public int UserId { get; set; }
+        public int FavoriteSP { get; set; }
         [Required(ErrorMessage = "Plese Enter Date Field")]
         [RegularExpression("([0-9]){2}/([0-9]){2}/([0-9]){4}", ErrorMessage = "Enter valid Date")]
         public string ServiceStartDate { get; set; }

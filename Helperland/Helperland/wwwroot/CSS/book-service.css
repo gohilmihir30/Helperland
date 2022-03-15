@@ -498,7 +498,7 @@ label {
 }
 
 .tab-content #Details .fav-sp .sp-container {
-	width: 100px;
+	/* width: 100px; */
 }
 .tab-content #Details .fav-sp .sp-container .sp-avtar {
 	width: 100px;

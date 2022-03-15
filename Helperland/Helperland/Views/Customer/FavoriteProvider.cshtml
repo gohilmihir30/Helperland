@@ -1,0 +1,108 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Favorite Service Provider";
+}
+@model FavoriteAndBlockeModel
+
+<div class="data-table position-relative">
+    <div class="alert alert-danger" style="display: none;" role="alert"></div>
+    <table id="example">
+        <thead class="d-none">
+            <tr>
+                <th>Customer Details</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody class="d-flex flex-wrap">
+            @foreach (var block in Model.blocked)
+            {
+                <tr class="d-flex flex-column px-5 py-3 me-3">
+                    <td class="text-center">
+                        <div class="profilepic d-flex align-items-center justify-content-center rounded-circle p-0 mx-auto">
+                            <img src="@block.Profile" class="img-fliud w-100" alt="Profile">
+                        </div>
+                        <p class="text-center mt-2 customername mb-0">@block.FirstName @block.LastName</p>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="position-relative rating d-inline">
+                                <span class="unfilled position-absolute top-0 end-0"
+                                style="--rating:@Math.Round(block.Rating,2)"></span>
+                                <span class="filled position-relative top-0 start-0"></span>
+                            </div>
+                            <span class="ms-1">@Math.Round(block.Rating,2)</span>
+                        </div>
+                        <p class="mt-3 mb-0">@block.CleaningCount Cleanings</p>
+                    </td>
+                    <td class="text-center">
+                        <form class="d-inline-block mx-1" data-ajax="true" data-ajax-method="post"
+                        data-ajax-url="/blockcustomer?favorite=true" data-ajax-loading="#loaderContainer"
+                        data-ajax-success="blockCustomerSuccess" data-ajax-failure="blockCustomerError">
+                            @if (block.isFavorite != null && block.isFavorite == true)
+                            {
+                                <input type="hidden" name="customerid" value="@block.SPId">
+                                <button class="btn rounded-pill" type="submit">Remove</button>
+                            }
+                            else
+                            {
+                                <input type="hidden" name="customerid" value="@block.SPId">
+                                <button class="btn rounded-pill" type="submit">Add</button>
+                            }
+                        </form>
+                        <form class="d-inline-block mx-1" data-ajax="true" data-ajax-method="post"
+                        data-ajax-url="/blockcustomer" data-ajax-loading="#loaderContainer"
+                        data-ajax-success="blockCustomerSuccess" data-ajax-failure="blockCustomerError">
+                            @if (block.isBlocked != null && block.isBlocked == true)
+                            {
+                                <input type="hidden" name="customerid" value="@block.SPId">
+                                <button class="btn rounded-pill block" type="submit">UnBlock</button>
+                            }
+                            else
+                            {
+                                <input type="hidden" name="customerid" value="@block.SPId">
+                                <button class="btn rounded-pill block" type="submit">Block</button>
+                            }
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/blockcustomer.css" />
+@* <link rel="stylesheet" href="/CSS/SP-upcoming.css" /> *@
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+<script src="/JS/blockcustomer.js"></script>
+<script>
+    $(".verticle-menu ul li")[3].classList.add("current_section");
+    var table = $("#example").DataTable({
+        dom: 't<"table-bottom d-flex justify-content-between align-items-center flex-column flex-md-row"<"table-bottom-inner d-flex flex-column flex-md-row"li>p>',
+        pagingType: "full_numbers",
+        columnDefs: [
+            { orderable: false, targets: 0 },
+            { orderable: false, targets: 1 }
+        ],
+        language: {
+            paginate: {
+                first: '<img src="/Image/Group 36.png" alt="">',
+                last: '<img src="/Image/Group 36.png" style="transform:rotate(180deg)" alt="">',
+                previous: '<img src="/Image/keyboard-right-arrow-button copy.png" alt="">',
+                next: '<img src="/Image/keyboard-right-arrow-button copy.png" style="transform:rotate(180deg)" alt="">',
+            },
+            info: "Total Record: _MAX_",
+            lengthMenu: "Show_MENU_Entries",
+            emptyTable: "No Service Provider Found",
+        },
+    });
+    $(".dataTables_empty").parent().addClass("w-100")
+</script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}

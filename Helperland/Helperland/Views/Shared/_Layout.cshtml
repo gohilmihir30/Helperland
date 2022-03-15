@@ -11,6 +11,9 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     @RenderSection("css")
 </head>
+@{
+    var mysetting = ""; var dashboard = "";
+}
 
 <body class="d-flex justify-content-between flex-column min-vh-100">
     <header class="sticky-top w-100 bg-transparent">
@@ -48,8 +51,22 @@
                     <li><a asp-controller="static" asp-action="contact" title="Contact">Contact</a></li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="d-none loggedin"><a title="My Dashboard">My Dashboard</a></li>
-                        <li class="d-none loggedin"><a title="My Settings">My Settings</a></li>
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li class="d-none loggedin"><a asp-controller="Customer" asp-action="Dashboard"
+                            title="My Dashboard">My Dashboard</a></li>
+                            <li class="d-none loggedin"><a asp-controller="Customer" asp-action="MySetting"
+                            title="My Settings">My
+                                    Settings</a></li>
+                        }
+                        else if (User.IsInRole("ServiceProvider"))
+                        {
+                            <li class="d-none loggedin"><a asp-controller="ServiceProvider" asp-action="Dashboard"
+                            title="My Dashboard">My Dashboard</a></li>
+                            <li class="d-none loggedin"><a asp-controller="ServiceProvider" asp-action="" title="My Settings">My
+                                    Settings</a></li>
+
+                        }
                         <li class="d-none loggedin"><a href="/logout" title="Logout">Logout</a></li>
                     }
                     @if (!User.Identity.IsAuthenticated)
@@ -62,6 +79,8 @@
                 </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    @if (User.IsInRole("Customer")) { dashboard = "/customer/Dashboard"; mysetting = "/mysetting"; }
+                    else if (User.IsInRole("ServiceProvider")) { dashboard = "/sp/Dashboard"; mysetting = "/sp/mysetting"; }
                     <div class="d-flex">
                         <div class="notification position-relative">
                             <img src="/Image/Icon Notification.png" alt="">
@@ -69,7 +88,7 @@
                         </div>
                         <div class="user_pic d-inline-block loggedin" data-bs-container="body" data-bs-toggle="popover"
                         data-bs-placement="bottom" data-bs-trigger="focus" tabindex="0"
-                        data-bs-content="<a href='/customer/Dashboard' class='userInfoItem d-block'>My Dashboard</a><a href='/mysetting' class='userInfoItem d-block'>My Settings</a><a href='/logout' class='userInfoItem d-block'>Logout</a>"
+                        data-bs-content="<a href='@dashboard' class='userInfoItem d-block'>My Dashboard</a><a href='@mysetting' class='userInfoItem d-block'>My Settings</a><a href='/logout' class='userInfoItem d-block'>Logout</a>"
                         data-bs-html="true" data-bs-offset="-70,20"
                         title="<div class='userInfoText'>Welcome,<b>@User.Identity.Name</b></div>">
                             <img src="/Image/user_logo.png" alt="">
