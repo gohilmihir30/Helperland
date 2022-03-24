@@ -1,0 +1,91 @@
+#Calender {
+	margin-left: 20px;
+	max-width: 850px;
+}
+.fc-toolbar {
+	margin-bottom: 15px;
+}
+.fc-toolbar h2 {
+	font-size: 22px;
+	font-weight: 400;
+	line-height: 34px;
+	color: #646464;
+}
+.fc-state-default.fc-next-button.fc-button,
+.fc-state-default.fc-prev-button.fc-button {
+	background: #fff;
+	box-shadow: none;
+	border: 1px solid #e1e1e1;
+	text-shadow: none;
+	transition: all 0.5s ease;
+}
+.fc-state-default.fc-next-button.fc-button:hover,
+.fc-state-default.fc-prev-button.fc-button:hover,
+.fc-state-default.fc-next-button.fc-button:active,
+.fc-state-default.fc-prev-button.fc-button:active,
+.fc-state-default.fc-next-button.fc-button:focus,
+.fc-state-default.fc-prev-button.fc-button:focus {
+	background: #f6f6f6;
+}
+.fc button .fc-icon {
+	width: 20px;
+}
+.fc-state-default.fc-corner-left,
+.fc-state-default.fc-corner-right {
+	border-radius: 0px;
+}
+.fc-icon-left-single-arrow:after,
+.fc-icon-right-single-arrow:after {
+	content: "";
+}
+.fc-icon.fc-icon-right-single-arrow {
+	background: url("/Image/right-arrow-medium.png") no-repeat center center;
+}
+.fc-icon.fc-icon-left-single-arrow {
+	background: url("/Image/left-arrow-medium.png") no-repeat center center;
+}
+.fc-row.fc-widget-header th {
+	background: #f9f9f9;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 15px 0;
+	color: #646464;
+}
+
+.fc-right div {
+	margin-top: 5px;
+}
+.fc-right div div {
+	margin-left: 11px;
+	font-size: 14px;
+	color: #646464;
+	padding-left: 21px;
+}
+.fc-right div div.completed:before {
+	background: #efefef;
+}
+.fc-right div div:before {
+	content: "";
+	position: absolute;
+	height: 17px;
+	width: 17px;
+	background: #1d7a8c;
+	display: block;
+	left: 0;
+	top: 50%;
+	margin-top: -9px;
+}
+.fc-day-number {
+	color: #646464;
+}
+.fc-day-number.fc-other-month {
+	opacity: 0.3;
+}
+.fc .fc-row .fc-content-skeleton td {
+	padding: 10px;
+}
+
+.fc-day-grid-container.fc-scroller {
+	height: fit-content !important;
+}

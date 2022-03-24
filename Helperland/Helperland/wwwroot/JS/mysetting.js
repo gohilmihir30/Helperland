@@ -55,7 +55,6 @@ $(document).ready(() => {
 	$("#address_PostalCode").blur(($event) => {
 		var postalcode = $event.target.value;
 		$.post("/findCity?postalcode=" + postalcode, (response) => {
-			console.log(response);
 			if (response) {
 				$("#address_City").val(response.city);
 			} else {
@@ -84,21 +83,23 @@ $(document).ready(() => {
 	};
 
 	changePasswordSuccess = (xhr) => {
-		if (xhr) {
+		console.log(xhr);
+		if (xhr.result) {
+			console.log("if");
 			$("#changePassword .alert").addClass("alert-success");
 			$("#changePassword .alert .content").html("Your Password changed Successfully");
 			$("#changePassword .alert").fadeIn();
 			$("#changePassword .alert").delay(5000).fadeOut();
 			$("#changePassword").trigger("reset");
 		} else {
+			console.log("else");
 			$("#changePassword .alert").addClass("alert-danger");
-			$("#changePassword .alert .content").html(xhr.statusText);
+			$("#changePassword .alert .content").html(xhr.error);
 			$("#changePassword .alert").fadeIn();
 			$("#changePassword .alert").delay(5000).fadeOut();
 		}
 	};
 	changePasswordError = (xhr) => {
-		console.log(xhr);
 		$("#changePassword .alert").addClass("alert-danger");
 		$("#changePassword .alert .content").html(xhr.statusText);
 		$("#changePassword .alert").fadeIn();

@@ -31,9 +31,6 @@ button.btn.cancle:hover {
 #serviceDetail .modal-content {
 	min-height: 500px;
 }
-#serviceDetail .modal-body > div:last-child {
-	/* max-width: 360px; */
-}
 #serviceDetail .modal-body > div > div {
 	color: #4f4f4f;
 	border-bottom: 1px solid #e1e1e1;

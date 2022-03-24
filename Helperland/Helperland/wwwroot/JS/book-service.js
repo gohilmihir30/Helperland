@@ -352,8 +352,8 @@ $(document).ready(() => {
 			$("#ModalLabel").html("Opps!! Booking hasn't been submitted, Please try again");
 			myModal.show();
 		}
-		resetPage();
 		$("#checkavilability").trigger("reset");
+		$("#servicerequest").trigger("reset");
 	};
 
 	serviceRequestError = (res) => {

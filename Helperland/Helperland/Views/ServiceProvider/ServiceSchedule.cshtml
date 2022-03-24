@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "_LayoutAfterLogin";
+    ViewData["Title"] = "Service Schedule";
+}
+@model FetchServiceDetails;
+
+<div id="Calender">
+</div>
+
+
+@section css{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"
+    integrity="sha512-KXkS7cFeWpYwcoXxyfOumLyRGXMp7BTMTjwrgjMg0+hls4thG2JGzRgQtRfnAuKTn2KWTDZX4UdPg+xTs8k80Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/CSS/_commonlogdedin.css" />
+<link rel="stylesheet" href="/CSS/service-schedule.css" />
+
+}
+@section Javascript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/lib/moment.min.js'></script>
+<script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.2/xlsx.full.min.js"></script>
+<script src="/JS/_commonlogdedin.js"></script>
+
+<script>
+    $(document).ready(() => {
+        var eventobj = [];
+        $.post("/servieScheduleDate", (data, status) => {
+            data = JSON.parse(data)
+            data.forEach((item) => {
+                var temp = new Object()
+                temp.title = item.ServiceStartTime + " - " + item.ServiceEndTime
+                temp.start = item.ServiceDate
+                temp.color = item.color
+                eventobj.push(temp);
+            });
+        })
+        $("#Calender").fullCalendar({
+            header: {
+                left: 'prev,next title',
+                right: ''
+            },
+            viewRender: function (view) {
+                $('#Calender').fullCalendar('removeEvents');
+                $('#Calender').fullCalendar('addEventSource', eventobj);
+            },
+        });
+        $(".fc-right").append(`<div class="d-flex">
+            <div class="position-relative completed"> Completed</div>
+            <div class="position-relative">Upcoming</div>
+        </div> `)
+    })
+</script>
+}

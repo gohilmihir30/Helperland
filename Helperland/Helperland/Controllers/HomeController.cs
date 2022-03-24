@@ -16,7 +16,6 @@ using System.Web.Helpers;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.DataProtection;
 using Helperland.Services.Email;
-using System.Diagnostics;
 
 namespace Helperland.Controllers
 {
@@ -56,6 +55,10 @@ namespace Helperland.Controllers
                 {
                     TempData["isValidCredentials"] = false;
                     return RedirectToAction("index", new { modalRequest = "true" });
+                }else if (!isExist.IsActive)
+                {
+                    TempData["isActive"] = false;
+                    return RedirectToAction("index", new { modalRequest = "true" });
                 }
                 else
                 {
@@ -88,6 +91,9 @@ namespace Helperland.Controllers
                     }else if(role == "ServiceProvider")
                     {
                         return RedirectToAction("Dashboard", "ServiceProvider");
+                    }else if(role == "Admin")
+                    {
+                        return RedirectToAction("UsersManagement", "Admin");
                     }
                     return RedirectToAction("index");
                 }
@@ -165,7 +171,7 @@ namespace Helperland.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer,ServiceProvider")]
+        [Authorize(Roles = "Customer,ServiceProvider,Admin")]
         [Route("/findCity")]
         [HttpPost]
         public JsonResult CityName(string postalcode)

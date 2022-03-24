@@ -1,0 +1,128 @@
+@{
+    Layout = "_AdminLayout";
+    ViewBag.title = "User Management";
+}
+@model AdminUserManagement
+<div class="right">
+    <div class="heading d-flex align-items-center justify-content-between">
+        <h2>User Management</h2>
+        <button><img src="/Image/add.png" alt=""> Add New user</button>
+    </div>
+    <div class="filter">
+        <form class="row gy-2 gx-3 align-items-center">
+            <div class="col-2">
+                <label class="visually-hidden" for="username">User name</label>
+                <select class="form-select" id="username" placeholder="User name">
+                    <option selected value="">User name</option>
+                    <option value="Mihir Gohil">Mihir Gohil</option>
+                    <option value="service provider">service provider</option>
+                    <option value="test cust">test cust</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="visually-hidden" for="userrole">User role</label>
+                <select class="form-select" id="userrole" placeholder="User roel">
+                    <option selected value="">User role</option>
+                    <option value="Customer">Customer</option>
+                    <option value="Service Provider">Service Provider</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+            <div class="col-2" style="min-width: 200px;">
+                <label class="visually-hidden" for="mobile">Mobile</label>
+                <div class="input-group">
+                    <div class="input-group-text">+49</div>
+                    <input type="tel" class="form-control" id="mobile" placeholder="Phone Number">
+                </div>
+            </div>
+            <div class="col-auto" style="width: 135px;">
+                <label class="visually-hidden" for="zipcode">Zipcode</label>
+                <input type="text" class="form-control" id="zipcode" placeholder="Zipcode">
+            </div>
+            <div class="col-auto position-relative">
+                <label class="visually-hidden" for="fromdate">From Date</label>
+                <input type="text" class="form-control date" id="fromdate" placeholder="From Date">
+                <img class="position-absolute" src="/Image/calender.svg" alt="">
+            </div>
+            <div class="col-auto position-relative">
+                <label class="visually-hidden" for="todate">To Date</label>
+                <input type="text" class="form-control date" id="todate" placeholder="To Date">
+                <img class="position-absolute" src="/Image/calender.svg" alt="">
+            </div>
+            <div class="col-auto">
+                <button type="button" id="search" class="btn">Search</button>
+            </div>
+            <div class="col-auto">
+                <button type="reset" id="clear" class="btn">Clear</button>
+            </div>
+        </form>
+    </div>
+    <form data-ajax="true" id="activationFrom" data-ajax-method="post" data-ajax-url="/activation" data-ajax-loading="#loaderContainer" data-ajax-success="activationSuccess" data-ajax-failure="activationError"> 
+        <input type="hidden" name="userid">
+    </form>
+    <div class="data-table">
+        <table id="user">
+            <thead>
+                <tr>
+                    <th class="text-nowrap">User Name</th>
+                    <th>Date of Registration</th>
+                    <th class="text-nowrap">User Type</th>
+                    <th class="text-nowrap">Phone</th>
+                    <th class="text-nowrap">Postal Code</th>
+                    <th>City</th>
+                    <th class="text-nowrap text-center">User Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.User)
+                {
+                    string[] usertype = { "Customer", "Service Provider", "Admin" };
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td><img src="/Image/calculator.png" alt=""> <span class="mt-1 ms-1"> @user.RegistrationDate</span>
+                        </td>
+                        <td>@usertype[user.UserType-1]</td>
+                        <td>@user.Phone</td>
+                        <td>@user.PostalCode</td>
+                        <td>@user.City</td>
+                        <td class="text-center">
+                            @{
+                                var status = (user.IsActive) ? "Active" : "Inactive";
+                            }
+                            <button class="@status">@status</button>
+
+                        </td>
+                        <td class='text-center'>
+                            @{
+                                var popoverContent = (user.IsActive) ? "<a href='#' title='Edit' class='userInfoItem d-block'>Edit</a><a href='#' title='Deactivate' class='userInfoItem d-block activation'  id='"+user.UserId+"'>Deactivate</a><a href='#' title='Service History' class='userInfoItem d-block'>Service History</a>" : "<a href='#' class='userInfoItem d-block' title='Edit'>Edit</a><a href='#' class='userInfoItem d-block activation' title='Activate' id='"+user.UserId+"'>Activate</a><a href='#' class='userInfoItem d-block' title='Service History'>Service History</a>";
+                        }
+                            <div class="popover-menu rounded-circle mx-auto">
+                                <img src="/Image/menu.png" alt="" class="popoverTrigger" data-status=@user.IsActive data-bs-container="body"
+                                data-bs-custom-class="pop" data-bs-toggle="popover" data-bs-placement="bottom"
+                                data-bs-offset='-25,8'  tabindex="0" data-bs-trigger="focus"
+                                data-bs-content="@popoverContent"
+                                data-bs-html="true">
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        ©2018 Helperland. All rights reserved.
+    </footer>
+</div>
+@section CSS{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+    integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/admin-user-management.js"></script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}

@@ -14412,6 +14412,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Admin\\UsersManagement.cshtml",
+      "TargetPath": "Views\\Admin\\UsersManagement.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\GetServiceDetail.cshtml",
+      "TargetPath": "Views\\Shared\\GetServiceDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Static\\faq.cshtml",
       "TargetPath": "Views\\Static\\faq.cshtml",
       "FileKind": "mvc"
@@ -14439,11 +14449,6 @@
     {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\GetServiceDetail.cshtml",
-      "TargetPath": "Views\\Customer\\GetServiceDetail.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14492,6 +14497,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Admin\\ServiceRequest.cshtml",
+      "TargetPath": "Views\\Admin\\ServiceRequest.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14532,6 +14542,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\ServiceProvider\\ServiceSchedule.cshtml",
+      "TargetPath": "Views\\ServiceProvider\\ServiceSchedule.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\FavoriteProvider.cshtml",
       "TargetPath": "Views\\Customer\\FavoriteProvider.cshtml",
       "FileKind": "mvc"
@@ -14544,6 +14559,11 @@
     {
       "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Customer\\Dashboard.cshtml",
       "TargetPath": "Views\\Customer\\Dashboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\Study\\Tatva Soft\\Practice\\Helperland\\Helperland\\Helperland\\Views\\Shared\\_AdminLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_AdminLayout.cshtml",
       "FileKind": "mvc"
     }
   ],

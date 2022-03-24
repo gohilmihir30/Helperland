@@ -4,7 +4,7 @@ $(document).ready(() => {
 		changeMonth: true,
 		changeYear: true,
 		showButtonPanel: true,
-		minDate: new Date(),
+		minDate: +1,
 		showAnim: "slideDown",
 		dateFormat: "dd/mm/yy",
 	});

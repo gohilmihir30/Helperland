@@ -822,7 +822,6 @@ E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\bin\Debug\netcorea
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\Dashboard.cshtml.g.cs
-E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\GetServiceDetail.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\ServiceHistory.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\MySetting.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\CustomerAddress.cshtml.g.cs
@@ -835,3 +834,8 @@ E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcorea
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\MySetting.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\FavoriteProvider.cshtml.g.cs
 E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\GetFavoriteSP.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Admin\ServiceRequest.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Admin\UsersManagement.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\GetServiceDetail.cshtml.g.cs
+E:\Study\Tatva Soft\Practice\Helperland\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\ServiceSchedule.cshtml.g.cs

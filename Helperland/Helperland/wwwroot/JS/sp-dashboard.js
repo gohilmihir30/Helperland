@@ -57,9 +57,7 @@ $(document).ready(() => {
 			$("#conflictservice .conflictserviceid").css("display", "block");
 			$("#conflictservice .conflictservicetime").css("display", "block");
 			$("#conflictservice .errormsg").css("display", "none");
-			console.log(data);
 			if (data.result) {
-				console.log(data.serviceid);
 				$("#conflictservice .modal-body").removeClass("my-5");
 				$("#conflictservice .modal-body").addClass("mb-3");
 				$("#conflictservice .conflictserviceid>span").html(data.serviceid);
@@ -69,7 +67,6 @@ $(document).ready(() => {
 					data.servicestarttime.replace("-", ":") +
 					" - " +
 					data.serviceendtime.replace("-", ":");
-				console.log(servicetime);
 				$("#conflictservice .conflictservicetime>span").html(servicetime);
 			} else {
 				$("#conflictservice .errormsg").css("display", "block");

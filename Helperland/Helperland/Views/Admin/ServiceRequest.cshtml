@@ -1,0 +1,332 @@
+@{
+	Layout = "_AdminLayout";
+	ViewBag.title = "Service Request";
+}
+@model AdminServiceRequest;
+
+<!-- Modal -->
+<div class="modal fade" id="rescheduleAndEdit" tabindex="-1" aria-labelledby="rescheduleAndEditLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rescheduleAndEditLabel">Edit Service Request</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3" id="rescheduleAndEditForm" data-ajax="true" data-ajax-method="post" data-ajax-url="/rescheduleAndEdit" data-ajax-loading="#loaderContainer" data-ajax-success="rescheduleAndEditSuccess" data-ajax-failure="rescheduleAndEditError">
+			<input type="hidden" asp-for="ServiceId">
+				<div class="col-md-6">
+					<label for="ServiceStartDate" class="form-label">Date</label>
+					<input type="text" class="form-control" asp-for="ServiceStartDate" placeholder="DD/MM/YYYY">
+				<span asp-validation-for="ServiceStartDate" class="text-danger mt-2 d-block"></span>
+				</div>
+				<div class="col-md-6">
+					<label for="ServiceHours" class="form-label">Time</label>
+					<select class="form-select" asp-for="ServiceStartTime">
+						<option value="8">08:00</option>
+						<option value="8.5">08:30</option>
+						<option value="9">09:00</option>
+						<option value="9.5">09:30</option>
+						<option value="10">10:00</option>
+						<option value="10.5">10:30</option>
+						<option value="11">11:00</option>
+						<option value="11.5">11:30</option>
+						<option value="12">12:00</option>
+						<option value="12.5">12:30</option>
+						<option value="13">13:00</option>
+						<option value="13.5">13:30</option>
+						<option value="14">14:00</option>
+						<option value="14.5">14:30</option>
+						<option value="15">15:00</option>
+						<option value="15.5">15:30</option>
+						<option value="16">16:00</option>
+						<option value="16.5">16:30</option>
+						<option value="17">17:00</option>
+						<option value="17.5">17:30</option>
+						<option value="18">18:00</option>
+					</select>
+				<span asp-validation-for="ServiceStartTime" class="text-danger mt-2 d-block"></span>
+				</div>
+				<div class="col-md-12">
+					<h5 class="mb-0">Service Address</h5>
+				</div>
+				<div class="col-md-6 mt-2">
+					<label for="AddressLine1" class="form-label">Street Name</label>
+					<input type="text" class="form-control" asp-for="AddressLine1" placeholder="Street Name">
+				<span asp-validation-for="AddressLine1" class="text-danger mt-2 d-block"></span>
+				</div>
+				<div class="col-md-6 mt-2">
+					<label for="AddressLine2" class="form-label">House Number</label>
+					<input type="text" class="form-control" asp-for="AddressLine2" placeholder="House Number">
+				<span asp-validation-for="AddressLine2" class="text-danger mt-2 d-block"></span>
+				</div>
+				<div class="col-md-6">
+					<label for="PostalCode" class="form-label">Postal Code</label>
+					<input type="text" class="form-control" asp-for="PostalCode" placeholder="Postal Code">
+				<span asp-validation-for="PostalCode" class="text-danger mt-2 d-block"></span>
+				</div>
+				<div class="col-md-6">
+					<label for="City" class="form-label">City</label>
+					<input type="text" class="form-control" asp-for="City" placeholder="City" readonly>
+				<span asp-validation-for="City" class="text-danger mt-2 d-block"></span>
+				</div>
+				<div class="col-md-12">
+					<label for="RescheduleReason" class="form-label">Why do you want to reschedule  service request?</label>
+					<textarea class="form-control" asp-for="RescheduleReason" placeholder="Why do you want to reschedule  service request?"></textarea>
+				</div>
+				<div class="col-md-12">
+					<button class="btn w-100 text-center">Update</button>
+				</div>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+@* Service Detail Modal *@
+<div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="min-height: 400px;">
+			<div id="loaderContainer" style="display: block; positiion:absolute; height:100%">
+        		<div class="loader rounded-circle"></div>
+    		</div>
+		</div>
+    </div>
+</div>
+<div class="modal fade" id="refund" aria-hidden="true" aria-labelledby="refundLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="refundLabel">Refund Amount</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      		</div>		
+			<div class="modal-body">
+				<div class="row g-3">
+					<div class="col-4">
+						<p class="mb-1">Paid Amount</p>
+						<p class="paidAmount"></p>
+					</div>
+					<div class="col-4">
+						<p class="mb-1">Refunded Amount</p>
+						<p class="refundedAmount"></p>
+					</div>
+					<div class="col-4">
+						<p class="mb-1">In Balance Amount</p>
+						<p class="inBalanceAmount"></p>
+					</div>
+				</div>
+				<form id="refundForm" class="row g-2 mt-1" data-ajax="true" data-ajax-method="post" data-ajax-url="/refund" data-ajax-loading="#loaderContainer" data-ajax-success="refundSuccess" data-ajax-failure="refundError">
+				<input type="hidden" asp-for="ServiceId" id="refundServiceId">
+					<div class="col-6">
+						<label for="" class="form-label">Amount</label>
+						<div class="input-group mb-3">
+							<input type="text" id="refundvalue" class="form-control mb-1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							<select class="input-group-text mb-1" id="refundOption">
+								<option value="0">Percentage</option>
+								<option value="1">Fixed</option>
+							</select>
+						<span class="refundAmountError text-danger" style="display: none;">Refund amount can not be greater than inBalance amount</span>
+						</div>
+					</div>
+					<div class="col-6">
+						<label for="" class="form-label">Calculate</label>
+						<div class="input-group mb-3">
+							<button class="btn btn-outline-secondary" id="calculateRefund" type="button">Calculate</button>
+							<input type="text" readonly class="form-control" asp-for="RefundAmount" id="AmountToRefund" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+							<span asp-validation-for="RefundAmount" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="col-12">
+						<label for="" class="form-label">Why you want to refund amount?</label>
+						<textarea  class="form-control" placeholder="Why you want to refund amount?" asp-for="RefundReason"></textarea>
+						<span asp-validation-for="RefundReason" class="text-danger"></span>
+					</div>
+					<div class="col-12 mt-3">
+						<button type="submit" class="btn w-100">Refund</button>
+					</div>
+				</form>
+			</div>
+		</div>
+    </div>
+</div>
+
+
+
+<div class="right">
+	<div class="heading d-flex align-items-center justify-content-between">
+		<h2>Service Request</h2>
+	</div>
+	<div class="filter">
+		<form class="row gy-2 gx-3 align-items-center">
+			<div class="col-auto" style="width: 110px">
+				<label class="visually-hidden" for="serviceid">Service ID</label>
+				<input type="text" class="form-control" id="serviceid" placeholder="Service ID" />
+			</div>
+			<div class="col-auto" style="width: 127px">
+				<label class="visually-hidden" for="customer">Customer</label>
+				<select class="form-select" id="customer" placeholder="Customer">
+					<option value="">Customer</option>
+					@foreach (var item in Model.Customers)
+					{
+						<option value="@item">@item</option>
+					}
+				</select>
+			</div>
+			<div class="col-auto" style="width: 152px">
+				<label class="visually-hidden" for="serviceprovider">Service Provider</label>
+				<select class="form-select" id="serviceprovider" placeholder="Service Provider">
+					<option value="">Service Provider</option>
+					@foreach (var item in Model.ServiceProvider)
+					{
+						<option value="@item">@item</option>
+					}
+				</select>
+			</div>
+			<div class="col-auto" style="width: 120px">
+				<label class="visually-hidden" for="status">Status</label>
+				<select class="form-select" id="status" placeholder="Status">
+					<option value="">Status</option>
+					<option value="Complete">Complete</option>
+					<option value="New">New</option>
+					<option value="Pending">Pending</option>
+					<option value="Cancelled">Cancelled</option>
+					<option value="Refunded">Refunded</option>
+				</select>
+			</div>
+			<div class="col-auto position-relative">
+				<label class="visually-hidden" for="fromdate">From Date</label>
+				<input type="text" class="form-control date" id="fromdate" placeholder="From Date" value="" />
+				<img class="position-absolute" src="/Image/calender.svg" alt="" />
+			</div>
+			<div class="col-auto position-relative">
+				<label class="visually-hidden" for="todate">To Date</label>
+				<input type="text" class="form-control date" id="todate" placeholder="To Date" value="" />
+				<img class="position-absolute" src="/Image/calender.svg" alt="" />
+			</div>
+			<div class="col-auto">
+				<button type="button" id="search" class="btn">Search</button>
+			</div>
+			<div class="col-auto">
+				<button type="reset" id="clear" class="btn">Clear</button>
+			</div>
+		</form>
+	</div>
+	<div class="alert alert-dismissible fade show my-3" style="display: none;" role="alert">
+                <span class="content"></span>
+            </div>
+	<div class="data-table">
+		<table id="request">
+			<thead>
+				<tr>
+					<th class="text-nowrap">Service ID</th>
+					<th class="text-nowrap">Service date</th>
+					<th class="text-nowrap">Customer details</th>
+					<th class="text-nowrap text-center">Service provider</th>
+					<th class="text-nowrap">Net Amount</th>
+					<th class="text-center">Status</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var service in Model.serviceRequests)
+				{
+					var serviceStart = service.ServiceStartDate.ToString("HH:mm");
+					var serviceEnd = service.ServiceStartDate.AddHours(service.ServiceHours).ToString("HH:mm");
+					<tr>
+						<td class="showdetail" data-id="@service.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal">@service.ServiceId</td>
+						<td class="service_date showdetail" data-id="@service.ServiceId" data-bs-target="#serviceDetail"
+                        data-bs-toggle="modal">
+							<div class="d-flex align-items-center">
+								<img src="/Image/calculator.png" alt="" />
+								<strong>@service.ServiceStartDate.ToString("dd/MM/yyyy").Replace("-", "/")</strong>
+							</div>
+							<div class="d-flex align-items-center">
+								<img src="/Image/Layer 712.png" alt="" />
+								<span>@serviceStart - @serviceEnd</span>
+							</div>
+						</td>
+						<td class="cust-detail">
+							<span>@service.Cust_firstname @service.cust_lastname</span>
+							<div class="d-flex align-item-center mt-1">
+								<img src="/Image/Layer 719.png" alt="">
+								<span>@service.AddressLine1 @service.AddressLine2</span>
+							</div>
+							<span> @service.PostalCode @service.City</span>
+						</td>
+						<td class="service-pro">
+							@if (service.ServiceProviderId != null)
+							{
+								<div class="d-flex">
+									<div class="d-flex align-items-center justify-content-center rounded-circle">
+										<img class="img-fluid" src="@service.Profile" alt="" />
+									</div>
+									<div class="text-nowrap">
+										<p>@service.sp_firstname @service.sp_lastname</p>
+										<div class="d-flex align-items-center">
+											<div class="position-relative rating d-inline">
+												<span class="unfilled position-absolute top-0 end-0"
+											style="--rating:@Math.Round((decimal)service.avgRating,2)"></span>
+												<span class="filled position-relative top-0 start-0"></span>
+											</div>
+											<span class="ms-1">@Math.Round((decimal)service.avgRating, 2)</span>
+										</div>
+									</div>
+								</div>
+							}
+						</td>
+						<td class="text-center">@service.TotalCost &#8364;</td>
+						@{var popoverContent=" "; 
+						decimal servicetime=(service.ServiceStartDate.Hour*60)+service.ServiceStartDate.Minute;
+						String[] status={"New","Pending","Complete","Cancelled","Refunded"};}
+								<td class="text-center"><button class="@status[(int)service.Status-1]">@status[(int)service.Status-1]</button></td>
+						@if(service.Status==1 || service.Status==2)
+						{
+								{popoverContent="<a href='#' class='userInfoItem d-block' title='Edit & Reschedule' data-bs-toggle='modal' data-bs-target='#rescheduleAndEdit' onClick='setupForm(`"+service.ServiceStartDate.ToString("dd/MM/yyyy").Replace("-","/")+"`,`"+servicetime+"`,`"+service.AddressLine1+"`,`"+service.AddressLine2+"`,`"+service.PostalCode+"`,`"+service.City+"`,`"+service.ServiceId+"`)'>Edit & Reschedule</a><a class='userInfoItem d-block cancelrequest' data-id='"+service.ServiceId+"' title='Cancel'>Cancel</a>";}
+						}else if(service.Status==3){
+								{popoverContent="<a href='#' class='d-block' data-bs-target='#refund' data-bs-toggle='modal' data-amount='"+service.TotalCost+"' data-refund='"+service.RefundAmount+"' data-id='"+service.ServiceId+"' title='Refund'>Refund</a><a href='#' class='d-block' title='Escalate'>Escalate</a><a href='#' class='d-block' title='History Log'>History Log</a><a href='#' class='d-block' title='Download Invoice'>Download Invoice</a>";}
+						}else if(service.Status==4){
+								{popoverContent="<a href='#' class='d-block' data-bs-target='#refund' data-bs-toggle='modal' data-amount='"+service.TotalCost+"' data-id='"+service.ServiceId+"' data-refund='"+service.RefundAmount+"' title='Refund'>Refund</a>";}
+						}else{
+							{popoverContent=" ";}
+						}
+						
+						@{var addclass=(popoverContent==" ")?"d-none":"pop";}
+						<td class="text-center">
+							<div class="popover-menu rounded-circle mx-auto">
+								<img src="/Image/menu.png" alt="" class="popoverTrigger" data-bs-container="body" data-bs-custom-class="@addclass" data-bs-toggle="popover" 
+								data-bs-placement="bottom" data-bs-offset="-25,8"  tabindex="0" data-bs-trigger="focus"
+								data-bs-content="@popoverContent"
+								data-bs-html="true" />
+							</div>
+						</td>
+					</tr>
+
+				}
+			</tbody>
+		</table>
+	</div>
+	<footer>©2018 Helperland. All rights reserved.</footer>
+</div>
+@section CSS{
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+}
+@section JavaScript{
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"
+	integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+<script src="/JS/admin-service-request.js"></script>
+}
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
+@section validation{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+}
+

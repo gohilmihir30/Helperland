@@ -439,11 +439,11 @@ table.dataTable thead .sorting_asc {
 table.dataTable thead .sorting_desc {
 	background: url("../Image/dec.png") no-repeat center right 0.2em !important;
 }
-tr {
+table.dataTable tr {
 	border: 1px solid #e1e1e1 !important;
 }
-th,
-td {
+table.dataTable th,
+table.dataTable td {
 	color: #646464;
 	font-size: 16px;
 }

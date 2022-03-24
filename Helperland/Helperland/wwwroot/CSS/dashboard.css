@@ -41,19 +41,15 @@ form#rescheduleForm .modal-body input#newServiceDate {
 td p {
 	margin-bottom: 0;
 }
-td.showdetail:hover {
+td.showdetail:hover,
+a.showdetail:hover {
 	opacity: 0.8;
-}
-
-a:hover {
-	color: inherit;
-}
-tr td.datetime .showdetail {
 	cursor: pointer;
 }
-tr td .showdetail:hover {
-	opacity: 0.8;
+a a:hover {
+	color: inherit;
 }
+
 .serviceprovider > div > div:first-child {
 	height: 44px;
 	width: 44px;

@@ -8,6 +8,7 @@ using Helperland.Models.Data;
 using System.Web.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using System.Text.Json;
 
 namespace Helperland.Controllers
 {
@@ -86,7 +87,6 @@ namespace Helperland.Controllers
                             }).ToList();
 
             var blockService = _helperlandContext.FavoriteAndBlockeds.Where(s => (s.UserId == userid || s.TargetUserId==userid ) && s.IsBlocked == true).ToList();
-            //var details = services;
             foreach(var s in services.ToList())
             {
                 foreach(var b in blockService)
@@ -313,6 +313,29 @@ namespace Helperland.Controllers
                 }
             }
             return Json(new { Result = false ,returnUrl= "/?modalRequest=true",redirect=true });
+        }
+
+        [Route("/serviceSchedule")]
+        public IActionResult ServiceSchedule()
+        {
+            return View();
+        }
+        [Route("/servieScheduleDate")]
+        public JsonResult ServiceScheduleData()
+        {
+            var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var service = (from serviceRequest in _helperlandContext.ServiceRequests
+                           where serviceRequest.ServiceProviderId == userid && (serviceRequest.Status == 3 || serviceRequest.Status == 2)
+                           select new
+                           {
+                               ServiceDate = serviceRequest.ServiceStartDate.ToString("yyyy/MM/dd"),
+                               ServiceStartTime = serviceRequest.ServiceStartDate.ToString("HH:mm"),
+                               ServiceEndTime = serviceRequest.ServiceStartDate.AddHours(serviceRequest.ServiceHours).ToString("HH:mm"),
+                               ServiceId = serviceRequest.ServiceId,
+                               color = (serviceRequest.Status == 2) ? "#86858b" : "#1d7a8c"
+                           }).ToList();
+            var json = JsonSerializer.Serialize(service);
+            return Json(json);
         }
 
         [Route("/sp/servicehistory")]

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System.Globalization;
 using Helperland.Services.Email;
+using Microsoft.EntityFrameworkCore;
 
 namespace Helperland.Controllers
 {
@@ -76,7 +77,9 @@ namespace Helperland.Controllers
         [HttpPost]
         public int BookService(ServiceRequestModel serviceRequestModel)
         {
+            var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var serviceRequest = new ServiceRequest();
+            int serviceRequestId = 0;
             try
             {
                 int _random = new Random().Next(1000, 9999);
@@ -86,8 +89,8 @@ namespace Helperland.Controllers
                     _random = new Random().Next(1000, 9999);
                     isExist = _helperlandContext.ServiceRequests.Where(x => x.ServiceId == _random).FirstOrDefault();
                 }
-
                 var arr = serviceRequestModel.ServiceStartDate.Split('/');
+
                 var hours = Math.Floor(serviceRequestModel.ServiceStartTime);
                 var min = Math.Ceiling((serviceRequestModel.ServiceStartTime - hours) * 60);
                 var date = new DateTime(Int32.Parse(arr[2]), Int32.Parse(arr[1]), Int32.Parse(arr[0]), (int)hours, (int)min, 0);
@@ -105,12 +108,13 @@ namespace Helperland.Controllers
                     TotalCost = serviceRequestModel.TotalCost,
                     Comments = serviceRequestModel.Comments,
                     HasPets = serviceRequestModel.HasPets,
-                    Status=1,
+                    Status = 1,
+                    ModifiedBy = userid,
                     RecordVersion = Guid.NewGuid(),
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now
                 };
-                if (serviceRequestModel.FavoriteSP != null)
+                if (serviceRequestModel.FavoriteSP != 0)
                 {
                     serviceRequest.Status = 2;
                     serviceRequest.ServiceProviderId = serviceRequestModel.FavoriteSP;
@@ -119,6 +123,7 @@ namespace Helperland.Controllers
 
                 _helperlandContext.ServiceRequests.Add(serviceRequest);
                 _helperlandContext.SaveChanges();
+                serviceRequestId = serviceRequest.ServiceRequestId;
 
                 if (serviceRequestModel.Cabinet)
                 {
@@ -127,7 +132,7 @@ namespace Helperland.Controllers
                         ServiceRequestId = serviceRequest.ServiceRequestId,
                         ServiceExtraId = 1
                     };
-                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                    serviceRequest.ServiceRequestExtras.Add(serviceRequestExtra);
                 }
                 if (serviceRequestModel.Fridge)
                 {
@@ -136,7 +141,7 @@ namespace Helperland.Controllers
                         ServiceRequestId = serviceRequest.ServiceRequestId,
                         ServiceExtraId = 2
                     };
-                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                    serviceRequest.ServiceRequestExtras.Add(serviceRequestExtra);
                 }
                 if (serviceRequestModel.Oven)
                 {
@@ -145,7 +150,7 @@ namespace Helperland.Controllers
                         ServiceRequestId = serviceRequest.ServiceRequestId,
                         ServiceExtraId = 3
                     };
-                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                    serviceRequest.ServiceRequestExtras.Add(serviceRequestExtra);
                 }
                 if (serviceRequestModel.Laundry)
                 {
@@ -154,7 +159,7 @@ namespace Helperland.Controllers
                         ServiceRequestId = serviceRequest.ServiceRequestId,
                         ServiceExtraId = 4
                     };
-                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                    serviceRequest.ServiceRequestExtras.Add(serviceRequestExtra);
                 }
                 if (serviceRequestModel.Windows)
                 {
@@ -163,7 +168,7 @@ namespace Helperland.Controllers
                         ServiceRequestId = serviceRequest.ServiceRequestId,
                         ServiceExtraId = 5
                     };
-                    _helperlandContext.ServiceRequestExtras.Add(serviceRequestExtra);
+                    serviceRequest.ServiceRequestExtras.Add(serviceRequestExtra);
                 }
 
                 UserAddress userAddress = _helperlandContext.UserAddresses.Where(x => x.AddressId == serviceRequestModel.AddressId).FirstOrDefault();
@@ -178,44 +183,30 @@ namespace Helperland.Controllers
                     Mobile = userAddress.Mobile,
                     Email = userAddress.Email
                 };
-                _helperlandContext.ServiceRequestAddresses.Add(serviceRequestAddress);
+                serviceRequest.ServiceRequestAddresses.Add(serviceRequestAddress);
                 _helperlandContext.ServiceRequests.Attach(serviceRequest);
                 var result = _helperlandContext.SaveChanges();
 
-                var email = new EmailModel();
-                email.Subject = "New Service Request arise in your area";
-                email.isHTML = true;
-                if (serviceRequest.ServiceProviderId == null) {
-                    var spEmail = _helperlandContext.Users.Where(u => u.ZipCode == serviceRequest.ZipCode && u.UserTypeId == 2).Select(u => u.Email).ToList();
-
-                    email.To = spEmail;
-                    email.Body = "A new Service request arise in your area with service id " + serviceRequest.ServiceId + " Please check your account if you are intrested ";
-                }
-                else
-                {
-                    var spEmail = _helperlandContext.Users.Where(u => u.UserId == serviceRequest.ServiceProviderId).Select(u => u.Email).FirstOrDefault();
-
-                    email.To = new List<string> { spEmail };
-                    email.Body = "A service request "+serviceRequest.ServiceId+" has been directly assigned to you";
-                }
-                bool ismail = _email.sendMail(email);
                 return serviceRequest.ServiceId;
             }
             catch
             {
-                var extra = _helperlandContext.ServiceRequestExtras.Where(s => s.ServiceRequestId == serviceRequest.ServiceRequestId).ToList();
-                foreach(var e in extra)
+                var extra = serviceRequest.ServiceRequestExtras.Where(s => s.ServiceRequestId == serviceRequestId).ToList();
+                foreach (var e in extra)
                 {
-                    _helperlandContext.ServiceRequestExtras.Remove(e);
+                    serviceRequest.ServiceRequestExtras.Remove(e);
                 }
-                var add = _helperlandContext.ServiceRequestAddresses.Where(s => s.ServiceRequestId == serviceRequest.ServiceRequestId).ToList();
-                foreach(var a in add)
+                var add = serviceRequest.ServiceRequestAddresses.Where(s => s.ServiceRequestId == serviceRequest.ServiceRequestId).ToList();
+                foreach (var a in add)
                 {
-                    _helperlandContext.Remove(a);
+                    serviceRequest.ServiceRequestAddresses.Remove(a);
                 }
-                _helperlandContext.SaveChanges();
-                _helperlandContext.ServiceRequests.Remove(_helperlandContext.ServiceRequests.Where(x => x.ServiceRequestId == serviceRequest.ServiceRequestId).FirstOrDefault());
-                _helperlandContext.SaveChanges();
+                var tempServiceRequest = _helperlandContext.ServiceRequests.Where(s => s.ServiceRequestId == serviceRequestId).FirstOrDefault();
+                if(tempServiceRequest != null)
+                {
+                    _helperlandContext.ServiceRequests.Remove(tempServiceRequest);
+                    _helperlandContext.SaveChanges();
+                }
                 return 0;
             }
         }
@@ -224,10 +215,12 @@ namespace Helperland.Controllers
         [HttpPost]
         public JsonResult CheckAvailability(string postalCode)
         {
+            var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (postalCode != null)
             {
-                var isAvailable = _helperlandContext.Users.Where(u => u.UserTypeId == 2 && u.ZipCode == postalCode).FirstOrDefault();
-                if (isAvailable != null)
+                var isAvailable = (from user in _helperlandContext.Users
+                                   where !((from fav1 in _helperlandContext.FavoriteAndBlockeds where fav1.UserId == userid && fav1.IsBlocked == true select (fav1.TargetUserId)).Union(from fav2 in _helperlandContext.FavoriteAndBlockeds where fav2.TargetUserId == userid && fav2.IsBlocked == true select (fav2.UserId))).Contains(user.UserId) && user.UserTypeId==2 && user.ZipCode==postalCode select (user.UserId.ToString())).ToList();
+                if (isAvailable.Count()>0)
                 {
                     var city = (
                         from z in _helperlandContext.Zipcodes
@@ -307,6 +300,7 @@ namespace Helperland.Controllers
             });
         }
 
+        [AllowAnonymous]
         [AcceptVerbs("Get", "Post")]
         public IActionResult IsEmailInUse(string email) =>
          _helperlandContext.Users.Where(x => x.Email.Equals(email)).FirstOrDefault() == null ? Json(true) : Json($"Email already exist");

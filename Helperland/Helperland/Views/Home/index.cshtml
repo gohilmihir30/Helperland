@@ -12,10 +12,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @if (TempData["isValidCredentials"]!= null && !(bool)TempData["isValidCredentials"])
+                @if (TempData["isValidCredentials"] != null && !(bool)TempData["isValidCredentials"])
                 {
-                    <span class="alert alert-danger d-block alert-dismissible fade show"  role="alert">
+                    <span class="alert alert-danger d-block alert-dismissible fade show" role="alert">
                         Username or Password is invalid
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </span>
+                }@if (TempData["isActive"] != null && !(bool)TempData["isActive"])
+                {
+                    <span class="alert alert-danger d-block alert-dismissible fade show" role="alert">
+                        Your account is not activated
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </span>
                 }
