@@ -33,15 +33,17 @@ namespace Helperland
                 AddCookie(options =>
                 {
                     options.LoginPath = "/";
-                    options.LogoutPath = "/logout";
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-                    
+                    options.LogoutPath = "/?logoutModal=true";
+                    options.ExpireTimeSpan = TimeSpan.FromHours(1.5);
+                    options.Cookie.MaxAge = options.ExpireTimeSpan;
+                    options.SlidingExpiration = false;
+
                     options.Events = new CookieAuthenticationEvents()
                     {
                         OnRedirectToLogin = ctx =>
                         {
                             var redirectPath = ctx.RedirectUri;
-                            
+
                             if (redirectPath.Contains("?ReturnUrl"))
                             {
                                 //remove the ReturnURL
@@ -51,6 +53,11 @@ namespace Helperland
                             }
                             return Task.CompletedTask;
                         },
+                        OnSigningOut = ctx =>
+                        {
+                            ctx.Response.Redirect("/?logoutModal=true");
+                            return Task.CompletedTask;
+                        }
                     };
                 });
 

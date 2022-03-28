@@ -266,9 +266,11 @@ namespace Helperland.Controllers
                             PostalCode= User.ZipCode,
                             City=CityTable.CityName
                          }).ToList();
+            var userName = _helperlandContext.Users.Select(u => (u.FirstName + " " + u.LastName)).Distinct().ToList();
             var userManagement = new AdminUserManagement()
             {
-                User = users
+                User = users,
+                UserNameList= userName
             };
             return View(userManagement);
         }

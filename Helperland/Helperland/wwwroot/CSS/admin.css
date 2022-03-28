@@ -520,6 +520,7 @@ div.popover-menu > img {
 	cursor: pointer;
 	text-decoration: none;
 	margin-bottom: 9px;
+	transition: 0.5s all ease;
 }
 .dataTables_wrapper .dataTables_paginate a.paginate_button,
 .dataTables_wrapper .dataTables_paginate a.paginate_button.disabled {

@@ -26,7 +26,7 @@
         </div>
         <div class="user d-flex align-items-center">
             <img src="/Image/user.png" alt="" />
-            <p>James Smith</p>
+            <p>@User.Identity.Name</p>
             <a href="/logout"><img src="/Image/logout.png" alt="" /></a>
         </div>
         <div class="backblack"></div>
@@ -84,6 +84,21 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script>
+        var isAuthenticated = '@User.Identity.IsAuthenticated';
+        if (isAuthenticated == 'True') {
+            setInterval(() => {
+                $.get("/Home/IsLoggedin", (isAuthenticated, status) => {
+                    if (!isAuthenticated) {
+                        window.location.href = "/?logoutModal=true"
+                    }
+                })
+            }, 1000)
+        }
+        $(window).on('load', () => {
+            $("#loaderContainer").hide()
+        })
+    </script>
     @RenderSection("JavaScript")
 </body>
 

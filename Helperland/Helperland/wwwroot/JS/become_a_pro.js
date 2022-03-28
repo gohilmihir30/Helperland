@@ -1,4 +1,4 @@
-$(".navbar .logo img").attr("src", "/Image/white_logo_transparent_background.png")
+$(".navbar .logo img").attr("src", "/Image/white_logo_transparent_background.png");
 $("header").addClass("position-fixed top-0");
 $(document).ready(() => {
 	// Nav Bar
@@ -32,6 +32,8 @@ $(document).ready(() => {
 		$(".hamburger").removeClass("toggle");
 		$("html").css("overflow", "visible");
 	});
+
+	$(".alert ").delay(6000).fadeOut();
 
 	// PopOvers
 	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));

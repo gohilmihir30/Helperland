@@ -56,7 +56,16 @@ namespace Helperland.Controllers
             };
 
             _helperlandContext.Users.Add(user);
-            _helperlandContext.SaveChanges();
+            if (_helperlandContext.SaveChanges() > 0)
+            {
+                TempData["alertClass"] = "alert-success";
+                TempData["alertContent"] = "Thank you for Creating account";
+            }
+            else
+            {
+                TempData["alertClass"] = "alert-danger";
+                TempData["alertContent"] = "Sorry Internal Server Error";
+            }
             return RedirectToAction("SPSignup");
         }
 
@@ -64,12 +73,13 @@ namespace Helperland.Controllers
         public IActionResult Dashboard()
         {
             var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var PostalCode = User.FindFirstValue(ClaimTypes.PostalCode);
             var services = (from service in _helperlandContext.ServiceRequests
                             join
                             user in _helperlandContext.Users on service.UserId equals user.UserId
                             join
                             serviceaddress in _helperlandContext.ServiceRequestAddresses on service.ServiceRequestId equals serviceaddress.ServiceRequestId
-                            where service.Status == 1
+                            where service.Status == 1 && service.ZipCode== PostalCode
                             select new FetchServiceDetails
                             {
                                 UserId=service.UserId,
@@ -320,7 +330,8 @@ namespace Helperland.Controllers
         {
             return View();
         }
-        [Route("/servieScheduleDate")]
+        [Route("/servieScheduleData")]
+        [HttpPost]
         public JsonResult ServiceScheduleData()
         {
             var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
@@ -332,7 +343,8 @@ namespace Helperland.Controllers
                                ServiceStartTime = serviceRequest.ServiceStartDate.ToString("HH:mm"),
                                ServiceEndTime = serviceRequest.ServiceStartDate.AddHours(serviceRequest.ServiceHours).ToString("HH:mm"),
                                ServiceId = serviceRequest.ServiceId,
-                               color = (serviceRequest.Status == 2) ? "#86858b" : "#1d7a8c"
+                               Zipcode=serviceRequest.ZipCode,
+                               color = (serviceRequest.Status == 2) ? "#1d7a8c" : "#86858b"
                            }).ToList();
             var json = JsonSerializer.Serialize(service);
             return Json(json);
@@ -347,7 +359,7 @@ namespace Helperland.Controllers
                                    user in _helperlandContext.Users on service.UserId equals user.UserId
                                    join
                                    serviceaddress in _helperlandContext.ServiceRequestAddresses on service.ServiceRequestId equals serviceaddress.ServiceRequestId
-                                   where service.Status == 3 && service.ServiceProviderId == userid
+                                   where (service.Status == 3 || service.Status == 5) && service.ServiceProviderId == userid
                                    select new FetchServiceDetails
                                    {
                                        FirstName = user.FirstName,

@@ -101,6 +101,12 @@ tr td.payment {
 	color: #fff;
 	background: #ff6b6b;
 }
+.refunded {
+	font-size: 13px;
+	padding: 5px 10px 4px 9px;
+	color: #fff;
+	background: #ff7335;
+}
 tr > td.action button.btn {
 	color: #fff;
 	font-size: 14px;

@@ -8,7 +8,11 @@
 @* Service Detail modal *@
 <div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"></div>
+        <div class="modal-content" style="min-height: 400px;">
+            <div id="loaderContainer" style="display: block; position: absolute; height:100%">
+                <div class="loader rounded-circle"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -197,6 +201,9 @@
                         else if (detail.Status == 4)
                         {
                             <td class='text-center'><span class="cancelled">Cancelled</span></td>
+                        }else if (detail.Status == 5)
+                        {
+                            <td class='text-center'><span class="refunded">Refunded</span></td>
                         }
                         @if (detail.Status == 4)
                         {

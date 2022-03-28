@@ -3,9 +3,7 @@ $(document).ready(() => {
 
 	//Fetch service detail and show into modal
 	$("#serviceDetail").on("show.bs.modal", ($event) => {
-		$("#serviceDetail .modal-content")
-			.html("Loading Service Details")
-			.load(`/getServiceDetail?serviceid=` + $($event.relatedTarget).attr("data-serviceid") + `&isHistory=true`);
+		$("#serviceDetail .modal-content").load(`/getServiceDetail?serviceid=` + $($event.relatedTarget).attr("data-serviceid") + `&isHistory=true`);
 	});
 
 	$("#serviceRating").on("show.bs.modal", ($event) => {

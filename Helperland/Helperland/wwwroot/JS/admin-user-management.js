@@ -34,12 +34,17 @@ $(document).ready(function () {
 		var toDate = $("#todate").val();
 
 		$.fn.dataTable.ext.search.push((settings, data, dataIndex) => {
-			var splitDate = data[1].trim().split("/");
+			var splitDate = data[1]
+				.match(/<span class="mt-1 ms-1">.*<\/span>/)[0]
+				.replace('<span class="mt-1 ms-1">', "")
+				.replace("</span>", "")
+				.trim()
+				.split("/");
 			var date = new Date(parseInt(splitDate[2]), parseInt(splitDate[1] - 1), parseInt(splitDate[0]));
 			var isUserName = userName ? data[0].includes(userName) : true;
 			var isUserRole = userRole ? data[2].includes(userRole) : true;
-			var isMobile = mobile ? data[3].includes(mobile) : true;
-			var isZipcode = zipcode ? data[4].includes(zipcode) : true;
+			var isMobile = mobile ? new RegExp("^" + mobile + "+").test(data[3]) : true;
+			var isZipcode = zipcode ? new RegExp("^" + zipcode + "+").test(data[4]) : true;
 			var isFromDate = fromDate ? new Date(fromDate) <= date : true;
 			var isToDate = toDate ? new Date(toDate) >= date : true;
 

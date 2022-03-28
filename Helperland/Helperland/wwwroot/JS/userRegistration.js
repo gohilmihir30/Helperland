@@ -17,3 +17,5 @@ document.querySelector(".backblack").addEventListener("wheel", () => {
 	$(".hamburger").removeClass("toggle");
 	$("body").css("overflow", "auto");
 });
+
+$(".alert ").delay(6000).fadeOut();

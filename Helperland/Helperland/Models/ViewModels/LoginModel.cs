@@ -22,6 +22,7 @@ namespace Helperland.Models.ViewModels
 
         [Required(ErrorMessage ="Please enter Email")]
         [EmailAddress(ErrorMessage ="Enter valid Email")]
+        [Remote(controller:"Home",action: "IsEmailInUse")]
         public string Email { get; set; }
     }
 }

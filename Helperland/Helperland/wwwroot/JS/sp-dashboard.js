@@ -1,28 +1,25 @@
 $(document).ready(() => {
 	$(".verticle-menu ul li")[0].classList.add("current_section");
-	// $(".verticle-menu").addClass("col-2");
 	$("#serviceDetail").on("show.bs.modal", ($event) => {
 		var postalcode = $($event.relatedTarget).attr("data-PostalCode");
-		$("#serviceDetail .modal-content")
-			.html("Loading Service Details")
-			.load(`/sp/getServiceDetail?page=1&serviceid=` + $($event.relatedTarget).attr("data-serviceid"), () => {
-				$.ajax({
-					url:
-						`https://api.mapbox.com/geocoding/v5/mapbox.places/` +
-						postalcode +
-						`.json?country=de&limit=1&types=postcode&access_token=pk.eyJ1IjoiY2hpbnRhbjgxNjkiLCJhIjoiY2tvZWNiaTdhMDljeDJwbGoxdTV6eW9ocyJ9.ZTVOwDvOJqnfEKpBWgUvbg`,
-					success: (result) => {
-						var coordinates = result.features[0].geometry.coordinates;
-						$(".modal-body>div:last-child").html(
-							`<iframe src="http://maps.google.com/maps?q=` +
-								coordinates[1] +
-								`,` +
-								coordinates[0] +
-								`&z=16&output=embed" height="100%" width="100%" style="border:0px; min-height:400px;"></iframe>`
-						);
-					},
-				});
+		$("#serviceDetail .modal-content").load(`/sp/getServiceDetail?page=1&serviceid=` + $($event.relatedTarget).attr("data-serviceid"), () => {
+			$.ajax({
+				url:
+					`https://api.mapbox.com/geocoding/v5/mapbox.places/` +
+					postalcode +
+					`.json?country=de&limit=1&types=postcode&access_token=pk.eyJ1IjoiY2hpbnRhbjgxNjkiLCJhIjoiY2tvZWNiaTdhMDljeDJwbGoxdTV6eW9ocyJ9.ZTVOwDvOJqnfEKpBWgUvbg`,
+				success: (result) => {
+					var coordinates = result.features[0].geometry.coordinates;
+					$(".modal-body>div:last-child").html(
+						`<iframe src="http://maps.google.com/maps?q=` +
+							coordinates[1] +
+							`,` +
+							coordinates[0] +
+							`&z=16&output=embed" height="100%" width="100%" style="border:0px; min-height:400px;"></iframe>`
+					);
+				},
 			});
+		});
 	});
 
 	acceptservice = ($event) => {
@@ -41,6 +38,7 @@ $(document).ready(() => {
 					$(".alert").fadeOut();
 				}, 3000);
 			} else {
+				$("button.conflict[data-id=" + serviceid + "]").removeClass("d-none");
 				$(".alert").removeClass("alert-success");
 				$(".alert").addClass("alert-danger");
 				$(".alert").html(data.error);

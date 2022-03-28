@@ -7,7 +7,11 @@
 @* Service Detail Modal *@
 <div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"></div>
+        <div class="modal-content" style="min-height: 400px;">
+            <div id="loaderContainer" style="display: block; position: absolute; height:100%">
+                <div class="loader rounded-circle"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -145,26 +149,24 @@
     $(".verticle-menu ul li")[3].classList.add("current_section");
     $("#serviceDetail").on("show.bs.modal", ($event) => {
         var postalcode = $($event.relatedTarget).attr("data-PostalCode");
-        $("#serviceDetail .modal-content")
-            .html("Loading Service Details")
-            .load(`/sp/getServiceDetail?page=0&serviceid=` + $($event.relatedTarget).attr("data-serviceid"), () => {
-                $.ajax({
-                    url:
-                        `https://api.mapbox.com/geocoding/v5/mapbox.places/` +
-                        postalcode +
-                        `.json?country=de&limit=1&types=postcode&access_token=pk.eyJ1IjoiY2hpbnRhbjgxNjkiLCJhIjoiY2tvZWNiaTdhMDljeDJwbGoxdTV6eW9ocyJ9.ZTVOwDvOJqnfEKpBWgUvbg`,
-                    success: (result) => {
-                        var coordinates = result.features[0].geometry.coordinates;
-                        $(".modal-body>div:last-child").html(
-                            `<iframe src="http://maps.google.com/maps?q=` +
-                            coordinates[1] +
-                            `,` +
-                            coordinates[0] +
-                            `&z=16&output=embed" height="100%" width="100%" style="border:0px;"></iframe>`
-                        );
-                    },
-                });
+        $("#serviceDetail .modal-content").load(`/sp/getServiceDetail?page=0&serviceid=` + $($event.relatedTarget).attr("data-serviceid"), () => {
+            $.ajax({
+                url:
+                    `https://api.mapbox.com/geocoding/v5/mapbox.places/` +
+                    postalcode +
+                    `.json?country=de&limit=1&types=postcode&access_token=pk.eyJ1IjoiY2hpbnRhbjgxNjkiLCJhIjoiY2tvZWNiaTdhMDljeDJwbGoxdTV6eW9ocyJ9.ZTVOwDvOJqnfEKpBWgUvbg`,
+                success: (result) => {
+                    var coordinates = result.features[0].geometry.coordinates;
+                    $(".modal-body>div:last-child").html(
+                        `<iframe src="http://maps.google.com/maps?q=` +
+                        coordinates[1] +
+                        `,` +
+                        coordinates[0] +
+                        `&z=16&output=embed" height="100%" width="100%" style="border:0px;"></iframe>`
+                    );
+                },
             });
+        });
     });
 </script>
 }

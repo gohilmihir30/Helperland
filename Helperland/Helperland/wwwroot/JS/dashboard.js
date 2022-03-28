@@ -12,9 +12,7 @@ $(document).ready(() => {
 
 	//Fetch service detail and show into modal
 	$("#serviceDetail").on("show.bs.modal", ($event) => {
-		$("#serviceDetail .modal-content")
-			.html("Loading Service Details")
-			.load(`/getServiceDetail?serviceid=` + $($event.relatedTarget).attr("data-serviceid"));
+		$("#serviceDetail .modal-content").load(`/getServiceDetail?serviceid=` + $($event.relatedTarget).attr("data-serviceid"));
 	});
 
 	//Rescheduel modal

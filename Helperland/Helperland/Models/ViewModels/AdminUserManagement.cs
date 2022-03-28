@@ -15,6 +15,7 @@ namespace Helperland.Models.ViewModels
         public string PostalCode { get; set; }
         public string City { get; set; }
         public bool IsActive { get; set; }
+        public List<string> UserNameList { get; set; }
 
         public List<AdminUserManagement> User { get; set; }
     }

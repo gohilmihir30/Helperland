@@ -1,10 +1,9 @@
 @model Helperland.Models.ViewModels.LoginModel
-@{ 
+@{
     ViewBag.title = "Helperland";
 }
 <!-- ...................Modal......................... -->
-<div class="modal fade" id="loginModalToggle" aria-hidden="true" aria-labelledby="loginModalToggleLabel"
-     tabindex="-1">
+<div class="modal fade" id="loginModalToggle" aria-hidden="true" aria-labelledby="loginModalToggleLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,7 +17,8 @@
                         Username or Password is invalid
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </span>
-                }@if (TempData["isActive"] != null && !(bool)TempData["isActive"])
+                }
+                @if (TempData["isActive"] != null && !(bool)TempData["isActive"])
                 {
                     <span class="alert alert-danger d-block alert-dismissible fade show" role="alert">
                         Your account is not activated
@@ -27,11 +27,13 @@
                 }
                 <form method="post" asp-controller="Home" asp-action="Index">
                     <div class="mb-3">
-                        <input type="email" class="form-control" asp-for="Username" id="loginInputEmail1" placeholder="Email">
+                        <input type="email" class="form-control" asp-for="Username" id="loginInputEmail1"
+                            placeholder="Email">
                         <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <input type="password" class="form-control" asp-for="Password" id="loginInputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" asp-for="Password" id="loginInputPassword1"
+                            placeholder="Password">
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="mb-3 form-check">
@@ -43,10 +45,11 @@
                 <div class="mt-4">
                     <p class="m-0 text-center">
                         <a title="Forget Password" data-bs-target="#forgetPassModalToggle2"
-                           data-bs-toggle="modal">Forget Password?</a>
+                            data-bs-toggle="modal">Forget Password?</a>
                     </p>
                     <p class="m-0 text-center">
-                        Don't have account?<a asp-action="userRegistration" asp-controller="Customer" title="Create an account">Create an account</a>
+                        Don't have account?<a asp-action="userRegistration" asp-controller="Customer"
+                            title="Create an account">Create an account</a>
                     </p>
                 </div>
             </div>
@@ -54,8 +57,24 @@
     </div>
 </div>
 
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header p-0 flex-column align-items-center justify-content-center border-0">
+                <img class="rounded-circle my-4" src="/Image/correct-white-medium.png" asp-append-version="true">
+                <h5 class="modal-title text-center" id="logoutModalLabel">You have successfully logged out</h5>
+            </div>
+            <div class="modal-footer p-0 mb-3 border-0 align-items-center justify-content-center">
+                <button type="button" class="text-white rounded-pill py-2 px-4 border-0" data-bs-dismiss="modal">OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<button data-bs-toggle="modal" data-bs-target="#logoutModal" class="d-none" id="logoutModalTrigger"></button>
+
 <div class="modal fade" id="forgetPassModalToggle2" aria-hidden="true" aria-labelledby="forgetPassModalToggleLabel2"
-     tabindex="-1">
+    tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,17 +82,22 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" asp-controller="Home" asp-action="forgetpass">
+                <form id="forgetPassForm" data-ajax="true" data-ajax-method="post" data-ajax-url="/forgetpass"
+                    data-ajax-loading="#loaderContainer" data-ajax-success="forgetPassSuccess"
+                    data-ajax-failure="forgetPassError">
+                    <div class="alert alert-dismissible fade show p-1" style="display: none;" role="alert">
+                        <span class="content"></span>
+                    </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" asp-for="Email" id="forgetPassEmail1" placeholder="Email">
+                        <input type="email" class="form-control" asp-for="Email" id="forgetPassEmail1"
+                            placeholder="Email">
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill">Send</button>
                 </form>
                 <div class="mt-4">
                     <p class="m-0 text-center">
-                        <a title="Login Page" data-bs-target="#loginModalToggle"
-                           data-bs-toggle="modal">Login Page</a>
+                        <a title="Login Page" data-bs-target="#loginModalToggle" data-bs-toggle="modal">Login Page</a>
                     </p>
                 </div>
             </div>
@@ -133,17 +157,23 @@
             <div class="cart-item col-lg-4 col-sm-6">
                 <img src="./Image/Group 21.png" alt="">
                 <h3 style="height: 72px;">Friendly & Certified Helpers</h3>
-                <p>We want you to be completely satisfied with our service and feel comfortable at home. In order to guarantee this, our helpers go through a test procedure. Only when the cleaners meet our high standards, they may call themselves Helper.</p>
+                <p>We want you to be completely satisfied with our service and feel comfortable at home. In order to
+                    guarantee this, our helpers go through a test procedure. Only when the cleaners meet our high
+                    standards, they may call themselves Helper.</p>
             </div>
             <div class="cart-item col-lg-4 col-sm-6 text-center">
                 <img src="./Image/Group 23.png" alt="">
                 <h3 style="height: 72px;">Transparent and secure payment</h3>
-                <p>We have transparent prices, you do not have to scratch money or money on the sideboard Leave it: Pay your helper easily and securely via the online payment method. You will also receive an invoice for each completed cleaning.</p>
+                <p>We have transparent prices, you do not have to scratch money or money on the sideboard Leave it: Pay
+                    your helper easily and securely via the online payment method. You will also receive an invoice for
+                    each completed cleaning.</p>
             </div>
             <div class="cart-item col-lg-4 col-sm-6 text-center">
                 <img src="./Image/Group 24.png" alt="">
                 <h3 style="height: 72px;">We're here for you</h3>
-                <p>You have a question or need assistance with the booking process? Our customer service is happy to help and advise you. How you can reach us you will find out when you look under "Contact". We look forward to hearing from you or reading.</p>
+                <p>You have a question or need assistance with the booking process? Our customer service is happy to
+                    help and advise you. How you can reach us you will find out when you look under "Contact". We look
+                    forward to hearing from you or reading.</p>
             </div>
         </div>
     </div>
@@ -153,7 +183,11 @@
         <div class="blog-item row flex-nowrap align-items-center">
             <div class="left col-lg-7 col-12 m-sm-0">
                 <h4>We do not know what makes you happy, but ... </h4>
-                <p>If it's not dusting off, our friendly helpers will free you from this burden - do not worry anymore about spending valuable time doing housework, but savour life, you're well worth your time with beautiful experiences. Free yourself and enjoy the gained time: Go celebrate, relax, play with your children, meet friends or dare to jump on the bungee. Other leisure ideas and exclusive events can be found in our blog - guaranteed free from dust and cleaning tips!</p>
+                <p>If it's not dusting off, our friendly helpers will free you from this burden - do not worry anymore
+                    about spending valuable time doing housework, but savour life, you're well worth your time with
+                    beautiful experiences. Free yourself and enjoy the gained time: Go celebrate, relax, play with your
+                    children, meet friends or dare to jump on the bungee. Other leisure ideas and exclusive events can
+                    be found in our blog - guaranteed free from dust and cleaning tips!</p>
             </div>
             <div class="right col-lg-5 col-12">
                 <div>
@@ -271,7 +305,7 @@
 <div class="scroll-top">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="10">
         <Image width="20" height="10"
-               xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAQAAACWu2SvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflCxILOC+3huDXAAAAa0lEQVQI103NoQoCYQDD8VkMggYRLYLFt7rmI10ziMVkEs6m2ZcwWQQRsdh/huM73dL+jC0qjYn8eaSxijNu5h2euuISA0c8LUUs3HEybFt7fMyMvXEQKQMbvDywa8nvsgbrknvSaZt+qhK+nGpkpn2sFJAAAAAASUVORK5CYII=" />
+            xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAHCAQAAACWu2SvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQflCxILOC+3huDXAAAAa0lEQVQI103NoQoCYQDD8VkMggYRLYLFt7rmI10ziMVkEs6m2ZcwWQQRsdh/huM73dL+jC0qjYn8eaSxijNu5h2euuISA0c8LUUs3HEybFt7fMyMvXEQKQMbvDywa8nvsgbrknvSaZt+qhK+nGpkpn2sFJAAAAAASUVORK5CYII=" />
     </svg>
 </div>
 <div class="fixed-button">
@@ -279,21 +313,32 @@
         <img src="./Image/Layer 598.png" alt="">
     </div>
 </div>
-@section css{ 
-    <link rel="stylesheet" href="/CSS/style.css">
+@section css{
+<link rel="stylesheet" href="/CSS/style.css">
 }
-@section JavaScript{ 
+@section JavaScript{
 <script src="/JS/index.js"></script>
 }
+@section ajaxrequest{
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+}
 @section policy{
-    <div class="footer-policy justify-content-center align-items-center position-sticky">
-        <p class="text-center p-2">
-            We use cookies to ensure that we give you the best experience on our website. If you continue to access the website, we'll assume that you are happy to receive all cookies on the Helperland website.<a href="#">Privacy Policy</a>
-        </p>
-        <button id="policy_btn" class="me-2">OK!</button>
-    </div>
+<div class="footer-policy justify-content-center align-items-center position-sticky">
+    <p class="text-center p-2">
+        We use cookies to ensure that we give you the best experience on our website. If you continue to access the
+        website, we'll assume that you are happy to receive all cookies on the Helperland website.<a href="#">Privacy
+            Policy</a>
+    </p>
+    <button id="policy_btn" class="me-2">OK!</button>
+</div>
 }
 @section validation{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 }

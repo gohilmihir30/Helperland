@@ -14,9 +14,9 @@
                 <label class="visually-hidden" for="username">User name</label>
                 <select class="form-select" id="username" placeholder="User name">
                     <option selected value="">User name</option>
-                    <option value="Mihir Gohil">Mihir Gohil</option>
-                    <option value="service provider">service provider</option>
-                    <option value="test cust">test cust</option>
+                    @foreach (var username in Model.UserNameList){
+                    <option value="@username">@username</option>
+                    }
                 </select>
             </div>
             <div class="col-2">

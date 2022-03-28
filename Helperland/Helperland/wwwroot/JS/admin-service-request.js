@@ -63,16 +63,19 @@ $(document).ready(function () {
 		var toDate = $("#todate").val();
 
 		$.fn.dataTable.ext.search.push((settings, data, dataIndex) => {
-			var splitDate = data[1].trim().substring(0, 10).split("/");
+			var splitDate = data[1]
+				.match(/<strong>.*<\/strong>/)[0]
+				.replace("<strong>", "")
+				.replace("</strong>", "")
+				.split("/");
+			console.log();
 			var date = new Date(parseInt(splitDate[2]), parseInt(splitDate[1]) - 1, parseInt(splitDate[0]));
-			var isServiceId = serviceid ? data[0].includes(serviceid) : true;
+			var isServiceId = serviceid ? new RegExp("^" + serviceid + "+").test(data[0]) : true;
 			var isCustomer = customer ? data[2].includes(customer) : true;
 			var isServiceProvider = serviceprovider ? data[3].includes(serviceprovider) : true;
 			var isStatus = status ? data[5].includes(status) : true;
 			var isFromDate = fromDate ? new Date(fromDate) <= date : true;
 			var isToDate = toDate ? new Date(toDate) >= date : true;
-
-			console.log(isServiceId, isCustomer, isServiceProvider, isStatus, isFromDate, isToDate);
 
 			return isCustomer && isServiceProvider && isServiceId && isStatus && isFromDate && isToDate;
 		});
@@ -183,6 +186,7 @@ $(document).ready(function () {
 		var paid = parseFloat($($event.relatedTarget).attr("data-amount"));
 		var refund = parseFloat($($event.relatedTarget).attr("data-refund"));
 		var serviceId = $($event.relatedTarget).attr("data-id");
+		$(".refundAmountError").hide();
 		$("#refundServiceId").val(serviceId);
 		refund = refund ? parseFloat(refund) : parseFloat(0.0);
 		var inBalanceAmount = paid - refund;
@@ -210,10 +214,11 @@ $(document).ready(function () {
 		} else {
 			AmountToRefund = refundvalue;
 		}
+		console.log(AmountToRefund);
 		if (AmountToRefund <= inBalanceAmount) {
 			$("#refundForm button[type='submit']").prop("disabled", false);
 			$(".refundAmountError").fadeOut();
-			$("#AmountToRefund").val(((inBalanceAmount * refundvalue) / 100).toFixed(2));
+			$("#AmountToRefund").val(AmountToRefund.toFixed(2));
 		} else {
 			$("#refundForm button[type='submit']").prop("disabled", true);
 			$(".refundAmountError").fadeIn();

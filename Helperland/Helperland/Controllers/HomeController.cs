@@ -78,12 +78,13 @@ namespace Helperland.Controllers
                     var role =claims.Where(c => c.Type == ClaimTypes.Role).Select(c=>c.Value).SingleOrDefault();
                     claims.Add(new Claim(ClaimTypes.NameIdentifier, isExist.UserId.ToString()));
                     claims.Add(new Claim(ClaimTypes.MobilePhone, isExist.Mobile));
+                    claims.Add(new Claim(ClaimTypes.PostalCode, (isExist.ZipCode!=null)? isExist.ZipCode:""));
                     claims.Add(new Claim(ClaimTypes.Name, isExist.FirstName + " " + isExist.LastName));
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                     await HttpContext.SignInAsync(claimsPrincipal, new AuthenticationProperties
                     {
-                        IsPersistent = loginModel.RememberMe
+                        IsPersistent = true
                     }) ;
                     if (role == "Customer")
                     {
@@ -107,8 +108,13 @@ namespace Helperland.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("index");
+            return Redirect("/?logoutModal=true");
         }
+
+        [AllowAnonymous]
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult IsEmailInUse(string email) =>
+        _helperlandContext.Users.Where(x => x.Email.Equals(email)).FirstOrDefault() != null ? Json(true) : Json($"Email does not exist");
 
         [Route("/forgetpass")]
         [HttpPost]
@@ -123,8 +129,14 @@ namespace Helperland.Controllers
                 isHTML = true,
                 Body = "Hi!! You request to reset your password, please click below link to reset your password.<p><a href='http://localhost:47474/resetpass?id=" + encyptedId + "'>http://localhost:47474/resetpass?id=" + encyptedId + "</a></p>",
             };
-            _email.sendMail(email);
-            return RedirectToAction("index");
+            if (_email.sendMail(email))
+            {
+                return Json(new {Result=true});
+            }
+            else
+            {
+                return Json(new { result = false });
+            }
         }
 
         [Route("/resetpass")]
@@ -162,7 +174,7 @@ namespace Helperland.Controllers
                 user.Password = Crypto.HashPassword(resetPassModel.NewPassword);
                 _helperlandContext.Users.Attach(user);
                 _helperlandContext.SaveChanges();
-                return RedirectToAction("index");
+                return Redirect("/?modalRequest=true" );
             }
             else
             {
@@ -265,6 +277,11 @@ namespace Helperland.Controllers
             {
                 return Json(new { result = false, Error = "Internal Server Error" });
             }
+        }
+
+        public bool IsLoggedin()
+        {
+            return User.Identity.IsAuthenticated;
         }
     }
 }

@@ -1,8 +1,8 @@
-$(".navbar .logo img").attr("src", "/Image/white_logo_transparent_background.png")
+$(".navbar .logo img").attr("src", "/Image/white_logo_transparent_background.png");
 $("header").addClass("position-fixed top-0");
-$("#login").attr("href" , "");
-$("#login").attr("data-bs-target" , "#loginModalToggle")
-$("#login").attr("data-bs-toggle" , "modal");
+$("#login").attr("href", "");
+$("#login").attr("data-bs-target", "#loginModalToggle");
+$("#login").attr("data-bs-toggle", "modal");
 
 $(document).ready(() => {
 	$(".alert").delay(5000).fadeOut();
@@ -63,24 +63,32 @@ $(document).ready(() => {
 
 	//Modal
 	var myModal = new bootstrap.Modal(document.getElementById("loginModalToggle"));
+
 	const urlParams = new URLSearchParams(window.location.search);
 	if (urlParams.get("modalRequest") === "true") {
-		myModal.show();	
+		myModal.show();
 		if (window.history.pushState) {
 			const newURL = new URL(window.location.href);
 			newURL.search = "";
 			window.history.pushState({ path: newURL.href }, "", newURL.href);
 		}
 	}
-
+	if (urlParams.get("logoutModal") == "true") {
+		$("#logoutModalTrigger").click();
+		if (window.history.pushState) {
+			const newURL = new URL(window.location.href);
+			newURL.search = "";
+			window.history.pushState({ path: newURL.href }, "", newURL.href);
+		}
+	}
 	$("#login").click(() => {
 		if (window.innerWidth < 1120) {
 			$(".nav").removeClass("open");
 			$(".backblack").removeClass("open");
 			$(".hamburger").removeClass("toggle");
 			$("html").css("overflow", "visible");
-        }
-    })
+		}
+	});
 
 	// Change display properties of arrows
 	if (screen.availWidth < 767) {
@@ -103,4 +111,25 @@ $(document).ready(() => {
 			});
 		}
 	});
+
+	forgetPassSuccess = (xhr) => {
+		if (xhr.result) {
+			$("#forgetPassForm .alert").addClass("alert-success");
+			$("#forgetPassForm .alert .content").html(
+				"An email has been sent to your account. Click on the link in received email to reset the password."
+			);
+			$("#forgetPassForm .alert").fadeIn();
+			$("#forgetPassForm .alert").delay(8000).fadeOut();
+		} else {
+			$("#forgetPassForm .alert").addClass("alert-danger");
+			$("#forgetPassForm .alert .content").html(xhr.statusText);
+			$("#forgetPassForm .alert").fadeIn();
+			$("#forgetPassForm .alert").delay(8000).fadeOut();
+		}
+	};
+	forgetPassError = (xhr) => {
+		$("#forgetPassForm .alert").addClass("alert-danger");
+		$("#forgetPassForm .alert .content").html(xhr.statusText);
+		$("#forgetPassForm .alert").delay(5000).fadeOut();
+	};
 });

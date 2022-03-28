@@ -8,7 +8,11 @@
 @* Service Detail Modal *@
 <div class="modal fade" id="serviceDetail" aria-hidden="true" aria-labelledby="serviceDetailLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"></div>
+        <div class="modal-content" style="min-height: 400px;">
+            <div id="loaderContainer" style="display: block; position: absolute; height:100%">
+                <div class="loader rounded-circle"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -131,7 +135,7 @@
                             }
                         </td>
                         <td class="payment text-center"><span>@data.TotalCost</span> &#8364;</td>
-                        <td class="text-center"><button class="btn rounded-pill conflict" data-id="@data.ServiceId"
+                        <td class="text-center"><button class="btn rounded-pill conflict d-none" data-id="@data.ServiceId"
                         data-bs-target="#conflictservice" data-bs-toggle="modal">Show
                                 Conflict</button></td>
                         <td class="action text-center">

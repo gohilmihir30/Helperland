@@ -12,19 +12,25 @@
         </div>
     </div>
     <form asp-controller="Customer" asp-action="userRegistration" method="post">
+        @if (TempData["alertClass"] != null && TempData["alertContent"] != null)
+        {
+            <div class='alert alert-dismissible @TempData["alertClass"] fade show mb-3' role="alert">
+                <span class="content">@TempData["alertContent"]</span>
+            </div>
+        }
         <div class="row g-3 mb-3">
             <div class="col-md-6">
-                <input type="text" asp-for="FirstName" class="form-control" placeholder="First name">
+                <input type="text" asp-for="FirstName" maxlength="100" class="form-control" placeholder="First name">
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <input type="text" asp-for="LastName" class="form-control" placeholder="Last name">
+                <input type="text" asp-for="LastName" maxlength="100" class="form-control" placeholder="Last name">
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
         </div>
         <div class="row g-3 mb-3">
             <div class="col-md-6">
-                <input type="email" asp-for="Email" class="form-control" placeholder="E-mail address">
+                <input type="email" asp-for="Email" maxlength="100" class="form-control" placeholder="E-mail address">
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="col-md-6">
@@ -37,11 +43,12 @@
         </div>
         <div class="row g-3 mb-4">
             <div class="col-md-6">
-                <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+                <input type="password" asp-for="Password" maxlength="100" class="form-control" placeholder="Password">
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="col-md-6">
-                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password">
+                <input type="password" asp-for="ConfirmPassword" maxlength="100" class="form-control"
+                    placeholder="Confirm Password">
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
         </div>
@@ -77,18 +84,23 @@
     </form>
 </section>
 @section css{
-    <link rel="stylesheet" href="/CSS/userRegistration.css">
+<link rel="stylesheet" href="/CSS/userRegistration.css">
 }
 @section JavaScript{
-    <script src="/JS/userRegistration.js"></script>
+<script src="/JS/userRegistration.js"></script>
 }
 @section validation{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+    integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 }
 @section terms{
-    <hr>
-    <div class="terms">
-        <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
-    </div>
+<hr>
+<div class="terms">
+    <small>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</small>
+</div>
 }

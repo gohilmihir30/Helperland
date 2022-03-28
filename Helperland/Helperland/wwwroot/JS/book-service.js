@@ -170,12 +170,9 @@ $(document).ready(() => {
 				.html("Loading Favorite SP List....")
 				.load("/getfavoritesp", () => {
 					$(".fav-sp-btn").click(($event) => {
-						$("#FavoriteSP").val($($event.target).next("input").val());
-						var nexttab = new bootstrap.Tab($('#myTab button[data-bs-target="#Payment"]'));
-						$("#Details-tab").addClass("complete");
-						$("#Details-tab").addClass("pe-auto");
-						servicerequestform.children("#AddressId").val($('input.form-check-input[name="AddressId"]:checked').val());
-						nexttab.show();
+						var value = $($event.target).attr("data-id");
+						$("#FavoriteSP").val($($event.target).attr("data-id"));
+						$("input[name='favSP'][value=" + value + "]").prop("checked", true);
 					});
 				});
 			tab.show();
@@ -251,6 +248,10 @@ $(document).ready(() => {
 		paymentTotalTime.html(serviceDuration[0].value);
 		paymentTotalPayment.html(parseFloat(serviceDuration[0].value * 18).toFixed(2));
 		paymentPerCleaning.html(parseFloat(serviceDuration[0].value * 18).toFixed(2));
+	});
+
+	$("#successModal").on("hidden.bs.modal", () => {
+		location.href = "/customer/Dashboard";
 	});
 
 	$("#Cabinet").click(() => {
@@ -340,16 +341,16 @@ $(document).ready(() => {
 	};
 
 	serviceRequestSuccess = (res) => {
-		if (res != 0) {
+		if (res.result) {
 			var myModal = new bootstrap.Modal($("#successModal"));
 			$("#ModalLabel").html("Booking has been successfully submitted");
-			$("#serviceId").html("Service ID: " + res);
+			$("#serviceId").html("Service ID: " + res.serviceId);
 			myModal.show();
 		} else {
 			var myModal = new bootstrap.Modal($("#successModal"));
 			$("#successModal img").attr("src", "/Image/closeBtn.png");
 			$("#successModal img").css("background-color", "red");
-			$("#ModalLabel").html("Opps!! Booking hasn't been submitted, Please try again");
+			$("#ModalLabel").html(res.error);
 			myModal.show();
 		}
 		$("#checkavilability").trigger("reset");

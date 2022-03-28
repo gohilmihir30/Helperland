@@ -1,3 +1,36 @@
+/* Modal Css */
+#ServiceDetail .modal-header {
+	font-size: 20px;
+}
+#ServiceDetail .modal-dialog {
+	max-width: 900px;
+}
+#ServiceDetail .modal-content {
+	min-height: 500px;
+}
+#ServiceDetail .modal-body > div:last-child {
+	/* max-width: 360px; */
+}
+#ServiceDetail .modal-body > div > div {
+	color: #4f4f4f;
+	border-bottom: 1px solid #e1e1e1;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+#ServiceDetail .modal-body > div > h5 {
+	font-size: 22px;
+	line-height: 26px;
+}
+#ServiceDetail .modal-body div span.netamount {
+	width: calc(100% - 131px);
+	display: inline-block;
+	text-align: center;
+	font-size: 26px;
+	line-height: 26px;
+	color: #1d7a8c;
+	font-weight: 700;
+}
+
 #Calender {
 	margin-left: 20px;
 	max-width: 850px;
@@ -18,6 +51,7 @@
 	border: 1px solid #e1e1e1;
 	text-shadow: none;
 	transition: all 0.5s ease;
+	z-index: 1;
 }
 .fc-state-default.fc-next-button.fc-button:hover,
 .fc-state-default.fc-prev-button.fc-button:hover,
@@ -63,7 +97,7 @@
 	padding-left: 21px;
 }
 .fc-right div div.completed:before {
-	background: #efefef;
+	background: #86858b;
 }
 .fc-right div div:before {
 	content: "";
@@ -83,9 +117,22 @@
 	opacity: 0.3;
 }
 .fc .fc-row .fc-content-skeleton td {
-	padding: 10px;
+	padding: 10px 3px;
 }
-
 .fc-day-grid-container.fc-scroller {
 	height: fit-content !important;
+}
+.fc-day-grid-event.fc-event {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 700;
+	text-align: center;
+	border: none;
+	border-radius: 0;
+	padding: 6px 3px;
+	cursor: pointer;
+	color: #fff;
+}
+.fc-event-container .fc-content .fc-title {
+	font-weight: 700;
 }

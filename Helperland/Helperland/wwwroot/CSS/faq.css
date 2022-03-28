@@ -6,7 +6,37 @@
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 }
+#loaderContainer {
+	z-index: 1000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+}
+#loaderContainer .loader {
+	position: absolute;
+	top: calc(50% - 50px);
+	left: calc(50% - 50px);
+	height: 100px;
+	width: 100px;
+	border: 10px solid transparent;
+	border-top-color: #1d7a8c;
+	border-bottom-color: #1d7a8c;
+	animation: loaderAnimation linear 1s infinite;
+}
 
+@keyframes loaderAnimation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
 /* .............Navbar............... */
 .navbar {
 	background-color: #646464;
