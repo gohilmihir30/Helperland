@@ -28,7 +28,9 @@ using Helperland.Models.ViewModels;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"572d0a4ba8e6af5adb5da4438d3aea3b6881ccc1", @"/Views/Customer/Dashboard.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f0b9fc2f8a20f3e798147764669658d69c9ec557", @"/Views/_ViewImports.cshtml")]
+    #nullable restore
     public class Views_Customer_Dashboard : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<FetchServiceDetails>
+    #nullable disable
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "8", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "8.5", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -117,7 +119,7 @@ using Helperland.Models.ViewModels;
                 <button type=""button"" class=""btn-close"" data-bs-dismiss=""modal"" aria-label=""Close""></button>
             </div>
             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc114874", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc114920", async() => {
                 WriteLiteral("\r\n                <div class=\"modal-body\">\r\n                    <input type=\"hidden\" id=\"rescheduleServiceId\" name=\"rescheduleServiceId\" />\r\n                    <label");
                 BeginWriteAttribute("for", " for=\"", 1501, "\"", 1507, 0);
                 EndWriteAttribute();
@@ -130,7 +132,7 @@ using Helperland.Models.ViewModels;
                         <div class=""col-6 p-0"">
                             <select id=""serviceTime"" name=""serviceTime"" class=""form-select w-100"">
                                 ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc116034", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc116080", async() => {
                     WriteLiteral("08:00");
                 }
                 );
@@ -146,7 +148,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc117289", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc117335", async() => {
                     WriteLiteral("08:30");
                 }
                 );
@@ -162,7 +164,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc118544", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc118590", async() => {
                     WriteLiteral("09:00");
                 }
                 );
@@ -178,7 +180,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc119799", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc119845", async() => {
                     WriteLiteral("09:30");
                 }
                 );
@@ -194,7 +196,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc121054", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc121100", async() => {
                     WriteLiteral("10:00");
                 }
                 );
@@ -210,7 +212,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc122309", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc122355", async() => {
                     WriteLiteral("10:30");
                 }
                 );
@@ -226,7 +228,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc123564", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc123610", async() => {
                     WriteLiteral("11:00");
                 }
                 );
@@ -242,7 +244,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc124819", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc124865", async() => {
                     WriteLiteral("11:30");
                 }
                 );
@@ -258,7 +260,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc126074", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc126120", async() => {
                     WriteLiteral("12:00");
                 }
                 );
@@ -274,7 +276,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc127329", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc127375", async() => {
                     WriteLiteral("12:30");
                 }
                 );
@@ -290,7 +292,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc128584", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc128630", async() => {
                     WriteLiteral("13:00");
                 }
                 );
@@ -306,7 +308,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc129841", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc129887", async() => {
                     WriteLiteral("13:30");
                 }
                 );
@@ -322,7 +324,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc131098", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc131144", async() => {
                     WriteLiteral("14:00");
                 }
                 );
@@ -338,7 +340,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc132355", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc132401", async() => {
                     WriteLiteral("14:30");
                 }
                 );
@@ -354,7 +356,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc133612", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc133658", async() => {
                     WriteLiteral("15:00");
                 }
                 );
@@ -370,7 +372,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc134869", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc134915", async() => {
                     WriteLiteral("15:30");
                 }
                 );
@@ -386,7 +388,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc136126", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc136172", async() => {
                     WriteLiteral("16:00");
                 }
                 );
@@ -402,7 +404,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc137383", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc137429", async() => {
                     WriteLiteral("16:30");
                 }
                 );
@@ -418,7 +420,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc138640", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc138686", async() => {
                     WriteLiteral("17:00");
                 }
                 );
@@ -434,7 +436,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc139897", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc139943", async() => {
                     WriteLiteral("17:30");
                 }
                 );
@@ -450,7 +452,7 @@ using Helperland.Models.ViewModels;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc141154", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc141200", async() => {
                     WriteLiteral("18:00");
                 }
                 );
@@ -504,7 +506,7 @@ using Helperland.Models.ViewModels;
                 <button type=""button"" class=""btn-close"" data-bs-dismiss=""modal"" aria-label=""Close""></button>
             </div>
             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc144968", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "572d0a4ba8e6af5adb5da4438d3aea3b6881ccc145014", async() => {
                 WriteLiteral("\r\n                <input type=\"hidden\" name=\"cancelServiceId\" id=\"cancelServiceId\">\r\n                <div class=\"modal-body\">\r\n                    <label");
                 BeginWriteAttribute("for", " for=\"", 4851, "\"", 4857, 0);
                 EndWriteAttribute();
@@ -861,16 +863,26 @@ WriteAttributeValue("", 10159, Math.Round(data.AverageRating,2), 10159, 33, fals
             );
         }
         #pragma warning restore 1998
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<FetchServiceDetails> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<FetchServiceDetails> Html { get; private set; } = default!;
+        #nullable disable
     }
 }
 #pragma warning restore 1591

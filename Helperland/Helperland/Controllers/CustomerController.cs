@@ -446,7 +446,7 @@ address in _helperlandContext.ServiceRequestAddresses on service.ServiceRequestI
 
             if (servicedetail.ServiceProviderId != null)
             {
-                servicedetail.TotalCleaning = _helperlandContext.ServiceRequests.Where(s => s.ServiceProviderId == servicedetail.ServiceProviderId && s.Status == 3).Count();
+                servicedetail.TotalCleaning = _helperlandContext.ServiceRequests.Where(s => s.ServiceProviderId == servicedetail.ServiceProviderId && (s.Status == 3 || s.Status==5)).Count();
                 var avgRating = _helperlandContext.Ratings.Where(s => s.RatingTo == servicedetail.ServiceProviderId).ToList();
                 if(avgRating.Count()==0)
                 {
@@ -812,7 +812,7 @@ address in _helperlandContext.ServiceRequestAddresses on service.ServiceRequestI
                                      g.Key.RatingTo
                                  })) on service.ServiceProviderId equals AvgTable.RatingTo into AvgTable_join
                           from AvgTable in AvgTable_join.DefaultIfEmpty()
-                          where service.UserId == userid && service.Status == 3
+                          where service.UserId == userid && (service.Status == 3 || service.Status == 5)
                           select new FavoriteAndBlockeModel
                           {
                               UserId = fab.UserId,
@@ -824,12 +824,12 @@ address in _helperlandContext.ServiceRequestAddresses on service.ServiceRequestI
                               SPId = service.ServiceProviderId,
                               Profile = user.UserProfilePicture,
                               Rating = (AvgTable.avgRating == null) ? 0 :(decimal)AvgTable.avgRating
-                          }).ToList();
+                          }).Distinct().ToList();
 
                 foreach (var service in sp.ToList())
                 {
                     var blockcust = _helperlandContext.FavoriteAndBlockeds.Where(f => f.UserId == service.SPId && f.TargetUserId == userid && f.IsBlocked == true).FirstOrDefault();
-                    service.CleaningCount = _helperlandContext.ServiceRequests.Where(s => s.ServiceProviderId == service.SPId && s.Status == 3).Select(s => s.ServiceRequestId).Distinct().Count();
+                    service.CleaningCount = _helperlandContext.ServiceRequests.Where(s => s.ServiceProviderId == service.SPId && (s.Status == 3 || s.Status==5)).Select(s => s.ServiceRequestId).Distinct().Count();
                     if (blockcust != null)
                     {
                         sp.Remove(service);

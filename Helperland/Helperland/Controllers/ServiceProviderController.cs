@@ -336,7 +336,7 @@ namespace Helperland.Controllers
         {
             var userid = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var service = (from serviceRequest in _helperlandContext.ServiceRequests
-                           where serviceRequest.ServiceProviderId == userid && (serviceRequest.Status == 3 || serviceRequest.Status == 2)
+                           where serviceRequest.ServiceProviderId == userid && (serviceRequest.Status == 3 || serviceRequest.Status == 2 || serviceRequest.Status==5)
                            select new
                            {
                                ServiceDate = serviceRequest.ServiceStartDate.ToString("yyyy/MM/dd"),

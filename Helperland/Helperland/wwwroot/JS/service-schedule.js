@@ -49,7 +49,7 @@ $(document).ready(() => {
 							coordinates[1] +
 							`,` +
 							coordinates[0] +
-							`&z=16&output=embed" height="100%" width="100%" style="border:0px; min-height:400px;"></iframe>`
+							`&z=16&output=embed" height="100%" width="100%" style="border:0px;"></iframe>`
 					);
 				},
 			});
